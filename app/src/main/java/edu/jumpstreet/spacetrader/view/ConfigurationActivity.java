@@ -12,16 +12,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import edu.jumpstreet.spacetrader.R;
+import edu.jumpstreet.spacetrader.model.Model;
 import edu.jumpstreet.spacetrader.model.PlayerInteractor;
 import edu.jumpstreet.spacetrader.viewmodel.ConfigurationViewModel;
 
 public class ConfigurationActivity extends AppCompatActivity implements View.OnClickListener {
-    EditText nameET;
+
     private static final int MAX_POINTS = 16;
     private int remainingPoints = MAX_POINTS;
 
-    TextView skillPointsRemainingTV;
 
+    EditText nameET;
+    TextView skillPointsRemainingTV;
     Button pilotMinusBtn;
     TextView pilotTV;
     Button pilotPlusBtn;
@@ -45,7 +47,7 @@ public class ConfigurationActivity extends AppCompatActivity implements View.OnC
     Spinner difficultySpinner;
 
     Button confirmationBtn;
-
+    Model model = new Model();
     enum Difficulty{
         Beginner, Easy, Normal, Hard, Impossible
     }
@@ -132,6 +134,13 @@ public class ConfigurationActivity extends AppCompatActivity implements View.OnC
                     changeSkill(3, true);
                     break;
                 case R.id.playerConfigConfirmationButton:
+                    model.createPlayerInteractor(nameET.getText().toString(), pilotSP, fighterSP, traderSP, engineerSP);
+                    Toast.makeText(this, "Player Created\nName: " + model.getPlayerInteractor().getPlayerName()
+                            +"\nPilot Skill: " + model.getPlayerInteractor().getPlayerPilotSkill()
+                            +"\nFighter Skill: " + model.getPlayerInteractor().getPlayerFighterSkill()
+                            +"\nTrader Skill: " + model.getPlayerInteractor().getPlayerTraderSkill()
+                            +"\nEngineer Skill: " + model.getPlayerInteractor().getPlayerEngineerSkill(),
+                             Toast.LENGTH_LONG).show();
                     break;
             }
         }

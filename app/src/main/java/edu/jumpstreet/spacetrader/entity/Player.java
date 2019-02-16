@@ -7,17 +7,16 @@ package edu.jumpstreet.spacetrader.entity;
 public class Player {
 
     private String name;
-    private int skillpoints, pilot, fighter, trader, engineer;
+    private int pilot, fighter, trader, engineer;
     private int credits;
     private Spaceship ship;
 
-    public Player(String name, int skillpoints, int credits, Spaceship ship) {
+    public Player(String name, int pilotSkill, int fighterSkill, int traderSkill, int engineerSkill, int credits, Spaceship ship) {
         this.name = name;
-        this.skillpoints = skillpoints;
-        pilot = 0;
-        fighter = 0;
-        trader = 0;
-        engineer = 0;
+        pilot = pilotSkill;
+        fighter = fighterSkill;
+        trader = traderSkill;
+        engineer = engineerSkill;
         this.credits = credits;
         this.ship = ship;
     }
@@ -28,14 +27,6 @@ public class Player {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getSkillpoints() {
-        return skillpoints;
-    }
-
-    public void setSkillpoints(int skillpoints) {
-        this.skillpoints = skillpoints;
     }
 
     public int getPilot() {

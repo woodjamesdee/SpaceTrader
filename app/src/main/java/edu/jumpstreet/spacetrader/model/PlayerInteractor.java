@@ -16,8 +16,8 @@ public class PlayerInteractor {
     /**
      * Creates a new PlayerInteractor, which creates a new Player with default attributes
      */
-    public PlayerInteractor() {
-        this.player = new Player("Unknown", 16, 0, new Gnat());
+    public PlayerInteractor(String name, int pilotSkill, int fighterSkill, int traderSkill, int engineerSkill) {
+        this.player = new Player(name, pilotSkill, fighterSkill, traderSkill, engineerSkill, 1000, new Gnat());
     }
 
     /**
@@ -43,20 +43,20 @@ public class PlayerInteractor {
      * Gets the currently unallocated skillpoints for this stored Player.
      * @return  the remaining (unallocated) skillpoints
      */
-    public int getPlayerUnallocatedSkillpoints() {
-        return player.getSkillpoints();
-    }
+//    public int getPlayerUnallocatedSkillpoints() {
+//        return player.getSkillpoints();
+//    }
 
     /**
      * Adds allocatable skillpoints to the stored Player.
      * @param points    the skillpoints to add
-     */
-    public void addPlayerSkillpoints(int points) {
-        if (points == 0) {
-            throw new IllegalArgumentException("Cannot add 0 points to player.");
-        }
-        player.setSkillpoints(player.getSkillpoints() + points);
-    }
+//     */
+//    public void addPlayerSkillpoints(int points) {
+//        if (points == 0) {
+//            throw new IllegalArgumentException("Cannot add 0 points to player.");
+//        }
+//        player.setSkillpoints(player.getSkillpoints() + points);
+//    }
 
     /**
      * Gets the piloting skill of the stored Player.
@@ -70,14 +70,14 @@ public class PlayerInteractor {
      * Takes skillpoints from the unallocated pool and adds them to the piloting skill.
      * @param points    the points to add to the piloting skill
      */
-    public void addPlayerPilotSkill(int points) {
-        int remainingPoints = player.getSkillpoints();
-        if (points > remainingPoints) {
-            throw new IllegalArgumentException("Cannot add more points to pilot skill than are remaining.");
-        }
-        player.setPilot(player.getPilot() + points);
-        player.setSkillpoints(player.getSkillpoints() - points);
-    }
+//    public void addPlayerPilotSkill(int points) {
+//        int remainingPoints = player.getSkillpoints();
+//        if (points > remainingPoints) {
+//            throw new IllegalArgumentException("Cannot add more points to pilot skill than are remaining.");
+//        }
+//        player.setPilot(player.getPilot() + points);
+//        player.setSkillpoints(player.getSkillpoints() - points);
+//    }
 
     /**
      * Gets the fighting skill of the stored Player.
@@ -91,14 +91,14 @@ public class PlayerInteractor {
      * Takes skillpoints from the unallocated pool and adds them to the fighting skill.
      * @param points    the points to add to the fighting skill
      */
-    public void addPlayerFighterSkill(int points) {
-        int remainingPoints = player.getSkillpoints();
-        if (points > remainingPoints) {
-            throw new IllegalArgumentException("Cannot add more points to fighter skill than are remaining.");
-        }
-        player.setFighter(player.getFighter() + points);
-        player.setSkillpoints(player.getSkillpoints() - points);
-    }
+//    public void addPlayerFighterSkill(int points) {
+//        int remainingPoints = player.getSkillpoints();
+//        if (points > remainingPoints) {
+//            throw new IllegalArgumentException("Cannot add more points to fighter skill than are remaining.");
+//        }
+//        player.setFighter(player.getFighter() + points);
+//        player.setSkillpoints(player.getSkillpoints() - points);
+//    }
 
     /**
      * Gets the trading skill of the stored Player.
@@ -112,14 +112,14 @@ public class PlayerInteractor {
      * Takes skillpoints from the unallocated pool and adds them to the trading skill.
      * @param points    the points to add to the trading skill
      */
-    public void addPlayerTraderSkill(int points) {
-        int remainingPoints = player.getSkillpoints();
-        if (points > remainingPoints) {
-            throw new IllegalArgumentException("Cannot add more points to trader skill than are remaining.");
-        }
-        player.setTrader(player.getTrader() + points);
-        player.setSkillpoints(player.getSkillpoints() - points);
-    }
+//    public void addPlayerTraderSkill(int points) {
+//        int remainingPoints = player.getSkillpoints();
+//        if (points > remainingPoints) {
+//            throw new IllegalArgumentException("Cannot add more points to trader skill than are remaining.");
+//        }
+//        player.setTrader(player.getTrader() + points);
+//        player.setSkillpoints(player.getSkillpoints() - points);
+//    }
 
     /**
      * Gets the engineering skill of the stored Player.
@@ -133,14 +133,14 @@ public class PlayerInteractor {
      * Takes skillpoints from the unallocated pool and adds them to the engineer skill.
      * @param points    the points to add to the engineering skill
      */
-    public void addPlayerEngineerSkill(int points) {
-        int remainingPoints = player.getSkillpoints();
-        if (points > remainingPoints) {
-            throw new IllegalArgumentException("Cannot add more points to engineer skill than are remaining.");
-        }
-        player.setEngineer(player.getEngineer() + points);
-        player.setSkillpoints(player.getSkillpoints() - points);
-    }
+//    public void addPlayerEngineerSkill(int points) {
+//        int remainingPoints = player.getSkillpoints();
+//        if (points > remainingPoints) {
+//            throw new IllegalArgumentException("Cannot add more points to engineer skill than are remaining.");
+//        }
+//        player.setEngineer(player.getEngineer() + points);
+//        player.setSkillpoints(player.getSkillpoints() - points);
+//    }
 
     /**
      * Gets the current balance of credits of the stored Player.

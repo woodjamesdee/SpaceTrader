@@ -13,8 +13,11 @@ public class Model {
 
     public static Model getInstance() { return instance; }
 
-    private Model() {
-        playerInteractor = new PlayerInteractor();
+    public Model() {
+    }
+
+    public void createPlayerInteractor(String name, int pilotSkill, int fighterSkill, int traderSkill, int engineerSkill){
+        playerInteractor = new PlayerInteractor(name,pilotSkill, fighterSkill, traderSkill, engineerSkill);
     }
 
     public PlayerInteractor getPlayerInteractor() {
