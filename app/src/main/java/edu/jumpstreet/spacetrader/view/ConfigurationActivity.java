@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,7 +42,13 @@ public class ConfigurationActivity extends AppCompatActivity implements View.OnC
     Button engineerPlusBtn;
     private int engineerSP = 0;
 
+    Spinner difficultySpinner;
+
     Button confirmationBtn;
+
+    enum Difficulty{
+        Beginner, Easy, Normal, Hard, Impossible
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +57,11 @@ public class ConfigurationActivity extends AppCompatActivity implements View.OnC
 
         linkConfigButtons();
         initializeButtons();
+        difficultySpinner = findViewById(R.id.difficultySpinner);
         skillPointsRemainingTV.setText("Remaining Skill Points: " + remainingPoints);
+        ArrayAdapter<Difficulty> difficultyAdapter = new ArrayAdapter<Difficulty>(this, android.R.layout.simple_spinner_item, Difficulty.values());
+        difficultyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        difficultySpinner.setAdapter(difficultyAdapter);
     }
 
     private void linkConfigButtons(){
@@ -69,8 +81,6 @@ public class ConfigurationActivity extends AppCompatActivity implements View.OnC
         confirmationBtn = findViewById(R.id.playerConfigConfirmationButton);
         skillPointsRemainingTV = findViewById(R.id.skillPointsRemainingTV);
     }
-    //Called at start; activates listeners and initially disables buttons that
-    //shouldnbt be active from onCreate
 
     private void initializeButtons(){
         pilotMinusBtn.setEnabled(false);
@@ -131,7 +141,6 @@ public class ConfigurationActivity extends AppCompatActivity implements View.OnC
         switch (skill){
             case 0:
                 pilotSP = isAdded?pilotSP+1:pilotSP-1;
-
                 pilotTV.setText("Pilot Skill: " + pilotSP+ "");
                 isMinusActive = pilotSP > 0?true:false;
                 pilotMinusBtn.setEnabled(isMinusActive);
@@ -156,15 +165,18 @@ public class ConfigurationActivity extends AppCompatActivity implements View.OnC
         remainingPoints = isAdded?remainingPoints-1:remainingPoints+1;
         skillPointsRemainingTV.setText("Skill Points Remaining: " + remainingPoints);
         if(remainingPoints <= 0){
-            pilotPlusBtn.setEnabled(false);
-            fighterPlusBtn.setEnabled(false);
-            traderPlusBtn.setEnabled(false);
-            engineerPlusBtn.setEnabled(false);
+            enablePlusButtons(false);
         }else{
-            pilotPlusBtn.setEnabled(true);
-            fighterPlusBtn.setEnabled(true);
-            traderPlusBtn.setEnabled(true);
-            engineerPlusBtn.setEnabled(true);
+            enablePlusButtons(true);
         }
+    }
+
+
+
+    private void enablePlusButtons(boolean isEnabled){
+        pilotPlusBtn.setEnabled(isEnabled);
+        fighterPlusBtn.setEnabled(isEnabled);
+        traderPlusBtn.setEnabled(isEnabled);
+        engineerPlusBtn.setEnabled(isEnabled);
     }
 }
