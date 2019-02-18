@@ -1,18 +1,15 @@
 package edu.jumpstreet.spacetrader.viewmodel;
 
-import android.app.Application;
-import android.arch.lifecycle.AndroidViewModel;
-import android.support.annotation.NonNull;
+import android.arch.lifecycle.ViewModel;
 
 import edu.jumpstreet.spacetrader.model.Model;
 import edu.jumpstreet.spacetrader.model.PlayerInteractor;
 
-public class ConfigurationViewModel extends AndroidViewModel {
+public class ConfigurationViewModel extends ViewModel {
 
     private PlayerInteractor interactor;
 
-    public ConfigurationViewModel(@NonNull Application application) {
-        super(application);
+    public ConfigurationViewModel() {
         interactor = Model.getInstance().getPlayerInteractor();
     }
 
@@ -68,4 +65,23 @@ public class ConfigurationViewModel extends AndroidViewModel {
 
     }
 
+    public boolean plusShouldBeDisabled() {
+        return interactor.playerHasSkillpointsLeft();
+    }
+
+    public boolean pilotMinusShouldBeDisabled() {
+        return interactor.playerHasPilotPointsLeft();
+    }
+
+    public boolean fighterMinusShouldBeDisabled() {
+        return interactor.playerHasFighterPointsLeft();
+    }
+
+    public boolean traderMinusShouldBeDisabled() {
+        return interactor.playerHasTraderPointsLeft();
+    }
+
+    public boolean engineerMinusShouldBeDisabled() {
+        return interactor.playerHasEngineerPointsLeft();
+    }
 }

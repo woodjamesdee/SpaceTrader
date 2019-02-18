@@ -179,4 +179,44 @@ public class PlayerInteractor {
         }
         player.setShip(ship);
     }
+
+    /**
+     * Returns true or false depending on the stored Player skillpoint value.
+     * @return  true if greater than 0, false if less
+     */
+    public boolean playerHasSkillpointsLeft() {
+        return player.getSkillpoints() > 0;
+    }
+
+    /**
+     * Returns true or false depending on the stored Player pilot point value.
+     * @return  true if greater than 0, false if less
+     */
+    public boolean playerHasPilotPointsLeft() {
+        return player.getPilot() > 0;
+    }
+
+    /**
+     * Returns true or false depending on the stored Player fighter point value.
+     * @return  true if greater than 0, false if less
+     */
+    public boolean playerHasFighterPointsLeft() {
+        return player.getFighter() > 0;
+    }
+
+    /**
+     * Returns true or false depending on the stored Player trader point value.
+     * @return  true if greater than 0, false if less
+     */
+    public boolean playerHasTraderPointsLeft() {
+        return player.getTrader() > 0;
+    }
+
+    /**
+     * Returns true or false depending on the stored Player engineer point value.
+     * @return  true if greater than 0, false if less
+     */
+    public boolean playerHasEngineerPointsLeft() {
+        return player.getEngineer() > 0;
+    }
 }
