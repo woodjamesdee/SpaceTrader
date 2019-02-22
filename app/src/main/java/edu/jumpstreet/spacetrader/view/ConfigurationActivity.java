@@ -1,5 +1,6 @@
 package edu.jumpstreet.spacetrader.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import edu.jumpstreet.spacetrader.MainActivity;
 import edu.jumpstreet.spacetrader.R;
 import edu.jumpstreet.spacetrader.model.Model;
 import edu.jumpstreet.spacetrader.viewmodel.ConfigurationViewModel;
@@ -149,6 +151,8 @@ public class ConfigurationActivity extends AppCompatActivity implements View.OnC
                                 +"\nTrader Skill: " + model.getPlayerInteractor().getPlayerTraderSkill()
                                 +"\nEngineer Skill: " + model.getPlayerInteractor().getPlayerEngineerSkill(),
                         Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(this, SolarSystemActivity.class);
+                ConfigurationActivity.this.startActivity(intent);
                 break;
         }
     }

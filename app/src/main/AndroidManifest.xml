@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.ConfigurationActivity"></activity>
+        <activity android:name=".view.SolarSystemActivity"></activity>
     </application>
 
 </manifest>
