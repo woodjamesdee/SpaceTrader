@@ -14,16 +14,19 @@ import android.widget.TextView;
 import edu.jumpstreet.spacetrader.R;
 import edu.jumpstreet.spacetrader.entity.SolarSystem;
 
-public class SolarSystemActivity extends AppCompatActivity {
+public class SolarSystemActivity extends AppCompatActivity implements View.OnClickListener{
     TableLayout tableLayout;
+    Button backToUniverseButton;
 
     @Override
     protected void onCreate(Bundle sav) {
         super.onCreate(sav);
         setContentView(R.layout.activity_solar_system);
         tableLayout = findViewById(R.id.solarSystemLayout);
+        backToUniverseButton = findViewById(R.id.InSSBackToUniverseBtn);
+        backToUniverseButton.setOnClickListener(this);
 
-        SolarSystem solarSystem = new SolarSystem(5,5 ,5 ,5 );
+        SolarSystem solarSystem = new SolarSystem(5,2 ,8 ,5 );
         createSolarSystem(solarSystem);
     }
 
@@ -53,6 +56,19 @@ public class SolarSystemActivity extends AppCompatActivity {
                     table.addView(space);
                 }
             }
+        }
+    }
+    @Override
+    public void onClick(View view) {
+        switch(view.getId()){
+            case 0:
+                break;
+            case 1:
+                break;
+            case R.id.InSSBackToUniverseBtn:
+                Intent intent = new Intent(this, UniverseActivity.class);
+                SolarSystemActivity.this.startActivity(intent);
+                break;
         }
     }
 }

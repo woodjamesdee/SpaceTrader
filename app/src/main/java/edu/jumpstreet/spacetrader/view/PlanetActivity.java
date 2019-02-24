@@ -23,6 +23,7 @@ public class PlanetActivity extends AppCompatActivity implements View.OnClickLis
         tradeBtn = findViewById(R.id.OnPlanetTradeBtn);
         spaceshipStoreBtn = findViewById(R.id.OnPlanetSpaceshipStoreBtn);
         solarSystemBtn = findViewById(R.id.OnPlanetBackToSolarSystemBtn);
+        solarSystemBtn.setOnClickListener(this);
     }
 
     @Override

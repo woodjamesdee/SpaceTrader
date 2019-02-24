@@ -9,6 +9,12 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Solar System 'X'" />
+
         <TableLayout
             android:id="@+id/solarSystemLayout"
             android:layout_width="match_parent"
@@ -88,5 +94,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="YOLO TO THE SUN" />
+
+        <Button
+            android:id="@+id/InSSBackToUniverseBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Back To Universe" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
