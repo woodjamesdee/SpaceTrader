@@ -1,7 +1,9 @@
 package edu.jumpstreet.spacetrader.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Space;
@@ -21,8 +23,8 @@ public class SolarSystemActivity extends AppCompatActivity {
         setContentView(R.layout.activity_solar_system);
         tableLayout = findViewById(R.id.solarSystemLayout);
 
-          SolarSystem solarSystem = new SolarSystem(5,5 ,5 ,5 );
-          createSolarSystem(solarSystem);
+        SolarSystem solarSystem = new SolarSystem(5,5 ,5 ,5 );
+        createSolarSystem(solarSystem);
     }
 
     private void createSolarSystem(SolarSystem solarSystem){
@@ -34,6 +36,14 @@ public class SolarSystemActivity extends AppCompatActivity {
                     table.addView(new Space(this));
                 }else{
                     Button btn = new Button(this);
+                    btn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            //TODO check if 1st param works
+                            Intent intent = new Intent(SolarSystemActivity.this, PlanetActivity.class);
+                            SolarSystemActivity.this.startActivity(intent);
+                        }
+                    });
                     TableRow.LayoutParams params = new TableRow.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f);
                     btn.setLayoutParams(params);
                     TableRow tableRow = (TableRow) tableLayout.getChildAt(i);
