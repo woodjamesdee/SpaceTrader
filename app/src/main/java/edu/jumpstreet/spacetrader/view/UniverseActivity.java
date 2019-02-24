@@ -18,7 +18,10 @@ public class UniverseActivity extends AppCompatActivity {
     TableLayout tableLayout;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_universe);
         tableLayout = findViewById(R.id.UniverseTableLayout);
+        SolarSystem ss = new SolarSystem(5, 5, 5, 5);
+        createUniverse(ss);
     }
 
     //TODO switch param to universe instead of SS
@@ -26,16 +29,13 @@ public class UniverseActivity extends AppCompatActivity {
         for(int i= 0;i<tableLayout.getChildCount();i++){
             //j<10 for debugging TODO replace with a var
             for(int j=0;j<10;j++){
-                if(false){
-                    TableRow table = (TableRow) tableLayout.getChildAt(i);
-                    table.addView(new Space(this));
-                }else{
+                if(solarSystem.getY() == j && solarSystem.getX() == i){
                     Button btn = new Button(this);
                     btn.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             //TODO check if 1st param works
-                            Intent intent = new Intent(UniverseActivity.this, SolarSystem.class);
+                            Intent intent = new Intent(UniverseActivity.this, SolarSystemActivity.class);
                             UniverseActivity.this.startActivity(intent);
                         }
                     });
@@ -43,6 +43,12 @@ public class UniverseActivity extends AppCompatActivity {
                     btn.setLayoutParams(params);
                     TableRow tableRow = (TableRow) tableLayout.getChildAt(i);
                     tableRow.addView(btn);
+                }else{
+                    TableRow table = (TableRow) tableLayout.getChildAt(i);
+                    Space space = new Space(this);
+                    TableRow.LayoutParams params = new TableRow.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f);
+                    space.setLayoutParams(params);
+                    table.addView(space);
                 }
             }
         }

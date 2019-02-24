@@ -18,6 +18,8 @@
         </activity>
         <activity android:name=".view.ConfigurationActivity"></activity>
         <activity android:name=".view.SolarSystemActivity"></activity>
+        <activity android:name=".view.UniverseActivity"></activity>
+        <activity android:name=".view.PlanetActivity"></activity>
     </application>
 
 </manifest>

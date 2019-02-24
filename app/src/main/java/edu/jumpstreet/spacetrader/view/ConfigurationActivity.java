@@ -151,7 +151,7 @@ public class ConfigurationActivity extends AppCompatActivity implements View.OnC
                                 +"\nTrader Skill: " + model.getPlayerInteractor().getPlayerTraderSkill()
                                 +"\nEngineer Skill: " + model.getPlayerInteractor().getPlayerEngineerSkill(),
                         Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(this, SolarSystemActivity.class);
+                Intent intent = new Intent(this, UniverseActivity.class);
                 ConfigurationActivity.this.startActivity(intent);
                 break;
         }
