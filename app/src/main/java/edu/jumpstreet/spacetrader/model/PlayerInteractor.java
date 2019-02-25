@@ -34,7 +34,9 @@ public class PlayerInteractor {
      */
     public void changePlayerName(String name) {
         if (name == null || name.equals("")) {
-            throw new IllegalArgumentException("Cannot change the player name to nothing.");
+            //throw new IllegalArgumentException("Cannot change the player name to nothing.");
+            player.setName("(default)");
+            return;
         }
         player.setName(name);
     }

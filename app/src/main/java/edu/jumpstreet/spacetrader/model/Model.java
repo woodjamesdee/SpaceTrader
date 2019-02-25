@@ -1,5 +1,7 @@
 package edu.jumpstreet.spacetrader.model;
 
+import java.util.Random;
+
 /**
  * This is the interface to the entity and model classes in this application.
  *
@@ -8,6 +10,7 @@ package edu.jumpstreet.spacetrader.model;
 public class Model {
 
     private PlayerInteractor playerInteractor;
+    private Random random;
 
     private static Model instance = new Model();
 
@@ -15,6 +18,7 @@ public class Model {
 
     private Model() {
         playerInteractor = new PlayerInteractor();
+        random = new Random();
     }
 
     public PlayerInteractor getPlayerInteractor() {

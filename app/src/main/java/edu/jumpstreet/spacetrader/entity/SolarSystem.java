@@ -9,9 +9,6 @@ import java.util.Set;
  */
 public class SolarSystem {
 
-    private static final int X_COORDINATE_BOUNDS = 150;
-    private static final int Y_COORDINATE_BOUNDS = 100;
-
     private static final String[] NAMES = new String[] {
             "Acamar",
             "Adahn",		// The alternate personality for The Nameless One in "Planescape: Torment"
@@ -167,8 +164,8 @@ public class SolarSystem {
         usedNames.add(NAMES[nameIndex]);
         Integer[] coordinate = new Integer[] { x, y };
         while (usedCoordinates.contains(coordinate)) {
-            x = (x + 1) % X_COORDINATE_BOUNDS;
-            y = (y + 1) % Y_COORDINATE_BOUNDS;
+            x = (5*x + 1) % Universe.X_BOUNDS;
+            y = (2*y + 1) % Universe.Y_BOUNDS;
             coordinate = new Integer[] { x, y };
         }
         this.x = x;

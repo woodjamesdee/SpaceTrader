@@ -147,7 +147,8 @@ public class ConfigurationActivity extends AppCompatActivity implements View.OnC
                                 +"\nPilot Skill: " + model.getPlayerInteractor().getPlayerPilotSkill()
                                 +"\nFighter Skill: " + model.getPlayerInteractor().getPlayerFighterSkill()
                                 +"\nTrader Skill: " + model.getPlayerInteractor().getPlayerTraderSkill()
-                                +"\nEngineer Skill: " + model.getPlayerInteractor().getPlayerEngineerSkill(),
+                                +"\nEngineer Skill: " + model.getPlayerInteractor().getPlayerEngineerSkill()
+                                +"\nUnallocated Points: " + model.getPlayerInteractor().getPlayerUnallocatedSkillpoints(),
                         Toast.LENGTH_LONG).show();
                 break;
         }
