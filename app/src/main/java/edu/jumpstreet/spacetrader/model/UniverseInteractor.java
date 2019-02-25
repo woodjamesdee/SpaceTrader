@@ -1,16 +1,30 @@
 package edu.jumpstreet.spacetrader.model;
 
+import java.util.Random;
+
+import edu.jumpstreet.spacetrader.entity.SolarSystem;
 import edu.jumpstreet.spacetrader.entity.Universe;
 
+/**
+ * Handles the usage of the Universe and all of its components.
+ */
 public class UniverseInteractor {
 
     private Universe universe;
+    private SolarSystem activeSolarSystem;
 
-    public UniverseInteractor() {
+    public UniverseInteractor(Random random) {
         universe = new Universe();
+        generateSolarSystems(random, random.nextInt(Universe.MAX_SYSTEMS - Universe.MIN_SYSTEMS) + Universe.MIN_SYSTEMS);
     }
 
-    public void generateSolarSystems() {
-
+    private void generateSolarSystems(Random random, int amount) {
+        if (amount > 100) {
+            return;
+        }
+        for (int i = 0; i < amount; i++) {
+            SolarSystem current = new SolarSystem(random.nextInt(SolarSystem.getNamesLength()), random.nextInt(Universe.X_BOUNDS), random.nextInt(Universe.Y_BOUNDS), random.nextInt(SolarSystem.TechLevel.values().length));
+            universe.addSolarSystem(current);
+        }
     }
 }

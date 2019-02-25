@@ -7,7 +7,7 @@ import java.util.Set;
  * The SolarSystem entity represents a physical solar system with its attributes
  * as well as a container for Planet objects contained within the system.
  */
-public class SolarSystem {
+public class SolarSystem extends System {
 
     private static final String[] NAMES = new String[] {
             "Acamar",
@@ -140,7 +140,7 @@ public class SolarSystem {
     private TechLevel techLevel;
 
 
-    enum TechLevel {
+    public enum TechLevel {
         PreAgriculture, Agriculture,
         Medieval, Renaissance,
         EarlyIndustrial, Industrial,
@@ -155,6 +155,7 @@ public class SolarSystem {
      * @param techLevelIndex    the index of the tech level of the SolarSystem
      */
     public SolarSystem(int nameIndex, int x, int y, int techLevelIndex) {
+        super(x, y, techLevelIndex);
         if (usedNames.contains(NAMES[nameIndex])) {
             do {
                 nameIndex++;
@@ -162,52 +163,6 @@ public class SolarSystem {
         }
         name = NAMES[nameIndex];
         usedNames.add(NAMES[nameIndex]);
-        Integer[] coordinate = new Integer[] { x, y };
-        while (usedCoordinates.contains(coordinate)) {
-            x = (5*x + 1) % Universe.X_BOUNDS;
-            y = (2*y + 1) % Universe.Y_BOUNDS;
-            coordinate = new Integer[] { x, y };
-        }
-        this.x = x;
-        this.y = y;
-        usedCoordinates.add(coordinate);
-        for (TechLevel current : TechLevel.values()) {
-            if (current.ordinal() == techLevelIndex) {
-                this.techLevel = current;
-            }
-        }
-    }
-
-    /**
-     * Gets the name of this SolarSystem
-     * @return  the name
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Gets the x coordinate of the SolarSystem
-     * @return  the x coordinate
-     */
-    public int getX() {
-        return x;
-    }
-
-    /**
-     * Gets the y coordinate of the SolarSystem
-     * @return  the y coordinate
-     */
-    public int getY() {
-        return y;
-    }
-
-    /**
-     * Gets the TechLevel of this SolarSystem
-     * @return  the TechLevel
-     */
-    public TechLevel getTechLevel() {
-        return techLevel;
     }
 
     /**
@@ -217,4 +172,10 @@ public class SolarSystem {
     public void setTechLevel(TechLevel techLevel) {
         this.techLevel = techLevel;
     }
+
+    /**
+     * Gets the length of the NAMES list.
+     * @return  the length of NAMES
+     */
+    public static int getNamesLength() { return NAMES.length; }
 }
