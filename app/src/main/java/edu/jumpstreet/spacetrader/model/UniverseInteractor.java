@@ -2,6 +2,7 @@ package edu.jumpstreet.spacetrader.model;
 
 import java.util.Random;
 
+import edu.jumpstreet.spacetrader.entity.Planet;
 import edu.jumpstreet.spacetrader.entity.SolarSystem;
 import edu.jumpstreet.spacetrader.entity.Universe;
 
@@ -11,11 +12,11 @@ import edu.jumpstreet.spacetrader.entity.Universe;
 public class UniverseInteractor {
 
     private Universe universe;
-    private SolarSystem activeSolarSystem;
 
     public UniverseInteractor(Random random) {
         universe = new Universe();
         generateSolarSystems(random, random.nextInt(Universe.MAX_SYSTEMS - Universe.MIN_SYSTEMS) + Universe.MIN_SYSTEMS);
+        generatePlanets(random);
     }
 
     private void generateSolarSystems(Random random, int amount) {
@@ -27,4 +28,14 @@ public class UniverseInteractor {
             universe.addSolarSystem(current);
         }
     }
+
+    private void generatePlanets(Random random) {
+        for (SolarSystem currentSystem : universe.getSolarSystems().values()) {
+            for (int i = 0; i < random.nextInt(Universe.MAX_SYSTEMS - Universe.MIN_SYSTEMS) + Universe.MIN_SYSTEMS; i++) {
+                currentSystem.addNewPlanet(random.nextInt(Universe.X_BOUNDS), random.nextInt(Universe.Y_BOUNDS), random.nextInt(Planet.Resource.values().length));
+            }
+        }
+    }
+
+
 }

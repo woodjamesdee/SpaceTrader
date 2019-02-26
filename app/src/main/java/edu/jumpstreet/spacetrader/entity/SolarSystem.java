@@ -1,6 +1,8 @@
 package edu.jumpstreet.spacetrader.entity;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -135,17 +137,9 @@ public class SolarSystem extends System {
     private static Set<String> usedNames = new HashSet<>();
     private static Set<Integer[]> usedCoordinates = new HashSet<>();
 
-    private String name;
-    private int x, y;
-    private TechLevel techLevel;
-
-
-    public enum TechLevel {
-        PreAgriculture, Agriculture,
-        Medieval, Renaissance,
-        EarlyIndustrial, Industrial,
-        PostIndustrial, HiTech
-    }
+    private Set<Integer[]> usedPlanetCoordinates;
+    private Map<String, Planet> planets;
+    private String[][] planetLocations;
 
     /**
      * Creates a new SolarSystem instance based on inputed (random) values.
@@ -156,6 +150,16 @@ public class SolarSystem extends System {
      */
     public SolarSystem(int nameIndex, int x, int y, int techLevelIndex) {
         super(x, y, techLevelIndex);
+        planetLocations = new String[10][10];
+        Integer[] coordinate = new Integer[] { x, y };
+        while (usedCoordinates.contains(coordinate)) {
+            x = (5*x + 1) % Universe.X_BOUNDS;
+            y = (2*y + 1) % Universe.Y_BOUNDS;
+            coordinate = new Integer[] { x, y };
+        }
+        this.x = x;
+        this.y = y;
+        usedCoordinates.add(coordinate);
         if (usedNames.contains(NAMES[nameIndex])) {
             do {
                 nameIndex++;
@@ -163,14 +167,8 @@ public class SolarSystem extends System {
         }
         name = NAMES[nameIndex];
         usedNames.add(NAMES[nameIndex]);
-    }
-
-    /**
-     * Sets the TechLevel of this SolarSystem
-     * @param techLevel the new TechLevel of the SolarSystem
-     */
-    public void setTechLevel(TechLevel techLevel) {
-        this.techLevel = techLevel;
+        usedPlanetCoordinates = new HashSet<>();
+        planets = new HashMap<>();
     }
 
     /**
@@ -178,4 +176,52 @@ public class SolarSystem extends System {
      * @return  the length of NAMES
      */
     public static int getNamesLength() { return NAMES.length; }
+
+    public Planet getPlanet(String name) {
+        return planets.get(name);
+    }
+
+    public void addNewPlanet(int x, int y, int resourceIndex) {
+        Integer[] coordinate = new Integer[] { x, y };
+        while (usedPlanetCoordinates.contains(coordinate)) {
+            x = (5*x + 1) % Universe.X_BOUNDS;
+            y = (2*y + 1) % Universe.Y_BOUNDS;
+            coordinate = new Integer[] { x, y };
+        }
+        usedPlanetCoordinates.add(coordinate);
+        String planetName = this.name + generateEnding();
+        Planet newPlanet = new Planet(planetName, x, y, techLevel.ordinal(), resourceIndex);
+        planets.put(newPlanet.getName(), newPlanet);
+        planetLocations[newPlanet.x][newPlanet.y] = newPlanet.getName();
+    }
+
+    private String generateEnding() {
+        String returnString = "";
+        switch(planets.size()) {
+            case 0:
+                returnString = "Prime";
+                break;
+            case 1:
+                returnString = "II";
+                break;
+            case 2:
+                returnString = "III";
+                break;
+            case 3:
+                returnString = "IV";
+                break;
+            case 4:
+                returnString = "V";
+                break;
+            case 5:
+                returnString = "VI";
+                break;
+            case 6:
+                returnString = "VII";
+                break;
+            default:
+                returnString = "NOT IMPLEMENTED!";
+        }
+        return returnString;
+    }
 }

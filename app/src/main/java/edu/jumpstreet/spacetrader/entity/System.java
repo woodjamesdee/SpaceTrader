@@ -1,8 +1,5 @@
 package edu.jumpstreet.spacetrader.entity;
 
-import java.util.HashSet;
-import java.util.Set;
-
 /**
  * The System class represents a location which is located in space and has a TechLevel.
  */
@@ -11,8 +8,6 @@ public abstract class System {
     protected String name;
     protected int x, y;
     protected TechLevel techLevel;
-
-    protected static Set<Integer[]> usedCoordinates = new HashSet<>();
 
     /**
      * The TechLevel enum represents the technological advancement of the entire System. Affects modifiers.
@@ -31,15 +26,8 @@ public abstract class System {
      * @param techLevelIndex    the TechLevel to use (given through index)
      */
     protected System(int x, int y, int techLevelIndex) {
-        Integer[] coordinate = new Integer[] { x, y };
-        while (usedCoordinates.contains(coordinate)) {
-            x = (5*x + 1) % Universe.X_BOUNDS;
-            y = (2*y + 1) % Universe.Y_BOUNDS;
-            coordinate = new Integer[] { x, y };
-        }
         this.x = x;
         this.y = y;
-        usedCoordinates.add(coordinate);
         for (TechLevel current : TechLevel.values()) {
             if (current.ordinal() == techLevelIndex) {
                 this.techLevel = current;
