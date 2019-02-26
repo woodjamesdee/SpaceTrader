@@ -30,43 +30,12 @@ public class SolarSystemActivity extends AppCompatActivity implements View.OnCli
         backToUniverseButton.setOnClickListener(this);
         solarSystemName = findViewById(R.id.textView3);
         solarSystemName.setText("Solar System: " + Model.getInstance().getGameInteractor().getActiveSolarSystem().getName());
-        //SolarSystem solarSystem = new SolarSystem(5,2 ,8 ,5 );
-        //createSolarSystem(solarSystem);
         createSolarSystem();
-    }
-
-
-    private void createSolarSystem(SolarSystem solarSystem){
-        for(int i= 0;i<tableLayout.getChildCount();i++){
-            //j<10 for debugging TODO replace with a var
-            for(int j=0;j<10;j++){
-                if(solarSystem.getY() == j && solarSystem.getX() == i){
-                    Button btn = new Button(this);
-                    btn.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            //TODO check if 1st param works
-                            Intent intent = new Intent(SolarSystemActivity.this, PlanetActivity.class);
-                            SolarSystemActivity.this.startActivity(intent);
-                        }
-                    });
-                    TableRow.LayoutParams params = new TableRow.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f);
-                    btn.setLayoutParams(params);
-                    TableRow tableRow = (TableRow) tableLayout.getChildAt(i);
-                    tableRow.addView(btn);
-                }else{
-                    TableRow table = (TableRow) tableLayout.getChildAt(i);
-                    Space space = new Space(this);
-                    TableRow.LayoutParams params = new TableRow.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f);
-                    space.setLayoutParams(params);
-                    table.addView(space);
-                }
-            }
-        }
     }
 
     private void createSolarSystem() {
         SolarSystem activeSystem = Model.getInstance().getGameInteractor().getActiveSolarSystem();
+        TableRow.LayoutParams params = new TableRow.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f);
         for (int i = 0; i < tableLayout.getChildCount(); i++) {
             for (int j = 0; j < Universe.Y_BOUNDS; j++) {
                 if (activeSystem.getPlanetLocations()[i][j] != null) {
@@ -77,20 +46,17 @@ public class SolarSystemActivity extends AppCompatActivity implements View.OnCli
                     button.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            //TODO check if 1st param works
                             Model.getInstance().getGameInteractor().changeActivePlanet(activeSystem2.getPlanetLocations()[i2][j2]);
                             Intent intent = new Intent(SolarSystemActivity.this, PlanetActivity.class);
                             SolarSystemActivity.this.startActivity(intent);
                         }
                     });
-                    TableRow.LayoutParams params = new TableRow.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f);
                     button.setLayoutParams(params);
                     TableRow tableRow = (TableRow) tableLayout.getChildAt(i);
                     tableRow.addView(button);
                 } else {
                     TableRow table = (TableRow) tableLayout.getChildAt(i);
                     Space space = new Space(this);
-                    TableRow.LayoutParams params = new TableRow.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f);
                     space.setLayoutParams(params);
                     table.addView(space);
                 }
