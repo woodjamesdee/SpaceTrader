@@ -5,17 +5,22 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import edu.jumpstreet.spacetrader.R;
+import edu.jumpstreet.spacetrader.model.Model;
 
 public class PlanetActivity extends AppCompatActivity implements View.OnClickListener {
     Button tradeBtn;
     Button spaceshipStoreBtn;
     Button solarSystemBtn;
+    TextView planetName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_planet);
+        planetName = findViewById(R.id.textView4);
+        planetName.setText("Planet: " + Model.getInstance().getGameInteractor().getActivePlanet().getName());
         initializeButtons();
     }
 

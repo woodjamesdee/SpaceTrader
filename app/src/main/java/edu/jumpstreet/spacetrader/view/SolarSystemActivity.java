@@ -19,6 +19,7 @@ import edu.jumpstreet.spacetrader.model.Model;
 public class SolarSystemActivity extends AppCompatActivity implements View.OnClickListener{
     TableLayout tableLayout;
     Button backToUniverseButton;
+    TextView solarSystemName;
 
     @Override
     protected void onCreate(Bundle sav) {
@@ -27,7 +28,8 @@ public class SolarSystemActivity extends AppCompatActivity implements View.OnCli
         tableLayout = findViewById(R.id.solarSystemLayout);
         backToUniverseButton = findViewById(R.id.InSSBackToUniverseBtn);
         backToUniverseButton.setOnClickListener(this);
-
+        solarSystemName = findViewById(R.id.textView3);
+        solarSystemName.setText("Solar System: " + Model.getInstance().getGameInteractor().getActiveSolarSystem().getName());
         //SolarSystem solarSystem = new SolarSystem(5,2 ,8 ,5 );
         //createSolarSystem(solarSystem);
         createSolarSystem();

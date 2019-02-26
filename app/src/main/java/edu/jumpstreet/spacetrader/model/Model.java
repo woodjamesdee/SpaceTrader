@@ -22,7 +22,7 @@ public class Model {
         playerInteractor = new PlayerInteractor();
         random = new Random();
         universeInteractor = new UniverseInteractor(random);
-        gameInteractor = new GameInteractor();
+        gameInteractor = new GameInteractor(universeInteractor);
     }
 
     public PlayerInteractor getPlayerInteractor() {

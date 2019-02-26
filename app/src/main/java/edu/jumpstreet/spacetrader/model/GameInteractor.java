@@ -8,8 +8,8 @@ public class GameInteractor {
 
     private Game game;
 
-    public GameInteractor() {
-        SolarSystem system = Model.getInstance().getUniverseInteractor().getSolarSystems().iterator().next();
+    public GameInteractor(UniverseInteractor universeInteractor) {
+        SolarSystem system = universeInteractor.getSolarSystems().iterator().next();
         game = new Game(system, system.getPlanet(system.getName() + " Prime"), Game.GameDifficulty.NORMAL);
     }
 
