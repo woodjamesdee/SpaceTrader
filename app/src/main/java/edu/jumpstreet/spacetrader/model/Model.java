@@ -10,6 +10,8 @@ import java.util.Random;
 public class Model {
 
     private PlayerInteractor playerInteractor;
+    private UniverseInteractor universeInteractor;
+    private GameInteractor gameInteractor;
     private Random random;
 
     private static Model instance = new Model();
@@ -19,10 +21,16 @@ public class Model {
     private Model() {
         playerInteractor = new PlayerInteractor();
         random = new Random();
+        universeInteractor = new UniverseInteractor(random);
+        gameInteractor = new GameInteractor();
     }
 
     public PlayerInteractor getPlayerInteractor() {
         return playerInteractor;
     }
+
+    public UniverseInteractor getUniverseInteractor() { return universeInteractor; }
+
+    public GameInteractor getGameInteractor() { return gameInteractor; }
 
 }

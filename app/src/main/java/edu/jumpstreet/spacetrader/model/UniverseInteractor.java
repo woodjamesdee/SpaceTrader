@@ -1,5 +1,7 @@
 package edu.jumpstreet.spacetrader.model;
 
+import java.util.Collection;
+import java.util.List;
 import java.util.Random;
 
 import edu.jumpstreet.spacetrader.entity.Planet;
@@ -19,6 +21,14 @@ public class UniverseInteractor {
         generatePlanets(random);
     }
 
+    public Collection<SolarSystem> getSolarSystems() {
+        return universe.getSolarSystems().values();
+    }
+
+    public SolarSystem getSolarSystemByName(String name) {
+        return universe.getSolarSystems().get(name);
+    }
+
     private void generateSolarSystems(Random random, int amount) {
         if (amount > 100) {
             return;
@@ -36,6 +46,5 @@ public class UniverseInteractor {
             }
         }
     }
-
 
 }

@@ -195,32 +195,36 @@ public class SolarSystem extends System {
         planetLocations[newPlanet.x][newPlanet.y] = newPlanet.getName();
     }
 
+    public String[][] getPlanetLocations() {
+        return planetLocations;
+    }
+
     private String generateEnding() {
         String returnString = "";
         switch(planets.size()) {
             case 0:
-                returnString = "Prime";
+                returnString = " Prime";
                 break;
             case 1:
-                returnString = "II";
+                returnString = " II";
                 break;
             case 2:
-                returnString = "III";
+                returnString = " III";
                 break;
             case 3:
-                returnString = "IV";
+                returnString = " IV";
                 break;
             case 4:
-                returnString = "V";
+                returnString = " V";
                 break;
             case 5:
-                returnString = "VI";
+                returnString = " VI";
                 break;
             case 6:
-                returnString = "VII";
+                returnString = " VII";
                 break;
             default:
-                returnString = "NOT IMPLEMENTED!";
+                returnString = " NOT IMPLEMENTED!";
         }
         return returnString;
     }

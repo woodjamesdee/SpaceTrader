@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import edu.jumpstreet.spacetrader.R;
 import edu.jumpstreet.spacetrader.entity.SolarSystem;
+import edu.jumpstreet.spacetrader.entity.Universe;
+import edu.jumpstreet.spacetrader.model.Model;
 
 public class SolarSystemActivity extends AppCompatActivity implements View.OnClickListener{
     TableLayout tableLayout;
@@ -26,9 +28,11 @@ public class SolarSystemActivity extends AppCompatActivity implements View.OnCli
         backToUniverseButton = findViewById(R.id.InSSBackToUniverseBtn);
         backToUniverseButton.setOnClickListener(this);
 
-        SolarSystem solarSystem = new SolarSystem(5,2 ,8 ,5 );
-        createSolarSystem(solarSystem);
+        //SolarSystem solarSystem = new SolarSystem(5,2 ,8 ,5 );
+        //createSolarSystem(solarSystem);
+        createSolarSystem();
     }
+
 
     private void createSolarSystem(SolarSystem solarSystem){
         for(int i= 0;i<tableLayout.getChildCount();i++){
@@ -58,6 +62,40 @@ public class SolarSystemActivity extends AppCompatActivity implements View.OnCli
             }
         }
     }
+
+    private void createSolarSystem() {
+        SolarSystem activeSystem = Model.getInstance().getGameInteractor().getActiveSolarSystem();
+        for (int i = 0; i < tableLayout.getChildCount(); i++) {
+            for (int j = 0; j < Universe.Y_BOUNDS; j++) {
+                if (activeSystem.getPlanetLocations()[i][j] != null) {
+                    Button button = new Button(this);
+                    final int i2 = i;
+                    final int j2 = j;
+                    final SolarSystem activeSystem2 = activeSystem;
+                    button.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            //TODO check if 1st param works
+                            Model.getInstance().getGameInteractor().changeActivePlanet(activeSystem2.getPlanetLocations()[i2][j2]);
+                            Intent intent = new Intent(SolarSystemActivity.this, PlanetActivity.class);
+                            SolarSystemActivity.this.startActivity(intent);
+                        }
+                    });
+                    TableRow.LayoutParams params = new TableRow.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f);
+                    button.setLayoutParams(params);
+                    TableRow tableRow = (TableRow) tableLayout.getChildAt(i);
+                    tableRow.addView(button);
+                } else {
+                    TableRow table = (TableRow) tableLayout.getChildAt(i);
+                    Space space = new Space(this);
+                    TableRow.LayoutParams params = new TableRow.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f);
+                    space.setLayoutParams(params);
+                    table.addView(space);
+                }
+            }
+        }
+    }
+
     @Override
     public void onClick(View view) {
         switch(view.getId()){
