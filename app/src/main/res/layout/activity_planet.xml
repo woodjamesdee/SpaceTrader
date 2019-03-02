@@ -39,8 +39,8 @@
             android:id="@+id/OnPlanetSpaceshipStoreBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Spaceship Store"
-            tools:text="SpaceshipStore" />
+            android:text="Go To Market Place"
+            tools:text="Go To Market Place" />
 
         <Button
             android:id="@+id/OnPlanetBackToSolarSystemBtn"

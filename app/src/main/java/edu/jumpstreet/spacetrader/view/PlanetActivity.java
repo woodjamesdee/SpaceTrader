@@ -35,6 +35,7 @@ public class PlanetActivity extends AppCompatActivity implements View.OnClickLis
     private void initializeButtons(){
         tradeBtn = findViewById(R.id.OnPlanetTradeBtn);
         spaceshipStoreBtn = findViewById(R.id.OnPlanetSpaceshipStoreBtn);
+        spaceshipStoreBtn.setOnClickListener(this);
         solarSystemBtn = findViewById(R.id.OnPlanetBackToSolarSystemBtn);
         solarSystemBtn.setOnClickListener(this);
     }
@@ -45,10 +46,12 @@ public class PlanetActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.OnPlanetTradeBtn:
                 break;
             case R.id.OnPlanetSpaceshipStoreBtn:
+                Intent marketIntent = new Intent(this, MarketPlaceActivity.class);
+                PlanetActivity.this.startActivity(marketIntent);
                 break;
             case R.id.OnPlanetBackToSolarSystemBtn:
-                Intent intent = new Intent(this, SolarSystemActivity.class);
-                PlanetActivity.this.startActivity(intent);
+                Intent SolarSystemIntent = new Intent(this, SolarSystemActivity.class);
+                PlanetActivity.this.startActivity(SolarSystemIntent);
                 break;
         }
     }
