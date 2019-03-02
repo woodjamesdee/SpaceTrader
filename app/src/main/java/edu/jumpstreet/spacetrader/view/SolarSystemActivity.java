@@ -20,6 +20,7 @@ public class SolarSystemActivity extends AppCompatActivity implements View.OnCli
     TableLayout tableLayout;
     Button backToUniverseButton;
     TextView solarSystemName;
+    TextView solarSystemTechView;
 
     @Override
     protected void onCreate(Bundle sav) {
@@ -30,6 +31,8 @@ public class SolarSystemActivity extends AppCompatActivity implements View.OnCli
         backToUniverseButton.setOnClickListener(this);
         solarSystemName = findViewById(R.id.textView3);
         solarSystemName.setText("Solar System: " + Model.getInstance().getGameInteractor().getActiveSolarSystem().getName());
+        solarSystemTechView = findViewById(R.id.SolarSystemTechLevelTV);
+        solarSystemTechView.setText(Model.getInstance().getGameInteractor().getActiveSolarSystem().getTechLevel() + "");
         createSolarSystem();
     }
 
