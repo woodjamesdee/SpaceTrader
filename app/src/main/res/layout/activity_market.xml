@@ -50,14 +50,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight=".25"
-                    android:text="Cost" />
+                    android:text="Cost (Per Unit)" />
 
                 <TextView
                     android:id="@+id/OnMarketCargoSpacePerResource"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight=".25"
-                    android:text="CargoSpace Used" />
+                    android:text="CargoSpace (Per Unit)" />
 
                 <Space
                     android:layout_width="match_parent"
@@ -201,7 +201,7 @@
                     android:text="Cargo Space" />
 
                 <Button
-                    android:id="@+id/oreTadeBtn"
+                    android:id="@+id/oreTradeBtn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight=".25"
