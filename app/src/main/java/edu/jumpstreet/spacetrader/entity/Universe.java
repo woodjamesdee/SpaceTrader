@@ -10,8 +10,8 @@ public class Universe {
 
     public static final int X_BOUNDS = 10;
     public static final int Y_BOUNDS = 10;
-    public static final int MIN_SYSTEMS = 3;
-    public static final int MAX_SYSTEMS = 7;
+    public static final int MIN_SYSTEMS = 10;
+    public static final int MAX_SYSTEMS = 15;
 
     public static String[][] solarSystemLocations = new String[10][10];
 

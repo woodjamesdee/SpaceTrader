@@ -16,6 +16,18 @@
             android:layout_height="wrap_content"
             android:text="Planet 'X'" />
 
+        <TextView
+            android:id="@+id/OnPlanetTechLevelTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tech Level:" />
+
+        <TextView
+            android:id="@+id/OnPlantResource"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Resource: " />
+
         <Button
             android:id="@+id/OnPlanetTradeBtn"
             android:layout_width="match_parent"

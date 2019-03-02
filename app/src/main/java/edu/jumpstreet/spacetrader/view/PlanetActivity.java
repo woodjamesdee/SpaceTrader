@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import edu.jumpstreet.spacetrader.R;
 import edu.jumpstreet.spacetrader.model.Model;
 
@@ -15,12 +17,18 @@ public class PlanetActivity extends AppCompatActivity implements View.OnClickLis
     Button spaceshipStoreBtn;
     Button solarSystemBtn;
     TextView planetName;
+    TextView techLevel;
+    TextView resourceType;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_planet);
         planetName = findViewById(R.id.textView4);
         planetName.setText("Planet: " + Model.getInstance().getGameInteractor().getActivePlanet().getName());
+        techLevel = findViewById(R.id.OnPlanetTechLevelTV);
+        techLevel.setText("Tech Level: " + Model.getInstance().getGameInteractor().getActivePlanet().getTechLevel());
+        resourceType = findViewById(R.id.OnPlantResource);
+        resourceType.setText("Resource Type: " + Model.getInstance().getGameInteractor().getActivePlanet().getResource());
         initializeButtons();
     }
 
