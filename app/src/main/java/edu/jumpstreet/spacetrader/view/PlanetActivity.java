@@ -33,7 +33,6 @@ public class PlanetActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void initializeButtons(){
-        tradeBtn = findViewById(R.id.OnPlanetTradeBtn);
         spaceshipStoreBtn = findViewById(R.id.OnPlanetSpaceshipStoreBtn);
         spaceshipStoreBtn.setOnClickListener(this);
         solarSystemBtn = findViewById(R.id.OnPlanetBackToSolarSystemBtn);
@@ -43,8 +42,6 @@ public class PlanetActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View view) {
         switch(view.getId()){
-            case R.id.OnPlanetTradeBtn:
-                break;
             case R.id.OnPlanetSpaceshipStoreBtn:
                 Intent marketIntent = new Intent(this, MarketPlaceActivity.class);
                 PlanetActivity.this.startActivity(marketIntent);

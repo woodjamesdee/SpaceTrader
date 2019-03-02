@@ -29,13 +29,6 @@
             android:text="Resource: " />
 
         <Button
-            android:id="@+id/OnPlanetTradeBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Trade"
-            tools:text="TradeButton" />
-
-        <Button
             android:id="@+id/OnPlanetSpaceshipStoreBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -152,32 +152,37 @@ public class MarketPlaceActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     public void onClick(View view) {
-       // LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-        //View popupView = inflater.inflate(R.layout.popup_window_marketplace_trade, null);
-        //int width = LinearLayout.LayoutParams.WRAP_CONTENT;
-        //final PopupWindow popup = new PopupWindow(popupView, width, width, true);
+        Intent intent = new Intent(this, MarketPlaceTradePopupActivity.class);
         switch(view.getId()){
             case R.id.waterTradeBtn:
-                Intent intent = new Intent(this, MarketPlaceTradePopupActivity.class);
                 MarketPlaceActivity.this.startActivity(intent);
                 break;
             case R.id.furTradeBtn:
+                MarketPlaceActivity.this.startActivity(intent);
                 break;
             case R.id.foodTradeBtn:
+                MarketPlaceActivity.this.startActivity(intent);
                 break;
             case R.id.oreTradeBtn:
+                MarketPlaceActivity.this.startActivity(intent);
                 break;
             case R.id.gamesTradeBtn:
+                MarketPlaceActivity.this.startActivity(intent);
                 break;
             case R.id.firearmsTradeBtn:
+                MarketPlaceActivity.this.startActivity(intent);
                 break;
             case R.id.medicineTradeBtn:
+                MarketPlaceActivity.this.startActivity(intent);
                 break;
             case R.id.machinesTradeBtn:
+                MarketPlaceActivity.this.startActivity(intent);
                 break;
             case R.id.narcoticsTradeBtn:
+                MarketPlaceActivity.this.startActivity(intent);
                 break;
             case R.id.robotsTradeBtn:
+                MarketPlaceActivity.this.startActivity(intent);
                 break;
         }
        // popup.showAtLocation(view, Gravity.CENTER, 0, 0);
