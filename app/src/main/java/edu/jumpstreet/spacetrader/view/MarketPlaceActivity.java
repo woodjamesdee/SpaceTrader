@@ -31,6 +31,9 @@ public class MarketPlaceActivity extends AppCompatActivity {
     Planet currentPlanet;
     int techLevel;
 
+    //TODO switch this to model var
+    final int NUM_OF_RESOURCES = 10;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +43,8 @@ public class MarketPlaceActivity extends AppCompatActivity {
         techLevel = currentPlanet.getTechLevel().ordinal();
         initializeLayouts();
         initializeUserViews();
+        setTextViews(1);
+        setTextViews(2);
         deactiveResourceLayouts(techLevel);
     }
 
@@ -64,9 +69,21 @@ public class MarketPlaceActivity extends AppCompatActivity {
     }
 
 
-
-    private void initializeCostTextView(){
-
+    //TODO currently sets all costs to 30, should route through MV to get actual value
+    //TODO currently sets all cargo spaces to 10, should route through MV to get actual value
+    //index has 1 for cost TV and 2 for Cargo Space
+    private void setTextViews(int index){
+        for(int i=0;i<NUM_OF_RESOURCES;i++){
+            //2 is to increment past header LinearLayouts
+            LinearLayout ll = (LinearLayout) fullLayout.getChildAt(2+ i);
+            TextView tv = (TextView) ll.getChildAt(index);
+            if(index == 1) {
+                tv.setText(30 + "");
+            }
+            if (index == 2){
+                tv.setText(10 + "");
+            }
+        }
     }
 
     private void deactiveResourceLayouts(int techLevel){
@@ -82,14 +99,5 @@ public class MarketPlaceActivity extends AppCompatActivity {
             fullLayout.removeView(medicineLayout);
         }
     }
-
-    private void deactivateBuyButtons(){
-
-    }
-
-    private void deactiveSellButtons(){
-
-    }
-
 
 }
