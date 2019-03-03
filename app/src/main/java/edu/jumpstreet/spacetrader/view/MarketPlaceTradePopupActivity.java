@@ -81,7 +81,7 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
 
     private void getResource(){
         Bundle resources = getIntent().getExtras();
-        userResource = Model.getInstance().getPlayerInteractor().getPlayerShip().getIndexedResource(resources.getInt("Resource_Name"));
+        userResource = resources.getInt("Resource_Name");
         if(resources != null){
             switch(userResource){
                 case 0: resourceType = "Water";

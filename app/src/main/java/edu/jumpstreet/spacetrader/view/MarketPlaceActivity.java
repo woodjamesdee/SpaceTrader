@@ -1,11 +1,13 @@
 package edu.jumpstreet.spacetrader.view;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import edu.jumpstreet.spacetrader.R;
 import edu.jumpstreet.spacetrader.entity.Planet;
@@ -151,42 +153,55 @@ public class MarketPlaceActivity extends AppCompatActivity implements View.OnCli
             fullLayout.removeView(medicineLayout);
         }
     }
+
+
+
     //TODO switch from hardcoded resource Indexes
+    //Note i do not have any idea what the request code is
     @Override
     public void onClick(View view) {
         Intent intent = new Intent(this, MarketPlaceTradePopupActivity.class);
         switch(view.getId()){
-            case R.id.waterTradeBtn: MarketPlaceActivity.this.startActivity(
-                        loadIntent(intent, "Water_Quantity", 0, currentPlanet.getWaterCommodity()));
+            case R.id.waterTradeBtn: MarketPlaceActivity.this.startActivityForResult(
+                        loadIntent(intent, "Water_Quantity", 0, currentPlanet.getWaterCommodity()), 1);
                 break;
-            case R.id.furTradeBtn: MarketPlaceActivity.this.startActivity(
-                        loadIntent(intent, "Furs_Quantity", 1, currentPlanet.getFursCommodity()));
+            case R.id.furTradeBtn: MarketPlaceActivity.this.startActivityForResult(
+                        loadIntent(intent, "Furs_Quantity", 1, currentPlanet.getFursCommodity()), 1);
                 break;
-            case R.id.foodTradeBtn: MarketPlaceActivity.this.startActivity(
-                        loadIntent(intent, "Food_Quantity", 2, currentPlanet.getFoodCommodity()));
+            case R.id.foodTradeBtn: MarketPlaceActivity.this.startActivityForResult(
+                        loadIntent(intent, "Food_Quantity", 2, currentPlanet.getFoodCommodity()), 1);
                 break;
-            case R.id.oreTradeBtn: MarketPlaceActivity.this.startActivity(
-                        loadIntent(intent, "Ore_Quantity", 3, currentPlanet.getOreCommodity()));
+            case R.id.oreTradeBtn: MarketPlaceActivity.this.startActivityForResult(
+                        loadIntent(intent, "Ore_Quantity", 3, currentPlanet.getOreCommodity()), 1);
                 break;
-            case R.id.gamesTradeBtn: MarketPlaceActivity.this.startActivity(
-                        loadIntent(intent, "Games_Quantity", 4, currentPlanet.getGamesCommodity()));
+            case R.id.gamesTradeBtn: MarketPlaceActivity.this.startActivityForResult(
+                        loadIntent(intent, "Games_Quantity", 4, currentPlanet.getGamesCommodity()),1);
                 break;
-            case R.id.firearmsTradeBtn: MarketPlaceActivity.this.startActivity(
-                        loadIntent(intent, "Firearms_Quantity", 5, currentPlanet.getFirearmsCommodity()));
+            case R.id.firearmsTradeBtn: MarketPlaceActivity.this.startActivityForResult(
+                        loadIntent(intent, "Firearms_Quantity", 5, currentPlanet.getFirearmsCommodity()), 1);
                 break;
-            case R.id.medicineTradeBtn: MarketPlaceActivity.this.startActivity(
-                        loadIntent(intent, "Medicine_Quantity", 6, currentPlanet.getMedicineCommodity()));
+            case R.id.medicineTradeBtn: MarketPlaceActivity.this.startActivityForResult(
+                        loadIntent(intent, "Medicine_Quantity", 6, currentPlanet.getMedicineCommodity()), 1);
                 break;
-            case R.id.machinesTradeBtn: MarketPlaceActivity.this.startActivity(
-                        loadIntent(intent, "Machines_Quantity", 7, currentPlanet.getMachinesCommodity()));
+            case R.id.machinesTradeBtn: MarketPlaceActivity.this.startActivityForResult(
+                        loadIntent(intent, "Machines_Quantity", 7, currentPlanet.getMachinesCommodity()), 1);
                 break;
-            case R.id.narcoticsTradeBtn: MarketPlaceActivity.this.startActivity(
-                        loadIntent(intent, "Narcotics_Quantity", 8, currentPlanet.getNarcoticsCommodity()));
+            case R.id.narcoticsTradeBtn: MarketPlaceActivity.this.startActivityForResult(
+                        loadIntent(intent, "Narcotics_Quantity", 8, currentPlanet.getNarcoticsCommodity()), 1);
                 break;
-            case R.id.robotsTradeBtn: MarketPlaceActivity.this.startActivity(
-                        loadIntent(intent, "Robots_Quantity", 9, currentPlanet.getRobotsCommodity()));
+            case R.id.robotsTradeBtn: MarketPlaceActivity.this.startActivityForResult(
+                        loadIntent(intent, "Robots_Quantity", 9, currentPlanet.getRobotsCommodity()), 1);
                 break;
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent){
+        super.onActivityResult(requestCode, resultCode, intent);
+        initializeUserViews();
+        setTextViews(1);
+        setTextViews(2);
+        setTextViews(3);
     }
 
     private Intent loadIntent(Intent intent, String resource, int resourceIndex, int resourceQuantity){
@@ -194,5 +209,4 @@ public class MarketPlaceActivity extends AppCompatActivity implements View.OnCli
         intent.putExtra("Resource_Name", resourceIndex);
         return intent;
     }
-
 }
