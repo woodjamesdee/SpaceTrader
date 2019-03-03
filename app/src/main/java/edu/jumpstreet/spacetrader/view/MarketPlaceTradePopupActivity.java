@@ -158,24 +158,38 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
     }
 
     private void disableButtonsAdaptive(){
-        boolean minus1isActive = userResource < 1?false:true;
-        boolean minus10isActive = userResource < 10?false:true;
-        boolean plus1isActive = resourceQuantity < 1?false:true;
-        boolean plus10isActive = resourceQuantity < 10?false:true;
+        boolean minus1isActive = userResource >= 1 || quantityOfTransaction >= 1;
+        boolean minus10isActive = userResource >= 10 || quantityOfTransaction >= 10;
+        boolean plus1isActive = resourceQuantity >= 1;
+        boolean plus10isActive = resourceQuantity >= 10;
         plus1Btn.setEnabled(plus1isActive);
         plus10Btn.setEnabled(plus10isActive);
         minus1Btn.setEnabled(minus1isActive);
         minus10Btn.setEnabled(minus10isActive);
     }
 
-    private void disableBuyButtonsByTechLevel(int techLevel, int resouceIndex){
+    private void disableBuyButtonsByTechLevel(int techLevel, int resourceIndex){
         boolean isActive;
-        isActive = techLevel < 6 && resouceIndex == 9?false:true;
-        isActive = techLevel < 5 && resouceIndex == 4?false:true;
-        isActive = techLevel < 4 && (resouceIndex == 7 || resouceIndex == 6)?false:true;
-        isActive = techLevel < 3 && (resouceIndex == 5 || resouceIndex == 4)?false:true;
-        isActive = techLevel < 2 && resouceIndex == 3?false:true;
-        isActive = techLevel < 1 && resouceIndex == 2?false:true;
+        switch(resourceIndex){
+            case 9: isActive = techLevel >= 6;
+                break;
+            case 8: isActive = techLevel >= 5;
+                break;
+            case 7 : case 6: isActive = techLevel >= 4;
+                break;
+            case 5: case 4:  isActive = techLevel >= 3;
+                break;
+            case 3: isActive = techLevel >= 2;
+                break;
+            case 2: isActive = techLevel >= 1;
+                break;
+            default: isActive = true;
+                break;
+        }
+        disableBuyButtonsHelper(isActive);
+    }
+
+    private void disableBuyButtonsHelper(boolean isActive){
         plus1Btn.setEnabled(isActive);
         plus10Btn.setEnabled(isActive);
     }
