@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -43,26 +45,33 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".25"
+                    android:layout_weight=".2"
                     android:text="Resource" />
 
                 <TextView
+                    android:id="@+id/textView5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".25"
-                    android:text="Cost (Per Unit)" />
+                    android:layout_weight=".2"
+                    android:text="Available Resources" />
 
                 <TextView
-                    android:id="@+id/OnMarketCargoSpacePerResource"
+                    android:id="@+id/OnMarketPlayersResource"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".25"
-                    android:text="CargoSpace (Per Unit)" />
+                    android:layout_weight=".2"
+                    android:text="Amount On Ship" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".2"
+                    android:text="Cost (Per Unit)" />
 
                 <Space
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".25" />
+                    android:layout_weight=".2" />
             </LinearLayout>
 
             <LinearLayout
@@ -75,28 +84,34 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".25"
+                    android:layout_weight=".2"
                     android:text="Water" />
 
                 <TextView
-                    android:id="@+id/waterCostTV"
+                    android:id="@+id/marketPlaceWaterQuantity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".25"
-                    android:text="Cost" />
+                    android:layout_weight=".2"
+                    android:text="Quantity" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".2"
+                    android:text="Amount" />
 
                 <TextView
                     android:id="@+id/waterCargoSpaceTV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".25"
+                    android:layout_weight=".2"
                     android:text="Cargo Space" />
 
                 <Button
                     android:id="@+id/waterTradeBtn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".25"
+                    android:layout_weight=".2"
                     android:text="Trade" />
 
             </LinearLayout>
@@ -111,28 +126,35 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".25"
+                    android:layout_weight=".2"
                     android:text="Fur" />
 
                 <TextView
-                    android:id="@+id/furCostTV"
+                    android:id="@+id/marketPlaceFurQuantity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".25"
-                    android:text="Cost" />
+                    android:layout_weight=".2"
+                    android:text="FurQuantity" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".2"
+                    android:text="Cost"
+                    tools:text="Amount" />
 
                 <TextView
                     android:id="@+id/furCargoSpaceTV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".25"
+                    android:layout_weight=".2"
                     android:text="Cargo Space" />
 
                 <Button
                     android:id="@+id/furTradeBtn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".25"
+                    android:layout_weight=".2"
                     android:text="Trade" />
 
             </LinearLayout>
@@ -151,11 +173,17 @@
                     android:text="Food" />
 
                 <TextView
-                    android:id="@+id/foodCostTV"
+                    android:id="@+id/marketFoodQuantity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight=".25"
-                    android:text="Cost" />
+                    android:text="Food Quantity" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".25"
+                    android:text="Amount" />
 
                 <TextView
                     android:id="@+id/foodCargoSpaceTV"
@@ -183,28 +211,34 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".25"
+                    android:layout_weight=".2"
                     android:text="Ore" />
 
                 <TextView
-                    android:id="@+id/oreCostTV"
+                    android:id="@+id/marketOreQuantity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".25"
-                    android:text="Cost" />
+                    android:layout_weight=".2"
+                    android:text="Ore Quantity" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".2"
+                    android:text="Amount" />
 
                 <TextView
                     android:id="@+id/oreCargoSpaceTV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".25"
+                    android:layout_weight=".2"
                     android:text="Cargo Space" />
 
                 <Button
                     android:id="@+id/oreTradeBtn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".25"
+                    android:layout_weight=".2"
                     android:text="Trade" />
 
             </LinearLayout>
@@ -219,28 +253,34 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".25"
+                    android:layout_weight=".2"
                     android:text="Games" />
 
                 <TextView
-                    android:id="@+id/gamesCostTV"
+                    android:id="@+id/marketGamesQuantity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".25"
-                    android:text="Cost" />
+                    android:layout_weight=".2"
+                    android:text="Games Quantity" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".2"
+                    android:text="Amount" />
 
                 <TextView
                     android:id="@+id/gamesCargoSpaceTV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".25"
+                    android:layout_weight=".2"
                     android:text="Cargo Space" />
 
                 <Button
                     android:id="@+id/gamesTradeBtn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".25"
+                    android:layout_weight=".2"
                     android:text="Trade" />
 
             </LinearLayout>
@@ -259,11 +299,17 @@
                     android:text="Firearms" />
 
                 <TextView
-                    android:id="@+id/firearmsCostTV"
+                    android:id="@+id/marketFirearmsQuantity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight=".25"
-                    android:text="Cost" />
+                    android:text="Firearms Quantity" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".25"
+                    android:text="Amount" />
 
                 <TextView
                     android:id="@+id/firearmsCargoSpaceTV"
@@ -291,28 +337,34 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".25"
+                    android:layout_weight=".2"
                     android:text="Medicine" />
 
                 <TextView
-                    android:id="@+id/medicineCostTV"
+                    android:id="@+id/marketMedicineQuantity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".25"
-                    android:text="Cost" />
+                    android:layout_weight=".2"
+                    android:text="Medicine Quantity" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".2"
+                    android:text="Amount" />
 
                 <TextView
                     android:id="@+id/medicineCargoSpaceTV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".25"
+                    android:layout_weight=".2"
                     android:text="Cargo Space" />
 
                 <Button
                     android:id="@+id/medicineTradeBtn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".25"
+                    android:layout_weight=".2"
                     android:text="Trade" />
 
             </LinearLayout>
@@ -327,28 +379,34 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".25"
+                    android:layout_weight=".2"
                     android:text="Machines" />
 
                 <TextView
-                    android:id="@+id/machinesCostTV"
+                    android:id="@+id/marketMachinesQuantity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".25"
-                    android:text="Cost" />
+                    android:layout_weight=".2"
+                    android:text="Machines Quantity" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".2"
+                    android:text="Amount" />
 
                 <TextView
                     android:id="@+id/machinesCargoSpaceTV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".25"
+                    android:layout_weight=".2"
                     android:text="Cargo Space" />
 
                 <Button
                     android:id="@+id/machinesTradeBtn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".25"
+                    android:layout_weight=".2"
                     android:text="Trade" />
 
             </LinearLayout>
@@ -363,28 +421,35 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".25"
+                    android:layout_weight=".2"
                     android:text="Narcotics" />
 
                 <TextView
-                    android:id="@+id/narcoticsCostTV"
+                    android:id="@+id/marketNarcoticsQuantity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".25"
-                    android:text="Cost" />
+                    android:layout_weight=".2"
+                    android:text="Narcotics Quantity" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".2"
+                    android:text="Cost"
+                    tools:text="Amount" />
 
                 <TextView
                     android:id="@+id/narcoticsCargoSpaceTV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".25"
+                    android:layout_weight=".2"
                     android:text="Cargo Space" />
 
                 <Button
                     android:id="@+id/narcoticsTradeBtn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".25"
+                    android:layout_weight=".2"
                     android:text="Trade" />
 
             </LinearLayout>
@@ -399,28 +464,34 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".25"
+                    android:layout_weight=".2"
                     android:text="Robots" />
 
                 <TextView
-                    android:id="@+id/robotsCostTV"
+                    android:id="@+id/marketRobotsQuantity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".25"
-                    android:text="Cost" />
+                    android:layout_weight=".2"
+                    android:text="Robots Quantity" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".2"
+                    android:text="Amount" />
 
                 <TextView
                     android:id="@+id/robotsCargoSpaceTV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".25"
+                    android:layout_weight=".2"
                     android:text="Cargo Space" />
 
                 <Button
                     android:id="@+id/robotsTradeBtn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".25"
+                    android:layout_weight=".2"
                     android:text="Trade" />
 
             </LinearLayout>

@@ -3,14 +3,10 @@ package edu.jumpstreet.spacetrader.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.TextView;
-
 import edu.jumpstreet.spacetrader.R;
 import edu.jumpstreet.spacetrader.entity.Planet;
 import edu.jumpstreet.spacetrader.entity.Spaceship;
@@ -72,6 +68,7 @@ public class MarketPlaceActivity extends AppCompatActivity implements View.OnCli
         initializeUserViews();
         setTextViews(1);
         setTextViews(2);
+        setTextViews(3);
     }
 
     private void initializeLayouts(){
@@ -130,7 +127,11 @@ public class MarketPlaceActivity extends AppCompatActivity implements View.OnCli
                 tv.setText(currentPlanet.getIndexedResource(i)+ "");
             }
             if (index == 2){
-                tv.setText(10 + "");
+                tv.setText(ship.getIndexedResource(i) + "");
+            }
+            if (index == 3){
+                tv.setText(20 + "");
+
             }
         }
     }
