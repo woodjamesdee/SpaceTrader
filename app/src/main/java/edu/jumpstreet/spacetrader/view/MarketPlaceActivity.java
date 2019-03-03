@@ -154,38 +154,45 @@ public class MarketPlaceActivity extends AppCompatActivity implements View.OnCli
     public void onClick(View view) {
         Intent intent = new Intent(this, MarketPlaceTradePopupActivity.class);
         switch(view.getId()){
-            case R.id.waterTradeBtn:
-                MarketPlaceActivity.this.startActivity(intent);
+            case R.id.waterTradeBtn: MarketPlaceActivity.this.startActivity(
+                        loadIntent(intent, "Water_Quantity", 0, currentPlanet.getWaterCommodity()));
                 break;
-            case R.id.furTradeBtn:
-                MarketPlaceActivity.this.startActivity(intent);
+            case R.id.furTradeBtn: MarketPlaceActivity.this.startActivity(
+                        loadIntent(intent, "Furs_Quantity", 1, currentPlanet.getFursCommodity()));
                 break;
-            case R.id.foodTradeBtn:
-                MarketPlaceActivity.this.startActivity(intent);
+            case R.id.foodTradeBtn: MarketPlaceActivity.this.startActivity(
+                        loadIntent(intent, "Food_Quantity", 2, currentPlanet.getFoodCommodity()));
                 break;
-            case R.id.oreTradeBtn:
-                MarketPlaceActivity.this.startActivity(intent);
+            case R.id.oreTradeBtn: MarketPlaceActivity.this.startActivity(
+                        loadIntent(intent, "Ore_Quantity", 3, currentPlanet.getOreCommodity()));
                 break;
-            case R.id.gamesTradeBtn:
-                MarketPlaceActivity.this.startActivity(intent);
+            case R.id.gamesTradeBtn: MarketPlaceActivity.this.startActivity(
+                        loadIntent(intent, "Games_Quantity", 4, currentPlanet.getGamesCommodity()));
                 break;
-            case R.id.firearmsTradeBtn:
-                MarketPlaceActivity.this.startActivity(intent);
+            case R.id.firearmsTradeBtn: MarketPlaceActivity.this.startActivity(
+                        loadIntent(intent, "Firearms_Quantity", 5, currentPlanet.getFirearmsCommodity()));
                 break;
-            case R.id.medicineTradeBtn:
-                MarketPlaceActivity.this.startActivity(intent);
+            case R.id.medicineTradeBtn: MarketPlaceActivity.this.startActivity(
+                        loadIntent(intent, "Medicine_Quantity", 6, currentPlanet.getMedicineCommodity()));
                 break;
-            case R.id.machinesTradeBtn:
-                MarketPlaceActivity.this.startActivity(intent);
+            case R.id.machinesTradeBtn: MarketPlaceActivity.this.startActivity(
+                        loadIntent(intent, "Machines_Quantity", 7, currentPlanet.getMachinesCommodity()));
                 break;
-            case R.id.narcoticsTradeBtn:
-                MarketPlaceActivity.this.startActivity(intent);
+            case R.id.narcoticsTradeBtn: MarketPlaceActivity.this.startActivity(
+                        loadIntent(intent, "Narcotics_Quantity", 8, currentPlanet.getNarcoticsCommodity()));
                 break;
-            case R.id.robotsTradeBtn:
-                MarketPlaceActivity.this.startActivity(intent);
+            case R.id.robotsTradeBtn: MarketPlaceActivity.this.startActivity(
+                        loadIntent(intent, "Robots_Quantity", 9, currentPlanet.getRobotsCommodity()));
                 break;
         }
        // popup.showAtLocation(view, Gravity.CENTER, 0, 0);
+    }
+
+    private Intent loadIntent(Intent intent, String resource, int resourceIndex, int resourceQuantity){
+        intent.putExtra(resource, resourceQuantity);
+        intent.putExtra("Resource_Name", resourceIndex);
+        intent.putExtra("Tech_Level", currentPlanet.getTechLevel());
+        return intent;
     }
 
 }

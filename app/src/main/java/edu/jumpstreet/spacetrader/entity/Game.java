@@ -13,6 +13,10 @@ public class Game {
         BEGINNER, EASY, NORMAL, HARD, IMPOSSIBLE
     }
 
+    public enum ResourceCommodities{
+        Water, Furs, Food, Ore, Games, Firearms, Medicine, Machines, Narcotics, Robots
+    }
+
     public Game(SolarSystem startingSystem, Planet startingPlanet, GameDifficulty difficulty) {
         activeSolarSystem = startingSystem;
         activePlanet = startingPlanet;
@@ -42,4 +46,5 @@ public class Game {
     public void setDifficulty(GameDifficulty difficulty) {
         this.difficulty = difficulty;
     }
+
 }

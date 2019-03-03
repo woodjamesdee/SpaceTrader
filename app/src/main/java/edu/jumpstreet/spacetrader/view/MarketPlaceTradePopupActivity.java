@@ -9,9 +9,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
-
 import edu.jumpstreet.spacetrader.R;
 import edu.jumpstreet.spacetrader.model.Model;
 
@@ -26,11 +23,18 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
     TextView cargoSpaceTV;
     TextView costTV;
 
+    TextView userResourceTV;
+    TextView planetsResourceTV;
+
+
     int quantity;
     //TODO value should be passed in from MarketPlaceActivity
     int value;
     //TODO cargoSpace should be passed in from Market Place Activity
     int cargoSpace;
+
+    int resourceQuantity;
+    String resourceType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +56,7 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
         //TODO values are arbitrary for testing
         value = 10;
         cargoSpace = 2;
+        getResource();
     }
 
     private void initializeViews(){
@@ -68,6 +73,52 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
         quantityTV = findViewById(R.id.tradePopupQuantityTV);
         cargoSpaceTV = findViewById(R.id.tradePopUpCargoTV);
         costTV = findViewById(R.id.tradePopupTotalCostTV);
+        planetsResourceTV = findViewById(R.id.tradePopupPlanetsResourceTV);
+        userResourceTV = findViewById(R.id.tradePopupUsersResourceTV);
+    }
+
+    private void getResource(){
+        Bundle resources = getIntent().getExtras();
+        if(resources != null){
+            switch(resources.getInt("Resource_Name")){
+                case 0: resourceType = "Water";
+                    resourceQuantity = resources.getInt("Water_Quantity");
+                    break;
+                case 1: resourceType = "Furs";
+                    resourceQuantity = resources.getInt("Furs_Quantity");
+                    break;
+                case 2: resourceType = "Food";
+                    resourceQuantity = resources.getInt("Food_Quantity");
+                    break;
+                case 3: resourceType = "Ore";
+                    resourceQuantity = resources.getInt("Ore_Quantity");
+                    break;
+                case 4: resourceType = "Games";
+                    resourceQuantity = resources.getInt("Games_Quantity");
+                    break;
+                case 5: resourceType = "Firearms";
+                    resourceQuantity = resources.getInt("Firearms_Quantity");
+                    break;
+                case 6: resourceType = "Medicine";
+                    resourceQuantity = resources.getInt("Medicine_Quantity");
+                    break;
+                case 7: resourceType = "Machines";
+                    resourceQuantity = resources.getInt("Machines_Quantity");
+                    break;
+                case 8: resourceType = "Narcotics";
+                    resourceQuantity = resources.getInt("Narcotics_Quantity");
+                    break;
+                case 9: resourceType = "Robots";
+                    resourceQuantity = resources.getInt("Robots_Quantity");
+                    break;
+            }
+        }
+        updateResourceViews(resourceType, resourceQuantity);
+        userResourceTV.setText("Users: water: " + Model.getInstance().getPlayerInteractor().getPlayerShip().getUsedCargoSpace());
+    }
+
+    private void updateResourceViews(String resourceType, int resourceQuantity){
+        planetsResourceTV.setText("Planets " + resourceType + ": " + resourceQuantity);
     }
 
     @Override
