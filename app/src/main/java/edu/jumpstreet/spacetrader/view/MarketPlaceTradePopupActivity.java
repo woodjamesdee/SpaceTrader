@@ -31,6 +31,7 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
     int cargoSpacePerUnitResource;
     int PLANET_MAX_RESOURCE;
     int resourceQuantity;
+    int userResource;
     String resourceType;
 
     @Override
@@ -75,6 +76,7 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
         costTV.setText("Cost: 0");
         planetsResourceTV = findViewById(R.id.tradePopupPlanetsResourceTV);
         userResourceTV = findViewById(R.id.tradePopupUsersResourceTV);
+        disableButtonsAdaptive();
     }
 
     private void getResource(){
@@ -113,9 +115,11 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
                     break;
             }
         }
+        userResource = Model.getInstance().getPlayerInteractor().getPlayerShip().getIndexedResource(resources.getInt("Resource_Name"));
         PLANET_MAX_RESOURCE = resourceQuantity;
         updateResourceViews(resourceType, resourceQuantity);
         userResourceTV.setText("Users " + resourceType + " " + Model.getInstance().getPlayerInteractor().getPlayerShip().getIndexedResource(resources.getInt("Resource_Name")));
+        disableBuyButtonsByTechLevel(Model.getInstance().getGameInteractor().getActivePlanet().getTechLevel().ordinal(), resources.getInt("Resource_Name"));
     }
 
     private void updateResourceViews(String resourceType, int resourceQuantity){
@@ -150,9 +154,30 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
                 + Model.getInstance().getPlayerInteractor().getPlayerShip().getMaxCargoSpace());
         resourceQuantity -= change;
         updateResourceViews(resourceType, resourceQuantity);
+        disableButtonsAdaptive();
     }
 
-    private void disableButtons(){
-
+    private void disableButtonsAdaptive(){
+        boolean minus1isActive = userResource < 1?false:true;
+        boolean minus10isActive = userResource < 10?false:true;
+        boolean plus1isActive = resourceQuantity < 1?false:true;
+        boolean plus10isActive = resourceQuantity < 10?false:true;
+        plus1Btn.setEnabled(plus1isActive);
+        plus10Btn.setEnabled(plus10isActive);
+        minus1Btn.setEnabled(minus1isActive);
+        minus10Btn.setEnabled(minus10isActive);
     }
+
+    private void disableBuyButtonsByTechLevel(int techLevel, int resouceIndex){
+        boolean isActive;
+        isActive = techLevel < 6 && resouceIndex == 9?false:true;
+        isActive = techLevel < 5 && resouceIndex == 4?false:true;
+        isActive = techLevel < 4 && (resouceIndex == 7 || resouceIndex == 6)?false:true;
+        isActive = techLevel < 3 && (resouceIndex == 5 || resouceIndex == 4)?false:true;
+        isActive = techLevel < 2 && resouceIndex == 3?false:true;
+        isActive = techLevel < 1 && resouceIndex == 2?false:true;
+        plus1Btn.setEnabled(isActive);
+        plus10Btn.setEnabled(isActive);
+    }
+
 }

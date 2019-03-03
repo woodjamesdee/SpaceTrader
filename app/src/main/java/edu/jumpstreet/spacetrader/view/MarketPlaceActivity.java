@@ -116,7 +116,7 @@ public class MarketPlaceActivity extends AppCompatActivity implements View.OnCli
     }
 
 
-    //TODO currently sets all cargo spaces to 10, should route through MV to get actual value
+    //TODO currently sets all cost spaces to 20, should route through MV to get actual value
     //index has 1 for cost TV and 2 for Cargo Space
     private void setTextViews(int index){
         for(int i=0;i<NUM_OF_RESOURCES;i++){
