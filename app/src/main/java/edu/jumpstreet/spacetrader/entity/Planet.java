@@ -98,4 +98,21 @@ public class Planet extends System {
     public void setNarcoticsCommodity(int narcotics){narcoticsCommodity = narcotics;}
     public void setRobotsCommodity(int robots){robotsCommodity = robots;}
 
+    //TODO default is getWater
+    public int getIndexedResource(int index){
+        switch(index){
+            case 0: return getWaterCommodity();
+            case 1: return getFursCommodity();
+            case 2: return getFoodCommodity();
+            case 3: return getOreCommodity();
+            case 4: return getGamesCommodity();
+            case 5: return getFirearmsCommodity();
+            case 6: return getMedicineCommodity();
+            case 7: return getMachinesCommodity();
+            case 8: return getNarcoticsCommodity();
+            case 9: return getRobotsCommodity();
+            default:return getWaterCommodity();
+        }
+    }
+
 }

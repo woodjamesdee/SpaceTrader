@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -27,12 +26,10 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
     TextView planetsResourceTV;
 
 
-    int quantity;
-    //TODO value should be passed in from MarketPlaceActivity
+    int quantityOfTransaction;
     int value;
-    //TODO cargoSpace should be passed in from Market Place Activity
-    int cargoSpace;
-
+    int cargoSpacePerUnitResource;
+    int PLANET_MAX_RESOURCE;
     int resourceQuantity;
     String resourceType;
 
@@ -50,12 +47,12 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
         this.setFinishOnTouchOutside(true);
         initializeViews();
 
-        quantity = 0;
-        quantityTV.setText("" + quantity);
+        quantityOfTransaction = 0;
+        quantityTV.setText("" + quantityOfTransaction);
 
         //TODO values are arbitrary for testing
         value = 10;
-        cargoSpace = 2;
+        cargoSpacePerUnitResource = 2;
         getResource();
     }
 
@@ -72,7 +69,10 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
         transactionConfirmationBtn.setOnClickListener(this);
         quantityTV = findViewById(R.id.tradePopupQuantityTV);
         cargoSpaceTV = findViewById(R.id.tradePopUpCargoTV);
+        cargoSpaceTV.setText("Cargo Space: " + Model.getInstance().getPlayerInteractor().getPlayerShip().getUsedCargoSpace() + "/"
+                + Model.getInstance().getPlayerInteractor().getPlayerShip().getMaxCargoSpace());
         costTV = findViewById(R.id.tradePopupTotalCostTV);
+        costTV.setText("Cost: 0");
         planetsResourceTV = findViewById(R.id.tradePopupPlanetsResourceTV);
         userResourceTV = findViewById(R.id.tradePopupUsersResourceTV);
     }
@@ -113,8 +113,9 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
                     break;
             }
         }
+        PLANET_MAX_RESOURCE = resourceQuantity;
         updateResourceViews(resourceType, resourceQuantity);
-        userResourceTV.setText("Users: water: " + Model.getInstance().getPlayerInteractor().getPlayerShip().getUsedCargoSpace());
+        userResourceTV.setText("Users " + resourceType + " " + Model.getInstance().getPlayerInteractor().getPlayerShip().getIndexedResource(resources.getInt("Resource_Name")));
     }
 
     private void updateResourceViews(String resourceType, int resourceQuantity){
@@ -142,10 +143,16 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
     }
 
     private void changeQuantity(int change){
-        quantity += change;
-        quantityTV.setText("" + quantity);
-        costTV.setText("Cost: " + (quantity * value * -1));
-        cargoSpaceTV.setText("Cargo Space: " + Model.getInstance().getPlayerInteractor().getPlayerShip().getUsedCargoSpace() + (cargoSpace * quantity) + "/"
+        quantityOfTransaction += change;
+        quantityTV.setText("" + quantityOfTransaction);
+        costTV.setText("Cost: " + (quantityOfTransaction * value * -1));
+        cargoSpaceTV.setText("Cargo Space: " + Model.getInstance().getPlayerInteractor().getPlayerShip().getUsedCargoSpace() + (cargoSpacePerUnitResource * quantityOfTransaction) + "/"
                 + Model.getInstance().getPlayerInteractor().getPlayerShip().getMaxCargoSpace());
+        resourceQuantity -= change;
+        updateResourceViews(resourceType, resourceQuantity);
+    }
+
+    private void disableButtons(){
+
     }
 }
