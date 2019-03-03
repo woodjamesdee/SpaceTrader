@@ -49,11 +49,13 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
 
         quantityOfTransaction = 0;
         quantityTV.setText("" + quantityOfTransaction);
+        getResource();
+        disableButtonsAdaptive();
 
         //TODO values are arbitrary for testing
         resourceValue = 20;
         cargoSpacePerUnitResource = 2;
-        getResource();
+
     }
 
     private void initializeViews(){
@@ -75,7 +77,6 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
         costTV.setText("Cost: 0");
         planetsResourceTV = findViewById(R.id.tradePopupPlanetsResourceTV);
         userResourceTV = findViewById(R.id.tradePopupUsersResourceTV);
-        disableButtonsAdaptive();
     }
 
     private void getResource(){
@@ -142,7 +143,7 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
             case(R.id.tradePopupConfirmationBtn):
                 Model.getInstance().getPlayerInteractor().addCreditsToPlayerBalance(-1 * quantityOfTransaction * resourceValue);
                 Model.getInstance().getPlayerInteractor().getPlayerShip().setIndexedResource(userResource, quantityOfTransaction);
-                Model.getInstance().getGameInteractor().getActivePlanet().setIndexedResource(userResource, resourceQuantity - quantityOfTransaction);
+                Model.getInstance().getGameInteractor().getActivePlanet().setIndexedResource(userResource, resourceQuantity);
                 Model.getInstance().getPlayerInteractor().getPlayerShip().setUsedCargoSpace(quantityOfTransaction * cargoSpacePerUnitResource);
                 finish();
                 break;

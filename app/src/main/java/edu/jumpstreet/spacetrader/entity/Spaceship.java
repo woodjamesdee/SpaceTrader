@@ -80,15 +80,25 @@ public abstract class Spaceship {
     public void setIndexedResource(int index, int amount){
         switch(index){
             case 0: setWater(amount);
+                break;
             case 1: setFurs(amount);
+                break;
             case 2: setFood(amount);
+                break;
             case 3: setOre(amount);
+                break;
             case 4: setGames(amount);
+                break;
             case 5: setFirearms(amount);
+                break;
             case 6: setMedicine(amount);
+                break;
             case 7: setMachines(amount);
+                break;
             case 8: setNarcotics(amount);
+                break;
             case 9: setRobots(amount);
+                break;
             default:setWater(Model.getInstance().getPlayerInteractor().getPlayerShip().getWater());
         }
     }

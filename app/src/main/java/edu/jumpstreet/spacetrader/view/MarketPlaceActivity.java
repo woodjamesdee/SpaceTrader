@@ -192,7 +192,6 @@ public class MarketPlaceActivity extends AppCompatActivity implements View.OnCli
     private Intent loadIntent(Intent intent, String resource, int resourceIndex, int resourceQuantity){
         intent.putExtra(resource, resourceQuantity);
         intent.putExtra("Resource_Name", resourceIndex);
-        intent.putExtra("Tech_Level", currentPlanet.getTechLevel());
         return intent;
     }
 
