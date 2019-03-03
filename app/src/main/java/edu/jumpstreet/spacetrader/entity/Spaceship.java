@@ -1,5 +1,7 @@
 package edu.jumpstreet.spacetrader.entity;
 
+import edu.jumpstreet.spacetrader.model.Model;
+
 /**
  * This class is the basis for all Spaceships in Space Trader.
  */
@@ -72,6 +74,22 @@ public abstract class Spaceship {
             case 8: return getNarcotics();
             case 9: return getRobots();
             default:return getWater();
+        }
+    }
+    //TODO default sets water to be what it is
+    public void setIndexedResource(int index, int amount){
+        switch(index){
+            case 0: setWater(amount);
+            case 1: setFurs(amount);
+            case 2: setFood(amount);
+            case 3: setOre(amount);
+            case 4: setGames(amount);
+            case 5: setFirearms(amount);
+            case 6: setMedicine(amount);
+            case 7: setMachines(amount);
+            case 8: setNarcotics(amount);
+            case 9: setRobots(amount);
+            default:setWater(Model.getInstance().getPlayerInteractor().getPlayerShip().getWater());
         }
     }
 }

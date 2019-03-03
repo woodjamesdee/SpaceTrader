@@ -117,7 +117,7 @@ public class MarketPlaceActivity extends AppCompatActivity implements View.OnCli
 
 
     //TODO currently sets all cost spaces to 20, should route through MV to get actual value
-    //index has 1 for cost TV and 2 for Cargo Space
+    //index has 1 for planets resources, 2 for users resource, and 3 for cost per unit of resources
     private void setTextViews(int index){
         for(int i=0;i<NUM_OF_RESOURCES;i++){
             //2 is to increment past header LinearLayouts
@@ -131,7 +131,6 @@ public class MarketPlaceActivity extends AppCompatActivity implements View.OnCli
             }
             if (index == 3){
                 tv.setText(20 + "");
-
             }
         }
     }
@@ -139,11 +138,14 @@ public class MarketPlaceActivity extends AppCompatActivity implements View.OnCli
     private void deactiveResourceLayouts(int techLevel){
         if(techLevel < 4){
             fullLayout.removeView(robotsLayout);
-        } if(techLevel < 3){
+        }
+        if(techLevel < 3){
             fullLayout.removeView(machineLayout);
-        } if(techLevel < 2){
+        }
+        if(techLevel < 2){
             fullLayout.removeView(oreLayout);
-        } if(techLevel < 1){
+        }
+        if(techLevel < 1){
             fullLayout.removeView(gamesLayout);
             fullLayout.removeView(firearmsLayout);
             fullLayout.removeView(medicineLayout);

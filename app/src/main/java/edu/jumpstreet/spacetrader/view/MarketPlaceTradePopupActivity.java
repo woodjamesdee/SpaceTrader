@@ -27,9 +27,8 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
 
 
     int quantityOfTransaction;
-    int value;
+    int resourceValue;
     int cargoSpacePerUnitResource;
-    int PLANET_MAX_RESOURCE;
     int resourceQuantity;
     int userResource;
     String resourceType;
@@ -52,7 +51,7 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
         quantityTV.setText("" + quantityOfTransaction);
 
         //TODO values are arbitrary for testing
-        value = 10;
+        resourceValue = 20;
         cargoSpacePerUnitResource = 2;
         getResource();
     }
@@ -81,8 +80,9 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
 
     private void getResource(){
         Bundle resources = getIntent().getExtras();
+        userResource = Model.getInstance().getPlayerInteractor().getPlayerShip().getIndexedResource(resources.getInt("Resource_Name"));
         if(resources != null){
-            switch(resources.getInt("Resource_Name")){
+            switch(userResource){
                 case 0: resourceType = "Water";
                     resourceQuantity = resources.getInt("Water_Quantity");
                     break;
@@ -115,11 +115,9 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
                     break;
             }
         }
-        userResource = Model.getInstance().getPlayerInteractor().getPlayerShip().getIndexedResource(resources.getInt("Resource_Name"));
-        PLANET_MAX_RESOURCE = resourceQuantity;
         updateResourceViews(resourceType, resourceQuantity);
-        userResourceTV.setText("Users " + resourceType + " " + Model.getInstance().getPlayerInteractor().getPlayerShip().getIndexedResource(resources.getInt("Resource_Name")));
-        disableBuyButtonsByTechLevel(Model.getInstance().getGameInteractor().getActivePlanet().getTechLevel().ordinal(), resources.getInt("Resource_Name"));
+        userResourceTV.setText("Users " + resourceType + " " + Model.getInstance().getPlayerInteractor().getPlayerShip().getIndexedResource(userResource));
+        disableBuyButtonsByTechLevel(Model.getInstance().getGameInteractor().getActivePlanet().getTechLevel().ordinal(), userResource);
     }
 
     private void updateResourceViews(String resourceType, int resourceQuantity){
@@ -142,6 +140,11 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
                 changeQuantity(-10);
                 break;
             case(R.id.tradePopupConfirmationBtn):
+                Model.getInstance().getPlayerInteractor().addCreditsToPlayerBalance(-1 * quantityOfTransaction * resourceValue);
+                Model.getInstance().getPlayerInteractor().getPlayerShip().setIndexedResource(userResource, quantityOfTransaction);
+                Model.getInstance().getGameInteractor().getActivePlanet().setIndexedResource(userResource, resourceQuantity - quantityOfTransaction);
+                Model.getInstance().getPlayerInteractor().getPlayerShip().setUsedCargoSpace(quantityOfTransaction * cargoSpacePerUnitResource);
+                finish();
                 break;
         }
     }
@@ -149,7 +152,7 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
     private void changeQuantity(int change){
         quantityOfTransaction += change;
         quantityTV.setText("" + quantityOfTransaction);
-        costTV.setText("Cost: " + (quantityOfTransaction * value * -1));
+        costTV.setText("Cost: " + (quantityOfTransaction * resourceValue * -1));
         cargoSpaceTV.setText("Cargo Space: " + Model.getInstance().getPlayerInteractor().getPlayerShip().getUsedCargoSpace() + (cargoSpacePerUnitResource * quantityOfTransaction) + "/"
                 + Model.getInstance().getPlayerInteractor().getPlayerShip().getMaxCargoSpace());
         resourceQuantity -= change;
@@ -160,8 +163,10 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
     private void disableButtonsAdaptive(){
         boolean minus1isActive = userResource >= 1 || quantityOfTransaction >= 1;
         boolean minus10isActive = userResource >= 10 || quantityOfTransaction >= 10;
-        boolean plus1isActive = resourceQuantity >= 1;
-        boolean plus10isActive = resourceQuantity >= 10;
+        boolean plus1isActive = resourceQuantity >= 1
+                && (quantityOfTransaction + 1) * resourceValue <= Model.getInstance().getPlayerInteractor().getPlayerBalance();
+        boolean plus10isActive = resourceQuantity >= 10
+                && (quantityOfTransaction + 10) * resourceValue <= Model.getInstance().getPlayerInteractor().getPlayerBalance();
         plus1Btn.setEnabled(plus1isActive);
         plus10Btn.setEnabled(plus10isActive);
         minus1Btn.setEnabled(minus1isActive);
@@ -177,7 +182,7 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
                 break;
             case 7 : case 6: isActive = techLevel >= 4;
                 break;
-            case 5: case 4:  isActive = techLevel >= 3;
+            case 5: case 4: isActive = techLevel >= 3;
                 break;
             case 3: isActive = techLevel >= 2;
                 break;
@@ -186,12 +191,7 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
             default: isActive = true;
                 break;
         }
-        disableBuyButtonsHelper(isActive);
-    }
-
-    private void disableBuyButtonsHelper(boolean isActive){
         plus1Btn.setEnabled(isActive);
         plus10Btn.setEnabled(isActive);
     }
-
 }

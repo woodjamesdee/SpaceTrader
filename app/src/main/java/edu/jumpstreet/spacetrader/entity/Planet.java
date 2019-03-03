@@ -2,6 +2,8 @@ package edu.jumpstreet.spacetrader.entity;
 
 import java.util.Random;
 
+import edu.jumpstreet.spacetrader.model.Model;
+
 public class Planet extends System {
 
     private Resource resource;
@@ -112,6 +114,33 @@ public class Planet extends System {
             case 8: return getNarcoticsCommodity();
             case 9: return getRobotsCommodity();
             default:return getWaterCommodity();
+        }
+    }
+
+    public void setIndexedResource(int index, int amount){
+        switch(index){
+            case 0: setWaterCommodity(amount);
+                break;
+            case 1: setFursCommodity(amount);
+                break;
+            case 2: setFoodCommodity(amount);
+                break;
+            case 3: setOreCommodity(amount);
+                break;
+            case 4: setGamesCommodity(amount);
+                break;
+            case 5: setFirearmsCommodity(amount);
+                break;
+            case 6: setMedicineCommodity(amount);
+                break;
+            case 7: setMachinesCommodity(amount);
+                break;
+            case 8: setNarcoticsCommodity(amount);
+                break;
+            case 9: setRobotsCommodity(amount);
+                break;
+            default:setWaterCommodity(Model.getInstance().getGameInteractor().getActivePlanet().waterCommodity);
+                break;
         }
     }
 
