@@ -44,6 +44,7 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
         super.onCreate(savedInstanceState);
         ship = Model.getInstance().getPlayerInteractor().getPlayerShip();
         currentPlanet = Model.getInstance().getGameInteractor().getActivePlanet();
+        //sets values of the popup window
         DisplayMetrics dM = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dM);
         getWindow().setLayout((int) (dM.widthPixels *.9), (int) (dM.heightPixels *.4));
@@ -58,11 +59,12 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
         quantityOfTransaction = 0;
         quantityTV.setText("" + quantityOfTransaction);
         getResource();
-        disableButtonsAdaptive();
+
 
         //TODO values are arbitrary for testing
         resourceValue = currentPlanet.getEconomy().getCommodityBaseValue(userResourceIndex);
         cargoSpacePerUnitResource = currentPlanet.getEconomy().getCommodityCargoSpace(userResourceIndex);
+        disableButtonsAdaptive();
 
     }
 
@@ -91,35 +93,35 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
         Bundle resources = getIntent().getExtras();
         userResourceIndex = resources.getInt("Resource_Name");
         if(resources != null){
-            switch(userResourceIndex){
-                case 0: resourceType = "Water";
+            switch(Commodity.CommodityResources.values()[userResourceIndex]){
+                case Water: resourceType = "Water";
                     resourceQuantity = resources.getInt("Water_Quantity");
                     break;
-                case 1: resourceType = "Furs";
+                case Furs: resourceType = "Furs";
                     resourceQuantity = resources.getInt("Furs_Quantity");
                     break;
-                case 2: resourceType = "Food";
+                case Food: resourceType = "Food";
                     resourceQuantity = resources.getInt("Food_Quantity");
                     break;
-                case 3: resourceType = "Ore";
+                case Ore: resourceType = "Ore";
                     resourceQuantity = resources.getInt("Ore_Quantity");
                     break;
-                case 4: resourceType = "Games";
+                case Games: resourceType = "Games";
                     resourceQuantity = resources.getInt("Games_Quantity");
                     break;
-                case 5: resourceType = "Firearms";
+                case Firearms: resourceType = "Firearms";
                     resourceQuantity = resources.getInt("Firearms_Quantity");
                     break;
-                case 6: resourceType = "Medicine";
+                case Medicine: resourceType = "Medicine";
                     resourceQuantity = resources.getInt("Medicine_Quantity");
                     break;
-                case 7: resourceType = "Machines";
+                case Machines: resourceType = "Machines";
                     resourceQuantity = resources.getInt("Machines_Quantity");
                     break;
-                case 8: resourceType = "Narcotics";
+                case Narcotics: resourceType = "Narcotics";
                     resourceQuantity = resources.getInt("Narcotics_Quantity");
                     break;
-                case 9: resourceType = "Robots";
+                case Robots: resourceType = "Robots";
                     resourceQuantity = resources.getInt("Robots_Quantity");
                     break;
             }
@@ -127,7 +129,7 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
         updateResourceViews(resourceType, resourceQuantity);
         userResourceTV.setText("Users " + resourceType + " " + ship.getResourceQuantityByIndex(userResourceIndex));
         disableBuyButtonsByTechLevel(currentPlanet.getTechLevel().ordinal(), userResourceIndex);
-        cargoSpacePerItemTV.setText("Weight: " + currentPlanet.getEconomy().getCommodity(userResourceIndex).getWeight());
+        cargoSpacePerItemTV.setText("Cargo Space: " + currentPlanet.getEconomy().getCommodity(userResourceIndex).getWeight());
     }
 
     private void updateResourceViews(String resourceType, int resourceQuantity){
