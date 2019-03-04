@@ -24,7 +24,7 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
 
     TextView userResourceTV;
     TextView planetsResourceTV;
-
+    TextView cargoSpacePerItemTV;
 
     int quantityOfTransaction;
     int resourceValue;
@@ -77,6 +77,7 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
         costTV.setText("Cost: 0");
         planetsResourceTV = findViewById(R.id.tradePopupPlanetsResourceTV);
         userResourceTV = findViewById(R.id.tradePopupUsersResourceTV);
+        cargoSpacePerItemTV = findViewById(R.id.tradePopupCargoPerItemTV);
     }
 
     private void getResource(){
@@ -117,8 +118,9 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
             }
         }
         updateResourceViews(resourceType, resourceQuantity);
-        userResourceTV.setText("Users " + resourceType + " " + Model.getInstance().getPlayerInteractor().getPlayerShip().getIndexedResource(userResource));
+        userResourceTV.setText("Users " + resourceType + " " + Model.getInstance().getPlayerInteractor().getPlayerShip().getResourceQuantityByIndex(userResource));
         disableBuyButtonsByTechLevel(Model.getInstance().getGameInteractor().getActivePlanet().getTechLevel().ordinal(), userResource);
+        cargoSpacePerItemTV.setText("Weight: " + Model.getInstance().getGameInteractor().getActivePlanet().getEconomy().getCommodity(userResource).getWeight());
     }
 
     private void updateResourceViews(String resourceType, int resourceQuantity){
@@ -141,10 +143,13 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
                 changeQuantity(-10);
                 break;
             case(R.id.tradePopupConfirmationBtn):
+                if(quantityOfTransaction == 0){
+                    finish();
+                }
                 Model.getInstance().getPlayerInteractor().addCreditsToPlayerBalance(-1 * quantityOfTransaction * resourceValue);
-                Model.getInstance().getPlayerInteractor().getPlayerShip().setIndexedResource(userResource, quantityOfTransaction);
+                Model.getInstance().getPlayerInteractor().getPlayerShip().setIndexedResourceQuantity(userResource, quantityOfTransaction);
                 Model.getInstance().getGameInteractor().getActivePlanet().setIndexedResource(userResource, resourceQuantity);
-                Model.getInstance().getPlayerInteractor().getPlayerShip().setUsedCargoSpace(quantityOfTransaction * cargoSpacePerUnitResource);
+                Model.getInstance().getPlayerInteractor().getPlayerShip().setUsedCargoSpace((quantityOfTransaction * cargoSpacePerUnitResource) + Model.getInstance().getPlayerInteractor().getPlayerShip().getUsedCargoSpace());
                 finish();
                 break;
         }
@@ -154,7 +159,7 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
         quantityOfTransaction += change;
         quantityTV.setText("" + quantityOfTransaction);
         costTV.setText("Cost: " + (quantityOfTransaction * resourceValue * -1));
-        cargoSpaceTV.setText("Cargo Space: " + Model.getInstance().getPlayerInteractor().getPlayerShip().getUsedCargoSpace() + (cargoSpacePerUnitResource * quantityOfTransaction) + "/"
+        cargoSpaceTV.setText("Cargo Space: " + (int) (Model.getInstance().getPlayerInteractor().getPlayerShip().getUsedCargoSpace() + (cargoSpacePerUnitResource * quantityOfTransaction)) + "/"
                 + Model.getInstance().getPlayerInteractor().getPlayerShip().getMaxCargoSpace());
         resourceQuantity -= change;
         updateResourceViews(resourceType, resourceQuantity);
