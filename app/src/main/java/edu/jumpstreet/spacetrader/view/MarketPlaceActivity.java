@@ -162,34 +162,44 @@ public class MarketPlaceActivity extends AppCompatActivity implements View.OnCli
         Intent intent = new Intent(this, MarketPlaceTradePopupActivity.class);
         switch(view.getId()){
             case R.id.waterTradeBtn: MarketPlaceActivity.this.startActivityForResult(
-                        loadIntent(intent, "Water_Quantity", 0, currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Water.ordinal()).getQuantity()), 1);
+                        loadIntent(intent, "Water_Quantity", Commodity.CommodityResources.Water.ordinal(),
+                                currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Water.ordinal()).getQuantity()), 1);
                 break;
             case R.id.furTradeBtn: MarketPlaceActivity.this.startActivityForResult(
-                        loadIntent(intent, "Furs_Quantity", 1, currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Furs.ordinal()).getQuantity()), 1);
+                        loadIntent(intent, "Furs_Quantity", Commodity.CommodityResources.Furs.ordinal(),
+                                currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Furs.ordinal()).getQuantity()), 1);
                 break;
             case R.id.foodTradeBtn: MarketPlaceActivity.this.startActivityForResult(
-                        loadIntent(intent, "Food_Quantity", 2, currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Food.ordinal()).getQuantity()), 1);
+                        loadIntent(intent, "Food_Quantity", Commodity.CommodityResources.Food.ordinal(),
+                                currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Food.ordinal()).getQuantity()), 1);
                 break;
             case R.id.oreTradeBtn: MarketPlaceActivity.this.startActivityForResult(
-                        loadIntent(intent, "Ore_Quantity", 3, currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Ore.ordinal()).getQuantity()), 1);
+                        loadIntent(intent, "Ore_Quantity", Commodity.CommodityResources.Ore.ordinal(),
+                                currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Ore.ordinal()).getQuantity()), 1);
                 break;
             case R.id.gamesTradeBtn: MarketPlaceActivity.this.startActivityForResult(
-                        loadIntent(intent, "Games_Quantity", 4, currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Games.ordinal()).getQuantity()),1);
+                        loadIntent(intent, "Games_Quantity", Commodity.CommodityResources.Games.ordinal(),
+                                currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Games.ordinal()).getQuantity()),1);
                 break;
             case R.id.firearmsTradeBtn: MarketPlaceActivity.this.startActivityForResult(
-                        loadIntent(intent, "Firearms_Quantity", 5, currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Firearms.ordinal()).getQuantity()), 1);
+                        loadIntent(intent, "Firearms_Quantity", Commodity.CommodityResources.Firearms.ordinal(),
+                                currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Firearms.ordinal()).getQuantity()), 1);
                 break;
             case R.id.medicineTradeBtn: MarketPlaceActivity.this.startActivityForResult(
-                        loadIntent(intent, "Medicine_Quantity", 6, currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Medicine.ordinal()).getQuantity()), 1);
+                        loadIntent(intent, "Medicine_Quantity", Commodity.CommodityResources.Medicine.ordinal(),
+                                currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Medicine.ordinal()).getQuantity()), 1);
                 break;
             case R.id.machinesTradeBtn: MarketPlaceActivity.this.startActivityForResult(
-                        loadIntent(intent, "Machines_Quantity", 7, currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Machines.ordinal()).getQuantity()), 1);
+                        loadIntent(intent, "Machines_Quantity", Commodity.CommodityResources.Machines.ordinal(),
+                                currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Machines.ordinal()).getQuantity()), 1);
                 break;
             case R.id.narcoticsTradeBtn: MarketPlaceActivity.this.startActivityForResult(
-                        loadIntent(intent, "Narcotics_Quantity", 8, currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Narcotics.ordinal()).getQuantity()), 1);
+                        loadIntent(intent, "Narcotics_Quantity", Commodity.CommodityResources.Narcotics.ordinal(),
+                                currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Narcotics.ordinal()).getQuantity()), 1);
                 break;
             case R.id.robotsTradeBtn: MarketPlaceActivity.this.startActivityForResult(
-                        loadIntent(intent, "Robots_Quantity", 9, currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Robots.ordinal()).getQuantity()), 1);
+                        loadIntent(intent, "Robots_Quantity", Commodity.CommodityResources.Robots.ordinal(),
+                                currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Robots.ordinal()).getQuantity()), 1);
                 break;
         }
     }
