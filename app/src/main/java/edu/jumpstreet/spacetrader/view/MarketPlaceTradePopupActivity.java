@@ -162,13 +162,15 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
         cargoSpaceTV.setText("Cargo Space: " + (int) (Model.getInstance().getPlayerInteractor().getPlayerShip().getUsedCargoSpace() + (cargoSpacePerUnitResource * quantityOfTransaction)) + "/"
                 + Model.getInstance().getPlayerInteractor().getPlayerShip().getMaxCargoSpace());
         resourceQuantity -= change;
+        //TODO make method that gets weight per commodity
+       // userResourceTV.setText("Users " + resourceType + " " + Model.getInstance().getPlayerInteractor().getPlayerShip().);
         updateResourceViews(resourceType, resourceQuantity);
         disableButtonsAdaptive();
     }
 
     private void disableButtonsAdaptive(){
-        boolean minus1isActive = userResource >= 1 || quantityOfTransaction >= 1;
-        boolean minus10isActive = userResource >= 10 || quantityOfTransaction >= 10;
+        boolean minus1isActive = Model.getInstance().getPlayerInteractor().getPlayerShip().getResourceQuantityByIndex(userResource) >=  Math.abs(quantityOfTransaction - 1)|| quantityOfTransaction >= 1;
+        boolean minus10isActive = Model.getInstance().getPlayerInteractor().getPlayerShip().getResourceQuantityByIndex(userResource) >= Math.abs(quantityOfTransaction - 10) || quantityOfTransaction >= 10;
         boolean plus1isActive = resourceQuantity >= 1
                 && (quantityOfTransaction + 1) * resourceValue <= Model.getInstance().getPlayerInteractor().getPlayerBalance();
         boolean plus10isActive = resourceQuantity >= 10
