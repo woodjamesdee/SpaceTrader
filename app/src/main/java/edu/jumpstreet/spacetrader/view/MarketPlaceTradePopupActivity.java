@@ -61,8 +61,8 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
         disableButtonsAdaptive();
 
         //TODO values are arbitrary for testing
-        resourceValue = 20;
-        cargoSpacePerUnitResource = 2;
+        resourceValue = currentPlanet.getEconomy().getCommodityBaseValue(userResourceIndex);
+        cargoSpacePerUnitResource = currentPlanet.getEconomy().getCommodityCargoSpace(userResourceIndex);
 
     }
 

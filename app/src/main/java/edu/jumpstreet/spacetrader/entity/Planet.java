@@ -73,7 +73,7 @@ public class Planet extends System {
 
 
     //TODO default is getWater
-    public int getIndexedResource(int index){
+    public int getIndexedResourceQuantity(int index){
         return economy.getCommodity(index).getQuantity();
     }
 

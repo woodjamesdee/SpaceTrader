@@ -125,7 +125,7 @@ public class MarketPlaceActivity extends AppCompatActivity implements View.OnCli
             LinearLayout ll = (LinearLayout) fullLayout.getChildAt(2+ i);
             TextView tv = (TextView) ll.getChildAt(index);
             if(index == 1) {
-                tv.setText(currentPlanet.getIndexedResource(i)+ "");
+                tv.setText(currentPlanet.getIndexedResourceQuantity(i)+ "");
             }
             if (index == 2){
                 tv.setText(ship.getResourceQuantityByIndex(i) + "");
