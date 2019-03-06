@@ -54,6 +54,7 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
         params.y = -20;
         setContentView(R.layout.popup_window_marketplace_trade);
         this.setFinishOnTouchOutside(true);
+        resourceValue = currentPlanet.getEconomy().getCommodityValue(userResourceIndex);
         initializeViews();
 
         quantityOfTransaction = 0;
@@ -62,7 +63,6 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
 
 
         //TODO values are arbitrary for testing
-        resourceValue = currentPlanet.getEconomy().getCommodityValue(userResourceIndex);
         cargoSpacePerUnitResource = currentPlanet.getEconomy().getCommodityCargoSpace(userResourceIndex);
         disableButtonsAdaptive();
 

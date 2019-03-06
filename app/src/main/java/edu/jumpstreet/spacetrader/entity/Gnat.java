@@ -10,7 +10,7 @@ public class Gnat extends Spaceship {
         super.hitpoints = 100;
         super.maxCargoSpace = 1000;
         super.usedCargoSpace = 0;
-        super.economy = new Economy();
+        super.economy = new Economy(System.TechLevel.HiTech);
         super.description = "The Gnat is not impressive in any area, " +
                 "but most pilots are proud to call it their first ship.";
     }

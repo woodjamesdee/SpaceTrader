@@ -131,7 +131,7 @@ public class MarketPlaceActivity extends AppCompatActivity implements View.OnCli
                 tv.setText(ship.getResourceQuantityByIndex(i) + "");
             }
             if (index == 3){
-                tv.setText(currentPlanet.getEconomy().getCommodityCargoSpace(i) + "");
+                tv.setText(currentPlanet.getEconomy().getCommodityValue(i) + "");
             }
         }
     }

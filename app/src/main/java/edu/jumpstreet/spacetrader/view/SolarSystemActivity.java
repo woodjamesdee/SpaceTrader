@@ -43,6 +43,7 @@ public class SolarSystemActivity extends AppCompatActivity implements View.OnCli
             for (int j = 0; j < Universe.Y_BOUNDS; j++) {
                 if (activeSystem.getPlanetLocations()[i][j] != null) {
                     Button button = new Button(this);
+
                     final int i2 = i;
                     final int j2 = j;
                     final SolarSystem activeSystem2 = activeSystem;

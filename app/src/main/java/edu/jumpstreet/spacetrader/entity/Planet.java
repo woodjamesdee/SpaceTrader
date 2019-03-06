@@ -24,7 +24,7 @@ public class Planet extends System {
                 this.resource = current;
             }
         }
-        economy = new Economy();
+        economy = new Economy(System.TechLevel.values()[techLevelIndex]);
         createCommodities(techLevelIndex);
     }
 
