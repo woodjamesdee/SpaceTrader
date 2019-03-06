@@ -117,7 +117,6 @@ public class MarketPlaceActivity extends AppCompatActivity implements View.OnCli
     }
 
 
-    //TODO currently sets all cost spaces to 20, should route through MV to get actual value
     //index has 1 for planets resources, 2 for users resource, and 3 for cost per unit of resources
     private void setTextViews(int index){
         for(int i=0;i<NUM_OF_RESOURCES;i++){
