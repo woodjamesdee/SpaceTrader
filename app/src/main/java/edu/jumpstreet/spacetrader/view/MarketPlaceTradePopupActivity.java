@@ -62,7 +62,7 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
 
 
         //TODO values are arbitrary for testing
-        resourceValue = currentPlanet.getEconomy().getCommodityBaseValue(userResourceIndex);
+        resourceValue = currentPlanet.getEconomy().getCommodityValue(userResourceIndex);
         cargoSpacePerUnitResource = currentPlanet.getEconomy().getCommodityCargoSpace(userResourceIndex);
         disableButtonsAdaptive();
 

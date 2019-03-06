@@ -33,4 +33,6 @@ public class Model {
 
     public GameInteractor getGameInteractor() { return gameInteractor; }
 
+    public Random getRandom() { return random; } // TODO: This is really bad, need to change this, only used to make the M7 demo work
+
 }
