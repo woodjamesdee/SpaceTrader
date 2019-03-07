@@ -12,6 +12,7 @@ import edu.jumpstreet.spacetrader.R;
 import edu.jumpstreet.spacetrader.entity.Commodity;
 import edu.jumpstreet.spacetrader.entity.Planet;
 import edu.jumpstreet.spacetrader.entity.Spaceship;
+import edu.jumpstreet.spacetrader.entity.System;
 import edu.jumpstreet.spacetrader.model.Model;
 
 public class MarketPlaceTradePopupActivity extends Activity implements View.OnClickListener{
@@ -33,8 +34,7 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
     int resourceValue;
     int cargoSpacePerUnitResource;
     int resourceQuantity;
-    int userResourceIndex;
-    String resourceType;
+    Commodity activeCommodity;
 
     Spaceship ship;
     Planet currentPlanet;
@@ -54,16 +54,14 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
         params.y = -20;
         setContentView(R.layout.popup_window_marketplace_trade);
         this.setFinishOnTouchOutside(true);
-        resourceValue = currentPlanet.getEconomy().getCommodityValue(userResourceIndex);
         initializeViews();
-
-        quantityOfTransaction = 0;
-        quantityTV.setText("" + quantityOfTransaction);
         getResource();
 
 
-        //TODO values are arbitrary for testing
-        cargoSpacePerUnitResource = currentPlanet.getEconomy().getCommodityCargoSpace(userResourceIndex);
+        resourceValue = currentPlanet.getEconomy().getCommodityValue(activeCommodity);
+        quantityOfTransaction = 0;
+        quantityTV.setText("" + quantityOfTransaction);
+        cargoSpacePerUnitResource = activeCommodity.getWeight();
         disableButtonsAdaptive();
 
     }
@@ -90,50 +88,17 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
     }
 
     private void getResource(){
-        Bundle resources = getIntent().getExtras();
-        userResourceIndex = resources.getInt("Resource_Name");
-        if(resources != null){
-            switch(Commodity.CommodityResources.values()[userResourceIndex]){
-                case Water: resourceType = "Water";
-                    resourceQuantity = resources.getInt("Water_Quantity");
-                    break;
-                case Furs: resourceType = "Furs";
-                    resourceQuantity = resources.getInt("Furs_Quantity");
-                    break;
-                case Food: resourceType = "Food";
-                    resourceQuantity = resources.getInt("Food_Quantity");
-                    break;
-                case Ore: resourceType = "Ore";
-                    resourceQuantity = resources.getInt("Ore_Quantity");
-                    break;
-                case Games: resourceType = "Games";
-                    resourceQuantity = resources.getInt("Games_Quantity");
-                    break;
-                case Firearms: resourceType = "Firearms";
-                    resourceQuantity = resources.getInt("Firearms_Quantity");
-                    break;
-                case Medicine: resourceType = "Medicine";
-                    resourceQuantity = resources.getInt("Medicine_Quantity");
-                    break;
-                case Machines: resourceType = "Machines";
-                    resourceQuantity = resources.getInt("Machines_Quantity");
-                    break;
-                case Narcotics: resourceType = "Narcotics";
-                    resourceQuantity = resources.getInt("Narcotics_Quantity");
-                    break;
-                case Robots: resourceType = "Robots";
-                    resourceQuantity = resources.getInt("Robots_Quantity");
-                    break;
-            }
-        }
-        updateResourceViews(resourceType, resourceQuantity);
-        userResourceTV.setText("Users " + resourceType + " " + ship.getResourceQuantityByIndex(userResourceIndex));
-        disableBuyButtonsByTechLevel(currentPlanet.getTechLevel().ordinal(), userResourceIndex);
-        cargoSpacePerItemTV.setText("Cargo Space: " + currentPlanet.getEconomy().getCommodity(userResourceIndex).getWeight());
+        activeCommodity = getIntent().getParcelableExtra("Commodity");
+        resourceQuantity = activeCommodity.getQuantity();
+        updateResourceViews(activeCommodity);
+        //TODO Comes from active commodity not user
+        userResourceTV.setText("Users " + activeCommodity.getResource() + " " + ship.getQuantityByName(activeCommodity.getResource()));
+        disableBuyButtonsByTechLevel(currentPlanet.getTechLevel().ordinal(), activeCommodity);
+        cargoSpacePerItemTV.setText("Space: " + activeCommodity.getWeight());
     }
 
-    private void updateResourceViews(String resourceType, int resourceQuantity){
-        planetsResourceTV.setText("Planets " + resourceType + ": " + resourceQuantity);
+    private void updateResourceViews(Commodity comm){
+        planetsResourceTV.setText("Planets " + comm.getResource() + ": " + comm.getQuantity());
     }
 
     @Override
@@ -156,8 +121,8 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
                     finish();
                 }
                 Model.getInstance().getPlayerInteractor().addCreditsToPlayerBalance(-1 * quantityOfTransaction * resourceValue);
-                ship.setIndexedResourceQuantity(userResourceIndex, quantityOfTransaction);
-                currentPlanet.setIndexedResource(userResourceIndex, resourceQuantity);
+                ship.setResourceQuantityByName(activeCommodity.getResource(), quantityOfTransaction);
+                currentPlanet.setResourceQuantityByName(activeCommodity.getResource(), resourceQuantity);
                 ship.setUsedCargoSpace((quantityOfTransaction * cargoSpacePerUnitResource) + ship.getUsedCargoSpace());
                 finish();
                 break;
@@ -173,13 +138,13 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
         resourceQuantity -= change;
         //TODO make method that gets weight per commodity
        // userResourceTV.setText("Users " + resourceType + " " + Model.getInstance().getPlayerInteractor().getPlayerShip().);
-        updateResourceViews(resourceType, resourceQuantity);
+        updateResourceViews(activeCommodity);
         disableButtonsAdaptive();
     }
 
     private void disableButtonsAdaptive(){
-        boolean minus1isActive = ship.getResourceQuantityByIndex(userResourceIndex) >=  Math.abs(quantityOfTransaction - 1)|| quantityOfTransaction >= 1;
-        boolean minus10isActive = ship.getResourceQuantityByIndex(userResourceIndex) >= Math.abs(quantityOfTransaction - 10) || quantityOfTransaction >= 10;
+        boolean minus1isActive = ship.getQuantityByName(activeCommodity.getResource()) >=  Math.abs(quantityOfTransaction - 1)|| quantityOfTransaction >= 1;
+        boolean minus10isActive = ship.getQuantityByName(activeCommodity.getResource()) >= Math.abs(quantityOfTransaction - 10) || quantityOfTransaction >= 10;
         boolean plus1isActive = resourceQuantity >= 1
                 && (quantityOfTransaction + 1) * resourceValue <= Model.getInstance().getPlayerInteractor().getPlayerBalance();
         boolean plus10isActive = resourceQuantity >= 10
@@ -190,25 +155,10 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
         minus10Btn.setEnabled(minus10isActive);
     }
 
-    private void disableBuyButtonsByTechLevel(int techLevel, int resourceIndex){
-        boolean isActive;
-        switch(Commodity.CommodityResources.values()[resourceIndex]){
-            case Robots: isActive = techLevel >= 6;
-                break;
-            case Narcotics: isActive = techLevel >= 5;
-                break;
-            case Machines: case Medicine: isActive = techLevel >= 4;
-                break;
-            case Firearms: case Games: isActive = techLevel >= 3;
-                break;
-            case Ore: isActive = techLevel >= 2;
-                break;
-            case Food: isActive = techLevel >= 1;
-                break;
-            default: isActive = true;
-                break;
-        }
+    private void disableBuyButtonsByTechLevel(int techLevel, Commodity comm){
+        boolean isActive = techLevel < comm.getMTLP().ordinal();
         plus1Btn.setEnabled(isActive);
         plus10Btn.setEnabled(isActive);
     }
+
 }

@@ -28,9 +28,23 @@ public abstract class Spaceship {
     public int getResourceQuantityByIndex(int index){
             return economy.getCommodity(index).getQuantity();
     }
+
+//    public Commodity getCommodity(Commodity comm){
+//        economy.getCommodity(co)
+//    }
     public void setIndexedResourceQuantity(int index, int amount){
         economy.getCommodity(index).setQuantity(amount);
     }
+
+    public void setResourceQuantityByName(String name, int quantity){
+        economy.getCommodityByName(name).setQuantity(quantity);
+    }
+
+    public int getQuantityByName (String name){
+        return economy.getCommodityByName(name).getQuantity();
+    }
+
+    public Economy getEconomy(){return  economy;}
     public void setUsedCargoSpace(int amount){
         usedCargoSpace = amount;
     }

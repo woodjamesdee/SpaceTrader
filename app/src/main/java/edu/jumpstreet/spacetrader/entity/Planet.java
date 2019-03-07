@@ -81,6 +81,10 @@ public class Planet extends System {
         economy.getCommodity(index).setQuantity(amount);
     }
 
+    public void setResourceQuantityByName(String name, int amount){
+        economy.getCommodityByName(name).setQuantity(amount);
+    }
+
     public Economy getEconomy(){return economy;}
 
 }

@@ -2,18 +2,23 @@ package edu.jumpstreet.spacetrader.view;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import java.io.Serializable;
+
 import edu.jumpstreet.spacetrader.R;
 import edu.jumpstreet.spacetrader.entity.Commodity;
 import edu.jumpstreet.spacetrader.entity.Planet;
 import edu.jumpstreet.spacetrader.entity.Spaceship;
 import edu.jumpstreet.spacetrader.model.Model;
 
-public class MarketPlaceActivity extends AppCompatActivity implements View.OnClickListener {
+public class MarketPlaceActivity extends AppCompatActivity implements View.OnClickListener{
     //resource Layouts
     LinearLayout fullLayout;
     LinearLayout waterLayout;
@@ -161,44 +166,34 @@ public class MarketPlaceActivity extends AppCompatActivity implements View.OnCli
         Intent intent = new Intent(this, MarketPlaceTradePopupActivity.class);
         switch(view.getId()){
             case R.id.waterTradeBtn: MarketPlaceActivity.this.startActivityForResult(
-                        loadIntent(intent, "Water_Quantity", Commodity.CommodityResources.Water.ordinal(),
-                                currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Water.ordinal()).getQuantity()), 1);
+                        loadIntent(intent, currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Water.ordinal())), 1);
                 break;
             case R.id.furTradeBtn: MarketPlaceActivity.this.startActivityForResult(
-                        loadIntent(intent, "Furs_Quantity", Commodity.CommodityResources.Furs.ordinal(),
-                                currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Furs.ordinal()).getQuantity()), 1);
+                        loadIntent(intent, currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Furs.ordinal())), 1);
                 break;
             case R.id.foodTradeBtn: MarketPlaceActivity.this.startActivityForResult(
-                        loadIntent(intent, "Food_Quantity", Commodity.CommodityResources.Food.ordinal(),
-                                currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Food.ordinal()).getQuantity()), 1);
+                        loadIntent(intent, currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Food.ordinal())), 1);
                 break;
             case R.id.oreTradeBtn: MarketPlaceActivity.this.startActivityForResult(
-                        loadIntent(intent, "Ore_Quantity", Commodity.CommodityResources.Ore.ordinal(),
-                                currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Ore.ordinal()).getQuantity()), 1);
+                        loadIntent(intent, currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Ore.ordinal())), 1);
                 break;
             case R.id.gamesTradeBtn: MarketPlaceActivity.this.startActivityForResult(
-                        loadIntent(intent, "Games_Quantity", Commodity.CommodityResources.Games.ordinal(),
-                                currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Games.ordinal()).getQuantity()),1);
+                        loadIntent(intent, currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Games.ordinal())),1);
                 break;
             case R.id.firearmsTradeBtn: MarketPlaceActivity.this.startActivityForResult(
-                        loadIntent(intent, "Firearms_Quantity", Commodity.CommodityResources.Firearms.ordinal(),
-                                currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Firearms.ordinal()).getQuantity()), 1);
+                        loadIntent(intent, currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Firearms.ordinal())), 1);
                 break;
             case R.id.medicineTradeBtn: MarketPlaceActivity.this.startActivityForResult(
-                        loadIntent(intent, "Medicine_Quantity", Commodity.CommodityResources.Medicine.ordinal(),
-                                currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Medicine.ordinal()).getQuantity()), 1);
+                        loadIntent(intent, currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Medicine.ordinal())), 1);
                 break;
             case R.id.machinesTradeBtn: MarketPlaceActivity.this.startActivityForResult(
-                        loadIntent(intent, "Machines_Quantity", Commodity.CommodityResources.Machines.ordinal(),
-                                currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Machines.ordinal()).getQuantity()), 1);
+                        loadIntent(intent, currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Machines.ordinal())), 1);
                 break;
             case R.id.narcoticsTradeBtn: MarketPlaceActivity.this.startActivityForResult(
-                        loadIntent(intent, "Narcotics_Quantity", Commodity.CommodityResources.Narcotics.ordinal(),
-                                currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Narcotics.ordinal()).getQuantity()), 1);
+                        loadIntent(intent, currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Narcotics.ordinal())), 1);
                 break;
             case R.id.robotsTradeBtn: MarketPlaceActivity.this.startActivityForResult(
-                        loadIntent(intent, "Robots_Quantity", Commodity.CommodityResources.Robots.ordinal(),
-                                currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Robots.ordinal()).getQuantity()), 1);
+                        loadIntent(intent, currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Robots.ordinal())), 1);
                 break;
         }
     }
@@ -212,9 +207,11 @@ public class MarketPlaceActivity extends AppCompatActivity implements View.OnCli
         setTextViews(3);
     }
 
-    private Intent loadIntent(Intent intent, String resource, int resourceIndex, int resourceQuantity){
-        intent.putExtra(resource, resourceQuantity);
-        intent.putExtra("Resource_Name", resourceIndex);
+
+
+
+    private Intent loadIntent(Intent intent, Commodity comm){
+        intent.putExtra("Commodity", comm);
         return intent;
     }
 }

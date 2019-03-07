@@ -1,8 +1,11 @@
 package edu.jumpstreet.spacetrader.entity;
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import edu.jumpstreet.spacetrader.entity.System.TechLevel;
 import edu.jumpstreet.spacetrader.entity.Planet.Resource;
 
-public class Commodity {
+public class Commodity implements Parcelable {
     int weight;
     int baseValue;
     String resource;
@@ -15,9 +18,10 @@ public class Commodity {
         Water, Furs, Food, Ore, Games, Firearms,
         Medicine, Machines, Narcotics, Robots
     }
-    public Commodity(int weight, int baseValue, int quantity, int IPL, int VAR, int MTL, int MTH, TechLevel MTLP, TechLevel MTLU, TechLevel TTP, Resource CR, Resource ER){
+    public Commodity(int weight, int baseValue, String resource, int quantity, int IPL, int VAR, int MTL, int MTH, TechLevel MTLP, TechLevel MTLU, TechLevel TTP, Resource CR, Resource ER){
         this.weight = weight;
         this.baseValue = baseValue;
+        this.resource = resource;
         this.quantity = quantity;
         this.IPL = IPL;
         this.VAR = VAR;
@@ -29,6 +33,62 @@ public class Commodity {
         this.CR = CR;
         this.ER = ER;
     }
+
+    @Override
+    public int describeContents(){
+        return 0;
+    }
+    @Override
+    public void writeToParcel(Parcel dest, int flags){
+        dest.writeInt(weight);
+        dest.writeInt(baseValue);
+        dest.writeString(resource);
+        dest.writeInt(quantity);
+        dest.writeInt(IPL);
+        dest.writeInt(VAR);
+        dest.writeInt(MTL);
+        dest.writeInt(MTH);
+        dest.writeInt(MTLP.ordinal());
+        dest.writeInt(MTLU.ordinal());
+        dest.writeInt(TTP.ordinal());
+        if(CR != null) {
+            dest.writeInt(CR.ordinal());
+        } else{
+            dest.writeInt(0);
+        }
+        if(ER != null) {
+            dest.writeInt(ER.ordinal());
+        }{
+            dest.writeInt(0);
+        }
+    }
+    private Commodity(Parcel in){
+        this.weight = in.readInt();
+        this.baseValue = in.readInt();
+        this.resource = in.readString();
+        this.quantity = in.readInt();
+        this.IPL = in.readInt();
+        this.VAR = in.readInt();
+        this.MTL = in.readInt();
+        this.MTH = in.readInt();
+        this.MTLP = TechLevel.values()[in.readInt()];
+        this.MTLU = TechLevel.values()[in.readInt()];
+        this.TTP = TechLevel.values()[in.readInt()];
+        this.CR = Resource.values()[in.readInt()];
+        this.ER = Resource.values()[in.readInt()];
+    }
+
+    public static final Parcelable.Creator<Commodity> CREATOR = new Parcelable.Creator<Commodity>(){
+        @Override
+        public Commodity createFromParcel(Parcel source){
+            return new Commodity(source);
+        }
+        @Override
+        public Commodity[] newArray(int size){
+            return new Commodity[size];
+        }
+    };
+
 
     public int getWeight(){return weight;}
     public int getBaseValue(){return baseValue;}

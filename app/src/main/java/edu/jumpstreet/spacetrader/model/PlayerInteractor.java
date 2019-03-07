@@ -17,7 +17,7 @@ public class PlayerInteractor {
      * Creates a new PlayerInteractor, which creates a new Player with default attributes
      */
     public PlayerInteractor() {
-        this.player = new Player("Unknown", 16, 1000, new Gnat());
+        this.player = new Player("Unknown", 16, 1000000, new Gnat());
     }
 
     /**
