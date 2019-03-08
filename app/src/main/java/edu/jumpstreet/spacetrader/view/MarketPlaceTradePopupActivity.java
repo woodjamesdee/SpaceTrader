@@ -12,7 +12,6 @@ import edu.jumpstreet.spacetrader.R;
 import edu.jumpstreet.spacetrader.entity.Commodity;
 import edu.jumpstreet.spacetrader.entity.Planet;
 import edu.jumpstreet.spacetrader.entity.Spaceship;
-import edu.jumpstreet.spacetrader.entity.System;
 import edu.jumpstreet.spacetrader.model.Model;
 
 public class MarketPlaceTradePopupActivity extends Activity implements View.OnClickListener{
@@ -91,7 +90,6 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
         activeCommodity = getIntent().getParcelableExtra("Commodity");
         resourceQuantity = activeCommodity.getQuantity();
         updateResourceViews(activeCommodity);
-        //TODO Comes from active commodity not user
         userResourceTV.setText("Users " + activeCommodity.getResource() + " " + ship.getQuantityByName(activeCommodity.getResource()));
         disableBuyButtonsByTechLevel(currentPlanet.getTechLevel().ordinal(), activeCommodity);
         cargoSpacePerItemTV.setText("Space: " + activeCommodity.getWeight());
@@ -146,9 +144,11 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
         boolean minus1isActive = ship.getQuantityByName(activeCommodity.getResource()) >=  Math.abs(quantityOfTransaction - 1)|| quantityOfTransaction >= 1;
         boolean minus10isActive = ship.getQuantityByName(activeCommodity.getResource()) >= Math.abs(quantityOfTransaction - 10) || quantityOfTransaction >= 10;
         boolean plus1isActive = resourceQuantity >= 1
-                && (quantityOfTransaction + 1) * resourceValue <= Model.getInstance().getPlayerInteractor().getPlayerBalance();
+                && (quantityOfTransaction + 1) * resourceValue <= Model.getInstance().getPlayerInteractor().getPlayerBalance()
+                || ((quantityOfTransaction + 1) * activeCommodity.getWeight()) + ship.getUsedCargoSpace() <= ship.getMaxCargoSpace() ;
         boolean plus10isActive = resourceQuantity >= 10
-                && (quantityOfTransaction + 10) * resourceValue <= Model.getInstance().getPlayerInteractor().getPlayerBalance();
+                && (quantityOfTransaction + 10) * resourceValue <= Model.getInstance().getPlayerInteractor().getPlayerBalance()
+                || ((quantityOfTransaction + 10) * activeCommodity.getWeight()) + ship.getUsedCargoSpace() <= ship.getMaxCargoSpace();
         plus1Btn.setEnabled(plus1isActive);
         plus10Btn.setEnabled(plus10isActive);
         minus1Btn.setEnabled(minus1isActive);
