@@ -12,10 +12,30 @@ public abstract class Spaceship {
     protected int hitpoints;
     protected int maxCargoSpace;
     protected int usedCargoSpace;
+
+
+
+    protected int remainingFuel;
+
+
+    protected int maxFuel;
     protected Economy economy;
 
 
+    public int getRemainingFuel() {
+        return remainingFuel;
+    }
+    public int getMaxFuel() {
+        return maxFuel;
+    }
 
+    public void setMaxFuel(int maxFuel) {
+        this.maxFuel = maxFuel;
+    }
+
+    public void setRemainingFuel(int remainingFuel) {
+        this.remainingFuel = remainingFuel;
+    }
     public String getName() {
         return name;
     }

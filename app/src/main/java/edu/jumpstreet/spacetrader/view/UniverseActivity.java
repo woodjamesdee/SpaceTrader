@@ -1,6 +1,7 @@
 package edu.jumpstreet.spacetrader.view;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -31,12 +32,16 @@ public class UniverseActivity extends AppCompatActivity {
             for (int j = 0; j < Universe.Y_BOUNDS; j++) {
                 if (Universe.solarSystemLocations[i][j] != null) {
                     Button button = new Button(this);
+                    if(Model.getInstance().getGameInteractor().getActiveSolarSystem().getX() == i && Model.getInstance().getGameInteractor().getActiveSolarSystem().getY() == j){
+                        button.setBackgroundColor(Color.GREEN);
+                    }
                     final int i2 = i;
                     final int j2 = j;
                     button.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Model.getInstance().getGameInteractor().changeActiveSolarSystem(Universe.solarSystemLocations[i2][j2]);
+                            //TODO changing the active solar system sets current planet to null
+                            //Model.getInstance().getGameInteractor().changeActiveSolarSystem(Universe.solarSystemLocations[i2][j2]);
                             Intent intent = new Intent(UniverseActivity.this, SolarSystemActivity.class);
                             UniverseActivity.this.startActivity(intent);
                         }

@@ -1,7 +1,10 @@
 package edu.jumpstreet.spacetrader.view;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +15,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import edu.jumpstreet.spacetrader.R;
+import edu.jumpstreet.spacetrader.entity.Planet;
 import edu.jumpstreet.spacetrader.entity.SolarSystem;
 import edu.jumpstreet.spacetrader.entity.Universe;
 import edu.jumpstreet.spacetrader.model.Model;
@@ -21,7 +25,7 @@ public class SolarSystemActivity extends AppCompatActivity implements View.OnCli
     Button backToUniverseButton;
     TextView solarSystemName;
     TextView solarSystemTechView;
-
+    Model model;
     @Override
     protected void onCreate(Bundle sav) {
         super.onCreate(sav);
@@ -33,6 +37,7 @@ public class SolarSystemActivity extends AppCompatActivity implements View.OnCli
         solarSystemName.setText("Solar System: " + Model.getInstance().getGameInteractor().getActiveSolarSystem().getName());
         solarSystemTechView = findViewById(R.id.SolarSystemTechLevelTV);
         solarSystemTechView.setText(Model.getInstance().getGameInteractor().getActiveSolarSystem().getTechLevel() + "");
+        model = Model.getInstance();
         createSolarSystem();
     }
 
@@ -43,14 +48,17 @@ public class SolarSystemActivity extends AppCompatActivity implements View.OnCli
             for (int j = 0; j < Universe.Y_BOUNDS; j++) {
                 if (activeSystem.getPlanetLocations()[i][j] != null) {
                     Button button = new Button(this);
-
+                    if(Model.getInstance().getGameInteractor().getActivePlanet().getX() == i && Model.getInstance().getGameInteractor().getActivePlanet().getY() == j){
+                        button.setBackgroundColor(Color.GREEN);
+                    }
                     final int i2 = i;
                     final int j2 = j;
                     final SolarSystem activeSystem2 = activeSystem;
                     button.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Model.getInstance().getGameInteractor().changeActivePlanet(activeSystem2.getPlanetLocations()[i2][j2]);
+                            //TODO commented because of issues changing planets and solar systems
+                            //Model.getInstance().getGameInteractor().changeActivePlanet(activeSystem2.getPlanetLocations()[i2][j2]);
                             Intent intent = new Intent(SolarSystemActivity.this, PlanetActivity.class);
                             SolarSystemActivity.this.startActivity(intent);
                         }

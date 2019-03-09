@@ -22,6 +22,7 @@
         <activity android:name=".view.PlanetActivity"></activity>
         <activity android:name=".view.MarketPlaceActivity"></activity>
         <activity android:name=".view.MarketPlaceTradePopupActivity"></activity>
+        <activity android:name=".view.TravelPopupActivity"></activity>
     </application>
 
 </manifest>
