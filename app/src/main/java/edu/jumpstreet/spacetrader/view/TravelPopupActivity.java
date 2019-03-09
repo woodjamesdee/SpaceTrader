@@ -1,5 +1,7 @@
 package edu.jumpstreet.spacetrader.view;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
@@ -14,7 +16,7 @@ import edu.jumpstreet.spacetrader.entity.Planet;
 import edu.jumpstreet.spacetrader.entity.Spaceship;
 import edu.jumpstreet.spacetrader.model.Model;
 
-public class TravelPopupActivity extends AppCompatActivity implements View.OnClickListener{
+public class TravelPopupActivity extends Activity implements View.OnClickListener{
     TextView planetTV;
     TextView techLevelTV;
     TextView resourceTV;
@@ -27,6 +29,8 @@ public class TravelPopupActivity extends AppCompatActivity implements View.OnCli
     Spaceship ship;
     Planet currentPlanet;
     Planet travelPlanet;
+    int travelCost;
+    int fuelCostPerUnit = 10;
     @Override
     protected void onCreate(Bundle savedInsanceState) {
         super.onCreate(savedInsanceState);
@@ -59,6 +63,8 @@ public class TravelPopupActivity extends AppCompatActivity implements View.OnCli
         usersFuelTV = findViewById(R.id.travelPopupUsersFuelTV);
         requiredFuelTV = findViewById(R.id.travelPopupFuelRequiredTV);
         travelBtn = findViewById(R.id.travelPopupTravelButton);
+        travelBtn.setOnClickListener(this);
+        travelBtn.setEnabled(true);
     }
 
     private void setTextViews(){
@@ -66,10 +72,41 @@ public class TravelPopupActivity extends AppCompatActivity implements View.OnCli
         techLevelTV.setText("Planets Tech Level: " + travelPlanet.getTechLevel());
         resourceTV.setText("Planets Main Resource: " + travelPlanet.getResource());
         usersFuelTV.setText("Users Fuel: " + ship.getRemainingFuel() + "/" + ship.getMaxFuel());
+        requiredFuelTV.setText("Required Fuel: " + calculateTravelCost());
     }
 
     @Override
     public void onClick(View view) {
+        switch(view.getId()){
+            case R.id.travelPopupTravelButton: travel();
+            finish();
+            Intent intent = new Intent(TravelPopupActivity.this, PlanetActivity.class);
+            TravelPopupActivity.this.startActivity(intent);
 
+            break;
+
+        }
+    }
+
+    public void travel(){
+        ship.setRemainingFuel(ship.getRemainingFuel() - calculateTravelCost());
+        Model.getInstance().getGameInteractor().changeActivePlanet(travelPlanet.getName());
+    }
+
+    private int calculateTravelCost(){
+        int currentX = currentPlanet.getX();
+        int currentY = currentPlanet.getY();
+        int destinationX = travelPlanet.getX();
+        int destinationY = travelPlanet.getY();
+        int xMag = Math.abs(currentX - destinationX);
+        int yMag = Math.abs(currentY - destinationY);
+        xMag *= xMag;
+        yMag *= yMag;
+        int travelDistance = (int) Math.sqrt(xMag + yMag);
+        int fuelCost = travelDistance * fuelCostPerUnit;
+        if(Model.getInstance().getPlayerInteractor().getPlayerPilotSkill() != 0) {
+            fuelCost /= Model.getInstance().getPlayerInteractor().getPlayerPilotSkill();
+        }
+        return fuelCost;
     }
 }

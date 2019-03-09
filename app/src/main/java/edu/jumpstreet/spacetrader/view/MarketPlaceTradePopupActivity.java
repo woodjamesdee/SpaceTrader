@@ -46,7 +46,7 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
         //sets values of the popup window
         DisplayMetrics dM = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dM);
-        getWindow().setLayout((int) (dM.widthPixels *.9), (int) (dM.heightPixels *.4));
+        getWindow().setLayout((int) (dM.widthPixels *.9), (int) (dM.heightPixels *.6));
         WindowManager.LayoutParams params = getWindow().getAttributes();
         params.gravity = Gravity.CENTER;
         params.x = 0;
