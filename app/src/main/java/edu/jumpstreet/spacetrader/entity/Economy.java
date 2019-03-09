@@ -3,6 +3,9 @@ package edu.jumpstreet.spacetrader.entity;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import edu.jumpstreet.spacetrader.R;
 import edu.jumpstreet.spacetrader.model.Model;
 
@@ -18,22 +21,15 @@ public class Economy implements Parcelable {
     protected Commodity Narcotics;
     protected Commodity Robots;
 
+    ArrayList<Commodity> commodities = new ArrayList<>();
+
     private System.TechLevel techLevel;
 
     @Override
     public int describeContents(){return 0;}
     @Override
     public void writeToParcel(Parcel dest, int flags){
-        dest.writeParcelable(Water, flags);
-        dest.writeParcelable(Furs, flags);
-        dest.writeParcelable(Food, flags);
-        dest.writeParcelable(Ore, flags);
-        dest.writeParcelable(Games, flags);
-        dest.writeParcelable(Firearms, flags);
-        dest.writeParcelable(Medicine, flags);
-        dest.writeParcelable(Machines, flags);
-        dest.writeParcelable(Narcotics, flags);
-        dest.writeParcelable(Robots, flags);
+        dest.writeTypedList(commodities);
         if(techLevel != null) {
             dest.writeInt(techLevel.ordinal());
         }else{
@@ -42,16 +38,17 @@ public class Economy implements Parcelable {
     }
 
     private Economy(Parcel in){
-        this.Water = in.readParcelable(Commodity.class.getClassLoader());
-        this.Furs = in.readParcelable(Commodity.class.getClassLoader());
-        this.Food = in.readParcelable(Commodity.class.getClassLoader());
-        this.Ore = in.readParcelable(Commodity.class.getClassLoader());
-        this.Games = in.readParcelable(Commodity.class.getClassLoader());
-        this.Firearms = in.readParcelable(Commodity.class.getClassLoader());
-        this.Medicine = in.readParcelable(Commodity.class.getClassLoader());
-        this.Machines = in.readParcelable(Commodity.class.getClassLoader());
-        this.Narcotics = in.readParcelable(Commodity.class.getClassLoader());
-        this.Robots = in.readParcelable(Commodity.class.getClassLoader());
+        commodities =  in.createTypedArrayList(Commodity.CREATOR);
+        Water = commodities.get(0);
+        Furs = commodities.get(1);
+        Food = commodities.get(2);
+        Ore = commodities.get(3);
+        Games = commodities.get(4);
+        Firearms = commodities.get(5);
+        Medicine = commodities.get(6);
+        Machines = commodities.get(7);
+        Narcotics = commodities.get(8);
+        Robots = commodities.get(9);
         this.techLevel = System.TechLevel.values()[in.readInt()];
     }
 
@@ -77,6 +74,17 @@ public class Economy implements Parcelable {
         Narcotics = new Commodity(1, 3500,"Narcotics", 0, -125, 150, 2000, 3000, System.TechLevel.Industrial, System.TechLevel.PreAgriculture, System.TechLevel.Industrial, Planet.Resource.WEIRDMUSHROOMS, null);
         Robots = new Commodity(75, 5000, "Robots", 0, -150, 100, 3500, 5000, System.TechLevel.PostIndustrial, System.TechLevel.EarlyIndustrial, System.TechLevel.HiTech, null, null);
         techLevel = currentTechLevel;
+        commodities.add(Water);
+        commodities.add(Furs);
+        commodities.add(Food);
+        commodities.add(Ore);
+        commodities.add(Games);
+        commodities.add(Firearms);
+        commodities.add(Medicine);
+        commodities.add(Machines);
+        commodities.add(Narcotics);
+        commodities.add(Robots);
+
     }
     public Commodity getCommodity(int index){
         switch (Commodity.CommodityResources.values()[index]){

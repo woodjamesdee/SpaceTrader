@@ -1,5 +1,7 @@
 package edu.jumpstreet.spacetrader.entity;
 
+import android.os.Parcelable;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -227,5 +229,10 @@ public class SolarSystem extends System {
                 returnString = " NOT IMPLEMENTED!";
         }
         return returnString;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 }

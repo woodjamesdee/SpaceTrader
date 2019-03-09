@@ -38,14 +38,17 @@ public class TravelPopupActivity extends AppCompatActivity implements View.OnCli
         params.x = 0;
         params.y = -20;
         setContentView(R.layout.popup_window_travel);
+        this.setFinishOnTouchOutside(true);
         initializeViews();
+        initializeReferences();
+        setTextViews();
     }
 
     private void initializeReferences(){
         model = Model.getInstance();
         ship = model.getPlayerInteractor().getPlayerShip();
         currentPlanet = model.getGameInteractor().getActivePlanet();
-
+        travelPlanet = getIntent().getParcelableExtra("Travel_Planet");
     }
 
     private void initializeViews(){
@@ -59,7 +62,10 @@ public class TravelPopupActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void setTextViews(){
-
+        planetTV.setText("Planets Name: " + travelPlanet.getName());
+        techLevelTV.setText("Planets Tech Level: " + travelPlanet.getTechLevel());
+        resourceTV.setText("Planets Main Resource: " + travelPlanet.getResource());
+        usersFuelTV.setText("Users Fuel: " + ship.getRemainingFuel() + "/" + ship.getMaxFuel());
     }
 
     @Override

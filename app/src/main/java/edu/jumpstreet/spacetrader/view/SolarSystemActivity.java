@@ -42,13 +42,14 @@ public class SolarSystemActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void createSolarSystem() {
-        SolarSystem activeSystem = Model.getInstance().getGameInteractor().getActiveSolarSystem();
+        final SolarSystem activeSystem = Model.getInstance().getGameInteractor().getActiveSolarSystem();
         TableRow.LayoutParams params = new TableRow.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f);
         for (int i = 0; i < tableLayout.getChildCount(); i++) {
             for (int j = 0; j < Universe.Y_BOUNDS; j++) {
                 if (activeSystem.getPlanetLocations()[i][j] != null) {
                     Button button = new Button(this);
-                    if(Model.getInstance().getGameInteractor().getActivePlanet().getX() == i && Model.getInstance().getGameInteractor().getActivePlanet().getY() == j){
+                    if(Model.getInstance().getGameInteractor().getActivePlanet().getX() == i &&
+                            Model.getInstance().getGameInteractor().getActivePlanet().getY() == j){
                         button.setBackgroundColor(Color.GREEN);
                     }
                     final int i2 = i;
@@ -59,8 +60,9 @@ public class SolarSystemActivity extends AppCompatActivity implements View.OnCli
                         public void onClick(View view) {
                             //TODO commented because of issues changing planets and solar systems
                             //Model.getInstance().getGameInteractor().changeActivePlanet(activeSystem2.getPlanetLocations()[i2][j2]);
-                            Intent intent = new Intent(SolarSystemActivity.this, PlanetActivity.class);
-                            SolarSystemActivity.this.startActivity(intent);
+                            Intent intent = new Intent(SolarSystemActivity.this, TravelPopupActivity.class);
+                            intent.putExtra("Travel_Planet", activeSystem2.getPlanet(activeSystem2.getPlanetLocations()[i2][j2]));
+                            SolarSystemActivity.this.startActivityForResult(intent, 1);
                         }
                     });
                     button.setLayoutParams(params);
@@ -74,6 +76,11 @@ public class SolarSystemActivity extends AppCompatActivity implements View.OnCli
                 }
             }
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent){
+        super.onActivityResult(requestCode, resultCode, intent);
     }
 
     @Override

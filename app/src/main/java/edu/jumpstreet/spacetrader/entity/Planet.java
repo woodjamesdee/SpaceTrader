@@ -24,6 +24,7 @@ public class Planet extends System implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags){
+        super.writeToParcel(dest, flags);
         if(resource != null){
             dest.writeInt(resource.ordinal());
         }else{
@@ -33,13 +34,16 @@ public class Planet extends System implements Parcelable {
     }
 
     private Planet(Parcel in){
+        super.readFromParcel(in);
         this.resource = Resource.values()[in.readInt()];
-        this.economy = in.readParcelable(Economy.class.getClassLoader());
+        this.economy = in.readParcelable(getClass().getClassLoader());
     }
 
     public static final Parcelable.Creator<Planet> CREATOR = new Parcelable.Creator<Planet>(){
         @Override
-        public Planet createFromParcel(Parcel source){return new Planet(source);}
+        public Planet createFromParcel(Parcel source){
+            return new Planet(source);
+        }
         @Override
         public Planet[] newArray(int size){return new Planet[size];}
     };
