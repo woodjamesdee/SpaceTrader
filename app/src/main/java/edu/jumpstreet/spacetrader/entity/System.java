@@ -1,9 +1,11 @@
 package edu.jumpstreet.spacetrader.entity;
 
+import android.os.Parcelable;
+
 /**
  * The System class represents a location which is located in space and has a TechLevel.
  */
-public abstract class System {
+public abstract class System{
 
     protected String name;
     protected int x, y;
@@ -33,6 +35,10 @@ public abstract class System {
                 this.techLevel = current;
             }
         }
+    }
+
+    public System(){
+
     }
 
     /**

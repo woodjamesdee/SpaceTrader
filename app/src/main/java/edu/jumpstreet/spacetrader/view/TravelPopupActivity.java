@@ -45,23 +45,21 @@ public class TravelPopupActivity extends AppCompatActivity implements View.OnCli
         model = Model.getInstance();
         ship = model.getPlayerInteractor().getPlayerShip();
         currentPlanet = model.getGameInteractor().getActivePlanet();
-        
+
     }
 
     private void initializeViews(){
         planetTV = findViewById(R.id.travelPopupPlanetTV);
-
         techLevelTV = findViewById(R.id.travelPopupTechLevelTV);
-
         resourceTV = findViewById(R.id.travelPopupResouceTV);
-
         conditionTV = findViewById(R.id.travelPopupConditionTV);
-
         usersFuelTV = findViewById(R.id.travelPopupUsersFuelTV);
-
         requiredFuelTV = findViewById(R.id.travelPopupFuelRequiredTV);
-
         travelBtn = findViewById(R.id.travelPopupTravelButton);
+    }
+
+    private void setTextViews(){
+
     }
 
     @Override

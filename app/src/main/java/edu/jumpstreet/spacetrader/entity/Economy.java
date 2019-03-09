@@ -1,8 +1,12 @@
 package edu.jumpstreet.spacetrader.entity;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import edu.jumpstreet.spacetrader.R;
 import edu.jumpstreet.spacetrader.model.Model;
 
-public class Economy {
+public class Economy implements Parcelable {
     protected Commodity Water;
     protected Commodity Furs;
     protected Commodity Food;
@@ -16,7 +20,49 @@ public class Economy {
 
     private System.TechLevel techLevel;
 
-    //
+    @Override
+    public int describeContents(){return 0;}
+    @Override
+    public void writeToParcel(Parcel dest, int flags){
+        dest.writeParcelable(Water, flags);
+        dest.writeParcelable(Furs, flags);
+        dest.writeParcelable(Food, flags);
+        dest.writeParcelable(Ore, flags);
+        dest.writeParcelable(Games, flags);
+        dest.writeParcelable(Firearms, flags);
+        dest.writeParcelable(Medicine, flags);
+        dest.writeParcelable(Machines, flags);
+        dest.writeParcelable(Narcotics, flags);
+        dest.writeParcelable(Robots, flags);
+        if(techLevel != null) {
+            dest.writeInt(techLevel.ordinal());
+        }else{
+            dest.writeInt(0);
+        }
+    }
+
+    private Economy(Parcel in){
+        this.Water = in.readParcelable(Commodity.class.getClassLoader());
+        this.Furs = in.readParcelable(Commodity.class.getClassLoader());
+        this.Food = in.readParcelable(Commodity.class.getClassLoader());
+        this.Ore = in.readParcelable(Commodity.class.getClassLoader());
+        this.Games = in.readParcelable(Commodity.class.getClassLoader());
+        this.Firearms = in.readParcelable(Commodity.class.getClassLoader());
+        this.Medicine = in.readParcelable(Commodity.class.getClassLoader());
+        this.Machines = in.readParcelable(Commodity.class.getClassLoader());
+        this.Narcotics = in.readParcelable(Commodity.class.getClassLoader());
+        this.Robots = in.readParcelable(Commodity.class.getClassLoader());
+        this.techLevel = System.TechLevel.values()[in.readInt()];
+    }
+
+    public static final Parcelable.Creator<Economy> CREATOR = new Parcelable.Creator<Economy>(){
+      @Override
+      public Economy createFromParcel(Parcel source){
+          return new Economy(source);
+        }
+      @Override
+      public Economy[] newArray(int size){return new Economy[size];}
+    };
 
 
     public Economy(System.TechLevel currentTechLevel){
