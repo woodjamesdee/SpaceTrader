@@ -49,7 +49,8 @@ public class SolarSystemActivity extends AppCompatActivity implements View.OnCli
                 if (activeSystem.getPlanetLocations()[i][j] != null) {
                     Button button = new Button(this);
                     if(Model.getInstance().getGameInteractor().getActivePlanet().getX() == i &&
-                            Model.getInstance().getGameInteractor().getActivePlanet().getY() == j){
+                            Model.getInstance().getGameInteractor().getActivePlanet().getY() == j
+                    && activeSystem.isInSolarSystem(Model.getInstance().getGameInteractor().getActivePlanet())){
                         button.setBackgroundColor(Color.GREEN);
                     }
                     final int i2 = i;

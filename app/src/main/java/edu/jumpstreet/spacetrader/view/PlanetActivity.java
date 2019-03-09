@@ -16,6 +16,7 @@ public class PlanetActivity extends AppCompatActivity implements View.OnClickLis
     Button tradeBtn;
     Button spaceshipStoreBtn;
     Button solarSystemBtn;
+    Button garageBtn;
     TextView planetName;
     TextView techLevel;
     TextView resourceType;
@@ -37,6 +38,8 @@ public class PlanetActivity extends AppCompatActivity implements View.OnClickLis
         spaceshipStoreBtn.setOnClickListener(this);
         solarSystemBtn = findViewById(R.id.OnPlanetBackToSolarSystemBtn);
         solarSystemBtn.setOnClickListener(this);
+        garageBtn = findViewById(R.id.OnPlanetGarageBtn);
+        garageBtn.setOnClickListener(this);
     }
 
     @Override
@@ -50,6 +53,9 @@ public class PlanetActivity extends AppCompatActivity implements View.OnClickLis
                 Intent SolarSystemIntent = new Intent(this, SolarSystemActivity.class);
                 PlanetActivity.this.startActivity(SolarSystemIntent);
                 break;
+            case R.id.OnPlanetGarageBtn:
+                Intent GargeIntent = new Intent(this, GarageActivity.class);
+                PlanetActivity.this.startActivity(GargeIntent);
         }
     }
 }

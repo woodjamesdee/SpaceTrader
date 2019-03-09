@@ -29,6 +29,12 @@
             android:text="Resource: " />
 
         <Button
+            android:id="@+id/OnPlanetGarageBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Go To Garage" />
+
+        <Button
             android:id="@+id/OnPlanetSpaceshipStoreBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

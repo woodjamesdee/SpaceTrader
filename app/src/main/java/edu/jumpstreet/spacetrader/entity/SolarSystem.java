@@ -173,6 +173,10 @@ public class SolarSystem extends System {
         planets = new HashMap<>();
     }
 
+    public boolean isInSolarSystem(Planet planet){
+        return planets.containsValue(planet);
+    }
+
     /**
      * Gets the length of the NAMES list.
      * @return  the length of NAMES

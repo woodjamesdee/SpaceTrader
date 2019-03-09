@@ -23,6 +23,10 @@
         <activity android:name=".view.MarketPlaceActivity"></activity>
         <activity android:name=".view.MarketPlaceTradePopupActivity"></activity>
         <activity android:name=".view.TravelPopupActivity"></activity>
+        <activity android:name=".view.GarageActivity"></activity>
+        <activity android:name=".view.GarageFuelActivity"></activity>
+        <activity android:name=".view.GarageSpaceshipBuyActivity"></activity>
+        <activity android:name=".view.GarageSpaceshipRepairActivity"></activity>
     </application>
 
 </manifest>
