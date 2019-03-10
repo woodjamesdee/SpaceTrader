@@ -79,7 +79,7 @@ public class TravelPopupActivity extends Activity implements View.OnClickListene
     }
 
     private void enableTravelButton(System system){
-            if (calculateTravelCost(currentEntity) > ship.getRemainingFuel()) {
+            if (calculateTravelCost(system) > ship.getRemainingFuel()) {
                 travelBtn.setEnabled(false);
             } else {
                 travelBtn.setEnabled(true);
@@ -111,6 +111,7 @@ public class TravelPopupActivity extends Activity implements View.OnClickListene
                 Intent intent = new Intent(TravelPopupActivity.this, PlanetActivity.class);
                 TravelPopupActivity.this.startActivity(intent);
             }
+
             break;
         }
     }

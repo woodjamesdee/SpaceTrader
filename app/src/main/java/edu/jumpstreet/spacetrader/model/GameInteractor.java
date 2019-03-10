@@ -26,7 +26,6 @@ public class GameInteractor {
             return;
         }
         game.setActiveSolarSystem(Model.getInstance().getUniverseInteractor().getSolarSystemByName(name));
-        //TODO changing solar systems should not change the active planet
         game.setActivePlanet(Model.getInstance().getGameInteractor().getActiveSolarSystem().getPlanet(Model.getInstance().getGameInteractor().getActiveSolarSystem().getName() + " Prime"));
     }
 
