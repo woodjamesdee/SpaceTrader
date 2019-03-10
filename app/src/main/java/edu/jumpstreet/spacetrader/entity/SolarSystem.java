@@ -1,5 +1,6 @@
 package edu.jumpstreet.spacetrader.entity;
 
+import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.util.HashMap;
@@ -11,7 +12,7 @@ import java.util.Set;
  * The SolarSystem entity represents a physical solar system with its attributes
  * as well as a container for Planet objects contained within the system.
  */
-public class SolarSystem extends System {
+public class SolarSystem extends System implements Parcelable{
 
     private static final String[] NAMES = new String[] {
             "Acamar",
@@ -173,6 +174,27 @@ public class SolarSystem extends System {
         planets = new HashMap<>();
     }
 
+    protected SolarSystem(Parcel in) {
+        super.readFromParcel(in);
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        super.writeToParcel(dest, flags);
+    }
+
+    public static final Creator<SolarSystem> CREATOR = new Creator<SolarSystem>() {
+        @Override
+        public SolarSystem createFromParcel(Parcel in) {
+            return new SolarSystem(in);
+        }
+
+        @Override
+        public SolarSystem[] newArray(int size) {
+            return new SolarSystem[size];
+        }
+    };
+
     public boolean isInSolarSystem(Planet planet){
         return planets.containsValue(planet);
     }
@@ -233,6 +255,10 @@ public class SolarSystem extends System {
                 returnString = " NOT IMPLEMENTED!";
         }
         return returnString;
+    }
+    @Override
+    public String getName(){
+        return super.name;
     }
 
     @Override

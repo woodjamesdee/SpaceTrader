@@ -15,6 +15,10 @@ import edu.jumpstreet.spacetrader.entity.Universe;
  */
 public class UniverseInteractor {
 
+    public Universe getUniverse() {
+        return universe;
+    }
+
     private Universe universe;
 
     public UniverseInteractor(Random random) {
@@ -28,7 +32,7 @@ public class UniverseInteractor {
     }
 
     public SolarSystem getSolarSystemByName(String name) {
-        return universe.getSolarSystems().get(name);
+        return universe.getSolarSystemWithName(name);
     }
 
     private void generateSolarSystems(Random random, int amount) {

@@ -40,9 +40,9 @@ public class UniverseActivity extends AppCompatActivity {
                     button.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            //TODO changing the active solar system sets current planet to null
-                            //Model.getInstance().getGameInteractor().changeActiveSolarSystem(Universe.solarSystemLocations[i2][j2]);
-                            Intent intent = new Intent(UniverseActivity.this, SolarSystemActivity.class);
+                            Intent intent = new Intent(UniverseActivity.this, TravelPopupActivity.class);
+                            intent.putExtra("Solarsystem_Name", Universe.solarSystemLocations[i2][j2]);
+                            intent.putExtra("Is_Solarsystem_Travel", true);
                             UniverseActivity.this.startActivity(intent);
                         }
                     });

@@ -31,6 +31,10 @@ public class Universe {
         solarSystemLocations[system.getX()][system.getY()] = null;
     }
 
+    public SolarSystem getSolarSystemWithName(String name){
+        return solarSystems.get(name);
+    }
+
     public Map<String, SolarSystem> getSolarSystems() {
         return solarSystems;
     }

@@ -12,8 +12,10 @@ import android.widget.TextView;
 
 import edu.jumpstreet.spacetrader.R;
 import edu.jumpstreet.spacetrader.entity.Planet;
+import edu.jumpstreet.spacetrader.entity.SolarSystem;
 import edu.jumpstreet.spacetrader.entity.Spaceship;
 import edu.jumpstreet.spacetrader.model.Model;
+import edu.jumpstreet.spacetrader.entity.System;
 
 public class TravelPopupActivity extends Activity implements View.OnClickListener{
     TextView planetTV;
@@ -28,8 +30,11 @@ public class TravelPopupActivity extends Activity implements View.OnClickListene
     Spaceship ship;
     Planet currentPlanet;
     Planet travelPlanet;
+    SolarSystem travelSS;
     int travelCost;
     int fuelCostPerUnit = 10;
+    boolean isSolarsystemTravel;
+    System currentEntity;
     @Override
     protected void onCreate(Bundle savedInsanceState) {
         super.onCreate(savedInsanceState);
@@ -42,16 +47,24 @@ public class TravelPopupActivity extends Activity implements View.OnClickListene
         params.y = -20;
         setContentView(R.layout.popup_window_travel);
         this.setFinishOnTouchOutside(true);
+        isSolarsystemTravel = getIntent().getBooleanExtra("Is_Solarsystem_Travel", true);
         initializeViews();
-        initializeReferences();
-        setTextViews();
+        initializeReferences(isSolarsystemTravel);
+        setTextViews(isSolarsystemTravel, currentEntity);
+        enableTravelButton(currentEntity);
     }
 
-    private void initializeReferences(){
+    private void initializeReferences(boolean isSolarsystemTravel){
         model = Model.getInstance();
         ship = model.getPlayerInteractor().getPlayerShip();
         currentPlanet = model.getGameInteractor().getActivePlanet();
-        travelPlanet = getIntent().getParcelableExtra("Travel_Planet");
+        if(!isSolarsystemTravel) {
+            travelPlanet = getIntent().getParcelableExtra("Travel_Planet");
+            currentEntity = travelPlanet;
+        }else {
+            travelSS = Model.getInstance().getUniverseInteractor().getUniverse().getSolarSystemWithName(getIntent().getStringExtra("Solarsystem_Name"));
+            currentEntity = travelSS;
+        }
     }
 
     private void initializeViews(){
@@ -63,42 +76,66 @@ public class TravelPopupActivity extends Activity implements View.OnClickListene
         requiredFuelTV = findViewById(R.id.travelPopupFuelRequiredTV);
         travelBtn = findViewById(R.id.travelPopupTravelButton);
         travelBtn.setOnClickListener(this);
-        travelBtn.setEnabled(true);
     }
 
-    private void setTextViews(){
-        planetTV.setText("Planets Name: " + travelPlanet.getName());
-        techLevelTV.setText("Planets Tech Level: " + travelPlanet.getTechLevel());
-        resourceTV.setText("Planets Main Resource: " + travelPlanet.getResource());
-        usersFuelTV.setText("Users Fuel: " + ship.getRemainingFuel() + "/" + ship.getMaxFuel());
-        requiredFuelTV.setText("Required Fuel: " + calculateTravelCost());
+    private void enableTravelButton(System system){
+            if (calculateTravelCost(currentEntity) > ship.getRemainingFuel()) {
+                travelBtn.setEnabled(false);
+            } else {
+                travelBtn.setEnabled(true);
+            }
+    }
+
+    private void setTextViews(boolean isSolarsystemTravel, System system){
+        if(!isSolarsystemTravel) {
+            //TODO figure this out
+           // resourceTV.setText("Planets Main Resource: " + system.getResource());
+        }
+            planetTV.setText("Planets Name: " + system.getName());
+            techLevelTV.setText("Planets Tech Level: " + system.getTechLevel());
+            requiredFuelTV.setText("Required Fuel: " + calculateTravelCost(currentEntity));
+            usersFuelTV.setText("Users Fuel: " + ship.getRemainingFuel() + "/" + ship.getMaxFuel());
     }
 
     @Override
     public void onClick(View view) {
         switch(view.getId()){
-            case R.id.travelPopupTravelButton: travel();
+            case R.id.travelPopupTravelButton: travel(currentEntity);
             finish();
-            Intent intent = new Intent(TravelPopupActivity.this, PlanetActivity.class);
-            TravelPopupActivity.this.startActivity(intent);
-
+            if(isSolarsystemTravel){
+                Model.getInstance().getGameInteractor().changeActiveSolarSystem(currentEntity.getName());
+                Intent intent = new Intent(TravelPopupActivity.this, SolarSystemActivity.class);
+                TravelPopupActivity.this.startActivity(intent);
+            }else{
+                Model.getInstance().getGameInteractor().changeActivePlanet(currentEntity.getName());
+                Intent intent = new Intent(TravelPopupActivity.this, PlanetActivity.class);
+                TravelPopupActivity.this.startActivity(intent);
+            }
             break;
-
         }
     }
 
-    public void travel(){
-        ship.setRemainingFuel(ship.getRemainingFuel() - calculateTravelCost());
-        Model.getInstance().getGameInteractor().changeActivePlanet(travelPlanet.getName());
+    public void travel(System system){
+            ship.setRemainingFuel(ship.getRemainingFuel() - calculateTravelCost(system));
+            Model.getInstance().getGameInteractor().changeActivePlanet(system.getName());
     }
 
-    private int calculateTravelCost(){
-        int currentX = currentPlanet.getX();
-        int currentY = currentPlanet.getY();
-        int destinationX = travelPlanet.getX();
-        int destinationY = travelPlanet.getY();
-        int xMag = Math.abs(currentX - destinationX);
-        int yMag = Math.abs(currentY - destinationY);
+    //TODO switch to model
+    private int calculateTravelCost(System system){
+        int currentX;
+        int currentY;
+        if(!isSolarsystemTravel) {
+            currentX = currentPlanet.getX();
+            currentY = currentPlanet.getY();
+        }else{
+            currentX = Model.getInstance().getGameInteractor().getActiveSolarSystem().getX();
+            currentY = Model.getInstance().getGameInteractor().getActiveSolarSystem().getY();
+        }
+        int travelX = system.getX();
+        int travelY = system.getY();
+
+        int xMag = Math.abs(currentX - travelX);
+        int yMag = Math.abs(currentY - travelY);
         xMag *= xMag;
         yMag *= yMag;
         int travelDistance = (int) Math.sqrt(xMag + yMag);
@@ -106,6 +143,6 @@ public class TravelPopupActivity extends Activity implements View.OnClickListene
         if(Model.getInstance().getPlayerInteractor().getPlayerPilotSkill() != 0) {
             fuelCost /= Model.getInstance().getPlayerInteractor().getPlayerPilotSkill();
         }
-        return fuelCost;
+        return isSolarsystemTravel?fuelCost * 10:fuelCost;
     }
 }
