@@ -59,10 +59,10 @@ public class TravelPopupActivity extends Activity implements View.OnClickListene
         ship = model.getPlayerInteractor().getPlayerShip();
         currentPlanet = model.getGameInteractor().getActivePlanet();
         if(!isSolarsystemTravel) {
-            travelPlanet = getIntent().getParcelableExtra("Travel_Planet");
+            travelPlanet = model.getTravelInteractor().getTravelPlanet();
             currentEntity = travelPlanet;
         }else {
-            travelSS = Model.getInstance().getUniverseInteractor().getUniverse().getSolarSystemWithName(getIntent().getStringExtra("Solarsystem_Name"));
+            travelSS = model.getTravelInteractor().getTravelSS();
             currentEntity = travelSS;
         }
     }

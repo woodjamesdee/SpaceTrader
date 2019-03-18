@@ -42,7 +42,8 @@ public class UniverseActivity extends AppCompatActivity {
                         public void onClick(View view) {
                             if(Model.getInstance().getGameInteractor().getActiveSolarSystem() != Model.getInstance().getUniverseInteractor().getSolarSystemByName(Universe.solarSystemLocations[i2][j2])) {
                                 Intent intent = new Intent(UniverseActivity.this, TravelPopupActivity.class);
-                                intent.putExtra("Solarsystem_Name", Universe.solarSystemLocations[i2][j2]);
+                                Model.getInstance().getTravelInteractor().ChangeTravelSolarSystem(Model.getInstance().getUniverseInteractor().getUniverse().getSolarSystemWithName(
+                                        Universe.solarSystemLocations[i2][j2]));
                                 intent.putExtra("Is_Solarsystem_Travel", true);
                                 UniverseActivity.this.startActivityForResult(intent, 1);
                             }else{

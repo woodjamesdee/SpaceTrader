@@ -6,7 +6,7 @@ import android.os.Parcelable;
 /**
  * The System class represents a location which is located in space and has a TechLevel.
  */
-public abstract class System implements Parcelable{
+public abstract class System {
 
     protected String name;
     protected int x, y;
@@ -36,24 +36,6 @@ public abstract class System implements Parcelable{
                 this.techLevel = current;
             }
         }
-    }
-
-    public void writeToParcel(Parcel out, int flags){
-        out.writeString(name);
-        out.writeInt(x);
-        out.writeInt(y);
-        if(techLevel != null) {
-            out.writeInt(techLevel.ordinal());
-        }else{
-            out.writeInt(0);
-        }
-    }
-
-    public void readFromParcel(Parcel in){
-        name = in.readString();
-        x = in.readInt();
-        y = in.readInt();
-        techLevel = TechLevel.values()[in.readInt()];
     }
 
     public System(){

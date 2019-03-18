@@ -12,6 +12,7 @@ public class Model {
     private PlayerInteractor playerInteractor;
     private UniverseInteractor universeInteractor;
     private GameInteractor gameInteractor;
+    private TravelInteractor travelInteractor;
     private Random random;
 
     private static Model instance = new Model();
@@ -23,6 +24,7 @@ public class Model {
         random = new Random();
         universeInteractor = new UniverseInteractor(random);
         gameInteractor = new GameInteractor(universeInteractor);
+        travelInteractor = new TravelInteractor();
     }
 
     public PlayerInteractor getPlayerInteractor() {
@@ -32,6 +34,8 @@ public class Model {
     public UniverseInteractor getUniverseInteractor() { return universeInteractor; }
 
     public GameInteractor getGameInteractor() { return gameInteractor; }
+
+    public TravelInteractor getTravelInteractor(){return travelInteractor;}
 
     public Random getRandom() { return random; } // TODO: This is really bad, need to change this, only used to make the M7 demo work
 
