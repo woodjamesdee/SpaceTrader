@@ -14,25 +14,19 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/garageFuelPopupUsersFuelTV"
+                android:id="@+id/OnGarageFuelUsersFuelTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Users Fuel:" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/tradePopupConfirmationBtn"
+            <TextView
+                android:id="@+id/OnGarageFuelUsersCredits"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="5"
-                android:text="Confrim Transaction" />
+                android:layout_weight="1"
+                android:text="Credits:" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -40,21 +34,20 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="2" />
-
             <TextView
+                android:id="@+id/OnGarageFuelToBuyTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Total" />
 
-            <Space
+            <TextView
+                android:id="@+id/OnGarageFuelCostTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:text="Cost:" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -64,16 +57,18 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/OnGarageClearTransaction"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="-10" />
+                android:layout_weight="4"
+                android:text="Clear" />
 
             <Button
+                android:id="@+id/OnGarageMinus10btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="-1" />
+                android:layout_weight="4"
+                android:text="-10" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -82,16 +77,31 @@
                 android:text="Total" />
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="+1" />
-
-            <Button
+                android:id="@+id/OnGarageFuelPlus10Btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="+10" />
+
+            <Button
+                android:id="@+id/OnGarageFuelBuyMaxBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Buy Max" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/OnGarageFuelConfirmationBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:text="Confrim Transaction" />
         </LinearLayout>
     </LinearLayout>
 

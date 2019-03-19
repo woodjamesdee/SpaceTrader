@@ -41,6 +41,8 @@ public class PlayerInteractor {
         player.setName(name);
     }
 
+    public Player getPlayer(){return player;}
+
     /**
      * Gets the currently unallocated skillpoints for this stored Player.
      * @return  the remaining (unallocated) skillpoints

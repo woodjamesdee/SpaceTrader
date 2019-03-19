@@ -106,10 +106,12 @@ public class TravelPopupActivity extends Activity implements View.OnClickListene
                 Model.getInstance().getGameInteractor().changeActiveSolarSystem(currentEntity.getName());
                 Intent intent = new Intent(TravelPopupActivity.this, SolarSystemActivity.class);
                 TravelPopupActivity.this.startActivity(intent);
+                model.getTravelInteractor().ChangeTravelSolarSystem(null);
             }else{
                 Model.getInstance().getGameInteractor().changeActivePlanet(currentEntity.getName());
                 Intent intent = new Intent(TravelPopupActivity.this, PlanetActivity.class);
                 TravelPopupActivity.this.startActivity(intent);
+                model.getTravelInteractor().ChangeTravelPlanet(null);
             }
 
             break;
