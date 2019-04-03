@@ -1,6 +1,8 @@
 package edu.jumpstreet.spacetrader.view;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +13,9 @@ import android.widget.Space;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
+import java.io.IOException;
+
+import edu.jumpstreet.spacetrader.MainActivity;
 import edu.jumpstreet.spacetrader.R;
 import edu.jumpstreet.spacetrader.entity.SolarSystem;
 import edu.jumpstreet.spacetrader.entity.Universe;
@@ -19,11 +24,27 @@ import edu.jumpstreet.spacetrader.model.Model;
 public class UniverseActivity extends AppCompatActivity {
 
     TableLayout tableLayout;
+    Button saveButton;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_universe);
         tableLayout = findViewById(R.id.UniverseTableLayout);
+        saveButton = findViewById(R.id.saveButton);
         createUniverse();
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences sharedPreferences = getSharedPreferences(MainActivity.MyPREFERENCES, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                try {
+                    editor.putString(MainActivity.key, Model.saveGameToString());
+                    editor.commit();
+                } catch (IOException ioe) {
+                    System.err.println("Error while saving game!");
+                    ioe.printStackTrace();
+                }
+            }
+        });
     }
 
     private void createUniverse() {
@@ -42,8 +63,10 @@ public class UniverseActivity extends AppCompatActivity {
                         public void onClick(View view) {
                             if(Model.getInstance().getGameInteractor().getActiveSolarSystem() != Model.getInstance().getUniverseInteractor().getSolarSystemByName(Universe.solarSystemLocations[i2][j2])) {
                                 Intent intent = new Intent(UniverseActivity.this, TravelPopupActivity.class);
-                                intent.putExtra("Solarsystem_Name", Universe.solarSystemLocations[i2][j2]);
-                                intent.putExtra("Is_Solarsystem_Travel", true);
+                                Model.getInstance().getGameInteractor().setNextSolarSystem(Model.getInstance().getUniverseInteractor().getSolarSystemByName(Universe.solarSystemLocations[i2][j2]));
+                                //intent.putExtra("Solarsystem_Name", Universe.solarSystemLocations[i2][j2]);
+                                Model.getInstance().getGameInteractor().setIsSolarSystemTravel(true);
+                                //intent.putExtra("Is_Solarsystem_Travel", true);
                                 UniverseActivity.this.startActivityForResult(intent, 1);
                             }else{
                                 Intent intent = new Intent(UniverseActivity.this, SolarSystemActivity.class);

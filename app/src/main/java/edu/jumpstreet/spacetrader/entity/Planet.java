@@ -3,11 +3,12 @@ package edu.jumpstreet.spacetrader.entity;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
 import java.util.Random;
 
 import edu.jumpstreet.spacetrader.model.Model;
 
-public class Planet extends System implements Parcelable {
+public class Planet extends System implements Serializable {
 
     private Resource resource;
     private Economy economy;
@@ -18,36 +19,6 @@ public class Planet extends System implements Parcelable {
         RICHFAUNA, LIFELESS, WEIRDMUSHROOMS, LOTSOFHERBS,
         ARTISTIC, WARLIKE
     }
-
-    @Override
-    public int describeContents(){return 0;}
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags){
-        super.writeToParcel(dest, flags);
-        if(resource != null){
-            dest.writeInt(resource.ordinal());
-        }else{
-            dest.writeInt(0);
-        }
-        dest.writeParcelable(economy, flags);
-    }
-
-    private Planet(Parcel in){
-        super.readFromParcel(in);
-        this.resource = Resource.values()[in.readInt()];
-        this.economy = in.readParcelable(getClass().getClassLoader());
-    }
-
-    public static final Parcelable.Creator<Planet> CREATOR = new Parcelable.Creator<Planet>(){
-        @Override
-        public Planet createFromParcel(Parcel source){
-            return new Planet(source);
-        }
-        @Override
-        public Planet[] newArray(int size){return new Planet[size];}
-    };
-
 
     protected Planet(String name, int x, int y, int techLevelIndex, int resourceIndex) {
         super(x, y, techLevelIndex);

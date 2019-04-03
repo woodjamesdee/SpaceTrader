@@ -2,10 +2,12 @@ package edu.jumpstreet.spacetrader.entity;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
+
 import edu.jumpstreet.spacetrader.entity.System.TechLevel;
 import edu.jumpstreet.spacetrader.entity.Planet.Resource;
 
-public class Commodity implements Parcelable {
+public class Commodity implements Parcelable, Serializable {
     int weight;
     int baseValue;
     String resource;

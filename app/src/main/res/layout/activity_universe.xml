@@ -83,10 +83,10 @@
         </TableLayout>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/saveButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="YOLO TO THE SUN" />
+            android:text="Save Game" />
 
         <Button
             android:id="@+id/repairShipBtn2"

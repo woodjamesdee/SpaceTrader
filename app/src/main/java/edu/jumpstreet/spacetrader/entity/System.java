@@ -3,10 +3,12 @@ package edu.jumpstreet.spacetrader.entity;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
+
 /**
  * The System class represents a location which is located in space and has a TechLevel.
  */
-public abstract class System implements Parcelable{
+public abstract class System implements Serializable {
 
     protected String name;
     protected int x, y;

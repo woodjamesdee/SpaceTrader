@@ -2,6 +2,7 @@ package edu.jumpstreet.spacetrader.model;
 
 import android.util.Log;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 import java.util.Random;
@@ -13,18 +14,20 @@ import edu.jumpstreet.spacetrader.entity.Universe;
 /**
  * Handles the usage of the Universe and all of its components.
  */
-public class UniverseInteractor {
+public class UniverseInteractor implements Serializable {
 
     public Universe getUniverse() {
         return universe;
     }
 
     private Universe universe;
+    public boolean isSaved;
 
     public UniverseInteractor(Random random) {
         universe = new Universe();
         generateSolarSystems(random, random.nextInt(Universe.MAX_SYSTEMS - Universe.MIN_SYSTEMS) + Universe.MIN_SYSTEMS);
         generatePlanets(random);
+        isSaved = false;
     }
 
     public Collection<SolarSystem> getSolarSystems() {

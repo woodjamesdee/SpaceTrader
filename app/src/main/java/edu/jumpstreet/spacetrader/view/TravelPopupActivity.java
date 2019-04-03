@@ -38,6 +38,7 @@ public class TravelPopupActivity extends Activity implements View.OnClickListene
     @Override
     protected void onCreate(Bundle savedInsanceState) {
         super.onCreate(savedInsanceState);
+        model = Model.getInstance();
         DisplayMetrics dM = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dM);
         getWindow().setLayout((int) (dM.widthPixels *.9), (int) (dM.heightPixels *.4));
@@ -47,7 +48,8 @@ public class TravelPopupActivity extends Activity implements View.OnClickListene
         params.y = -20;
         setContentView(R.layout.popup_window_travel);
         this.setFinishOnTouchOutside(true);
-        isSolarsystemTravel = getIntent().getBooleanExtra("Is_Solarsystem_Travel", true);
+        isSolarsystemTravel = model.getGameInteractor().getIsNextSolarSystemTravel();
+        //isSolarsystemTravel = getIntent().getBooleanExtra("Is_Solarsystem_Travel", true);
         initializeViews();
         initializeReferences(isSolarsystemTravel);
         setTextViews(isSolarsystemTravel, currentEntity);
@@ -55,14 +57,15 @@ public class TravelPopupActivity extends Activity implements View.OnClickListene
     }
 
     private void initializeReferences(boolean isSolarsystemTravel){
-        model = Model.getInstance();
         ship = model.getPlayerInteractor().getPlayerShip();
         currentPlanet = model.getGameInteractor().getActivePlanet();
         if(!isSolarsystemTravel) {
-            travelPlanet = getIntent().getParcelableExtra("Travel_Planet");
+            travelPlanet = model.getGameInteractor().getNextPlanet();
+            //travelPlanet = getIntent().getParcelableExtra("Travel_Planet");
             currentEntity = travelPlanet;
         }else {
-            travelSS = Model.getInstance().getUniverseInteractor().getUniverse().getSolarSystemWithName(getIntent().getStringExtra("Solarsystem_Name"));
+            //travelSS = Model.getInstance().getUniverseInteractor().getUniverse().getSolarSystemWithName(getIntent().getStringExtra("Solarsystem_Name"));
+            travelSS = Model.getInstance().getGameInteractor().getNextSolarSystem();
             currentEntity = travelSS;
         }
     }

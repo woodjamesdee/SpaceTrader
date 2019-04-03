@@ -61,8 +61,10 @@ public class SolarSystemActivity extends AppCompatActivity implements View.OnCli
                         public void onClick(View view) {
                             if(Model.getInstance().getGameInteractor().getActivePlanet() != Model.getInstance().getGameInteractor().getActiveSolarSystem().getPlanet(activeSystem2.getPlanetLocations()[i2][j2])) {
                                 Intent intent = new Intent(SolarSystemActivity.this, TravelPopupActivity.class);
-                                intent.putExtra("Travel_Planet", activeSystem2.getPlanet(activeSystem2.getPlanetLocations()[i2][j2]));
-                                intent.putExtra("Is_Solarsystem_Travel", false);
+                                model.getGameInteractor().setNextPlanet(activeSystem2.getPlanet(activeSystem2.getPlanetLocations()[i2][j2]));
+                                //intent.putExtra("Travel_Planet", activeSystem2.getPlanet(activeSystem2.getPlanetLocations()[i2][j2]));
+                                model.getGameInteractor().setIsSolarSystemTravel(false);
+                                //intent.putExtra("Is_Solarsystem_Travel", false);
                                 SolarSystemActivity.this.startActivityForResult(intent, 1);
                             }else{
                                 Intent intent = new Intent(SolarSystemActivity.this, PlanetActivity.class);

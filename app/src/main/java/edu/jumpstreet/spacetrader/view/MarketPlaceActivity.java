@@ -188,7 +188,7 @@ public class MarketPlaceActivity extends AppCompatActivity implements View.OnCli
                 break;
                 default:comm = currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Water.ordinal());
         }
-        intent.putExtra("Commodity", comm);
+        intent.putExtra("Commodity", (Parcelable) comm);
         MarketPlaceActivity.this.startActivityForResult(intent, 1);
     }
 
@@ -205,7 +205,7 @@ public class MarketPlaceActivity extends AppCompatActivity implements View.OnCli
 
 
     private Intent loadIntent(Intent intent, Commodity comm){
-        intent.putExtra("Commodity", comm);
+        intent.putExtra("Commodity", (Parcelable) comm);
         return intent;
     }
 }
