@@ -1,21 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:background="@drawable/spaceBackground"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteY="8dp">
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:text="Character Creation" />
+            android:text="Character Creation"
+            android:textAlignment="center"
+            android:textSize="60px"
+            android:padding="10dp"
+            android:textStyle="bold"
+            android:textColor="#66ccff"
+            />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -28,7 +38,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Character Name: "
-                tools:text="Character Name: " />
+                tools:text="Character Name: "
+                android:textColor="#66ccff"
+                android:textStyle="bold"
+                android:layout_marginLeft="@dimen/default_gap"/>
 
             <EditText
                 android:id="@+id/nameEditText"
@@ -37,7 +50,10 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Name" />
+                android:text="Name"
+                android:textColor="#66ccff"
+                android:textStyle="italic"
+                />
 
         </LinearLayout>
 
@@ -46,7 +62,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Skill Points: " />
+            android:text="Skill Points: "
+            android:textColor="#66ccff"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -66,7 +83,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Pilot Skill:" />
+                android:text="Pilot Skill:"
+                android:textColor="#66ccff"/>
 
             <Button
                 android:id="@+id/pilotPlusButton"
@@ -95,14 +113,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Fighter Skill:" />
+                android:text="Fighter Skill:"
+                android:textColor="#66ccff"/>
 
             <Button
                 android:id="@+id/fighterPlusButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="+" />
+                android:text="+"
+                />
 
         </LinearLayout>
 
@@ -124,7 +144,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Trader Skill:" />
+                android:text="Trader Skill:"
+                android:textColor="#66ccff"/>
 
             <Button
                 android:id="@+id/traderPlusButton"
@@ -153,7 +174,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Engineer Skill:" />
+                android:text="Engineer Skill:"
+                android:textColor="#66ccff"/>
 
             <Button
                 android:id="@+id/engineerPlusButton"
@@ -174,13 +196,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Difficulty:" />
+                android:text="Difficulty:"
+                android:textColor="#66ccff"/>
 
             <Spinner
                 android:id="@+id/difficultySpinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                />
 
         </LinearLayout>
 
