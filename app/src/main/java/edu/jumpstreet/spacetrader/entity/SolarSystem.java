@@ -1,8 +1,6 @@
 package edu.jumpstreet.spacetrader.entity;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -12,7 +10,7 @@ import java.util.Set;
  * The SolarSystem entity represents a physical solar system with its attributes
  * as well as a container for Planet objects contained within the system.
  */
-public class SolarSystem extends System {
+public class SolarSystem extends System implements Serializable {
 
     private static final String[] NAMES = new String[] {
             "Acamar",
@@ -174,7 +172,6 @@ public class SolarSystem extends System {
         planets = new HashMap<>();
     }
 
-
     public boolean isInSolarSystem(Planet planet){
         return planets.containsValue(planet);
     }
@@ -231,14 +228,41 @@ public class SolarSystem extends System {
             case 6:
                 returnString = " VII";
                 break;
+            case 7:
+                returnString = " VIII";
+                break;
+            case 8:
+                returnString = " IX";
+                break;
+            case 9:
+                returnString = " X";
+                break;
+            case 10:
+                returnString = " XI";
+                break;
+            case 11:
+                returnString = " XII";
+                break;
+            case 12:
+                returnString = " XIII";
+                break;
+            case 13:
+                returnString = " XIV";
+                break;
+            case 14:
+                returnString = " XV";
+                break;
+            case 15:
+                returnString = " XVI";
+                break;
             default:
                 returnString = " NOT IMPLEMENTED!";
         }
         return returnString;
     }
+
     @Override
     public String getName(){
         return super.name;
     }
-
 }

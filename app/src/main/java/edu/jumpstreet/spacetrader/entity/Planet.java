@@ -3,11 +3,12 @@ package edu.jumpstreet.spacetrader.entity;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
 import java.util.Random;
 
 import edu.jumpstreet.spacetrader.model.Model;
 
-public class Planet extends System  {
+public class Planet extends System implements Serializable {
 
     private Resource resource;
     private Economy economy;
@@ -18,8 +19,6 @@ public class Planet extends System  {
         RICHFAUNA, LIFELESS, WEIRDMUSHROOMS, LOTSOFHERBS,
         ARTISTIC, WARLIKE
     }
-
-
 
     protected Planet(String name, int x, int y, int techLevelIndex, int resourceIndex) {
         super(x, y, techLevelIndex);

@@ -1,9 +1,11 @@
 package edu.jumpstreet.spacetrader.entity;
 
+import java.io.Serializable;
+
 /**
  * The Gnat is the starter Spaceship, and is the most simple.
  */
-public class Gnat extends Spaceship {
+public class Gnat extends Spaceship implements Serializable {
 
     public Gnat() {
         super.name = "Gnat";

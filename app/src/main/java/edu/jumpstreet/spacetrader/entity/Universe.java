@@ -1,12 +1,13 @@
 package edu.jumpstreet.spacetrader.entity;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * The Universe entity models a collection of SolarSystems.
  */
-public class Universe {
+public class Universe implements Serializable {
 
     public static final int X_BOUNDS = 10;
     public static final int Y_BOUNDS = 10;
@@ -16,6 +17,13 @@ public class Universe {
     public static String[][] solarSystemLocations = new String[10][10];
 
     Map<String, SolarSystem> solarSystems;
+
+    public static void updateOnLoad(Universe toUpdate) {
+        solarSystemLocations = new String[10][10];
+        for (SolarSystem current : toUpdate.solarSystems.values()) {
+            solarSystemLocations[current.getX()][current.getY()] = current.getName();
+        }
+    }
 
     public Universe() {
         solarSystems = new HashMap<>();

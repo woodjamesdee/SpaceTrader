@@ -1,11 +1,13 @@
 package edu.jumpstreet.spacetrader.entity;
 
+import java.io.Serializable;
+
 import edu.jumpstreet.spacetrader.model.Model;
 
 /**
  * This class is the basis for all Spaceships in Space Trader.
  */
-public abstract class Spaceship {
+public abstract class Spaceship implements Serializable {
 
     protected String name;
     protected String description;

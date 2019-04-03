@@ -1,5 +1,7 @@
 package edu.jumpstreet.spacetrader.model;
 
+import java.io.Serializable;
+
 import edu.jumpstreet.spacetrader.entity.Gnat;
 import edu.jumpstreet.spacetrader.entity.Player;
 import edu.jumpstreet.spacetrader.entity.Spaceship;
@@ -9,7 +11,7 @@ import edu.jumpstreet.spacetrader.entity.Spaceship;
  *
  * Interfaces between the Model and the ViewModel
  */
-public class PlayerInteractor {
+public class PlayerInteractor implements Serializable {
 
     private Player player;
 

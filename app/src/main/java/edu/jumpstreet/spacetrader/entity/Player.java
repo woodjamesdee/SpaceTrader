@@ -1,10 +1,12 @@
 package edu.jumpstreet.spacetrader.entity;
 
+import java.io.Serializable;
+
 /**
  * The Player entity represents the human player and the attributes that are closely related.
  * This class should not EVER be instantiated outside of a PlayerInteractor.
  */
-public class Player {
+public class Player implements Serializable {
 
     private String name;
     private int skillpoints, pilot, fighter, trader, engineer;

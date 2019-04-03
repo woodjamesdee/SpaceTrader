@@ -3,13 +3,14 @@ package edu.jumpstreet.spacetrader.entity;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import edu.jumpstreet.spacetrader.R;
 import edu.jumpstreet.spacetrader.model.Model;
 
-public class Economy implements Parcelable {
+public class Economy implements Parcelable, Serializable {
     protected Commodity Water;
     protected Commodity Furs;
     protected Commodity Food;
