@@ -21,13 +21,11 @@ public class UniverseInteractor implements Serializable {
     }
 
     private Universe universe;
-    public boolean isSaved;
 
     public UniverseInteractor(Random random) {
         universe = new Universe();
         generateSolarSystems(random, random.nextInt(Universe.MAX_SYSTEMS - Universe.MIN_SYSTEMS) + Universe.MIN_SYSTEMS);
         generatePlanets(random);
-        isSaved = false;
     }
 
     public Collection<SolarSystem> getSolarSystems() {
@@ -36,6 +34,10 @@ public class UniverseInteractor implements Serializable {
 
     public SolarSystem getSolarSystemByName(String name) {
         return universe.getSolarSystemWithName(name);
+    }
+
+    public void updateUniverseOnLoad() {
+        Universe.updateOnLoad(universe);
     }
 
     private void generateSolarSystems(Random random, int amount) {

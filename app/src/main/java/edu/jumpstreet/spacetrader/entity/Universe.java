@@ -14,15 +14,19 @@ public class Universe implements Serializable {
     public static final int MIN_SYSTEMS = 10;
     public static final int MAX_SYSTEMS = 15;
 
-    public boolean isSaved;
-
     public static String[][] solarSystemLocations = new String[10][10];
 
     Map<String, SolarSystem> solarSystems;
 
+    public static void updateOnLoad(Universe toUpdate) {
+        solarSystemLocations = new String[10][10];
+        for (SolarSystem current : toUpdate.solarSystems.values()) {
+            solarSystemLocations[current.getX()][current.getY()] = current.getName();
+        }
+    }
+
     public Universe() {
         solarSystems = new HashMap<>();
-        isSaved = false;
     }
 
     public void addSolarSystem(SolarSystem system) {

@@ -21,7 +21,6 @@ public class Model implements Serializable {
     private UniverseInteractor universeInteractor;
     private GameInteractor gameInteractor;
     private Random random;
-    public boolean isSaved;
 
     private static Model instance = new Model();
 
@@ -32,7 +31,6 @@ public class Model implements Serializable {
         random = new Random();
         universeInteractor = new UniverseInteractor(random);
         gameInteractor = new GameInteractor(universeInteractor);
-        isSaved = false;
     }
 
     public PlayerInteractor getPlayerInteractor() {
@@ -52,16 +50,11 @@ public class Model implements Serializable {
         Object object = ois.readObject();
         ois.close();
         Model model = (Model) object;
-        System.out.println(model.isSaved);
-        System.out.println(model.getUniverseInteractor().isSaved);
-        System.out.println(model.getUniverseInteractor().getUniverse().isSaved);
+        model.getUniverseInteractor().updateUniverseOnLoad();
         instance = model;
     }
 
     public static String saveGameToString() throws IOException {
-        instance.isSaved = true;
-        instance.getUniverseInteractor().isSaved = true;
-        instance.getUniverseInteractor().getUniverse().isSaved = true;
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         ObjectOutputStream oos = new ObjectOutputStream(baos);
         oos.writeObject(instance);
