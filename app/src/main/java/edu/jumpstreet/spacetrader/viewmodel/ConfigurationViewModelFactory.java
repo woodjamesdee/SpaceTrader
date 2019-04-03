@@ -4,6 +4,9 @@ import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 import android.support.annotation.NonNull;
 
+/**
+ * Allows for the creation of the ConfigurationViewModel
+ */
 public class ConfigurationViewModelFactory implements ViewModelProvider.Factory {
 
     @NonNull
