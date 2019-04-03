@@ -8,16 +8,22 @@ import android.widget.Button;
 
 import edu.jumpstreet.spacetrader.R;
 import edu.jumpstreet.spacetrader.model.Model;
+import edu.jumpstreet.spacetrader.viewmodel.GarageViewModel;
+import edu.jumpstreet.spacetrader.viewmodel.GarageViewModelFactory;
 
 public class GarageActivity extends AppCompatActivity implements View.OnClickListener{
     Button buySpaceshipBtn;
     Button buyFuelBtn;
     Button repairSpaceshipBtn;
 
+    GarageViewModel viewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_garage);
+        GarageViewModelFactory factory = new GarageViewModelFactory();
+        viewModel = factory.create(GarageViewModel.class);
         initializeButtons();
     }
 
@@ -26,7 +32,7 @@ public class GarageActivity extends AppCompatActivity implements View.OnClickLis
     private void initializeButtons(){
         buyFuelBtn = findViewById(R.id.OnGarageBuyFuelBtn);
         buyFuelBtn.setOnClickListener(this);
-        if(Model.getInstance().getPlayerInteractor().getPlayerShip().getRemainingFuel() == Model.getInstance().getPlayerInteractor().getPlayerShip().getMaxFuel()) {
+        if(viewModel.getRemainingFuel() == viewModel.getMaxFuel()) {
             buyFuelBtn.setEnabled(false);
         }else{
             buyFuelBtn.setEnabled(true);
