@@ -10,6 +10,8 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.Random;
+
 import edu.jumpstreet.spacetrader.R;
 import edu.jumpstreet.spacetrader.entity.Planet;
 import edu.jumpstreet.spacetrader.entity.SolarSystem;
@@ -105,14 +107,25 @@ public class TravelPopupActivity extends Activity implements View.OnClickListene
         switch(view.getId()){
             case R.id.travelPopupTravelButton: travel(currentEntity);
             finish();
+            Random rand = new Random();
             if(isSolarsystemTravel){
                 Model.getInstance().getGameInteractor().changeActiveSolarSystem(currentEntity.getName());
-                Intent intent = new Intent(TravelPopupActivity.this, SolarSystemActivity.class);
-                TravelPopupActivity.this.startActivity(intent);
+                if(calculateTravelCost(currentEntity) * 0.005 > rand.nextDouble()){
+                    Intent intent = new Intent(TravelPopupActivity.this, RandomEncounterActivity.class);
+                    TravelPopupActivity.this.startActivity(intent);
+                } else {
+                    Intent intent = new Intent(TravelPopupActivity.this, SolarSystemActivity.class);
+                    TravelPopupActivity.this.startActivity(intent);
+                }
             }else{
                 Model.getInstance().getGameInteractor().changeActivePlanet(currentEntity.getName());
-                Intent intent = new Intent(TravelPopupActivity.this, PlanetActivity.class);
-                TravelPopupActivity.this.startActivity(intent);
+                if(calculateTravelCost(currentEntity) * 0.05 > rand.nextDouble()){
+                    Intent intent = new Intent(TravelPopupActivity.this, RandomEncounterActivity.class);
+                    TravelPopupActivity.this.startActivity(intent);
+                }else {
+                    Intent intent = new Intent(TravelPopupActivity.this, PlanetActivity.class);
+                    TravelPopupActivity.this.startActivity(intent);
+                }
             }
 
             break;

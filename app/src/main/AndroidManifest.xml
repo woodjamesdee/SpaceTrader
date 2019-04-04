@@ -27,6 +27,7 @@
         <activity android:name=".view.GarageFuelActivity"></activity>
         <activity android:name=".view.GarageSpaceshipBuyActivity"></activity>
         <activity android:name=".view.GarageSpaceshipRepairActivity"></activity>
+        <activity android:name=".view.RandomEncounterActivity"></activity>
     </application>
 
 </manifest>
