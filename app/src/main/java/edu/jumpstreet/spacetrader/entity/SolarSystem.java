@@ -172,6 +172,11 @@ public class SolarSystem extends System implements Serializable {
         planets = new HashMap<>();
     }
 
+    /**
+     *
+     * @param planet Planet object
+     * @return boolean if the planet is in the solar system
+     */
     public boolean isInSolarSystem(Planet planet){
         return planets.containsValue(planet);
     }
@@ -182,9 +187,21 @@ public class SolarSystem extends System implements Serializable {
      */
     public static int getNamesLength() { return NAMES.length; }
 
+    /**
+     * This method returns a planet object for a given planet name
+     * @param name the name of the planet
+     * @return planet object with given name
+     */
     public Planet getPlanet(String name) {
         return planets.get(name);
     }
+
+    /**
+     * This method creates a new planet
+     * @param x x - coordinate
+     * @param y y - coordinate
+     * @param resourceIndex a number coordinating to the resource index
+     */
 
     public void addNewPlanet(int x, int y, int resourceIndex) {
         Integer[] coordinate = new Integer[] { x, y };
@@ -200,12 +217,20 @@ public class SolarSystem extends System implements Serializable {
         planetLocations[newPlanet.x][newPlanet.y] = newPlanet.getName();
     }
 
+    /**
+     *
+     * @return a String[][]  of the planet location
+     */
     public String[][] getPlanetLocations() {
         return planetLocations;
     }
 
+    /**
+     *
+     * @return String based on the size of the planet
+     */
     private String generateEnding() {
-        String returnString = "";
+        String returnString ;
         switch(planets.size()) {
             case 0:
                 returnString = " Prime";
@@ -261,6 +286,10 @@ public class SolarSystem extends System implements Serializable {
         return returnString;
     }
 
+    /**
+     * Override the getName()
+     * @return String name of the solar system
+     */
     @Override
     public String getName(){
         return super.name;

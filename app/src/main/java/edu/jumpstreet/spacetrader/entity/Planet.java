@@ -1,12 +1,7 @@
 package edu.jumpstreet.spacetrader.entity;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import java.io.Serializable;
 import java.util.Random;
-
-import edu.jumpstreet.spacetrader.model.Model;
 
 public class Planet extends System implements Serializable {
 
@@ -81,9 +76,11 @@ public class Planet extends System implements Serializable {
         return economy.getCommodity(index).getQuantity();
     }
 
+    /*
     public void setIndexedResource(int index, int amount){
         economy.getCommodity(index).setQuantity(amount);
     }
+    */
 
     public void setResourceQuantityByName(String name, int amount){
         economy.getCommodityByName(name).setQuantity(amount);

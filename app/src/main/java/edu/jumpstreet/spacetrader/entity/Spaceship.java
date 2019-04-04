@@ -2,26 +2,24 @@ package edu.jumpstreet.spacetrader.entity;
 
 import java.io.Serializable;
 
-import edu.jumpstreet.spacetrader.model.Model;
-
 /**
  * This class is the basis for all Spaceships in Space Trader.
  */
 public abstract class Spaceship implements Serializable {
 
     protected String name;
-    protected String description;
-    protected int hitpoints;
-    protected int maxCargoSpace;
-    protected int usedCargoSpace;
+    String description;
+    int hitpoints;
+    int maxCargoSpace;
+    int usedCargoSpace;
 
 
 
-    protected int remainingFuel;
+    int remainingFuel;
 
 
-    protected int maxFuel;
-    protected Economy economy;
+    int maxFuel;
+    Economy economy;
 
 
     public int getRemainingFuel() {
@@ -31,9 +29,11 @@ public abstract class Spaceship implements Serializable {
         return maxFuel;
     }
 
+    /*
     public void setMaxFuel(int maxFuel) {
         this.maxFuel = maxFuel;
     }
+    */
 
     public void setRemainingFuel(int remainingFuel) {
         this.remainingFuel = remainingFuel;
@@ -41,8 +41,8 @@ public abstract class Spaceship implements Serializable {
     public String getName() {
         return name;
     }
-    public String getDescription() { return description; }
-    public int getHitpoints() { return hitpoints; }
+    //public String getDescription() { return description; }
+    //public int getHitpoints() { return hitpoints; }
     public int getMaxCargoSpace(){return maxCargoSpace;}
     public int getUsedCargoSpace(){return usedCargoSpace;}
 
@@ -54,9 +54,12 @@ public abstract class Spaceship implements Serializable {
 //    public Commodity getCommodity(Commodity comm){
 //        economy.getCommodity(co)
 //    }
+
+    /*
     public void setIndexedResourceQuantity(int index, int amount){
         economy.getCommodity(index).setQuantity(amount);
     }
+    */
 
     public void setResourceQuantityByName(String name, int quantity){
         economy.getCommodityByName(name).setQuantity(quantity);
@@ -66,7 +69,8 @@ public abstract class Spaceship implements Serializable {
         return economy.getCommodityByName(name).getQuantity();
     }
 
-    public Economy getEconomy(){return  economy;}
+    //public Economy getEconomy(){return  economy;}
+
     public void setUsedCargoSpace(int amount){
         usedCargoSpace = amount;
     }

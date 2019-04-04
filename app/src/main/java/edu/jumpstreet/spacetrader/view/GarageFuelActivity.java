@@ -1,8 +1,6 @@
 package edu.jumpstreet.spacetrader.view;
 
 import android.app.Activity;
-import android.app.Application;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
@@ -11,11 +9,9 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import edu.jumpstreet.spacetrader.R;
-import edu.jumpstreet.spacetrader.entity.Player;
-import edu.jumpstreet.spacetrader.model.Model;
+import edu.jumpstreet.spacetrader.viewmodel.GarageFuelViewModel;
+import edu.jumpstreet.spacetrader.viewmodel.GarageFuelViewModelFactory;
 
 public class GarageFuelActivity extends Activity implements View.OnClickListener{
 
@@ -29,13 +25,15 @@ public class GarageFuelActivity extends Activity implements View.OnClickListener
     TextView quantityOfTransaction;
     TextView costOfTransaction;
     TextView usersCredits;
-    Player player;
+    GarageFuelViewModel viewModel;
     int fuelToBePurchased;
     int costOfFuel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        GarageFuelViewModelFactory factory = new GarageFuelViewModelFactory();
+        viewModel = factory.create(GarageFuelViewModel.class);
         DisplayMetrics dM = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dM);
         getWindow().setLayout((int) (dM.widthPixels *.9), (int) (dM.heightPixels *.6));
@@ -47,7 +45,6 @@ public class GarageFuelActivity extends Activity implements View.OnClickListener
         fuelToBePurchased = 0;
         costOfFuel = 0;
         this.setFinishOnTouchOutside(true);
-        player = Model.getInstance().getPlayerInteractor().getPlayer();
         initializeViews();
         updateTextViews();
     }
@@ -77,12 +74,12 @@ public class GarageFuelActivity extends Activity implements View.OnClickListener
 
 
     private void updateTextViews(){
-        usersFuel.setText("Users Fuel: " + (player.getShip().getRemainingFuel() + fuelToBePurchased) + "/" + player.getShip().getMaxFuel());
+        usersFuel.setText("Users Fuel: " + (viewModel.getRemainingFuel() + fuelToBePurchased) + "/" + viewModel.getMaxFuel());
         quantityOfTransaction.setText("Amount of Fuel to be Purchased: " + fuelToBePurchased);
         costOfTransaction.setText("Cost for Fuel: " + costOfFuel);
-        usersCredits.setText("Users Credits: " + (player.getCredits() - costOfFuel));
-        if(player.getShip().getRemainingFuel() + fuelToBePurchased >= player.getShip().getMaxFuel()
-            || player.getCredits() <= costOfFuel){
+        usersCredits.setText("Users Credits: " + (viewModel.getPlayerCredits() - costOfFuel));
+        if(viewModel.getRemainingFuel() + fuelToBePurchased >= viewModel.getMaxFuel()
+            || viewModel.getPlayerCredits() <= costOfFuel){
             plus10Btn.setEnabled(false);
             buyMaxBtn.setEnabled(false);
         }else{
@@ -123,17 +120,17 @@ public class GarageFuelActivity extends Activity implements View.OnClickListener
                 updateTextViews();
                 break;
             case R.id.OnGarageFuelConfirmationBtn:
-                player.getShip().setRemainingFuel(player.getShip().getRemainingFuel() + fuelToBePurchased);
-                player.setCredits(player.getCredits() - costOfFuel);
+                viewModel.setRemainingFuel(viewModel.getRemainingFuel() + fuelToBePurchased);
+                viewModel.setPlayerCredits(viewModel.getPlayerCredits() - costOfFuel);
                 finish();
                 break;
         }
     }
 
     private int getMaxFuel(){
-        int maxFuel = player.getShip().getMaxFuel() - player.getShip().getRemainingFuel();
-        if(maxFuel * 10 > player.getCredits()){
-            while(maxFuel * 10 > player.getCredits()){
+        int maxFuel = viewModel.getMaxFuel() - viewModel.getRemainingFuel();
+        if(maxFuel * 10 > viewModel.getPlayerCredits()){
+            while(maxFuel * 10 > viewModel.getPlayerCredits()){
                 maxFuel--;
             }
         }

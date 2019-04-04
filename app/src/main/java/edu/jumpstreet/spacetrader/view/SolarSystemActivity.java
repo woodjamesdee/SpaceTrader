@@ -3,8 +3,6 @@ package edu.jumpstreet.spacetrader.view;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,42 +13,43 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import edu.jumpstreet.spacetrader.R;
-import edu.jumpstreet.spacetrader.entity.Planet;
 import edu.jumpstreet.spacetrader.entity.SolarSystem;
 import edu.jumpstreet.spacetrader.entity.Universe;
-import edu.jumpstreet.spacetrader.model.Model;
+import edu.jumpstreet.spacetrader.viewmodel.SolarSystemViewModel;
+import edu.jumpstreet.spacetrader.viewmodel.SolarSystemViewModelFactory;
 
 public class SolarSystemActivity extends AppCompatActivity implements View.OnClickListener{
     TableLayout tableLayout;
     Button backToUniverseButton;
     TextView solarSystemName;
     TextView solarSystemTechView;
-    Model model;
+    SolarSystemViewModel viewModel;
     @Override
     protected void onCreate(Bundle sav) {
         super.onCreate(sav);
         setContentView(R.layout.activity_solar_system);
+        SolarSystemViewModelFactory factory = new SolarSystemViewModelFactory();
+        viewModel = factory.create(SolarSystemViewModel.class);
         tableLayout = findViewById(R.id.solarSystemLayout);
         backToUniverseButton = findViewById(R.id.InSSBackToUniverseBtn);
         backToUniverseButton.setOnClickListener(this);
         solarSystemName = findViewById(R.id.textView3);
-        solarSystemName.setText("Solar System: " + Model.getInstance().getGameInteractor().getActiveSolarSystem().getName());
+        solarSystemName.setText("Solar System: " + viewModel.getActiveSolarSystemName());
         solarSystemTechView = findViewById(R.id.SolarSystemTechLevelTV);
-        solarSystemTechView.setText(Model.getInstance().getGameInteractor().getActiveSolarSystem().getTechLevel() + "");
-        model = Model.getInstance();
+        solarSystemTechView.setText(viewModel.getTechLevel() + "");
         createSolarSystem();
     }
 
     private void createSolarSystem() {
-        final SolarSystem activeSystem = Model.getInstance().getGameInteractor().getActiveSolarSystem();
+        final SolarSystem activeSystem = viewModel.getActiveSolarSystem();
         TableRow.LayoutParams params = new TableRow.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f);
         for (int i = 0; i < tableLayout.getChildCount(); i++) {
             for (int j = 0; j < Universe.Y_BOUNDS; j++) {
                 if (activeSystem.getPlanetLocations()[i][j] != null) {
                     Button button = new Button(this);
-                    if(Model.getInstance().getGameInteractor().getActivePlanet().getX() == i &&
-                            Model.getInstance().getGameInteractor().getActivePlanet().getY() == j
-                    && activeSystem.isInSolarSystem(Model.getInstance().getGameInteractor().getActivePlanet())){
+                    if(viewModel.getActivePlanetX() == i &&
+                            viewModel.getActivePlanetY() == j
+                    && activeSystem.isInSolarSystem(viewModel.getActivePlanet())){
                         button.setBackgroundColor(Color.GREEN);
                     }
                     final int i2 = i;
@@ -59,11 +58,11 @@ public class SolarSystemActivity extends AppCompatActivity implements View.OnCli
                     button.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            if(Model.getInstance().getGameInteractor().getActivePlanet() != Model.getInstance().getGameInteractor().getActiveSolarSystem().getPlanet(activeSystem2.getPlanetLocations()[i2][j2])) {
+                            if(viewModel.getActivePlanet() != viewModel.getPlanet(activeSystem2.getPlanetLocations()[i2][j2])) {
                                 Intent intent = new Intent(SolarSystemActivity.this, TravelPopupActivity.class);
-                                model.getGameInteractor().setNextPlanet(activeSystem2.getPlanet(activeSystem2.getPlanetLocations()[i2][j2]));
+                                viewModel.setNextPlanet(activeSystem2.getPlanet(activeSystem2.getPlanetLocations()[i2][j2]));
                                 //intent.putExtra("Travel_Planet", activeSystem2.getPlanet(activeSystem2.getPlanetLocations()[i2][j2]));
-                                model.getGameInteractor().setIsSolarSystemTravel(false);
+                                viewModel.setIsSolarSystemTravel(false);
                                 //intent.putExtra("Is_Solarsystem_Travel", false);
                                 SolarSystemActivity.this.startActivityForResult(intent, 1);
                             }else{

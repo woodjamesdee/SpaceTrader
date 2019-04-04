@@ -11,15 +11,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import edu.jumpstreet.spacetrader.MainActivity;
 import edu.jumpstreet.spacetrader.R;
-import edu.jumpstreet.spacetrader.model.Model;
 import edu.jumpstreet.spacetrader.viewmodel.ConfigurationViewModel;
 import edu.jumpstreet.spacetrader.viewmodel.ConfigurationViewModelFactory;
 
 public class ConfigurationActivity extends AppCompatActivity implements View.OnClickListener {
-    Model model = Model.getInstance();
-
     EditText nameET;
     TextView skillPointsRemainingTV;
     Button pilotMinusBtn;
@@ -58,7 +54,7 @@ public class ConfigurationActivity extends AppCompatActivity implements View.OnC
         linkConfigButtons();
         initializeButtons();
         difficultySpinner = findViewById(R.id.difficultySpinner);
-        skillPointsRemainingTV.setText("Remaining Skill Points: " + model.getPlayerInteractor().getPlayerUnallocatedSkillpoints());
+        skillPointsRemainingTV.setText("Remaining Skill Points: " + viewModel.getUnallocatedPoints());
         ArrayAdapter<Difficulty> difficultyAdapter = new ArrayAdapter<Difficulty>(this, android.R.layout.simple_spinner_item, Difficulty.values());
         difficultyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         difficultySpinner.setAdapter(difficultyAdapter);
@@ -143,14 +139,15 @@ public class ConfigurationActivity extends AppCompatActivity implements View.OnC
                 //model.getPlayerInteractor().addPlayerFighterSkill(fighterSP);
                 //model.getPlayerInteractor().addPlayerTraderSkill(traderSP);
                 //model.getPlayerInteractor().addPlayerEngineerSkill(engineerSP);
-                model.getPlayerInteractor().changePlayerName(nameET.getText().toString());
+                //model.getPlayerInteractor().changePlayerName(nameET.getText().toString());
+                viewModel.setPlayerName(nameET.getText().toString());
 
-                Toast.makeText(this, "Player Configured\nName: " + model.getPlayerInteractor().getPlayerName()
-                                +"\nPilot Skill: " + model.getPlayerInteractor().getPlayerPilotSkill()
-                                +"\nFighter Skill: " + model.getPlayerInteractor().getPlayerFighterSkill()
-                                +"\nTrader Skill: " + model.getPlayerInteractor().getPlayerTraderSkill()
-                                +"\nEngineer Skill: " + model.getPlayerInteractor().getPlayerEngineerSkill()
-                                +"\nUnallocated Points: " + model.getPlayerInteractor().getPlayerUnallocatedSkillpoints(),
+                Toast.makeText(this, "Player Configured\nName: " + viewModel.getPlayerName()
+                                +"\nPilot Skill: " + viewModel.getPlayerPilotSkill()
+                                +"\nFighter Skill: " + viewModel.getPlayerFighterSkill()
+                                +"\nTrader Skill: " + viewModel.getPlayerTraderSkill()
+                                +"\nEngineer Skill: " + viewModel.getPlayerEngineerSkill()
+                                +"\nUnallocated Points: " + viewModel.getUnallocatedPoints(),
                         Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(this, UniverseActivity.class);
                 ConfigurationActivity.this.startActivity(intent);
@@ -161,24 +158,24 @@ public class ConfigurationActivity extends AppCompatActivity implements View.OnC
     private void updateButtons(int skill, boolean isAdded){
         switch (skill){
             case 0:
-                pilotTV.setText("Pilot Skill: " + model.getPlayerInteractor().getPlayerPilotSkill()+ "");
-                pilotMinusBtn.setEnabled(model.getPlayerInteractor().playerHasPilotPointsLeft());
+                pilotTV.setText("Pilot Skill: " + viewModel.getPlayerPilotSkill()+ "");
+                pilotMinusBtn.setEnabled(viewModel.pilotMinusShouldBeEnabled());
                 break;
             case 1:
-                fighterTV.setText("Fighter Skill: " + model.getPlayerInteractor().getPlayerFighterSkill() + "");
-                fighterMinusBtn.setEnabled(model.getPlayerInteractor().playerHasFighterPointsLeft());
+                fighterTV.setText("Fighter Skill: " + viewModel.getPlayerFighterSkill() + "");
+                fighterMinusBtn.setEnabled(viewModel.fighterMinusShouldBeEnabled());
                 break;
             case 2:
-                traderTV.setText("Trader Skill: " + model.getPlayerInteractor().getPlayerTraderSkill() +"");
-                traderMinusBtn.setEnabled(model.getPlayerInteractor().playerHasTraderPointsLeft());
+                traderTV.setText("Trader Skill: " + viewModel.getPlayerTraderSkill() +"");
+                traderMinusBtn.setEnabled(viewModel.traderMinusShouldBeEnabled());
                 break;
             case 3:
-                engineerTV.setText("Engineer Skill: " + model.getPlayerInteractor().getPlayerEngineerSkill() + "");
-                engineerMinusBtn.setEnabled(model.getPlayerInteractor().playerHasEngineerPointsLeft());
+                engineerTV.setText("Engineer Skill: " + viewModel.getPlayerEngineerSkill() + "");
+                engineerMinusBtn.setEnabled(viewModel.engineerMinusShouldBeEnabled());
                 break;
         }
-        skillPointsRemainingTV.setText("Skill Points Remaining: " + model.getPlayerInteractor().getPlayerUnallocatedSkillpoints());
-        enablePlusButtons(model.getPlayerInteractor().playerHasSkillpointsLeft());
+        skillPointsRemainingTV.setText("Skill Points Remaining: " + viewModel.getUnallocatedPoints());
+        enablePlusButtons(viewModel.plusShouldBeEnabled());
     }
 
     private void enablePlusButtons(boolean isEnabled){
