@@ -17,17 +17,22 @@ import java.io.IOException;
 
 import edu.jumpstreet.spacetrader.MainActivity;
 import edu.jumpstreet.spacetrader.R;
-import edu.jumpstreet.spacetrader.entity.SolarSystem;
 import edu.jumpstreet.spacetrader.entity.Universe;
 import edu.jumpstreet.spacetrader.model.Model;
+import edu.jumpstreet.spacetrader.viewmodel.UniverseViewModel;
+import edu.jumpstreet.spacetrader.viewmodel.UniverseViewModelFactory;
 
 public class UniverseActivity extends AppCompatActivity {
 
     TableLayout tableLayout;
     Button saveButton;
+    UniverseViewModel viewModel;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_universe);
+        UniverseViewModelFactory factory = new UniverseViewModelFactory();
+        factory.create(UniverseViewModel.class);
         tableLayout = findViewById(R.id.UniverseTableLayout);
         saveButton = findViewById(R.id.saveButton);
         createUniverse();
@@ -53,7 +58,7 @@ public class UniverseActivity extends AppCompatActivity {
             for (int j = 0; j < Universe.Y_BOUNDS; j++) {
                 if (Universe.solarSystemLocations[i][j] != null) {
                     Button button = new Button(this);
-                    if(Model.getInstance().getGameInteractor().getActiveSolarSystem().getX() == i && Model.getInstance().getGameInteractor().getActiveSolarSystem().getY() == j){
+                    if(viewModel.getActiveSolarSystemX() == i && viewModel.getActiveSolarSystemY() == j){
                         button.setBackgroundColor(Color.GREEN);
                     }
                     final int i2 = i;
@@ -61,11 +66,11 @@ public class UniverseActivity extends AppCompatActivity {
                     button.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            if(Model.getInstance().getGameInteractor().getActiveSolarSystem() != Model.getInstance().getUniverseInteractor().getSolarSystemByName(Universe.solarSystemLocations[i2][j2])) {
+                            if(viewModel.getActiveSolarSystem() != viewModel.getSolarSystemByName(Universe.solarSystemLocations[i2][j2])) {
                                 Intent intent = new Intent(UniverseActivity.this, TravelPopupActivity.class);
-                                Model.getInstance().getGameInteractor().setNextSolarSystem(Model.getInstance().getUniverseInteractor().getSolarSystemByName(Universe.solarSystemLocations[i2][j2]));
+                                viewModel.setNextSolarSystem(viewModel.getSolarSystemByName(Universe.solarSystemLocations[i2][j2]));
                                 //intent.putExtra("Solarsystem_Name", Universe.solarSystemLocations[i2][j2]);
-                                Model.getInstance().getGameInteractor().setIsSolarSystemTravel(true);
+                                viewModel.setIsSolarSystemTravel(true);
                                 //intent.putExtra("Is_Solarsystem_Travel", true);
                                 UniverseActivity.this.startActivityForResult(intent, 1);
                             }else{

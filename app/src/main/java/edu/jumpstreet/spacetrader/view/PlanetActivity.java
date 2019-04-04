@@ -11,25 +11,29 @@ import org.w3c.dom.Text;
 
 import edu.jumpstreet.spacetrader.R;
 import edu.jumpstreet.spacetrader.model.Model;
+import edu.jumpstreet.spacetrader.viewmodel.PlanetViewModel;
+import edu.jumpstreet.spacetrader.viewmodel.PlanetViewModelFactory;
 
 public class PlanetActivity extends AppCompatActivity implements View.OnClickListener {
-    Button tradeBtn;
     Button spaceshipStoreBtn;
     Button solarSystemBtn;
     Button garageBtn;
     TextView planetName;
     TextView techLevel;
     TextView resourceType;
+    PlanetViewModel viewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_planet);
+        PlanetViewModelFactory factory = new PlanetViewModelFactory();
+        viewModel = factory.create(PlanetViewModel.class);
         planetName = findViewById(R.id.textView4);
-        planetName.setText("Planet: " + Model.getInstance().getGameInteractor().getActivePlanet().getName());
+        planetName.setText("Planet: " + viewModel.getActivePlanetName());
         techLevel = findViewById(R.id.OnPlanetTechLevelTV);
-        techLevel.setText("Tech Level: " + Model.getInstance().getGameInteractor().getActivePlanet().getTechLevel());
+        techLevel.setText("Tech Level: " + viewModel.getActivePlanetTechLevel());
         resourceType = findViewById(R.id.OnPlantResource);
-        resourceType.setText("Resource Type: " + Model.getInstance().getGameInteractor().getActivePlanet().getResource());
+        resourceType.setText("Resource Type: " + viewModel.getActivePlanetResource());
         initializeButtons();
     }
 
