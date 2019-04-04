@@ -7,6 +7,9 @@ import java.io.Serializable;
 import edu.jumpstreet.spacetrader.entity.System.TechLevel;
 import edu.jumpstreet.spacetrader.entity.Planet.Resource;
 
+/**
+ * Commodity entity represents resources the player will buy/trade
+ */
 public class Commodity implements Parcelable, Serializable {
     private int weight;
     private int baseValue;
@@ -16,10 +19,31 @@ public class Commodity implements Parcelable, Serializable {
     private TechLevel MTLP, MTLU, TTP;
     private Resource CR, ER;
 
+    /**
+     * Commodity categories
+     */
     public enum CommodityResources{
         Water, Furs, Food, Ore, Games, Firearms,
         Medicine, Machines, Narcotics, Robots
     }
+
+    /**
+     * Commodity constructor
+     *
+     * @param weight int : the weight of the commodity
+     * @param baseValue int: Value of the commodity
+     * @param resource String: category the commodity belongs to
+     * @param quantity int: the number of this type of commodity
+     * @param IPL
+     * @param VAR
+     * @param MTL
+     * @param MTH
+     * @param MTLP
+     * @param MTLU
+     * @param TTP
+     * @param CR
+     * @param ER
+     */
     Commodity(int weight, int baseValue, String resource, int quantity, int IPL, int VAR, int MTL, int MTH, TechLevel MTLP, TechLevel MTLU, TechLevel TTP, Resource CR, Resource ER){
         this.weight = weight;
         this.baseValue = baseValue;
@@ -36,10 +60,21 @@ public class Commodity implements Parcelable, Serializable {
         this.ER = ER;
     }
 
+    /**
+     * overrides the original describeContents()
+     * and returns 0 instead
+     * @return int 0
+     */
     @Override
     public int describeContents(){
         return 0;
     }
+
+    /**
+     * overrides writeToParcel
+     * @param dest writes containers for given items
+     * @param flags int
+     */
     @Override
     public void writeToParcel(Parcel dest, int flags){
         dest.writeInt(weight);
@@ -64,6 +99,11 @@ public class Commodity implements Parcelable, Serializable {
             dest.writeInt(0);
         }
     }
+
+    /**
+     * unwraps parceled data
+     * @param in Parcel object that holds data
+     */
     private Commodity(Parcel in){
         this.weight = in.readInt();
         this.baseValue = in.readInt();
@@ -80,6 +120,9 @@ public class Commodity implements Parcelable, Serializable {
         this.ER = Resource.values()[in.readInt()];
     }
 
+    /**
+     * creates a Parcelable object
+     */
     public static final Parcelable.Creator<Commodity> CREATOR = new Parcelable.Creator<Commodity>(){
         @Override
         public Commodity createFromParcel(Parcel source){
@@ -96,6 +139,10 @@ public class Commodity implements Parcelable, Serializable {
     int getBaseValue(){return baseValue;}
     public int getQuantity(){return  quantity;}
 
+    /**
+     * Sets the quantity
+     * @param quantity to set to this commodity
+     */
     void setQuantity(int quantity){this.quantity = quantity;}
 
     /*
@@ -116,22 +163,42 @@ public class Commodity implements Parcelable, Serializable {
     }
     */
 
+    /**
+     * resource getter
+     * @return returns the resource category of this commodity
+     */
     public String getResource() {
         return resource;
     }
 
+    /**
+     * resource setter
+     * @param resource sets the category of this commodity
+     */
     public void setResource(String resource) {
         this.resource = resource;
     }
 
+    /**
+     * IPL getter
+     * @return the IPL associated with this commodity
+     */
     int getIPL() {
         return IPL;
     }
 
+    /**
+     * VAR getter
+     * @return the VAR associated with this commodity
+     */
     int getVAR() {
         return VAR;
     }
 
+    /**
+     * MTLP getter
+     * @return MTLP associated with this commodity
+     */
     public TechLevel getMTLP() {
         return MTLP;
     }
