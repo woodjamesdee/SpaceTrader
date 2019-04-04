@@ -1,0 +1,12 @@
+package edu.jumpstreet.spacetrader.viewmodel;
+
+import android.arch.lifecycle.ViewModelProvider;
+import android.support.annotation.NonNull;
+
+public class MarketPlaceViewModelFactory implements ViewModelProvider.Factory {
+    @NonNull
+    @Override
+    public MarketPlaceViewModel create(@NonNull Class modelClass) {
+        return new MarketPlaceViewModel();
+    }
+}
