@@ -32,7 +32,7 @@ public class UniverseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_universe);
         UniverseViewModelFactory factory = new UniverseViewModelFactory();
-        factory.create(UniverseViewModel.class);
+        viewModel = factory.create(UniverseViewModel.class);
         tableLayout = findViewById(R.id.UniverseTableLayout);
         saveButton = findViewById(R.id.saveButton);
         createUniverse();
