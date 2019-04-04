@@ -18,7 +18,7 @@ public class TravelPopupViewModel extends ViewModel {
     /**
      * Creates a new TravelPopupViewModel.
      */
-    public TravelPopupViewModel() {
+    TravelPopupViewModel() {
         interactor = Model.getInstance().getGameInteractor();
     }
 
@@ -52,14 +52,6 @@ public class TravelPopupViewModel extends ViewModel {
      */
     public Planet getActivePlanet() {
         return interactor.getActivePlanet();
-    }
-
-    /**
-     * Sets the next Planet
-     * @param next the next Planet
-     */
-    public void setNextPlanet(Planet next) {
-        interactor.setNextPlanet(next);
     }
 
     /**

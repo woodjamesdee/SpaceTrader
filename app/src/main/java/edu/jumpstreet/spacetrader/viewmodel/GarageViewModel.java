@@ -12,7 +12,7 @@ public class GarageViewModel extends ViewModel {
     /**
      * Creates a new GarageViewModel.
      */
-    public GarageViewModel() {
+    GarageViewModel() {
         interactor = Model.getInstance().getPlayerInteractor();
     }
 

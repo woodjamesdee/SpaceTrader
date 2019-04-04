@@ -2,9 +2,6 @@ package edu.jumpstreet.spacetrader.entity;
 
 import java.io.Serializable;
 
-import edu.jumpstreet.spacetrader.entity.Planet;
-import edu.jumpstreet.spacetrader.entity.SolarSystem;
-
 public class Game implements Serializable {
 
     private SolarSystem activeSolarSystem;

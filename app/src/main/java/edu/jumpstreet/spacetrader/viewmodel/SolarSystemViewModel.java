@@ -18,7 +18,7 @@ public class SolarSystemViewModel extends ViewModel {
     /**
      * Creates a new SolarSystemViewModel.
      */
-    public SolarSystemViewModel() {
+    SolarSystemViewModel() {
         interactor = Model.getInstance().getGameInteractor();
     }
 

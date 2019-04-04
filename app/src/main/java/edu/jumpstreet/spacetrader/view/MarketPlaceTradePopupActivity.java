@@ -119,7 +119,7 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
                 if(quantityOfTransaction == 0){
                     finish();
                 }
-                Model.getInstance().getPlayerInteractor().addCreditsToPlayerBalance(-1 * quantityOfTransaction * resourceValue);
+                viewModel.addCreditsToPlayerBalance(-1 * quantityOfTransaction * resourceValue);
                 viewModel.setShipResourceQuantityByName(activeCommodity.getResource(), quantityOfTransaction);
                 viewModel.setPlanetResourceQuantityByName(activeCommodity.getResource(), resourceQuantity);
                 viewModel.setUsedCargoSpace((quantityOfTransaction * cargoSpacePerUnitResource) + viewModel.getUsedCargoSpace());

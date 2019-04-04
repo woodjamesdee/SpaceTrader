@@ -20,7 +20,7 @@ public class MarketPlacePopupViewModel extends ViewModel {
     /**
      * Creates a new MarketPlacePopupViewModel
      */
-    public MarketPlacePopupViewModel() {
+    MarketPlacePopupViewModel() {
         interactor = Model.getInstance().getPlayerInteractor();
         ship = Model.getInstance().getPlayerInteractor().getPlayerShip();
         planet = Model.getInstance().getGameInteractor().getActivePlanet();
@@ -33,12 +33,6 @@ public class MarketPlacePopupViewModel extends ViewModel {
     public void addCreditsToPlayerBalance(int amount) {
         interactor.addCreditsToPlayerBalance(amount);
     }
-
-    /**
-     * Gets the balance of the Player's account.
-     * @return the balance
-     */
-    public int getPlayerCredits() { return interactor.getPlayerBalance(); }
 
     /**
      * Gets the used cargo space within the Player's ship

@@ -1,8 +1,5 @@
 package edu.jumpstreet.spacetrader.entity;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import java.io.Serializable;
 
 /**
@@ -12,7 +9,7 @@ public abstract class System implements Serializable {
 
     protected String name;
     protected int x, y;
-    protected TechLevel techLevel;
+    TechLevel techLevel;
 
     /**
      * The TechLevel enum represents the technological advancement of the entire System. Affects modifiers.
@@ -40,6 +37,7 @@ public abstract class System implements Serializable {
         }
     }
 
+    /*
     public void writeToParcel(Parcel out, int flags){
         out.writeString(name);
         out.writeInt(x);
@@ -57,6 +55,7 @@ public abstract class System implements Serializable {
         y = in.readInt();
         techLevel = TechLevel.values()[in.readInt()];
     }
+    */
 
     public System(){
 
@@ -94,11 +93,12 @@ public abstract class System implements Serializable {
         return techLevel;
     }
 
-    /**
+
+    /*
      * Sets the TechLevel of this SolarSystem
      * @param techLevel the new TechLevel of the SolarSystem
      */
-    public void setTechLevel(TechLevel techLevel) {
-        this.techLevel = techLevel;
-    }
+    //public void setTechLevel(TechLevel techLevel) {
+    //    this.techLevel = techLevel;
+    //}
 }

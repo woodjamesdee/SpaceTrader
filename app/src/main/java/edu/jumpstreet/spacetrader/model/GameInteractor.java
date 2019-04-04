@@ -17,7 +17,7 @@ public class GameInteractor implements Serializable {
      * Creates a new GameInteractor, given a UniverseInteractor
      * @param universeInteractor the universeInteractor to use for picking the starting planet.
      */
-    public GameInteractor(UniverseInteractor universeInteractor) {
+    GameInteractor(UniverseInteractor universeInteractor) {
         SolarSystem system = universeInteractor.getSolarSystems().iterator().next();
         game = new Game(system, system.getPlanet(system.getName() + " Prime"), Game.GameDifficulty.NORMAL);
     }

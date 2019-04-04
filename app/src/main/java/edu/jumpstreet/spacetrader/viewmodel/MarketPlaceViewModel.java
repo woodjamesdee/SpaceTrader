@@ -20,7 +20,7 @@ public class MarketPlaceViewModel extends ViewModel {
     /**
      * Creates a new MarketPlaceViewModel.
      */
-    public MarketPlaceViewModel() {
+    MarketPlaceViewModel() {
         interactor = Model.getInstance().getPlayerInteractor();
         ship = interactor.getPlayerShip();
         planet = Model.getInstance().getGameInteractor().getActivePlanet();

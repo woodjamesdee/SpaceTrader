@@ -1,7 +1,6 @@
 package edu.jumpstreet.spacetrader.view;
 
 import android.app.Activity;
-import android.app.Application;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Gravity;

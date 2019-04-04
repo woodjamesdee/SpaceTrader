@@ -92,8 +92,8 @@ public class TravelPopupActivity extends Activity implements View.OnClickListene
             }
     }
 
-    private void setTextViews(boolean isSolarsystemTravel, System system){
-        if(!isSolarsystemTravel) {
+    private void setTextViews(boolean isSolarSystemTravel, System system){
+        if(!isSolarSystemTravel) {
             //TODO figure this out
            // resourceTV.setText("Planets Main Resource: " + system.getResource());
         }

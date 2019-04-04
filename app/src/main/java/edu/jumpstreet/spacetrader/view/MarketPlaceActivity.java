@@ -195,8 +195,10 @@ public class MarketPlaceActivity extends AppCompatActivity implements View.OnCli
         setTextViews(3);
     }
 
+    /*
     private Intent loadIntent(Intent intent, Commodity comm){
         intent.putExtra("Commodity", (Parcelable) comm);
         return intent;
     }
+    */
 }

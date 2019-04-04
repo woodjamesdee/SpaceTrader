@@ -17,7 +17,7 @@ public class PlanetViewModel extends ViewModel {
     /**
      * Creates a new PlanetViewModel.
      */
-    public PlanetViewModel() {
+    PlanetViewModel() {
         interactor = Model.getInstance().getGameInteractor();
     }
 

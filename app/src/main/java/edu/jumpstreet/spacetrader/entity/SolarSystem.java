@@ -230,7 +230,7 @@ public class SolarSystem extends System implements Serializable {
      * @return String based on the size of the planet
      */
     private String generateEnding() {
-        String returnString = "";
+        String returnString ;
         switch(planets.size()) {
             case 0:
                 returnString = " Prime";

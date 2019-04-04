@@ -7,10 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import edu.jumpstreet.spacetrader.R;
-import edu.jumpstreet.spacetrader.model.Model;
 import edu.jumpstreet.spacetrader.viewmodel.PlanetViewModel;
 import edu.jumpstreet.spacetrader.viewmodel.PlanetViewModelFactory;
 

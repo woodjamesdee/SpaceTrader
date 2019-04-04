@@ -16,7 +16,7 @@ public class UniverseViewModel extends ViewModel {
     /**
      * Creates a new UniverseViewModel.
      */
-    public UniverseViewModel() {
+    UniverseViewModel() {
         interactor = Model.getInstance().getGameInteractor();
     }
 
@@ -26,14 +26,6 @@ public class UniverseViewModel extends ViewModel {
      */
     public SolarSystem getActiveSolarSystem() {
         return interactor.getActiveSolarSystem();
-    }
-
-    /**
-     * Gets the name of the active SolarSystem
-     * @return the name
-     */
-    public String getActiveSolarSystemName() {
-        return interactor.getActiveSolarSystem().getName();
     }
 
     /**

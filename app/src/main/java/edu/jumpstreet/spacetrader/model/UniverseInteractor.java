@@ -1,10 +1,7 @@
 package edu.jumpstreet.spacetrader.model;
 
-import android.util.Log;
-
 import java.io.Serializable;
 import java.util.Collection;
-import java.util.List;
 import java.util.Random;
 
 import edu.jumpstreet.spacetrader.entity.Planet;
@@ -16,13 +13,13 @@ import edu.jumpstreet.spacetrader.entity.Universe;
  */
 public class UniverseInteractor implements Serializable {
 
-    /**
+    /*
      * Gets the Universe of this UniverseInteractor
-     * @return
+     * @return  the universe
      */
-    public Universe getUniverse() {
-        return universe;
-    }
+    //public Universe getUniverse() {
+    //    return universe;
+    //}
 
     private Universe universe;
 
@@ -30,7 +27,7 @@ public class UniverseInteractor implements Serializable {
      * Creates a new UniverseInteractor
      * @param random the randomizer to create the universe
      */
-    public UniverseInteractor(Random random) {
+    UniverseInteractor(Random random) {
         universe = new Universe();
         generateSolarSystems(random, random.nextInt(Universe.MAX_SYSTEMS - Universe.MIN_SYSTEMS) + Universe.MIN_SYSTEMS);
         generatePlanets(random);
@@ -38,9 +35,9 @@ public class UniverseInteractor implements Serializable {
 
     /**
      * Gets the SolarSystems within the Universe
-     * @return
+     * @return the SolarSystems
      */
-    public Collection<SolarSystem> getSolarSystems() {
+    Collection<SolarSystem> getSolarSystems() {
         return universe.getSolarSystems().values();
     }
 
@@ -56,7 +53,7 @@ public class UniverseInteractor implements Serializable {
     /**
      * Used when loading the game, updates the positions of objects in the universe.
      */
-    public void updateUniverseOnLoad() {
+    void updateUniverseOnLoad() {
         Universe.updateOnLoad(universe);
     }
 
