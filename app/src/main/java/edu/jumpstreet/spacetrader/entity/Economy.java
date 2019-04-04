@@ -7,22 +7,21 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.jumpstreet.spacetrader.R;
 import edu.jumpstreet.spacetrader.model.Model;
 
 public class Economy implements Parcelable, Serializable {
-    protected Commodity Water;
-    protected Commodity Furs;
-    protected Commodity Food;
-    protected Commodity Ore;
-    protected Commodity Games;
-    protected Commodity Firearms;
-    protected Commodity Medicine;
-    protected Commodity Machines;
-    protected Commodity Narcotics;
-    protected Commodity Robots;
+    private Commodity Water;
+    private Commodity Furs;
+    private Commodity Food;
+    private Commodity Ore;
+    private Commodity Games;
+    private Commodity Firearms;
+    private Commodity Medicine;
+    private Commodity Machines;
+    private Commodity Narcotics;
+    private Commodity Robots;
 
-    ArrayList<Commodity> commodities = new ArrayList<>();
+    private List<Commodity> commodities;
 
     private System.TechLevel techLevel;
 
@@ -39,6 +38,7 @@ public class Economy implements Parcelable, Serializable {
     }
 
     private Economy(Parcel in){
+        commodities = new ArrayList<>();
         commodities =  in.createTypedArrayList(Commodity.CREATOR);
         Water = commodities.get(0);
         Furs = commodities.get(1);
@@ -63,7 +63,7 @@ public class Economy implements Parcelable, Serializable {
     };
 
 
-    public Economy(System.TechLevel currentTechLevel){
+    Economy(System.TechLevel currentTechLevel){
         Water = new Commodity(1, 30, "Water", 0, 3, 4, 30, 50, System.TechLevel.PreAgriculture, System.TechLevel.PreAgriculture, System.TechLevel.Medieval, Planet.Resource.LOTSOFWATER, Planet.Resource.DESERT);
         Furs = new Commodity(2, 250, "Furs",0, 10, 10, 230, 280, System.TechLevel.PreAgriculture, System.TechLevel.PreAgriculture, System.TechLevel.PreAgriculture, Planet.Resource.RICHFAUNA, Planet.Resource.LIFELESS);
         Food = new Commodity(4, 100, "Food",  0, 5, 5, 90, 160, System.TechLevel.Agriculture, System.TechLevel.PreAgriculture, System.TechLevel.Agriculture, Planet.Resource.RICHSOIL, Planet.Resource.POORSOIL);
@@ -75,6 +75,7 @@ public class Economy implements Parcelable, Serializable {
         Narcotics = new Commodity(1, 3500,"Narcotics", 0, -125, 150, 2000, 3000, System.TechLevel.Industrial, System.TechLevel.PreAgriculture, System.TechLevel.Industrial, Planet.Resource.WEIRDMUSHROOMS, null);
         Robots = new Commodity(75, 5000, "Robots", 0, -150, 100, 3500, 5000, System.TechLevel.PostIndustrial, System.TechLevel.EarlyIndustrial, System.TechLevel.HiTech, null, null);
         techLevel = currentTechLevel;
+        commodities = new ArrayList<>();
         commodities.add(Water);
         commodities.add(Furs);
         commodities.add(Food);
@@ -103,7 +104,7 @@ public class Economy implements Parcelable, Serializable {
         }
     }
 
-    public Commodity getCommodityByName(String name){
+    Commodity getCommodityByName(String name){
         switch (name){
             case "Water": return Water;
             case "Furs": return Furs;
@@ -119,6 +120,7 @@ public class Economy implements Parcelable, Serializable {
         }
     }
 
+    /*
     public void setCommodityQuantity(int index, int quantity){
         Commodity comm = getCommodity(index);
         comm.setQuantity(quantity);
@@ -128,19 +130,20 @@ public class Economy implements Parcelable, Serializable {
         Commodity comm = getCommodity(index);
         return comm.getWeight();
     }
+    */
 
     public int getCommodityValue(int index){
         Commodity comm = getCommodity(index);
-        int result = 0;
+        int result;
         int randomVar = Model.getInstance().getRandom().nextInt(comm.getVAR());
         result = comm.getBaseValue() + ((techLevel.ordinal() - comm.getMTLP().ordinal()) * comm.getIPL()) + (comm.getBaseValue() * randomVar / 100);
         return result;
     }
 
     public int getCommodityValue(Commodity comm){
-        int result = 0;
+        int result;
         int randomVar = Model.getInstance().getRandom().nextInt(comm.getVAR());
-        result = comm.getBaseValue() + ((techLevel.ordinal() - comm.getMTLP().ordinal()) * comm.getIPL()) + (comm.getBaseValue() * randomVar / 100);
+        result = comm.getBaseValue() + ((techLevel.ordinal() - comm.getMTLP().ordinal()) * comm.getIPL()) + ((comm.getBaseValue() * randomVar) / 100);
         return result;
     }
 

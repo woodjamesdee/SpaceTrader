@@ -18,7 +18,7 @@ public class PlayerInteractor implements Serializable {
     /**
      * Creates a new PlayerInteractor, which creates a new Player with default attributes
      */
-    public PlayerInteractor() {
+    PlayerInteractor() {
         this.player = new Player("Unknown", 16, 1000, new Gnat());
     }
 
@@ -30,18 +30,18 @@ public class PlayerInteractor implements Serializable {
         return player.getName();
     }
 
-    /**
+    /*
      * Changes the name of the stored Player.
      * @param name  the new name
      */
-    public void changePlayerName(String name) {
-        if (name == null || name.equals("")) {
-            //throw new IllegalArgumentException("Cannot change the player name to nothing.");
-            player.setName("(default)");
-            return;
-        }
-        player.setName(name);
-    }
+    //public void changePlayerName(String name) {
+    //    if (name == null || name.equals("")) {
+    //        //throw new IllegalArgumentException("Cannot change the player name to nothing.");
+    //        player.setName("(default)");
+    //        return;
+    //    }
+    //    player.setName(name);
+    //}
 
     public Player getPlayer(){return player;}
 
@@ -53,16 +53,16 @@ public class PlayerInteractor implements Serializable {
         return player.getSkillpoints();
     }
 
-    /**
+    /*
      * Adds allocatable skillpoints to the stored Player.
      * @param points    the skillpoints to add
      */
-    public void addPlayerSkillpoints(int points) {
-        if (points == 0) {
-            throw new IllegalArgumentException("Cannot add 0 points to player.");
-        }
-        player.setSkillpoints(player.getSkillpoints() + points);
-    }
+    //public void addPlayerSkillpoints(int points) {
+    //    if (points == 0) {
+    //        throw new IllegalArgumentException("Cannot add 0 points to player.");
+    //    }
+    //    player.setSkillpoints(player.getSkillpoints() + points);
+   // }
 
     /**
      * Gets the piloting skill of the stored Player.
@@ -175,16 +175,16 @@ public class PlayerInteractor implements Serializable {
         return player.getShip();
     }
 
-    /**
+    /*
      * Changes the stored Player's ship to a new one.
      * @param ship  the new ship
      */
-    public void setPlayerShip(Spaceship ship) {
-        if (ship == null) {
-            throw new IllegalArgumentException("Cannot set the player ship to a null object.");
-        }
-        player.setShip(ship);
-    }
+    //public void setPlayerShip(Spaceship ship) {
+    //    if (ship == null) {
+    //        throw new IllegalArgumentException("Cannot set the player ship to a null object.");
+    //    }
+    //    player.setShip(ship);
+    //}
 
     /**
      * Returns true or false depending on the stored Player skillpoint value.

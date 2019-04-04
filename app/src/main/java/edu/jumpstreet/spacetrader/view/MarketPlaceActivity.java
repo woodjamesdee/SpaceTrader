@@ -2,7 +2,6 @@ package edu.jumpstreet.spacetrader.view;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -10,13 +9,10 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.io.Serializable;
-
 import edu.jumpstreet.spacetrader.R;
 import edu.jumpstreet.spacetrader.entity.Commodity;
-import edu.jumpstreet.spacetrader.entity.Planet;
-import edu.jumpstreet.spacetrader.entity.Spaceship;
-import edu.jumpstreet.spacetrader.model.Model;
+import edu.jumpstreet.spacetrader.viewmodel.MarketPlaceViewModel;
+import edu.jumpstreet.spacetrader.viewmodel.MarketPlaceViewModelFactory;
 
 public class MarketPlaceActivity extends AppCompatActivity implements View.OnClickListener{
     //resource Layouts
@@ -48,10 +44,11 @@ public class MarketPlaceActivity extends AppCompatActivity implements View.OnCli
     TextView remainingCreditsTV;
     TextView remainingCargoSpaceTV;
 
-    Model model;
-    Planet currentPlanet;
-    Spaceship ship;
+    //Model model;
+    //Planet currentPlanet;
+    //Spaceship ship;
     int techLevel;
+    MarketPlaceViewModel viewModel;
 
     //TODO switch this to model var
     final int NUM_OF_RESOURCES = 10;
@@ -60,10 +57,9 @@ public class MarketPlaceActivity extends AppCompatActivity implements View.OnCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_market);
-        model = Model.getInstance();
-        currentPlanet = model.getGameInteractor().getActivePlanet();
-        techLevel = currentPlanet.getTechLevel().ordinal();
-        ship = model.getPlayerInteractor().getPlayerShip();
+        MarketPlaceViewModelFactory factory = new MarketPlaceViewModelFactory();
+        viewModel = factory.create(MarketPlaceViewModel.class);
+        techLevel = viewModel.getTechLevelOrdinal();
         initilizeAllViews();
         deactiveResourceLayouts(techLevel);
     }
@@ -116,9 +112,9 @@ public class MarketPlaceActivity extends AppCompatActivity implements View.OnCli
 
     private void initializeUserViews(){
         remainingCreditsTV = findViewById(R.id.OnMarketUserCredits);
-        remainingCreditsTV.setText("Credits: " + model.getPlayerInteractor().getPlayerBalance());
+        remainingCreditsTV.setText("Credits: " + viewModel.getPlayerCredits());
         remainingCargoSpaceTV = findViewById(R.id.OnMarketCargoSpace);
-        remainingCargoSpaceTV.setText("Cargo Space: " + ship.getUsedCargoSpace() + "/" + ship.getMaxCargoSpace());
+        remainingCargoSpaceTV.setText("Cargo Space: " + viewModel.getUsedCargoSpace() + "/" + viewModel.getMaxCargoSpace());
     }
 
 
@@ -129,13 +125,13 @@ public class MarketPlaceActivity extends AppCompatActivity implements View.OnCli
             LinearLayout ll = (LinearLayout) fullLayout.getChildAt(2+ i);
             TextView tv = (TextView) ll.getChildAt(index);
             if(index == 1) {
-                tv.setText(currentPlanet.getIndexedResourceQuantity(i)+ "");
+                tv.setText(viewModel.getPlanetResourceQuantityByIndex(i)+ "");
             }
             if (index == 2){
-                tv.setText(ship.getResourceQuantityByIndex(i) + "");
+                tv.setText(viewModel.getShipResourceQuantityByIndex(i) + "");
             }
             if (index == 3){
-                tv.setText(currentPlanet.getEconomy().getCommodityValue(i) + "");
+                tv.setText(viewModel.getCommodityValue(i) + "");
             }
         }
     }
@@ -157,8 +153,6 @@ public class MarketPlaceActivity extends AppCompatActivity implements View.OnCli
         }
     }
 
-
-
     //TODO switch from hardcoded resource Indexes
     //Note i do not have any idea what the request code is
     @Override
@@ -166,27 +160,27 @@ public class MarketPlaceActivity extends AppCompatActivity implements View.OnCli
         Intent intent = new Intent(this, MarketPlaceTradePopupActivity.class);
         Commodity comm;
         switch(view.getId()){
-            case R.id.waterTradeBtn:comm = currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Water.ordinal());
+            case R.id.waterTradeBtn:comm = viewModel.getCommodity(Commodity.CommodityResources.Water.ordinal());
                 break;
-            case R.id.furTradeBtn:comm = currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Furs.ordinal());
+            case R.id.furTradeBtn:comm = viewModel.getCommodity(Commodity.CommodityResources.Furs.ordinal());
                 break;
-            case R.id.foodTradeBtn:comm = currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Food.ordinal());
+            case R.id.foodTradeBtn:comm = viewModel.getCommodity(Commodity.CommodityResources.Food.ordinal());
                 break;
-            case R.id.oreTradeBtn:comm = currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Ore.ordinal());
+            case R.id.oreTradeBtn:comm = viewModel.getCommodity(Commodity.CommodityResources.Ore.ordinal());
                 break;
-            case R.id.gamesTradeBtn:comm = currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Games.ordinal());
+            case R.id.gamesTradeBtn:comm = viewModel.getCommodity(Commodity.CommodityResources.Games.ordinal());
                 break;
-            case R.id.firearmsTradeBtn:comm = currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Firearms.ordinal());
+            case R.id.firearmsTradeBtn:comm = viewModel.getCommodity(Commodity.CommodityResources.Firearms.ordinal());
                 break;
-            case R.id.medicineTradeBtn:comm = currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Medicine.ordinal());
+            case R.id.medicineTradeBtn:comm = viewModel.getCommodity(Commodity.CommodityResources.Medicine.ordinal());
                 break;
-            case R.id.machinesTradeBtn:comm = currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Machines.ordinal());
+            case R.id.machinesTradeBtn:comm = viewModel.getCommodity(Commodity.CommodityResources.Machines.ordinal());
                 break;
-            case R.id.narcoticsTradeBtn:comm = currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Narcotics.ordinal());
+            case R.id.narcoticsTradeBtn:comm = viewModel.getCommodity(Commodity.CommodityResources.Narcotics.ordinal());
                 break;
-            case R.id.robotsTradeBtn:comm = currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Robots.ordinal());
+            case R.id.robotsTradeBtn:comm = viewModel.getCommodity(Commodity.CommodityResources.Robots.ordinal());
                 break;
-                default:comm = currentPlanet.getEconomy().getCommodity(Commodity.CommodityResources.Water.ordinal());
+                default:comm = viewModel.getCommodity(Commodity.CommodityResources.Water.ordinal());
         }
         intent.putExtra("Commodity", (Parcelable) comm);
         MarketPlaceActivity.this.startActivityForResult(intent, 1);
@@ -201,11 +195,10 @@ public class MarketPlaceActivity extends AppCompatActivity implements View.OnCli
         setTextViews(3);
     }
 
-
-
-
+    /*
     private Intent loadIntent(Intent intent, Commodity comm){
         intent.putExtra("Commodity", (Parcelable) comm);
         return intent;
     }
+    */
 }

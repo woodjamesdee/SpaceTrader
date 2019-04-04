@@ -15,7 +15,7 @@ public class ConfigurationViewModel extends ViewModel {
     /**
      * Creates a new ConfigurationViewModel.
      */
-    public ConfigurationViewModel() {
+    ConfigurationViewModel() {
         interactor = Model.getInstance().getPlayerInteractor();
     }
 

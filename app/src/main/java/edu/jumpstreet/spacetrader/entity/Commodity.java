@@ -8,19 +8,19 @@ import edu.jumpstreet.spacetrader.entity.System.TechLevel;
 import edu.jumpstreet.spacetrader.entity.Planet.Resource;
 
 public class Commodity implements Parcelable, Serializable {
-    int weight;
-    int baseValue;
-    String resource;
-    int quantity;
-    int IPL, VAR, MTL, MTH;
-    TechLevel MTLP, MTLU, TTP;
-    Resource CR, ER;
+    private int weight;
+    private int baseValue;
+    private String resource;
+    private int quantity;
+    private int IPL, VAR, MTL, MTH;
+    private TechLevel MTLP, MTLU, TTP;
+    private Resource CR, ER;
 
     public enum CommodityResources{
         Water, Furs, Food, Ore, Games, Firearms,
         Medicine, Machines, Narcotics, Robots
     }
-    public Commodity(int weight, int baseValue, String resource, int quantity, int IPL, int VAR, int MTL, int MTH, TechLevel MTLP, TechLevel MTLU, TechLevel TTP, Resource CR, Resource ER){
+    Commodity(int weight, int baseValue, String resource, int quantity, int IPL, int VAR, int MTL, int MTH, TechLevel MTLP, TechLevel MTLU, TechLevel TTP, Resource CR, Resource ER){
         this.weight = weight;
         this.baseValue = baseValue;
         this.resource = resource;
@@ -93,11 +93,12 @@ public class Commodity implements Parcelable, Serializable {
 
 
     public int getWeight(){return weight;}
-    public int getBaseValue(){return baseValue;}
+    int getBaseValue(){return baseValue;}
     public int getQuantity(){return  quantity;}
 
-    public void setQuantity(int quantity){this.quantity = quantity;}
+    void setQuantity(int quantity){this.quantity = quantity;}
 
+    /*
     public static CommodityResources getIndexCommodity(int index){
         switch(index){
             case 0: return CommodityResources.Water;
@@ -113,14 +114,7 @@ public class Commodity implements Parcelable, Serializable {
             default:return CommodityResources.Water;
         }
     }
-
-    public void setWeight(int weight) {
-        this.weight = weight;
-    }
-
-    public void setBaseValue(int baseValue) {
-        this.baseValue = baseValue;
-    }
+    */
 
     public String getResource() {
         return resource;
@@ -130,17 +124,35 @@ public class Commodity implements Parcelable, Serializable {
         this.resource = resource;
     }
 
-    public int getIPL() {
+    int getIPL() {
         return IPL;
     }
+
+    int getVAR() {
+        return VAR;
+    }
+
+    public TechLevel getMTLP() {
+        return MTLP;
+    }
+
+    /*
+
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
+
+    public void setBaseValue(int baseValue) {
+        this.baseValue = baseValue;
+    }
+
+
 
     public void setIPL(int IPL) {
         this.IPL = IPL;
     }
 
-    public int getVAR() {
-        return VAR;
-    }
+
 
     public void setVAR(int VAR) {
         this.VAR = VAR;
@@ -162,9 +174,7 @@ public class Commodity implements Parcelable, Serializable {
         this.MTH = MTH;
     }
 
-    public TechLevel getMTLP() {
-        return MTLP;
-    }
+
 
     public void setMTLP(TechLevel MTLP) {
         this.MTLP = MTLP;
@@ -201,4 +211,5 @@ public class Commodity implements Parcelable, Serializable {
     public void setER(Resource ER) {
         this.ER = ER;
     }
+    */
 }

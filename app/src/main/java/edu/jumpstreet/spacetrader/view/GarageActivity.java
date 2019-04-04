@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 
 import edu.jumpstreet.spacetrader.R;
-import edu.jumpstreet.spacetrader.model.Model;
 import edu.jumpstreet.spacetrader.viewmodel.GarageViewModel;
 import edu.jumpstreet.spacetrader.viewmodel.GarageViewModelFactory;
 

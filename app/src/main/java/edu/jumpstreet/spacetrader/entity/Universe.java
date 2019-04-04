@@ -16,7 +16,7 @@ public class Universe implements Serializable {
 
     public static String[][] solarSystemLocations = new String[10][10];
 
-    Map<String, SolarSystem> solarSystems;
+    private Map<String, SolarSystem> solarSystems;
 
     public static void updateOnLoad(Universe toUpdate) {
         solarSystemLocations = new String[10][10];
@@ -34,10 +34,12 @@ public class Universe implements Serializable {
         solarSystemLocations[system.getX()][system.getY()] = system.getName();
     }
 
+    /*
     public void removeSolarSystem(SolarSystem system) {
         solarSystems.remove(system.getName());
         solarSystemLocations[system.getX()][system.getY()] = null;
     }
+    */
 
     public SolarSystem getSolarSystemWithName(String name){
         return solarSystems.get(name);

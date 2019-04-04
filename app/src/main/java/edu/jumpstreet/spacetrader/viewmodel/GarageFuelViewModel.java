@@ -11,7 +11,7 @@ public class GarageFuelViewModel extends ViewModel {
     /**
      * Creates a new GarageFuelViewModel.
      */
-    public GarageFuelViewModel() {
+    GarageFuelViewModel() {
         interactor = Model.getInstance().getPlayerInteractor();
     }
 
