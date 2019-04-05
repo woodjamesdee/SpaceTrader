@@ -9,6 +9,9 @@ import java.util.List;
 
 import edu.jumpstreet.spacetrader.model.Model;
 
+/**
+ * class that represents the economy
+ */
 public class Economy implements Parcelable, Serializable {
     private Commodity Water;
     private Commodity Furs;

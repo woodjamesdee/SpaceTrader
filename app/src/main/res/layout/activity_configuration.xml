@@ -17,14 +17,14 @@
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="65px"
             android:layout_weight="1"
             android:text="Character Creation"
             android:textAlignment="center"
             android:textSize="60px"
             android:padding="10dp"
             android:textStyle="bold"
-            android:textColor="#66ccff"
+            android:textColor="#ECF0F1"
             />
 
         <LinearLayout
@@ -39,9 +39,10 @@
                 android:layout_weight="1"
                 android:text="Character Name: "
                 tools:text="Character Name: "
-                android:textColor="#66ccff"
+                android:textColor="#ECF0F1"
                 android:textStyle="bold"
-                android:layout_marginLeft="@dimen/default_gap"/>
+                android:paddingHorizontal="2dp"
+                />
 
             <EditText
                 android:id="@+id/nameEditText"
@@ -51,7 +52,7 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:text="Name"
-                android:textColor="#66ccff"
+                android:textColor="#ECF0F1"
                 android:textStyle="italic"
                 />
 
@@ -63,7 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Skill Points: "
-            android:textColor="#66ccff"/>
+            android:textColor="#ECF0F1"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -84,7 +85,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Pilot Skill:"
-                android:textColor="#66ccff"/>
+                android:textColor="#ECF0F1"/>
 
             <Button
                 android:id="@+id/pilotPlusButton"
@@ -114,7 +115,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Fighter Skill:"
-                android:textColor="#66ccff"/>
+                android:textColor="#ECF0F1"/>
 
             <Button
                 android:id="@+id/fighterPlusButton"
@@ -145,7 +146,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Trader Skill:"
-                android:textColor="#66ccff"/>
+                android:textColor="#ECF0F1"/>
 
             <Button
                 android:id="@+id/traderPlusButton"
@@ -175,7 +176,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Engineer Skill:"
-                android:textColor="#66ccff"/>
+                android:textColor="#ECF0F1"/>
 
             <Button
                 android:id="@+id/engineerPlusButton"
@@ -197,7 +198,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Difficulty:"
-                android:textColor="#66ccff"/>
+                android:textColor="#ECF0F1"/>
 
             <Spinner
                 android:id="@+id/difficultySpinner"
