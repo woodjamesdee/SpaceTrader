@@ -63,127 +63,179 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_marginLeft="5dp"
             android:text="Skill Points: "
             android:textColor="#ECF0F1"/>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_weight="1"
+            android:layout_marginLeft="25dp"
             android:orientation="horizontal">
 
-            <Button
+            <ImageButton
                 android:id="@+id/pilotMinusButton"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginRight="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="10dp"
                 android:layout_weight="1"
-                android:text="-" />
+                android:src="@drawable/minus_still"
+                android:background="#0000"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="onClick"
+
+                />
 
             <TextView
                 android:id="@+id/configPilotTextView"
                 android:layout_width="wrap_content"
+                android:layout_marginLeft="15dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
                 android:layout_weight="1"
                 android:text="Pilot Skill:"
                 android:textColor="#ECF0F1"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/pilotPlusButton"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginRight="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="10dp"
                 android:layout_weight="1"
-                android:text="+" />
+                android:src="@drawable/plus_still"
+                android:background="#0000" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_weight="1"
+            android:layout_marginLeft="25dp"
             android:orientation="horizontal">
 
-            <Button
+            <ImageButton
                 android:id="@+id/fighterMinusButton"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginRight="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="10dp"
                 android:layout_weight="1"
-                android:text="-" />
+                android:src="@drawable/minus_still"
+                android:background="#0000" />
 
             <TextView
                 android:id="@+id/configFighterTextView"
                 android:layout_width="wrap_content"
+                android:layout_marginLeft="15dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
                 android:layout_weight="1"
                 android:text="Fighter Skill:"
-                android:textColor="#ECF0F1"/>
+                android:textColor="#ECF0F1"
+                />
 
-            <Button
+            <ImageButton
                 android:id="@+id/fighterPlusButton"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginRight="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="10dp"
                 android:layout_weight="1"
-                android:text="+"
+                android:src="@drawable/plus_still"
+                android:background="#0000"
                 />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_weight="1"
+            android:layout_marginLeft="25dp"
             android:orientation="horizontal">
 
-            <Button
+            <ImageButton
                 android:id="@+id/traderMinusButton"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginRight="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="10dp"
                 android:layout_weight="1"
-                android:text="-" />
+                android:src="@drawable/minus_still"
+                android:background="#0000" />
 
             <TextView
                 android:id="@+id/configTraderTextView"
                 android:layout_width="wrap_content"
+                android:layout_marginLeft="15dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
                 android:layout_weight="1"
                 android:text="Trader Skill:"
                 android:textColor="#ECF0F1"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/traderPlusButton"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginRight="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="10dp"
                 android:layout_weight="1"
-                android:text="+" />
+                android:src="@drawable/plus_still"
+                android:background="#0000" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_weight="1"
+            android:layout_marginLeft="25dp"
             android:orientation="horizontal">
 
-            <Button
+            <ImageButton
                 android:id="@+id/engineerMinusButton"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginRight="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="10dp"
                 android:layout_weight="1"
-                android:text="-" />
+                android:src="@drawable/minus_still"
+                android:background="#0000" />
 
             <TextView
                 android:id="@+id/configEngineerTextView"
                 android:layout_width="wrap_content"
+                android:layout_marginLeft="15dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
                 android:layout_weight="1"
                 android:text="Engineer Skill:"
                 android:textColor="#ECF0F1"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/engineerPlusButton"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginRight="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="10dp"
                 android:layout_weight="1"
-                android:text="+" />
+                android:src="@drawable/plus_still"
+                android:background="#0000"
+                 />
 
         </LinearLayout>
 

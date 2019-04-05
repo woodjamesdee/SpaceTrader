@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ImageButton;
 
 import edu.jumpstreet.spacetrader.R;
 import edu.jumpstreet.spacetrader.viewmodel.ConfigurationViewModel;
@@ -19,21 +20,21 @@ import edu.jumpstreet.spacetrader.viewmodel.ConfigurationViewModelFactory;
 public class ConfigurationActivity extends AppCompatActivity implements View.OnClickListener {
     EditText nameET;
     TextView skillPointsRemainingTV;
-    Button pilotMinusBtn;
+    ImageButton pilotMinusBtn;
     TextView pilotTV;
-    Button pilotPlusBtn;
+    ImageButton pilotPlusBtn;
 
-    Button fighterMinusBtn;
+    ImageButton fighterMinusBtn;
     TextView fighterTV;
-    Button fighterPlusBtn;
+    ImageButton fighterPlusBtn;
 
-    Button traderMinusBtn;
+    ImageButton traderMinusBtn;
     TextView traderTV;
-    Button traderPlusBtn;
+    ImageButton traderPlusBtn;
 
-    Button engineerMinusBtn;
+    ImageButton engineerMinusBtn;
     TextView engineerTV;
-    Button engineerPlusBtn;
+    ImageButton engineerPlusBtn;
 
     Spinner difficultySpinner;
 
