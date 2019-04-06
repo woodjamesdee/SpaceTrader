@@ -28,7 +28,7 @@ package edu.jumpstreet.spacetrader.vendor;
  * @author
  *    Christian d'Heureuse, Inventec Informatik AG, Zurich, Switzerland, www.source-code.biz
  */
-public class Base64Coder {
+public final class Base64Coder {
 
     // The line separator string of the operating system.
     private static final String systemLineSeparator = System.getProperty("line.separator");

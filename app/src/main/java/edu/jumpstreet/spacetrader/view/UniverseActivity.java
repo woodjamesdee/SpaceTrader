@@ -43,7 +43,7 @@ public class UniverseActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 try {
                     editor.putString(MainActivity.key, Model.saveGameToString());
-                    editor.commit();
+                    editor.apply();
                 } catch (IOException ioe) {
                     System.err.println("Error while saving game!");
                     ioe.printStackTrace();

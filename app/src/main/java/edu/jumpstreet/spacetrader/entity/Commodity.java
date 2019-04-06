@@ -134,8 +134,16 @@ public class Commodity implements Parcelable, Serializable {
         }
     };
 
-
+    /**
+     * weight getter
+     * @return int of the weight of the commodity
+     */
     public int getWeight(){return weight;}
+
+    /**
+     * Base Value getter
+     * @return int representing Value
+     */
     int getBaseValue(){return baseValue;}
     public int getQuantity(){return  quantity;}
 

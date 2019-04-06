@@ -15,7 +15,7 @@ import edu.jumpstreet.spacetrader.vendor.Base64Coder;
  *
  * Implemented in a Singleton style.
  */
-public class Model implements Serializable {
+public final class Model implements Serializable {
 
     private PlayerInteractor playerInteractor;
     private UniverseInteractor universeInteractor;

@@ -43,6 +43,7 @@ public class Economy implements Parcelable, Serializable {
     private Economy(Parcel in){
         commodities = new ArrayList<>();
         commodities =  in.createTypedArrayList(Commodity.CREATOR);
+        assert commodities != null;
         Water = commodities.get(0);
         Furs = commodities.get(1);
         Food = commodities.get(2);

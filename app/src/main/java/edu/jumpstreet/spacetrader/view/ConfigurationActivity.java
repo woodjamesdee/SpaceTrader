@@ -58,7 +58,7 @@ public class ConfigurationActivity extends AppCompatActivity implements View.OnC
         initializeButtons();
         difficultySpinner = findViewById(R.id.difficultySpinner);
         skillPointsRemainingTV.setText("Remaining Skill Points: " + viewModel.getUnallocatedPoints());
-        ArrayAdapter<Difficulty> difficultyAdapter = new ArrayAdapter<Difficulty>(this, android.R.layout.simple_spinner_item, Difficulty.values());
+        ArrayAdapter<Difficulty> difficultyAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, Difficulty.values());
         difficultyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         difficultySpinner.setAdapter(difficultyAdapter);
     }

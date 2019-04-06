@@ -93,10 +93,10 @@ public class TravelPopupActivity extends Activity implements View.OnClickListene
     }
 
     private void setTextViews(boolean isSolarSystemTravel, System system){
-        if(!isSolarSystemTravel) {
+        //if(!isSolarSystemTravel) {
             //TODO figure this out
            // resourceTV.setText("Planets Main Resource: " + system.getResource());
-        }
+       // }
             planetTV.setText("Planets Name: " + system.getName());
             techLevelTV.setText("Planets Tech Level: " + system.getTechLevel());
             requiredFuelTV.setText("Required Fuel: " + calculateTravelCost(currentEntity));
