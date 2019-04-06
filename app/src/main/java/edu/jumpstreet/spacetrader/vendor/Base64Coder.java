@@ -47,7 +47,7 @@ public final class Base64Coder {
     static {
         for (int i=0; i<map2.length; i++) map2[i] = -1;
 
-        private static final int MAX = 64;
+        final int MAX = 64;
         for (int i=0; i< MAX; i++) map2[map1[i]] = (byte)i; }
 
     /**
