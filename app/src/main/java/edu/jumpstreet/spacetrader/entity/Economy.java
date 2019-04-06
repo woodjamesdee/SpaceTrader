@@ -68,44 +68,98 @@ public class Economy implements Parcelable, Serializable {
 
 
     Economy(System.TechLevel currentTechLevel){
-        Water = new Commodity(1, 30, "Water", 0,
-                3, 4, 30, 50, System.TechLevel.PreAgriculture,
+        final int waterBaseValue = 30;
+        final int waterMTL = 30;
+        final int waterMTH = 50;
+        Water = new Commodity(1, waterBaseValue, "Water", 0,
+                3, 4, waterMTL, waterMTH, System.TechLevel.PreAgriculture,
                 System.TechLevel.PreAgriculture, System.TechLevel.Medieval,
                 Planet.Resource.LOTSOFWATER, Planet.Resource.DESERT);
-        Furs = new Commodity(2, 250, "Furs",0,
-                10, 10, 230, 280, System.TechLevel.PreAgriculture,
+
+        final int fursBaseValue = 250;
+        final int fursMTL = 230;
+        final int fursMTH = 280;
+        Furs = new Commodity(2, fursBaseValue, "Furs",0,
+                10, 10, fursMTL, fursMTH, System.TechLevel.PreAgriculture,
                 System.TechLevel.PreAgriculture, System.TechLevel.PreAgriculture,
                 Planet.Resource.RICHFAUNA, Planet.Resource.LIFELESS);
-        Food = new Commodity(4, 100, "Food", 0,
-                5, 5, 90, 160, System.TechLevel.Agriculture,
+
+        final int foodBaseValue = 100;
+        final int foodMTL = 90;
+        final int foodMTH = 160;
+        Food = new Commodity(4, foodBaseValue, "Food", 0,
+                5, 5, foodMTL, foodMTH, System.TechLevel.Agriculture,
                 System.TechLevel.PreAgriculture, System.TechLevel.Agriculture,
                 Planet.Resource.RICHSOIL, Planet.Resource.POORSOIL);
-        Ore = new Commodity(10, 350, "Ore", 0, 20,
-                10, 350, 420, System.TechLevel.Medieval,
+
+        final int oreBaseValue = 350;
+        final int oreMTL = 350;
+        final int oreMTH = 420;
+        final int oreIPL = 20;
+        Ore = new Commodity(10, oreBaseValue, "Ore", 0, oreIPL,
+                10, oreMTL, oreMTH, System.TechLevel.Medieval,
                 System.TechLevel.Medieval, System.TechLevel.Renaissance,
                 Planet.Resource.MINERALRICH, Planet.Resource.MINERALPOOR);
-        Games = new Commodity(5, 250, "Games",0,
-                -10, 5, 160, 270, System.TechLevel.Renaissance,
+
+        final int gamesBaseValue = 250;
+        final int gamesMTL = 160;
+        final int gamesMTH = 270;
+        Games = new Commodity(5, gamesBaseValue, "Games",0,
+                -10, 5, gamesMTL, gamesMTH, System.TechLevel.Renaissance,
                 System.TechLevel.Agriculture, System.TechLevel.PostIndustrial,
                 Planet.Resource.ARTISTIC, null);
-        Firearms = new Commodity(25, 1250, "Firearms",0,
-                -75, 100, 600, 1100, System.TechLevel.Renaissance,
+
+        final int firearmsWeight = 25;
+        final int firearmsBaseValue = 1250;
+        final int firearmsIPL = -75;
+        final int firearmsMTL = 600;
+        final int firearmsMTH = 1100;
+        Firearms = new Commodity(firearmsWeight, firearmsBaseValue, "Firearms",0,
+                firearmsIPL, 100, firearmsMTL, firearmsMTH, System.TechLevel.Renaissance,
                 System.TechLevel.Agriculture, System.TechLevel.Industrial,
                 Planet.Resource.WARLIKE, null);
-        Medicine = new Commodity(20, 650, "Medicine",0,
-                -20, 10, 400, 700, System.TechLevel.EarlyIndustrial,
+
+        final int medicineWeight = 20;
+        final int medicineBaseValue = 650;
+        final int medicineIPL = -20;
+        final int medicineMTL = 400;
+        final int medicineMTH = 700;
+        Medicine = new Commodity(medicineWeight, medicineBaseValue, "Medicine",0,
+                medicineIPL, 10, medicineMTL, medicineMTH, System.TechLevel.EarlyIndustrial,
                 System.TechLevel.Agriculture, System.TechLevel.PostIndustrial,
                 Planet.Resource.LOTSOFHERBS, null);
-        Machines = new Commodity(50, 900, "Machines",0,
-                -30, 5, 600, 800, System.TechLevel.EarlyIndustrial,
+
+        final int machinesWeight = 50;
+        final int machinesBaseValue = 900;
+        final int machinesIPL = -30;
+        final int machinesMTL = 600;
+        final int machinesMTH = 800;
+        Machines = new Commodity(machinesWeight, machinesBaseValue, "Machines",0,
+                machinesIPL, 5, machinesMTL, machinesMTH, System.TechLevel.EarlyIndustrial,
                 System.TechLevel.Renaissance, System.TechLevel.Industrial, null, null);
-        Narcotics = new Commodity(1, 3500,"Narcotics", 0,
-                -125, 150, 2000, 3000, System.TechLevel.Industrial,
+
+        final int narcoticsWeight = 1;
+        final int narcoticsBaseValue = 3500;
+        final int narcoticsIPL = -125;
+        final int narcoticsVAR = 150;
+        final int narcoticsMTL = 2000;
+        final int narcoticsMTH = 3000;
+        Narcotics = new Commodity(narcoticsWeight, narcoticsBaseValue,
+                "Narcotics", 0, narcoticsIPL, narcoticsVAR,
+                narcoticsMTL, narcoticsMTH, System.TechLevel.Industrial,
                 System.TechLevel.PreAgriculture, System.TechLevel.Industrial,
                 Planet.Resource.WEIRDMUSHROOMS, null);
-        Robots = new Commodity(75, 5000, "Robots", 0,
-                -150, 100, 3500, 5000, System.TechLevel.PostIndustrial,
+
+        final int robotsWeight = 75;
+        final int robotsBaseValue = 5000;
+        final int robotsIPL = -150;
+        final int robotsVAR = 100;
+        final int robotsMTL = 3500;
+        final int robotsMTH = 5000;
+        Robots = new Commodity(robotsWeight, robotsBaseValue, "Robots", 0,
+                robotsIPL, robotsVAR, robotsMTL, robotsMTH, System.TechLevel.PostIndustrial,
                 System.TechLevel.EarlyIndustrial, System.TechLevel.HiTech, null, null);
+
         techLevel = currentTechLevel;
         commodities = new ArrayList<>();
         commodities.add(Water);

@@ -46,7 +46,9 @@ public final class Base64Coder {
     private static final byte[] map2 = new byte[128];
     static {
         for (int i=0; i<map2.length; i++) map2[i] = -1;
-        for (int i=0; i<64; i++) map2[map1[i]] = (byte)i; }
+
+        private static final int MAX = 64;
+        for (int i=0; i< MAX; i++) map2[map1[i]] = (byte)i; }
 
     /**
      * Encodes a string into Base64 format.
@@ -64,7 +66,8 @@ public final class Base64Coder {
      * @return    A String containing the Base64 encoded data, broken into lines.
      */
     public static String encodeLines (byte[] in) {
-        return encodeLines(in, 0, in.length, 76, systemLineSeparator); }
+        final int lineLen = 76;
+        return encodeLines(in, 0, in.length, lineLen, systemLineSeparator); }
 
     /**
      * Encodes a byte array into Base 64 format and breaks the output into lines.
@@ -126,13 +129,18 @@ public final class Base64Coder {
         int iEnd = iOff + iLen;
         int op = 0;
         while (ip < iEnd) {
-            int i0 = in[ip++] & 0xff;
-            int i1 = ip < iEnd ? in[ip++] & 0xff : 0;
-            int i2 = ip < iEnd ? in[ip++] & 0xff : 0;
+
+            final int check1 = 0xff;
+            final int check2 = 0xf;
+            final int check3 = 0x3F;
+
+            int i0 = in[ip++] & check1;
+            int i1 = ip < iEnd ? in[ip++] & check1 : 0;
+            int i2 = ip < iEnd ? in[ip++] & check1 : 0;
             int o0 = i0 >>> 2;
             int o1 = ((i0 &   3) << 4) | (i1 >>> 4);
-            int o2 = ((i1 & 0xf) << 2) | (i2 >>> 6);
-            int o3 = i2 & 0x3F;
+            int o2 = ((i1 & check2) << 2) | (i2 >>> 6);
+            int o3 = i2 & check3;
             out[op++] = map1[o0];
             out[op++] = map1[o1];
             out[op] = op < oDataLen ? map1[o2] : '='; op++;
@@ -210,7 +218,8 @@ public final class Base64Coder {
             int i1 = in[ip++];
             int i2 = ip < iEnd ? in[ip++] : 'A';
             int i3 = ip < iEnd ? in[ip++] : 'A';
-            if (i0 > 127 || i1 > 127 || i2 > 127 || i3 > 127)
+            final int MIN = 127;
+            if (i0 > MIN || i1 > MIN || i2 > MIN || i3 > MIN)
                 throw new IllegalArgumentException("Illegal character in Base64 encoded data.");
             int b0 = map2[i0];
             int b1 = map2[i1];
@@ -219,7 +228,8 @@ public final class Base64Coder {
             if (b0 < 0 || b1 < 0 || b2 < 0 || b3 < 0)
                 throw new IllegalArgumentException("Illegal character in Base64 encoded data.");
             int o0 = ( b0       <<2) | (b1>>>4);
-            int o1 = ((b1 & 0xf)<<4) | (b2>>>2);
+            final int check = 0xf;
+            int o1 = ((b1 & check)<<4) | (b2>>>2);
             int o2 = ((b2 &   3)<<6) |  b3;
             out[op++] = (byte)o0;
             if (op<oLen) out[op++] = (byte)o1;
