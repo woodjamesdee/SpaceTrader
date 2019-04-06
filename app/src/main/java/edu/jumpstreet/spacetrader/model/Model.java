@@ -60,7 +60,8 @@ public final class Model implements Serializable {
      */
     public GameInteractor getGameInteractor() { return gameInteractor; }
 
-    public Random getRandom() { return random; } // TODO: This is really bad, need to change this, only used to make the M7 demo work
+    public Random getRandom() { return random; }
+    // TODO: This is really bad, need to change this, only used to make the M7 demo work
 
     /**
      * Loads in the game from the given Base64 encoded String
@@ -85,11 +86,11 @@ public final class Model implements Serializable {
      * @throws IOException  may occur while writing the String
      */
     public static String saveGameToString() throws IOException {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        ObjectOutputStream oos = new ObjectOutputStream(baos);
+        ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
+        ObjectOutputStream oos = new ObjectOutputStream(byteStream);
         oos.writeObject(instance);
         oos.close();
-        String result = new String(Base64Coder.encode(baos.toByteArray()));
+        String result = new String(Base64Coder.encode(byteStream.toByteArray()));
         System.out.println(result);
         return result;
     }

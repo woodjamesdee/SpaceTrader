@@ -39,7 +39,8 @@ public class UniverseActivity extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences sharedPreferences = getSharedPreferences(MainActivity.MyPREFERENCES, Context.MODE_PRIVATE);
+                SharedPreferences sharedPreferences = getSharedPreferences(
+                        MainActivity.MyPREFERENCES, Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 try {
                     editor.putString(MainActivity.key, Model.saveGameToString());
@@ -53,12 +54,14 @@ public class UniverseActivity extends AppCompatActivity {
     }
 
     private void createUniverse() {
-        TableRow.LayoutParams params = new TableRow.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f);
+        TableRow.LayoutParams params = new TableRow.LayoutParams(0,
+                ViewGroup.LayoutParams.WRAP_CONTENT, 1f);
         for (int i = 0; i < tableLayout.getChildCount(); i++) {
             for (int j = 0; j < Universe.Y_BOUNDS; j++) {
                 if (Universe.solarSystemLocations[i][j] != null) {
                     Button button = new Button(this);
-                    if(viewModel.getActiveSolarSystemX() == i && viewModel.getActiveSolarSystemY() == j){
+                    if(viewModel.getActiveSolarSystemX() == i
+                            && viewModel.getActiveSolarSystemY() == j){
                         button.setBackgroundColor(Color.GREEN);
                     }
                     final int i2 = i;
@@ -66,15 +69,22 @@ public class UniverseActivity extends AppCompatActivity {
                     button.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            if(viewModel.getActiveSolarSystem() != viewModel.getSolarSystemByName(Universe.solarSystemLocations[i2][j2])) {
-                                Intent intent = new Intent(UniverseActivity.this, TravelPopupActivity.class);
-                                viewModel.setNextSolarSystem(viewModel.getSolarSystemByName(Universe.solarSystemLocations[i2][j2]));
-                                //intent.putExtra("Solarsystem_Name", Universe.solarSystemLocations[i2][j2]);
+                            if(viewModel.getActiveSolarSystem() != viewModel
+                                    .getSolarSystemByName(Universe.solarSystemLocations[i2][j2])) {
+                                Intent intent = new Intent(UniverseActivity.this,
+                                        TravelPopupActivity.class);
+                                viewModel.setNextSolarSystem(viewModel
+                                        .getSolarSystemByName(Universe
+                                                .solarSystemLocations[i2][j2]));
+                                //intent.putExtra("Solarsystem_Name",
+                                // Universe.solarSystemLocations[i2][j2]);
                                 viewModel.setIsSolarSystemTravel(true);
                                 //intent.putExtra("Is_Solarsystem_Travel", true);
-                                UniverseActivity.this.startActivityForResult(intent, 1);
+                                UniverseActivity.this.startActivityForResult(intent,
+                                        1);
                             }else{
-                                Intent intent = new Intent(UniverseActivity.this, SolarSystemActivity.class);
+                                Intent intent = new Intent(UniverseActivity.this,
+                                        SolarSystemActivity.class);
                                 UniverseActivity.this.startActivity(intent);
                             }
                         }

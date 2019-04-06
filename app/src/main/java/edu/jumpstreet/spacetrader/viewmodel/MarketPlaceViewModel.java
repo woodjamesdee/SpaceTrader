@@ -55,14 +55,16 @@ public class MarketPlaceViewModel extends ViewModel {
      * @param index the index to check
      * @return  the resource quantity
      */
-    public int getShipResourceQuantityByIndex(int index) { return ship.getResourceQuantityByIndex(index); }
+    public int getShipResourceQuantityByIndex(int index)
+    { return ship.getResourceQuantityByIndex(index); }
 
     /**
      * Gets the resource quantity of the planet
      * @param index the index to check
      * @return  the resource quantity
      */
-    public int getPlanetResourceQuantityByIndex(int index) { return planet.getIndexedResourceQuantity(index); }
+    public int getPlanetResourceQuantityByIndex(int index)
+    { return planet.getIndexedResourceQuantity(index); }
 
     /**
      * Gets the value of the commodity at the given index
@@ -70,13 +72,15 @@ public class MarketPlaceViewModel extends ViewModel {
      *
      * @return the value
      */
-    public int getCommodityValue(int index) { return planet.getEconomy().getCommodityValue(index); }
+    public int getCommodityValue(int index)
+    { return planet.getEconomy().getCommodityValue(index); }
 
     /**
      * Gets the Commodity at the given index
      * @param index the index to get
      * @return  the commodity
      */
-    public Commodity getCommodity(int index) { return planet.getEconomy().getCommodity(index); }
+    public Commodity getCommodity(int index)
+    { return planet.getEconomy().getCommodity(index); }
 
 }

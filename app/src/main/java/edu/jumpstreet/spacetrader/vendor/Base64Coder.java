@@ -70,12 +70,14 @@ public final class Base64Coder {
      * Encodes a byte array into Base 64 format and breaks the output into lines.
      * @param in            An array containing the data bytes to be encoded.
      * @param iOff          Offset of the first byte in <code>in</code> to be processed.
-     * @param iLen          Number of bytes to be processed in <code>in</code>, starting at <code>iOff</code>.
+     * @param iLen          Number of bytes to be processed in <code>in</code>, starting
+     *                      at <code>iOff</code>.
      * @param lineLen       Line length for the output data. Should be a multiple of 4.
      * @param lineSeparator The line separator to be used to separate the output lines.
      * @return              A String containing the Base64 encoded data, broken into lines.
      */
-    public static String encodeLines (byte[] in, int iOff, int iLen, int lineLen, String lineSeparator) {
+    public static String encodeLines (byte[] in, int iOff, int iLen, int lineLen,
+                                      String lineSeparator) {
         int blockLen = (lineLen*3) / 4;
         if (blockLen <= 0) throw new IllegalArgumentException();
         int lines = (iLen+blockLen-1) / blockLen;
@@ -189,12 +191,14 @@ public final class Base64Coder {
      * No blanks or line breaks are allowed within the Base64 encoded input data.
      * @param in    A character array containing the Base64 encoded data.
      * @param iOff  Offset of the first character in <code>in</code> to be processed.
-     * @param iLen  Number of characters to process in <code>in</code>, starting at <code>iOff</code>.
+     * @param iLen  Number of characters to process in <code>in</code>,
+     *              starting at <code>iOff</code>.
      * @return      An array containing the decoded data bytes.
      * @throws      IllegalArgumentException If the input is not valid Base64 encoded data.
      */
     public static byte[] decode (char[] in, int iOff, int iLen) {
-        if (iLen%4 != 0) throw new IllegalArgumentException("Length of Base64 encoded input string is not a multiple of 4.");
+        if (iLen%4 != 0) throw new IllegalArgumentException("Length of Base64 encoded " +
+                "input string is not a multiple of 4.");
         while (iLen > 0 && in[iOff+iLen-1] == '=') iLen--;
         int oLen = (iLen*3) / 4;
         byte[] out = new byte[oLen];

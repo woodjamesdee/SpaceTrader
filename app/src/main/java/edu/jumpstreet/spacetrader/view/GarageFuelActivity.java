@@ -74,7 +74,8 @@ public class GarageFuelActivity extends Activity implements View.OnClickListener
 
 
     private void updateTextViews(){
-        usersFuel.setText("Users Fuel: " + (viewModel.getRemainingFuel() + fuelToBePurchased) + "/" + viewModel.getMaxFuel());
+        usersFuel.setText("Users Fuel: " + (viewModel.getRemainingFuel()
+                + fuelToBePurchased) + "/" + viewModel.getMaxFuel());
         quantityOfTransaction.setText("Amount of Fuel to be Purchased: " + fuelToBePurchased);
         costOfTransaction.setText("Cost for Fuel: " + costOfFuel);
         usersCredits.setText("Users Credits: " + (viewModel.getPlayerCredits() - costOfFuel));

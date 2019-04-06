@@ -23,7 +23,7 @@
 
             <TextView
                 android:id="@+id/travelPopupPlanetTV"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Planet:" />
@@ -43,7 +43,7 @@
                 tools:text="Tech Level:" />
 
             <TextView
-                android:id="@+id/travelPopupResouceTV"
+                android:id="@+id/travelPopupResourceTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Resource:"
@@ -84,7 +84,7 @@
 
             <Button
                 android:id="@+id/travelPopupTravelButton"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="Travel" />

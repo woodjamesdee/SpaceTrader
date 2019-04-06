@@ -12,7 +12,8 @@ public abstract class System implements Serializable {
     TechLevel techLevel;
 
     /**
-     * The TechLevel enum represents the technological advancement of the entire System. Affects modifiers.
+     * The TechLevel enum represents the technological advancement
+     * of the entire System. Affects modifiers.
      */
     public enum TechLevel {
         PreAgriculture, Agriculture,
@@ -22,7 +23,8 @@ public abstract class System implements Serializable {
     }
 
     /**
-     * Constructor to be overriden, creates a new System with a given x and y coordinate, as well as the index of the TechLevel index
+     * Constructor to be overriden, creates a new System with a given x
+     * and y coordinate, as well as the index of the TechLevel index
      * @param x                 the x coordinate of the System
      * @param y                 the y coordinate of the System
      * @param techLevelIndex    the TechLevel to use (given through index)

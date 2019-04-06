@@ -79,7 +79,8 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
         transactionConfirmationBtn.setOnClickListener(this);
         quantityTV = findViewById(R.id.tradePopupQuantityTV);
         cargoSpaceTV = findViewById(R.id.tradePopUpCargoTV);
-        cargoSpaceTV.setText("Cargo Space: " + viewModel.getUsedCargoSpace() + "/" + viewModel.getMaxCargoSpace());
+        cargoSpaceTV.setText("Cargo Space: " + viewModel.getUsedCargoSpace() +
+                "/" + viewModel.getMaxCargoSpace());
         costTV = findViewById(R.id.tradePopupTotalCostTV);
         costTV.setText("Cost: 0");
         planetsResourceTV = findViewById(R.id.tradePopupPlanetsResourceTV);
@@ -91,13 +92,15 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
         activeCommodity = getIntent().getParcelableExtra("Commodity");
         resourceQuantity = activeCommodity.getQuantity();
         updateResourceViews(activeCommodity);
-        userResourceTV.setText("Users " + activeCommodity.getResource() + " " + viewModel.getShipResourceQuantityByName(activeCommodity.getResource()));
+        userResourceTV.setText("Users " + activeCommodity.getResource() + " "
+                + viewModel.getShipResourceQuantityByName(activeCommodity.getResource()));
         disableBuyButtonsByTechLevel(viewModel.getTechLevelOrdinal(), activeCommodity);
         cargoSpacePerItemTV.setText("Space: " + activeCommodity.getWeight());
     }
 
     private void updateResourceViews(Commodity comm){
-        planetsResourceTV.setText("Planets " + comm.getResource() + ": " + comm.getQuantity());
+        planetsResourceTV.setText("Planets " + comm.getResource() + ": "
+                + comm.getQuantity());
     }
 
     @Override
@@ -119,10 +122,14 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
                 if(quantityOfTransaction == 0){
                     finish();
                 }
-                viewModel.addCreditsToPlayerBalance(-1 * quantityOfTransaction * resourceValue);
-                viewModel.setShipResourceQuantityByName(activeCommodity.getResource(), quantityOfTransaction);
-                viewModel.setPlanetResourceQuantityByName(activeCommodity.getResource(), resourceQuantity);
-                viewModel.setUsedCargoSpace((quantityOfTransaction * cargoSpacePerUnitResource) + viewModel.getUsedCargoSpace());
+                viewModel.addCreditsToPlayerBalance(-1 * quantityOfTransaction
+                        * resourceValue);
+                viewModel.setShipResourceQuantityByName(activeCommodity.getResource(),
+                        quantityOfTransaction);
+                viewModel.setPlanetResourceQuantityByName(activeCommodity.getResource(),
+                        resourceQuantity);
+                viewModel.setUsedCargoSpace((quantityOfTransaction * cargoSpacePerUnitResource)
+                        + viewModel.getUsedCargoSpace());
                 finish();
                 break;
         }
@@ -132,24 +139,34 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
         quantityOfTransaction += change;
         quantityTV.setText("" + quantityOfTransaction);
         costTV.setText("Cost: " + (quantityOfTransaction * resourceValue * -1));
-        cargoSpaceTV.setText("Cargo Space: " +  (viewModel.getUsedCargoSpace() + (cargoSpacePerUnitResource * quantityOfTransaction)) + "/"
+        cargoSpaceTV.setText("Cargo Space: " +  (viewModel.getUsedCargoSpace()
+                + (cargoSpacePerUnitResource * quantityOfTransaction)) + "/"
                 + viewModel.getMaxCargoSpace());
         resourceQuantity -= change;
         //TODO make method that gets weight per commodity
-       // userResourceTV.setText("Users " + resourceType + " " + Model.getInstance().getPlayerInteractor().getPlayerShip().);
+       // userResourceTV.setText("Users " + resourceType + " "
+        // + Model.getInstance().getPlayerInteractor().getPlayerShip().);
         updateResourceViews(activeCommodity);
         disableButtonsAdaptive();
     }
 
     private void disableButtonsAdaptive(){
-        boolean minus1isActive = viewModel.getShipResourceQuantityByName(activeCommodity.getResource()) >=  Math.abs(quantityOfTransaction - 1)|| quantityOfTransaction >= 1;
-        boolean minus10isActive = viewModel.getShipResourceQuantityByName(activeCommodity.getResource()) >= Math.abs(quantityOfTransaction - 10) || quantityOfTransaction >= 10;
+        boolean minus1isActive = viewModel.getShipResourceQuantityByName(activeCommodity
+                .getResource()) >=  Math.abs(quantityOfTransaction - 1)||
+                quantityOfTransaction >= 1;
+        boolean minus10isActive = viewModel.getShipResourceQuantityByName(activeCommodity
+                .getResource()) >= Math.abs(quantityOfTransaction - 10) ||
+                quantityOfTransaction >= 10;
         boolean plus1isActive = resourceQuantity >= 1
-                && (quantityOfTransaction + 1) * resourceValue <= Model.getInstance().getPlayerInteractor().getPlayerBalance()
-                || ((quantityOfTransaction + 1) * activeCommodity.getWeight()) + viewModel.getUsedCargoSpace() <= viewModel.getMaxCargoSpace() ;
+                && (quantityOfTransaction + 1) * resourceValue <= Model.getInstance()
+                .getPlayerInteractor().getPlayerBalance()
+                || ((quantityOfTransaction + 1) * activeCommodity.getWeight())
+                + viewModel.getUsedCargoSpace() <= viewModel.getMaxCargoSpace() ;
         boolean plus10isActive = resourceQuantity >= 10
-                && (quantityOfTransaction + 10) * resourceValue <= Model.getInstance().getPlayerInteractor().getPlayerBalance()
-                || ((quantityOfTransaction + 10) * activeCommodity.getWeight()) + viewModel.getUsedCargoSpace() <= viewModel.getMaxCargoSpace();
+                && (quantityOfTransaction + 10) * resourceValue <= Model.getInstance()
+                .getPlayerInteractor().getPlayerBalance()
+                || ((quantityOfTransaction + 10) * activeCommodity.getWeight())
+                + viewModel.getUsedCargoSpace() <= viewModel.getMaxCargoSpace();
         plus1Btn.setEnabled(plus1isActive);
         plus10Btn.setEnabled(plus10isActive);
         minus1Btn.setEnabled(minus1isActive);

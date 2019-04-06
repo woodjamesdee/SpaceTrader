@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -26,33 +27,31 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="25dp"
             android:layout_weight="1"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_marginStart="4dp"
+                android:layout_marginLeft="4dp"
                 android:text="Character Name: "
-                tools:text="Character Name: "
                 android:textColor="#ECF0F1"
                 android:textStyle="bold"
-                android:layout_marginLeft="4dp"
-                />
+                tools:text="Character Name: " />
 
             <EditText
                 android:id="@+id/nameEditText"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
+                android:hint="character name"
                 android:inputType="textPersonName"
                 android:text="Name"
                 android:textColor="#ECF0F1"
-                android:textStyle="italic"
-                android:hint="character name"
-                />
+                android:textStyle="italic" />
 
         </LinearLayout>
 
@@ -63,14 +62,18 @@
             android:layout_weight="1"
             android:layout_marginLeft="5dp"
             android:text="Skill Points: "
-            android:textColor="#ECF0F1"/>
+            android:textColor="#ECF0F1"
+            android:layout_marginStart="5dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_weight="1"
-            android:layout_marginLeft="25dp"
-            android:orientation="horizontal">
+            android:paddingStart="25dp"
+            android:paddingLeft="25dp"
+            android:orientation="horizontal"
+            android:layout_marginStart="25dp"
+            android:layout_marginLeft="25dp">
 
             <ImageButton
                 android:id="@+id/pilotMinusButton"
@@ -79,7 +82,6 @@
                 android:layout_marginRight="30dp"
                 android:layout_marginEnd="30dp"
                 android:layout_marginTop="10dp"
-                android:layout_weight="1"
                 android:src="@drawable/minus_still"
                 android:background="#0000"
                 android:clickable="true"
@@ -91,24 +93,24 @@
 
             <TextView
                 android:id="@+id/configPilotTextView"
-                android:layout_width="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:layout_width="122dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
                 android:layout_marginTop="25dp"
                 android:layout_weight="1"
                 android:text="Pilot Skill:"
-                android:textColor="#ECF0F1"/>
+                android:textColor="#ECF0F1" />
 
             <ImageButton
                 android:id="@+id/pilotPlusButton"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:layout_marginRight="30dp"
-                android:layout_marginEnd="30dp"
                 android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:src="@drawable/plus_still"
+                android:layout_marginEnd="30dp"
+                android:layout_marginRight="50dp"
                 android:background="#0000"
+                android:paddingRight="50dp"
+                android:src="@drawable/plus_still"
                 android:contentDescription="a button to add to the pilot skill"/>
 
         </LinearLayout>
@@ -122,15 +124,16 @@
 
             <ImageButton
                 android:id="@+id/fighterMinusButton"
-                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:layout_marginRight="30dp"
-                android:layout_marginEnd="30dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
                 android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:src="@drawable/minus_still"
+                android:layout_marginEnd="30dp"
+                android:layout_marginRight="30dp"
                 android:background="#0000"
-                android:contentDescription="a button to reduce the fighter skill"/>
+                android:contentDescription="a button to reduce the fighter skill"
+                android:paddingLeft="25dp"
+                android:src="@drawable/minus_still" />
 
             <TextView
                 android:id="@+id/configFighterTextView"
@@ -145,16 +148,16 @@
 
             <ImageButton
                 android:id="@+id/fighterPlusButton"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:layout_marginRight="30dp"
-                android:layout_marginEnd="30dp"
                 android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:src="@drawable/plus_still"
+                android:layout_marginEnd="30dp"
+                android:layout_marginRight="50dp"
                 android:background="#0000"
+                android:paddingRight="50dp"
                 android:contentDescription="a button to add to the fighter skill"
-                />
+                android:src="@drawable/plus_still" />
+
 
         </LinearLayout>
 
@@ -167,37 +170,38 @@
 
             <ImageButton
                 android:id="@+id/traderMinusButton"
-                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:layout_marginRight="30dp"
-                android:layout_marginEnd="30dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
                 android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:src="@drawable/minus_still"
+                android:layout_marginEnd="30dp"
+                android:layout_marginRight="30dp"
                 android:background="#0000"
-                android:contentDescription="a button to reduce the trader skill"/>
+                android:contentDescription="a button to reduce the trader skill"
+                android:paddingLeft="25dp"
+                android:src="@drawable/minus_still" />
 
             <TextView
                 android:id="@+id/configTraderTextView"
-                android:layout_width="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:layout_width="142dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
                 android:layout_marginTop="25dp"
-                android:layout_weight="1"
                 android:text="Trader Skill:"
-                android:textColor="#ECF0F1"/>
+                android:textColor="#ECF0F1" />
 
             <ImageButton
                 android:id="@+id/traderPlusButton"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:layout_marginRight="30dp"
-                android:layout_marginEnd="30dp"
                 android:layout_marginTop="10dp"
-                android:layout_weight="1"
+                android:layout_marginEnd="30dp"
+                android:layout_marginRight="50dp"
+                android:paddingRight="50dp"
                 android:src="@drawable/plus_still"
                 android:background="#0000"
-                android:contentDescription="a button to increase the trader skill"/>
+                android:contentDescription="a button to increase the trader skill"
+                />
 
         </LinearLayout>
 
@@ -210,36 +214,37 @@
 
             <ImageButton
                 android:id="@+id/engineerMinusButton"
-                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:layout_marginRight="30dp"
-                android:layout_marginEnd="30dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
                 android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:src="@drawable/minus_still"
+                android:layout_marginEnd="30dp"
+                android:layout_marginRight="30dp"
                 android:background="#0000"
-                android:contentDescription="a button to reduce the engineer skill"/>
+                android:contentDescription="a button to reduce the engineer skill"
+                android:paddingLeft="25dp"
+                android:src="@drawable/minus_still" />
 
             <TextView
                 android:id="@+id/configEngineerTextView"
                 android:layout_width="wrap_content"
-                android:layout_marginLeft="15dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
                 android:layout_marginTop="25dp"
                 android:layout_weight="1"
                 android:text="Engineer Skill:"
-                android:textColor="#ECF0F1"/>
+                android:textColor="#ECF0F1" />
 
             <ImageButton
                 android:id="@+id/engineerPlusButton"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:layout_marginRight="30dp"
-                android:layout_marginEnd="30dp"
                 android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:src="@drawable/plus_still"
+                android:layout_marginEnd="30dp"
+                android:layout_marginRight="50dp"
                 android:background="#0000"
+                android:paddingRight="50dp"
+                android:src="@drawable/plus_still"
                 android:contentDescription="a button to add to the engineer skill"
                  />
 
@@ -254,7 +259,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="Difficulty:"
                 android:textColor="#ECF0F1"/>
 

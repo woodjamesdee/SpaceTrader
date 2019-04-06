@@ -135,10 +135,10 @@
 
             <Button
                 android:id="@+id/tradePopupConfirmationBtn"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
-                android:text="Confrim Transaction"
+                android:text="Confirm Transaction"
                 tools:layout_editor_absoluteX="432dp"
                 tools:layout_editor_absoluteY="48dp" />
         </LinearLayout>

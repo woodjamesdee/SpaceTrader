@@ -68,16 +68,44 @@ public class Economy implements Parcelable, Serializable {
 
 
     Economy(System.TechLevel currentTechLevel){
-        Water = new Commodity(1, 30, "Water", 0, 3, 4, 30, 50, System.TechLevel.PreAgriculture, System.TechLevel.PreAgriculture, System.TechLevel.Medieval, Planet.Resource.LOTSOFWATER, Planet.Resource.DESERT);
-        Furs = new Commodity(2, 250, "Furs",0, 10, 10, 230, 280, System.TechLevel.PreAgriculture, System.TechLevel.PreAgriculture, System.TechLevel.PreAgriculture, Planet.Resource.RICHFAUNA, Planet.Resource.LIFELESS);
-        Food = new Commodity(4, 100, "Food",  0, 5, 5, 90, 160, System.TechLevel.Agriculture, System.TechLevel.PreAgriculture, System.TechLevel.Agriculture, Planet.Resource.RICHSOIL, Planet.Resource.POORSOIL);
-        Ore = new Commodity(10, 350, "Ore", 0, 20, 10, 350, 420, System.TechLevel.Medieval, System.TechLevel.Medieval, System.TechLevel.Renaissance, Planet.Resource.MINERALRICH, Planet.Resource.MINERALPOOR);
-        Games = new Commodity(5, 250, "Games",0, -10, 5, 160, 270, System.TechLevel.Renaissance, System.TechLevel.Agriculture, System.TechLevel.PostIndustrial, Planet.Resource.ARTISTIC, null);
-        Firearms = new Commodity(25, 1250, "Firearms",0, -75, 100, 600, 1100, System.TechLevel.Renaissance, System.TechLevel.Agriculture, System.TechLevel.Industrial, Planet.Resource.WARLIKE, null);
-        Medicine = new Commodity(20, 650, "Medicine",0, -20, 10, 400, 700, System.TechLevel.EarlyIndustrial, System.TechLevel.Agriculture, System.TechLevel.PostIndustrial, Planet.Resource.LOTSOFHERBS, null);
-        Machines = new Commodity(50, 900, "Machines",0, -30, 5, 600, 800, System.TechLevel.EarlyIndustrial, System.TechLevel.Renaissance, System.TechLevel.Industrial, null, null);
-        Narcotics = new Commodity(1, 3500,"Narcotics", 0, -125, 150, 2000, 3000, System.TechLevel.Industrial, System.TechLevel.PreAgriculture, System.TechLevel.Industrial, Planet.Resource.WEIRDMUSHROOMS, null);
-        Robots = new Commodity(75, 5000, "Robots", 0, -150, 100, 3500, 5000, System.TechLevel.PostIndustrial, System.TechLevel.EarlyIndustrial, System.TechLevel.HiTech, null, null);
+        Water = new Commodity(1, 30, "Water", 0,
+                3, 4, 30, 50, System.TechLevel.PreAgriculture,
+                System.TechLevel.PreAgriculture, System.TechLevel.Medieval,
+                Planet.Resource.LOTSOFWATER, Planet.Resource.DESERT);
+        Furs = new Commodity(2, 250, "Furs",0,
+                10, 10, 230, 280, System.TechLevel.PreAgriculture,
+                System.TechLevel.PreAgriculture, System.TechLevel.PreAgriculture,
+                Planet.Resource.RICHFAUNA, Planet.Resource.LIFELESS);
+        Food = new Commodity(4, 100, "Food", 0,
+                5, 5, 90, 160, System.TechLevel.Agriculture,
+                System.TechLevel.PreAgriculture, System.TechLevel.Agriculture,
+                Planet.Resource.RICHSOIL, Planet.Resource.POORSOIL);
+        Ore = new Commodity(10, 350, "Ore", 0, 20,
+                10, 350, 420, System.TechLevel.Medieval,
+                System.TechLevel.Medieval, System.TechLevel.Renaissance,
+                Planet.Resource.MINERALRICH, Planet.Resource.MINERALPOOR);
+        Games = new Commodity(5, 250, "Games",0,
+                -10, 5, 160, 270, System.TechLevel.Renaissance,
+                System.TechLevel.Agriculture, System.TechLevel.PostIndustrial,
+                Planet.Resource.ARTISTIC, null);
+        Firearms = new Commodity(25, 1250, "Firearms",0,
+                -75, 100, 600, 1100, System.TechLevel.Renaissance,
+                System.TechLevel.Agriculture, System.TechLevel.Industrial,
+                Planet.Resource.WARLIKE, null);
+        Medicine = new Commodity(20, 650, "Medicine",0,
+                -20, 10, 400, 700, System.TechLevel.EarlyIndustrial,
+                System.TechLevel.Agriculture, System.TechLevel.PostIndustrial,
+                Planet.Resource.LOTSOFHERBS, null);
+        Machines = new Commodity(50, 900, "Machines",0,
+                -30, 5, 600, 800, System.TechLevel.EarlyIndustrial,
+                System.TechLevel.Renaissance, System.TechLevel.Industrial, null, null);
+        Narcotics = new Commodity(1, 3500,"Narcotics", 0,
+                -125, 150, 2000, 3000, System.TechLevel.Industrial,
+                System.TechLevel.PreAgriculture, System.TechLevel.Industrial,
+                Planet.Resource.WEIRDMUSHROOMS, null);
+        Robots = new Commodity(75, 5000, "Robots", 0,
+                -150, 100, 3500, 5000, System.TechLevel.PostIndustrial,
+                System.TechLevel.EarlyIndustrial, System.TechLevel.HiTech, null, null);
         techLevel = currentTechLevel;
         commodities = new ArrayList<>();
         commodities.add(Water);
@@ -140,14 +168,16 @@ public class Economy implements Parcelable, Serializable {
         Commodity comm = getCommodity(index);
         int result;
         int randomVar = Model.getInstance().getRandom().nextInt(comm.getVAR());
-        result = comm.getBaseValue() + ((techLevel.ordinal() - comm.getMTLP().ordinal()) * comm.getIPL()) + (comm.getBaseValue() * randomVar / 100);
+        result = comm.getBaseValue() + ((techLevel.ordinal() - comm.getMTLP().ordinal())
+                * comm.getIPL()) + (comm.getBaseValue() * randomVar / 100);
         return result;
     }
 
     public int getCommodityValue(Commodity comm){
         int result;
         int randomVar = Model.getInstance().getRandom().nextInt(comm.getVAR());
-        result = comm.getBaseValue() + ((techLevel.ordinal() - comm.getMTLP().ordinal()) * comm.getIPL()) + ((comm.getBaseValue() * randomVar) / 100);
+        result = comm.getBaseValue() + ((techLevel.ordinal() - comm.getMTLP().ordinal())
+                * comm.getIPL()) + ((comm.getBaseValue() * randomVar) / 100);
         return result;
     }
 

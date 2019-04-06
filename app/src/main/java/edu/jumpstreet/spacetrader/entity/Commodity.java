@@ -44,7 +44,10 @@ public class Commodity implements Parcelable, Serializable {
      * @param CR
      * @param ER
      */
-    Commodity(int weight, int baseValue, String resource, int quantity, int IPL, int VAR, int MTL, int MTH, TechLevel MTLP, TechLevel MTLU, TechLevel TTP, Resource CR, Resource ER){
+    Commodity(int weight, int baseValue, String resource,
+              int quantity, int IPL, int VAR, int MTL, int MTH,
+              TechLevel MTLP, TechLevel MTLU, TechLevel TTP,
+              Resource CR, Resource ER){
         this.weight = weight;
         this.baseValue = baseValue;
         this.resource = resource;

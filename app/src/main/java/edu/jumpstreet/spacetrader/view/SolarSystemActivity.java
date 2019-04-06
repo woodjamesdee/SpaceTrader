@@ -42,7 +42,8 @@ public class SolarSystemActivity extends AppCompatActivity implements View.OnCli
 
     private void createSolarSystem() {
         final SolarSystem activeSystem = viewModel.getActiveSolarSystem();
-        TableRow.LayoutParams params = new TableRow.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f);
+        TableRow.LayoutParams params = new TableRow.LayoutParams(0,
+                ViewGroup.LayoutParams.WRAP_CONTENT, 1f);
         for (int i = 0; i < tableLayout.getChildCount(); i++) {
             for (int j = 0; j < Universe.Y_BOUNDS; j++) {
                 if (activeSystem.getPlanetLocations()[i][j] != null) {
@@ -58,15 +59,21 @@ public class SolarSystemActivity extends AppCompatActivity implements View.OnCli
                     button.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            if(viewModel.getActivePlanet() != viewModel.getPlanet(activeSystem2.getPlanetLocations()[i2][j2])) {
-                                Intent intent = new Intent(SolarSystemActivity.this, TravelPopupActivity.class);
-                                viewModel.setNextPlanet(activeSystem2.getPlanet(activeSystem2.getPlanetLocations()[i2][j2]));
-                                //intent.putExtra("Travel_Planet", activeSystem2.getPlanet(activeSystem2.getPlanetLocations()[i2][j2]));
+                            if(viewModel.getActivePlanet() != viewModel
+                                    .getPlanet(activeSystem2.getPlanetLocations()[i2][j2])) {
+                                Intent intent = new Intent(SolarSystemActivity.this,
+                                        TravelPopupActivity.class);
+                                viewModel.setNextPlanet(activeSystem2.getPlanet(activeSystem2
+                                        .getPlanetLocations()[i2][j2]));
+                                //intent.putExtra("Travel_Planet", activeSystem2
+                                // .getPlanet(activeSystem2.getPlanetLocations()[i2][j2]));
                                 viewModel.setIsSolarSystemTravel(false);
                                 //intent.putExtra("Is_Solarsystem_Travel", false);
-                                SolarSystemActivity.this.startActivityForResult(intent, 1);
+                                SolarSystemActivity.this.startActivityForResult(
+                                        intent, 1);
                             }else{
-                                Intent intent = new Intent(SolarSystemActivity.this, PlanetActivity.class);
+                                Intent intent = new Intent(SolarSystemActivity.this,
+                                        PlanetActivity.class);
                                 SolarSystemActivity.this.startActivity(intent);
                             }
                         }

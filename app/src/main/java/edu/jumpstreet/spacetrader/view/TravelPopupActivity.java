@@ -38,8 +38,8 @@ public class TravelPopupActivity extends Activity implements View.OnClickListene
     boolean isSolarsystemTravel;
     System currentEntity;
     @Override
-    protected void onCreate(Bundle savedInsanceState) {
-        super.onCreate(savedInsanceState);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         TravelPopupViewModelFactory factory = new TravelPopupViewModelFactory();
         viewModel = factory.create(TravelPopupViewModel.class);
         DisplayMetrics dM = new DisplayMetrics();
@@ -67,7 +67,9 @@ public class TravelPopupActivity extends Activity implements View.OnClickListene
             //travelPlanet = getIntent().getParcelableExtra("Travel_Planet");
             currentEntity = travelPlanet;
         }else {
-            //travelSS = Model.getInstance().getUniverseInteractor().getUniverse().getSolarSystemWithName(getIntent().getStringExtra("Solarsystem_Name"));
+            //travelSS = Model.getInstance().getUniverseInteractor()
+            // .getUniverse().getSolarSystemWithName(getIntent()
+            // .getStringExtra("Solarsystem_Name"));
             travelSS = viewModel.getNextSolarSystem();
             currentEntity = travelSS;
         }
@@ -76,7 +78,7 @@ public class TravelPopupActivity extends Activity implements View.OnClickListene
     private void initializeViews(){
         planetTV = findViewById(R.id.travelPopupPlanetTV);
         techLevelTV = findViewById(R.id.travelPopupTechLevelTV);
-        resourceTV = findViewById(R.id.travelPopupResouceTV);
+        resourceTV = findViewById(R.id.travelPopupResourceTV);
         conditionTV = findViewById(R.id.travelPopupConditionTV);
         usersFuelTV = findViewById(R.id.travelPopupUsersFuelTV);
         requiredFuelTV = findViewById(R.id.travelPopupFuelRequiredTV);
@@ -110,11 +112,13 @@ public class TravelPopupActivity extends Activity implements View.OnClickListene
             finish();
             if(isSolarsystemTravel){
                 viewModel.changeActiveSolarSystem(currentEntity.getName());
-                Intent intent = new Intent(TravelPopupActivity.this, SolarSystemActivity.class);
+                Intent intent = new Intent(TravelPopupActivity.this,
+                        SolarSystemActivity.class);
                 TravelPopupActivity.this.startActivity(intent);
             }else{
                 viewModel.changeActivePlanet(currentEntity.getName());
-                Intent intent = new Intent(TravelPopupActivity.this, PlanetActivity.class);
+                Intent intent = new Intent(TravelPopupActivity.this,
+                        PlanetActivity.class);
                 TravelPopupActivity.this.startActivity(intent);
             }
 

@@ -60,11 +60,11 @@ public class MarketPlaceActivity extends AppCompatActivity implements View.OnCli
         MarketPlaceViewModelFactory factory = new MarketPlaceViewModelFactory();
         viewModel = factory.create(MarketPlaceViewModel.class);
         techLevel = viewModel.getTechLevelOrdinal();
-        initilizeAllViews();
-        deactiveResourceLayouts(techLevel);
+        initializeAllViews();
+        inactiveResourceLayouts(techLevel);
     }
 
-    private void initilizeAllViews(){
+    private void initializeAllViews(){
         initializeLayouts();
         initializeButtons();
         initializeUserViews();
@@ -114,7 +114,8 @@ public class MarketPlaceActivity extends AppCompatActivity implements View.OnCli
         remainingCreditsTV = findViewById(R.id.OnMarketUserCredits);
         remainingCreditsTV.setText("Credits: " + viewModel.getPlayerCredits());
         remainingCargoSpaceTV = findViewById(R.id.OnMarketCargoSpace);
-        remainingCargoSpaceTV.setText("Cargo Space: " + viewModel.getUsedCargoSpace() + "/" + viewModel.getMaxCargoSpace());
+        remainingCargoSpaceTV.setText("Cargo Space: " + viewModel.getUsedCargoSpace() + "/"
+                + viewModel.getMaxCargoSpace());
     }
 
 
@@ -136,7 +137,7 @@ public class MarketPlaceActivity extends AppCompatActivity implements View.OnCli
         }
     }
 
-    private void deactiveResourceLayouts(int techLevel){
+    private void inactiveResourceLayouts(int techLevel){
         if(techLevel < 4){
             fullLayout.removeView(robotsLayout);
         }
@@ -160,27 +161,38 @@ public class MarketPlaceActivity extends AppCompatActivity implements View.OnCli
         Intent intent = new Intent(this, MarketPlaceTradePopupActivity.class);
         Commodity comm;
         switch(view.getId()){
-            case R.id.waterTradeBtn:comm = viewModel.getCommodity(Commodity.CommodityResources.Water.ordinal());
+            case R.id.waterTradeBtn:comm = viewModel
+                    .getCommodity(Commodity.CommodityResources.Water.ordinal());
                 break;
-            case R.id.furTradeBtn:comm = viewModel.getCommodity(Commodity.CommodityResources.Furs.ordinal());
+            case R.id.furTradeBtn:comm = viewModel
+                    .getCommodity(Commodity.CommodityResources.Furs.ordinal());
                 break;
-            case R.id.foodTradeBtn:comm = viewModel.getCommodity(Commodity.CommodityResources.Food.ordinal());
+            case R.id.foodTradeBtn:comm = viewModel
+                    .getCommodity(Commodity.CommodityResources.Food.ordinal());
                 break;
-            case R.id.oreTradeBtn:comm = viewModel.getCommodity(Commodity.CommodityResources.Ore.ordinal());
+            case R.id.oreTradeBtn:comm = viewModel
+                    .getCommodity(Commodity.CommodityResources.Ore.ordinal());
                 break;
-            case R.id.gamesTradeBtn:comm = viewModel.getCommodity(Commodity.CommodityResources.Games.ordinal());
+            case R.id.gamesTradeBtn:comm = viewModel
+                    .getCommodity(Commodity.CommodityResources.Games.ordinal());
                 break;
-            case R.id.firearmsTradeBtn:comm = viewModel.getCommodity(Commodity.CommodityResources.Firearms.ordinal());
+            case R.id.firearmsTradeBtn:comm = viewModel
+                    .getCommodity(Commodity.CommodityResources.Firearms.ordinal());
                 break;
-            case R.id.medicineTradeBtn:comm = viewModel.getCommodity(Commodity.CommodityResources.Medicine.ordinal());
+            case R.id.medicineTradeBtn:comm = viewModel
+                    .getCommodity(Commodity.CommodityResources.Medicine.ordinal());
                 break;
-            case R.id.machinesTradeBtn:comm = viewModel.getCommodity(Commodity.CommodityResources.Machines.ordinal());
+            case R.id.machinesTradeBtn:comm = viewModel
+                    .getCommodity(Commodity.CommodityResources.Machines.ordinal());
                 break;
-            case R.id.narcoticsTradeBtn:comm = viewModel.getCommodity(Commodity.CommodityResources.Narcotics.ordinal());
+            case R.id.narcoticsTradeBtn:comm = viewModel
+                    .getCommodity(Commodity.CommodityResources.Narcotics.ordinal());
                 break;
-            case R.id.robotsTradeBtn:comm = viewModel.getCommodity(Commodity.CommodityResources.Robots.ordinal());
+            case R.id.robotsTradeBtn:comm = viewModel
+                    .getCommodity(Commodity.CommodityResources.Robots.ordinal());
                 break;
-                default:comm = viewModel.getCommodity(Commodity.CommodityResources.Water.ordinal());
+                default:comm = viewModel
+                        .getCommodity(Commodity.CommodityResources.Water.ordinal());
         }
         intent.putExtra("Commodity", (Parcelable) comm);
         MarketPlaceActivity.this.startActivityForResult(intent, 1);

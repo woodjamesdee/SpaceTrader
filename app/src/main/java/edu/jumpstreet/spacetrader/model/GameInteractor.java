@@ -19,7 +19,8 @@ public class GameInteractor implements Serializable {
      */
     GameInteractor(UniverseInteractor universeInteractor) {
         SolarSystem system = universeInteractor.getSolarSystems().iterator().next();
-        game = new Game(system, system.getPlanet(system.getName() + " Prime"), Game.GameDifficulty.NORMAL);
+        game = new Game(system, system.getPlanet(system.getName() + " Prime"),
+                Game.GameDifficulty.NORMAL);
     }
 
     /**
@@ -46,8 +47,11 @@ public class GameInteractor implements Serializable {
         if (name == null || name.equals("")) {
             return;
         }
-        game.setActiveSolarSystem(Model.getInstance().getUniverseInteractor().getSolarSystemByName(name));
-        game.setActivePlanet(Model.getInstance().getGameInteractor().getActiveSolarSystem().getPlanet(Model.getInstance().getGameInteractor().getActiveSolarSystem().getName() + " Prime"));
+        game.setActiveSolarSystem(Model.getInstance().getUniverseInteractor()
+                .getSolarSystemByName(name));
+        game.setActivePlanet(Model.getInstance().getGameInteractor().getActiveSolarSystem()
+                .getPlanet(Model.getInstance().getGameInteractor()
+                        .getActiveSolarSystem().getName() + " Prime"));
     }
 
     /**

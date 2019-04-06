@@ -17,7 +17,7 @@
         <TableLayout
             android:id="@+id/UniverseTableLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight=".7">
 
             <TableRow
@@ -92,7 +92,7 @@
             android:id="@+id/repairShipBtn2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="RepareShip" />
+            android:text="Repair Ship" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -25,11 +25,12 @@ public class UniverseInteractor implements Serializable {
 
     /**
      * Creates a new UniverseInteractor
-     * @param random the randomizer to create the universe
+     * @param random object to randomly create the universe objects
      */
     UniverseInteractor(Random random) {
         universe = new Universe();
-        generateSolarSystems(random, random.nextInt(Universe.MAX_SYSTEMS - Universe.MIN_SYSTEMS) + Universe.MIN_SYSTEMS);
+        generateSolarSystems(random, random.nextInt(Universe.MAX_SYSTEMS
+                - Universe.MIN_SYSTEMS) + Universe.MIN_SYSTEMS);
         generatePlanets(random);
     }
 
@@ -59,7 +60,7 @@ public class UniverseInteractor implements Serializable {
 
     /**
      * Helper to generate the SolarSystems
-     * @param random    the randomizer to use
+     * @param random    introduces randomization
      * @param amount    the number of systems to create
      */
     private void generateSolarSystems(Random random, int amount) {
@@ -67,19 +68,24 @@ public class UniverseInteractor implements Serializable {
             return;
         }
         for (int i = 0; i < amount; i++) {
-            SolarSystem current = new SolarSystem(random.nextInt(SolarSystem.getNamesLength()), random.nextInt(Universe.X_BOUNDS), random.nextInt(Universe.Y_BOUNDS), random.nextInt(SolarSystem.TechLevel.values().length));
+            SolarSystem current = new SolarSystem(random.nextInt(SolarSystem.getNamesLength()),
+                    random.nextInt(Universe.X_BOUNDS), random.nextInt(Universe.Y_BOUNDS),
+                    random.nextInt(SolarSystem.TechLevel.values().length));
             universe.addSolarSystem(current);
         }
     }
 
     /**
      * Helper to generate the Planets
-     * @param random    the randomizer to use
+     * @param random    introduces randomization
      */
     private void generatePlanets(Random random) {
         for (SolarSystem currentSystem : universe.getSolarSystems().values()) {
-            for (int i = 0; i < random.nextInt(Universe.MAX_SYSTEMS - Universe.MIN_SYSTEMS) + Universe.MIN_SYSTEMS; i++) {
-                currentSystem.addNewPlanet(random.nextInt(Universe.X_BOUNDS), random.nextInt(Universe.Y_BOUNDS), random.nextInt(Planet.Resource.values().length));
+            for (int i = 0; i < random.nextInt(Universe.MAX_SYSTEMS -
+                    Universe.MIN_SYSTEMS) + Universe.MIN_SYSTEMS; i++) {
+                currentSystem.addNewPlanet(random.nextInt(Universe.X_BOUNDS),
+                        random.nextInt(Universe.Y_BOUNDS),
+                        random.nextInt(Planet.Resource.values().length));
             }
         }
     }

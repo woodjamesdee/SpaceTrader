@@ -57,8 +57,10 @@ public class ConfigurationActivity extends AppCompatActivity implements View.OnC
         linkConfigButtons();
         initializeButtons();
         difficultySpinner = findViewById(R.id.difficultySpinner);
-        skillPointsRemainingTV.setText("Remaining Skill Points: " + viewModel.getUnallocatedPoints());
-        ArrayAdapter<Difficulty> difficultyAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, Difficulty.values());
+        skillPointsRemainingTV.setText("Remaining Skill Points: "
+                + viewModel.getUnallocatedPoints());
+        ArrayAdapter<Difficulty> difficultyAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, Difficulty.values());
         difficultyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         difficultySpinner.setAdapter(difficultyAdapter);
     }
@@ -177,7 +179,8 @@ public class ConfigurationActivity extends AppCompatActivity implements View.OnC
                 engineerMinusBtn.setEnabled(viewModel.engineerMinusShouldBeEnabled());
                 break;
         }
-        skillPointsRemainingTV.setText("Skill Points Remaining: " + viewModel.getUnallocatedPoints());
+        skillPointsRemainingTV.setText("Skill Points Remaining: "
+                + viewModel.getUnallocatedPoints());
         enablePlusButtons(viewModel.plusShouldBeEnabled());
     }
 

@@ -55,8 +55,8 @@ public class PlanetActivity extends AppCompatActivity implements View.OnClickLis
                 PlanetActivity.this.startActivity(SolarSystemIntent);
                 break;
             case R.id.OnPlanetGarageBtn:
-                Intent GargeIntent = new Intent(this, GarageActivity.class);
-                PlanetActivity.this.startActivity(GargeIntent);
+                Intent garageIntent = new Intent(this, GarageActivity.class);
+                PlanetActivity.this.startActivity(garageIntent);
         }
     }
 }

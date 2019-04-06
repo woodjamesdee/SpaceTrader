@@ -79,7 +79,8 @@ public class MarketPlacePopupViewModel extends ViewModel {
      *
      * @return the value
      */
-    public int getCommodityValue(Commodity commodity) { return planet.getEconomy().getCommodityValue(commodity); }
+    public int getCommodityValue(Commodity commodity) { return planet
+            .getEconomy().getCommodityValue(commodity); }
 
     /**
      * Gets the ordinal of the current Planet's TechLevel.
