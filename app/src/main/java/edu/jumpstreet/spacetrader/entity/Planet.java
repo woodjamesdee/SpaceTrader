@@ -74,6 +74,11 @@ public class Planet extends System implements Serializable {
     }
 
 
+    /**
+     * resource quantity getter
+     * @param index index associated with appropriate int
+     * @return int that determines resource quantity
+     */
     //TODO default is getWater
     public int getIndexedResourceQuantity(int index){
         return economy.getCommodity(index).getQuantity();
@@ -85,10 +90,19 @@ public class Planet extends System implements Serializable {
     }
     */
 
+    /**
+     * resource quantity setter
+     * @param name the name of the resource
+     * @param amount amount to set of given resource
+     */
     public void setResourceQuantityByName(String name, int amount){
         economy.getCommodityByName(name).setQuantity(amount);
     }
 
+    /**
+     * economy getter
+     * @return Economy object associated with given planet
+     */
     public Economy getEconomy(){return economy;}
 
 }

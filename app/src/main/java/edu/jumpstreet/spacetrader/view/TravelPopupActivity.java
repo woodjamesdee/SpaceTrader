@@ -19,6 +19,9 @@ import edu.jumpstreet.spacetrader.entity.System;
 import edu.jumpstreet.spacetrader.viewmodel.TravelPopupViewModel;
 import edu.jumpstreet.spacetrader.viewmodel.TravelPopupViewModelFactory;
 
+/**
+ * sets up popup travel activity
+ */
 public class TravelPopupActivity extends Activity implements View.OnClickListener{
     TextView planetTV;
     TextView techLevelTV;
@@ -126,6 +129,11 @@ public class TravelPopupActivity extends Activity implements View.OnClickListene
         }
     }
 
+    /**
+     * a method that calculates the values associated with travel from
+     * planet to another
+     * @param system the goal of the travel
+     */
     public void travel(System system){
             ship.setRemainingFuel(ship.getRemainingFuel() - calculateTravelCost(system));
             Model.getInstance().getGameInteractor().changeActivePlanet(system.getName());

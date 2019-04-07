@@ -11,6 +11,9 @@ import edu.jumpstreet.spacetrader.R;
 import edu.jumpstreet.spacetrader.viewmodel.PlanetViewModel;
 import edu.jumpstreet.spacetrader.viewmodel.PlanetViewModelFactory;
 
+/**
+ * class Planet Activity sets up the planet screen
+ */
 public class PlanetActivity extends AppCompatActivity implements View.OnClickListener {
     Button spaceshipStoreBtn;
     Button solarSystemBtn;

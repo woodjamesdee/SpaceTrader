@@ -43,6 +43,10 @@ public class PlayerInteractor implements Serializable {
     //    player.setName(name);
     //}
 
+    /**
+     * player getter
+     * @return Player object for this player interactor
+     */
     public Player getPlayer(){return player;}
 
     /**

@@ -22,6 +22,9 @@ import edu.jumpstreet.spacetrader.model.Model;
 import edu.jumpstreet.spacetrader.viewmodel.UniverseViewModel;
 import edu.jumpstreet.spacetrader.viewmodel.UniverseViewModelFactory;
 
+/**
+ * sets up the universe
+ */
 public class UniverseActivity extends AppCompatActivity {
 
     TableLayout tableLayout;

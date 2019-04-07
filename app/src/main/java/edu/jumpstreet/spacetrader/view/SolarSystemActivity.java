@@ -18,6 +18,9 @@ import edu.jumpstreet.spacetrader.entity.Universe;
 import edu.jumpstreet.spacetrader.viewmodel.SolarSystemViewModel;
 import edu.jumpstreet.spacetrader.viewmodel.SolarSystemViewModelFactory;
 
+/**
+ * sets up the solar system activity screen
+ */
 public class SolarSystemActivity extends AppCompatActivity implements View.OnClickListener{
     TableLayout tableLayout;
     Button backToUniverseButton;

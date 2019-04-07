@@ -59,6 +59,9 @@ public abstract class System implements Serializable {
     }
     */
 
+    /**
+     * System constructor
+     */
     public System(){
 
     }
