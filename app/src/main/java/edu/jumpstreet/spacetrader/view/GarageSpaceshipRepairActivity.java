@@ -8,6 +8,9 @@ import android.view.WindowManager;
 
 import edu.jumpstreet.spacetrader.R;
 
+/**
+ * manages space ship repairs
+ */
 public class GarageSpaceshipRepairActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {

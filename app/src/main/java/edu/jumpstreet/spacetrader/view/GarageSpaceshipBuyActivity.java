@@ -8,6 +8,9 @@ import android.view.WindowManager;
 
 import edu.jumpstreet.spacetrader.R;
 
+/**
+ * manages garage purchasing activity
+ */
 public class GarageSpaceshipBuyActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {

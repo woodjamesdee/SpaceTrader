@@ -3,6 +3,9 @@ package edu.jumpstreet.spacetrader.entity;
 import java.io.Serializable;
 import java.util.Random;
 
+/**
+ *
+ */
 public class Planet extends System implements Serializable {
 
     private Resource resource;

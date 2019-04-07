@@ -14,6 +14,9 @@ import edu.jumpstreet.spacetrader.model.Model;
 import edu.jumpstreet.spacetrader.viewmodel.MarketPlacePopupViewModel;
 import edu.jumpstreet.spacetrader.viewmodel.MarketPlacePopupViewModelFactory;
 
+/**
+ * sets up the trade activity within the market place
+ */
 public class MarketPlaceTradePopupActivity extends Activity implements View.OnClickListener{
     Button plus1Btn;
     Button plus10Btn;

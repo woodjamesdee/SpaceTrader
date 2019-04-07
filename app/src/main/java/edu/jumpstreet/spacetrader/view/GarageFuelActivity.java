@@ -13,6 +13,9 @@ import edu.jumpstreet.spacetrader.R;
 import edu.jumpstreet.spacetrader.viewmodel.GarageFuelViewModel;
 import edu.jumpstreet.spacetrader.viewmodel.GarageFuelViewModelFactory;
 
+/**
+ * in charge of fuel available in garages
+ */
 public class GarageFuelActivity extends Activity implements View.OnClickListener{
 
     Button minus10Btn;

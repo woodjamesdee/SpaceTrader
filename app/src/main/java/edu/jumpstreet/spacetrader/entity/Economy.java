@@ -174,6 +174,12 @@ public class Economy implements Parcelable, Serializable {
         commodities.add(Robots);
 
     }
+
+    /**
+     * a getter for commodity
+     * @param index an int that defines which commodity is returned
+     * @return the commodity that the index identifies
+     */
     public Commodity getCommodity(int index){
         switch (Commodity.CommodityResources.values()[index]){
             case Water: return Water;
@@ -218,6 +224,11 @@ public class Economy implements Parcelable, Serializable {
     }
     */
 
+    /**
+     * a getter for the commodity value based on index
+     * @param index defines which commodity to get the value from
+     * @return the value of the commodity
+     */
     public int getCommodityValue(int index){
         Commodity comm = getCommodity(index);
         int result;
@@ -227,6 +238,11 @@ public class Economy implements Parcelable, Serializable {
         return result;
     }
 
+    /**
+     * a getter for the commodity value based on the Commodity
+     * @param comm the commodity the value is based on
+     * @return the value of the commodity
+     */
     public int getCommodityValue(Commodity comm){
         int result;
         int randomVar = Model.getInstance().getRandom().nextInt(comm.getVAR());

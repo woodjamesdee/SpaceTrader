@@ -17,6 +17,9 @@ import edu.jumpstreet.spacetrader.R;
 import edu.jumpstreet.spacetrader.viewmodel.ConfigurationViewModel;
 import edu.jumpstreet.spacetrader.viewmodel.ConfigurationViewModelFactory;
 
+/**
+ * This class runs the back end of the character creation screen
+ */
 public class ConfigurationActivity extends AppCompatActivity implements View.OnClickListener {
     EditText nameET;
     TextView skillPointsRemainingTV;

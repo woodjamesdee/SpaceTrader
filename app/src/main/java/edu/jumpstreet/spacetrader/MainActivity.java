@@ -17,6 +17,9 @@ import edu.jumpstreet.spacetrader.model.Model;
 import edu.jumpstreet.spacetrader.view.ConfigurationActivity;
 import edu.jumpstreet.spacetrader.view.UniverseActivity;
 
+/**
+ * sets up main activity
+ */
 public class MainActivity extends AppCompatActivity implements View.OnTouchListener {
 
     public static final String MyPREFERENCES = "MyPrefs";

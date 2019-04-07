@@ -14,6 +14,9 @@ import edu.jumpstreet.spacetrader.entity.Commodity;
 import edu.jumpstreet.spacetrader.viewmodel.MarketPlaceViewModel;
 import edu.jumpstreet.spacetrader.viewmodel.MarketPlaceViewModelFactory;
 
+/**
+ * sets up Market Place layout
+ */
 public class MarketPlaceActivity extends AppCompatActivity implements View.OnClickListener{
     //resource Layouts
     LinearLayout fullLayout;

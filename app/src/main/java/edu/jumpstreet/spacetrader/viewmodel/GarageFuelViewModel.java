@@ -5,6 +5,9 @@ import android.arch.lifecycle.ViewModel;
 import edu.jumpstreet.spacetrader.model.Model;
 import edu.jumpstreet.spacetrader.model.PlayerInteractor;
 
+/**
+ * ViewModel for GarageFuel view
+ */
 public class GarageFuelViewModel extends ViewModel {
     private PlayerInteractor interactor;
 

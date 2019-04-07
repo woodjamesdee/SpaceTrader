@@ -10,6 +10,9 @@ import edu.jumpstreet.spacetrader.R;
 import edu.jumpstreet.spacetrader.viewmodel.GarageViewModel;
 import edu.jumpstreet.spacetrader.viewmodel.GarageViewModelFactory;
 
+/**
+ * controls back end of the garage of each planet
+ */
 public class GarageActivity extends AppCompatActivity implements View.OnClickListener{
     Button buySpaceshipBtn;
     Button buyFuelBtn;

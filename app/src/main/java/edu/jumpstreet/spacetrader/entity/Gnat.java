@@ -6,7 +6,9 @@ import java.io.Serializable;
  * The Gnat is the starter Spaceship, and is the most simple.
  */
 public class Gnat extends Spaceship implements Serializable {
-
+    /**
+     * Gnat constructor
+     */
     public Gnat() {
         super.name = "Gnat";
         super.hitpoints = 100;

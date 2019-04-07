@@ -5,6 +5,9 @@ import android.arch.lifecycle.ViewModel;
 import edu.jumpstreet.spacetrader.model.Model;
 import edu.jumpstreet.spacetrader.model.PlayerInteractor;
 
+/**
+ * sets up garage viewmodel
+ */
 public class GarageViewModel extends ViewModel {
 
     private PlayerInteractor interactor;
