@@ -21,32 +21,32 @@ import edu.jumpstreet.spacetrader.viewmodel.ConfigurationViewModelFactory;
  * This class runs the back end of the character creation screen
  */
 public class ConfigurationActivity extends AppCompatActivity implements View.OnClickListener {
-    EditText nameET;
-    TextView skillPointsRemainingTV;
-    ImageButton pilotMinusBtn;
-    TextView pilotTV;
-    ImageButton pilotPlusBtn;
+    private EditText nameET;
+    private TextView skillPointsRemainingTV;
+    private ImageButton pilotMinusBtn;
+    private TextView pilotTV;
+    private ImageButton pilotPlusBtn;
 
-    ImageButton fighterMinusBtn;
-    TextView fighterTV;
-    ImageButton fighterPlusBtn;
+    private ImageButton fighterMinusBtn;
+    private TextView fighterTV;
+    private ImageButton fighterPlusBtn;
 
-    ImageButton traderMinusBtn;
-    TextView traderTV;
-    ImageButton traderPlusBtn;
+    private ImageButton traderMinusBtn;
+    private TextView traderTV;
+    private ImageButton traderPlusBtn;
 
-    ImageButton engineerMinusBtn;
-    TextView engineerTV;
-    ImageButton engineerPlusBtn;
+    private ImageButton engineerMinusBtn;
+    private TextView engineerTV;
+    private ImageButton engineerPlusBtn;
 
-    Spinner difficultySpinner;
+    private Spinner difficultySpinner;
 
-    Button confirmationBtn;
+    private Button confirmationBtn;
     enum Difficulty{
         Beginner, Easy, Normal, Hard, Impossible
     }
 
-    ConfigurationViewModel viewModel;
+    private ConfigurationViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

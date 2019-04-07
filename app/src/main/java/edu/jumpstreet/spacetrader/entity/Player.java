@@ -9,7 +9,11 @@ import java.io.Serializable;
 public class Player implements Serializable {
 
     private String name;
-    private int skillpoints, pilot, fighter, trader, engineer;
+    private int skillpoints;
+    private int pilot;
+    private int fighter;
+    private int trader;
+    private int engineer;
     private int credits;
     private Spaceship ship;
 

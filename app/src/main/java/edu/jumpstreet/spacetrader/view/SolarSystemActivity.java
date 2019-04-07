@@ -22,11 +22,11 @@ import edu.jumpstreet.spacetrader.viewmodel.SolarSystemViewModelFactory;
  * sets up the solar system activity screen
  */
 public class SolarSystemActivity extends AppCompatActivity implements View.OnClickListener{
-    TableLayout tableLayout;
-    Button backToUniverseButton;
-    TextView solarSystemName;
-    TextView solarSystemTechView;
-    SolarSystemViewModel viewModel;
+    private TableLayout tableLayout;
+    private Button backToUniverseButton;
+    private TextView solarSystemName;
+    private TextView solarSystemTechView;
+    private SolarSystemViewModel viewModel;
     @Override
     protected void onCreate(Bundle sav) {
         super.onCreate(sav);
@@ -51,9 +51,9 @@ public class SolarSystemActivity extends AppCompatActivity implements View.OnCli
             for (int j = 0; j < Universe.Y_BOUNDS; j++) {
                 if (activeSystem.getPlanetLocations()[i][j] != null) {
                     Button button = new Button(this);
-                    if(viewModel.getActivePlanetX() == i &&
-                            viewModel.getActivePlanetY() == j
-                    && activeSystem.isInSolarSystem(viewModel.getActivePlanet())){
+                    if((viewModel.getActivePlanetX() == i) &&
+                            (viewModel.getActivePlanetY() == j)
+                            && activeSystem.isInSolarSystem(viewModel.getActivePlanet())){
                         button.setBackgroundColor(Color.GREEN);
                     }
                     final int i2 = i;

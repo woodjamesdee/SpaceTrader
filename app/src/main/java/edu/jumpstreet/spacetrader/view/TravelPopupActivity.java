@@ -23,23 +23,23 @@ import edu.jumpstreet.spacetrader.viewmodel.TravelPopupViewModelFactory;
  * sets up popup travel activity
  */
 public class TravelPopupActivity extends Activity implements View.OnClickListener{
-    TextView planetTV;
-    TextView techLevelTV;
-    TextView resourceTV;
-    TextView conditionTV;
-    TextView usersFuelTV;
-    TextView requiredFuelTV;
-    Button travelBtn;
+    private TextView planetTV;
+    private TextView techLevelTV;
+    private TextView resourceTV;
+    private TextView conditionTV;
+    private TextView usersFuelTV;
+    private TextView requiredFuelTV;
+    private Button travelBtn;
 
     //Model model;
-    TravelPopupViewModel viewModel;
-    Spaceship ship;
-    Planet currentPlanet;
-    Planet travelPlanet;
-    SolarSystem travelSS;
-    int fuelCostPerUnit = 10;
-    boolean isSolarsystemTravel;
-    System currentEntity;
+    private TravelPopupViewModel viewModel;
+    private Spaceship ship;
+    private Planet currentPlanet;
+    private Planet travelPlanet;
+    private SolarSystem travelSS;
+    private int fuelCostPerUnit = 10;
+    private boolean isSolarsystemTravel;
+    private System currentEntity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -134,7 +134,7 @@ public class TravelPopupActivity extends Activity implements View.OnClickListene
      * planet to another
      * @param system the goal of the travel
      */
-    public void travel(System system){
+    private void travel(System system){
             ship.setRemainingFuel(ship.getRemainingFuel() - calculateTravelCost(system));
             Model.getInstance().getGameInteractor().changeActivePlanet(system.getName());
     }
@@ -162,6 +162,6 @@ public class TravelPopupActivity extends Activity implements View.OnClickListene
         if(viewModel.getPlayerPilotSkill() != 0) {
             fuelCost /= viewModel.getPlayerPilotSkill();
         }
-        return isSolarsystemTravel?fuelCost * 10:fuelCost;
+        return isSolarsystemTravel ? (fuelCost * 10) : fuelCost;
     }
 }

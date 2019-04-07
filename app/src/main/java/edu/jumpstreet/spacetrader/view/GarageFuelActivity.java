@@ -18,19 +18,19 @@ import edu.jumpstreet.spacetrader.viewmodel.GarageFuelViewModelFactory;
  */
 public class GarageFuelActivity extends Activity implements View.OnClickListener{
 
-    Button minus10Btn;
-    Button clearBtn;
-    Button plus10Btn;
-    Button buyMaxBtn;
-    Button confirmationBtn;
+    private Button minus10Btn;
+    private Button clearBtn;
+    private Button plus10Btn;
+    private Button buyMaxBtn;
+    private Button confirmationBtn;
 
-    TextView usersFuel;
-    TextView quantityOfTransaction;
-    TextView costOfTransaction;
-    TextView usersCredits;
-    GarageFuelViewModel viewModel;
-    int fuelToBePurchased;
-    int costOfFuel;
+    private TextView usersFuel;
+    private TextView quantityOfTransaction;
+    private TextView costOfTransaction;
+    private TextView usersCredits;
+    private GarageFuelViewModel viewModel;
+    private int fuelToBePurchased;
+    private int costOfFuel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,8 +82,8 @@ public class GarageFuelActivity extends Activity implements View.OnClickListener
         quantityOfTransaction.setText("Amount of Fuel to be Purchased: " + fuelToBePurchased);
         costOfTransaction.setText("Cost for Fuel: " + costOfFuel);
         usersCredits.setText("Users Credits: " + (viewModel.getPlayerCredits() - costOfFuel));
-        if(viewModel.getRemainingFuel() + fuelToBePurchased >= viewModel.getMaxFuel()
-            || viewModel.getPlayerCredits() <= costOfFuel){
+        if(((viewModel.getRemainingFuel() + fuelToBePurchased) >= viewModel.getMaxFuel())
+                || (viewModel.getPlayerCredits() <= costOfFuel)){
             plus10Btn.setEnabled(false);
             buyMaxBtn.setEnabled(false);
         }else{
@@ -133,8 +133,8 @@ public class GarageFuelActivity extends Activity implements View.OnClickListener
 
     private int getMaxFuel(){
         int maxFuel = viewModel.getMaxFuel() - viewModel.getRemainingFuel();
-        if(maxFuel * 10 > viewModel.getPlayerCredits()){
-            while(maxFuel * 10 > viewModel.getPlayerCredits()){
+        if((maxFuel * 10) > viewModel.getPlayerCredits()){
+            while((maxFuel * 10) > viewModel.getPlayerCredits()){
                 maxFuel--;
             }
         }

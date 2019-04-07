@@ -18,26 +18,26 @@ import edu.jumpstreet.spacetrader.viewmodel.MarketPlacePopupViewModelFactory;
  * sets up the trade activity within the market place
  */
 public class MarketPlaceTradePopupActivity extends Activity implements View.OnClickListener{
-    Button plus1Btn;
-    Button plus10Btn;
-    Button minus1Btn;
-    Button minus10Btn;
-    Button transactionConfirmationBtn;
+    private Button plus1Btn;
+    private Button plus10Btn;
+    private Button minus1Btn;
+    private Button minus10Btn;
+    private Button transactionConfirmationBtn;
 
-    TextView quantityTV;
-    TextView cargoSpaceTV;
-    TextView costTV;
+    private TextView quantityTV;
+    private TextView cargoSpaceTV;
+    private TextView costTV;
 
-    TextView userResourceTV;
-    TextView planetsResourceTV;
-    TextView cargoSpacePerItemTV;
+    private TextView userResourceTV;
+    private TextView planetsResourceTV;
+    private TextView cargoSpacePerItemTV;
 
-    int quantityOfTransaction;
-    int resourceValue;
-    int cargoSpacePerUnitResource;
-    int resourceQuantity;
-    Commodity activeCommodity;
-    MarketPlacePopupViewModel viewModel;
+    private int quantityOfTransaction;
+    private int resourceValue;
+    private int cargoSpacePerUnitResource;
+    private int resourceQuantity;
+    private Commodity activeCommodity;
+    private MarketPlacePopupViewModel viewModel;
 
     //Spaceship ship;
     //Planet currentPlanet;
@@ -154,22 +154,22 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
     }
 
     private void disableButtonsAdaptive(){
-        boolean minus1isActive = viewModel.getShipResourceQuantityByName(activeCommodity
-                .getResource()) >=  Math.abs(quantityOfTransaction - 1)||
-                quantityOfTransaction >= 1;
-        boolean minus10isActive = viewModel.getShipResourceQuantityByName(activeCommodity
-                .getResource()) >= Math.abs(quantityOfTransaction - 10) ||
-                quantityOfTransaction >= 10;
-        boolean plus1isActive = resourceQuantity >= 1
-                && (quantityOfTransaction + 1) * resourceValue <= Model.getInstance()
-                .getPlayerInteractor().getPlayerBalance()
-                || ((quantityOfTransaction + 1) * activeCommodity.getWeight())
-                + viewModel.getUsedCargoSpace() <= viewModel.getMaxCargoSpace() ;
-        boolean plus10isActive = resourceQuantity >= 10
-                && (quantityOfTransaction + 10) * resourceValue <= Model.getInstance()
-                .getPlayerInteractor().getPlayerBalance()
-                || ((quantityOfTransaction + 10) * activeCommodity.getWeight())
-                + viewModel.getUsedCargoSpace() <= viewModel.getMaxCargoSpace();
+        boolean minus1isActive = (viewModel.getShipResourceQuantityByName(activeCommodity
+                .getResource()) >= Math.abs(quantityOfTransaction - 1)) ||
+                (quantityOfTransaction >= 1);
+        boolean minus10isActive = (viewModel.getShipResourceQuantityByName(activeCommodity
+                .getResource()) >= Math.abs(quantityOfTransaction - 10)) ||
+                (quantityOfTransaction >= 10);
+        boolean plus1isActive = ((resourceQuantity >= 1)
+                && (((quantityOfTransaction + 1) * resourceValue) <= Model.getInstance()
+                .getPlayerInteractor().getPlayerBalance()))
+                || ((((quantityOfTransaction + 1) * activeCommodity.getWeight())
+                + viewModel.getUsedCargoSpace()) <= viewModel.getMaxCargoSpace());
+        boolean plus10isActive = ((resourceQuantity >= 10)
+                && (((quantityOfTransaction + 10) * resourceValue) <= Model.getInstance()
+                .getPlayerInteractor().getPlayerBalance()))
+                || ((((quantityOfTransaction + 10) * activeCommodity.getWeight())
+                + viewModel.getUsedCargoSpace()) <= viewModel.getMaxCargoSpace());
         plus1Btn.setEnabled(plus1isActive);
         plus10Btn.setEnabled(plus10isActive);
         minus1Btn.setEnabled(minus1isActive);

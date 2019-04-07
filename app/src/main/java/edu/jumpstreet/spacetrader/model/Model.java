@@ -17,10 +17,10 @@ import edu.jumpstreet.spacetrader.vendor.Base64Coder;
  */
 public final class Model implements Serializable {
 
-    private PlayerInteractor playerInteractor;
-    private UniverseInteractor universeInteractor;
-    private GameInteractor gameInteractor;
-    private Random random;
+    private final PlayerInteractor playerInteractor;
+    private final UniverseInteractor universeInteractor;
+    private final GameInteractor gameInteractor;
+    private final Random random;
 
     private static Model instance = new Model();
 

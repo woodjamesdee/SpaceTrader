@@ -11,7 +11,7 @@ import edu.jumpstreet.spacetrader.entity.SolarSystem;
  */
 public class GameInteractor implements Serializable {
 
-    private Game game;
+    private final Game game;
 
     /**
      * Creates a new GameInteractor, given a UniverseInteractor
@@ -44,7 +44,7 @@ public class GameInteractor implements Serializable {
      * @param name  the name of the new SolarSystem
      */
     public void changeActiveSolarSystem(String name) {
-        if (name == null || name.equals("")) {
+        if ((name == null) || "".equals(name)) {
             return;
         }
         game.setActiveSolarSystem(Model.getInstance().getUniverseInteractor()
@@ -59,7 +59,7 @@ public class GameInteractor implements Serializable {
      * @param name  the name of the Planet
      */
     public void changeActivePlanet(String name) {
-        if (name == null || name.equals("")) {
+        if ((name == null) || "".equals(name)) {
             return;
         }
         game.setActivePlanet(game.getActiveSolarSystem().getPlanet(name));

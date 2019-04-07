@@ -13,9 +13,9 @@ import edu.jumpstreet.spacetrader.model.PlayerInteractor;
  */
 public class MarketPlacePopupViewModel extends ViewModel {
 
-    private PlayerInteractor interactor;
-    private Spaceship ship;
-    private Planet planet;
+    private final PlayerInteractor interactor;
+    private final Spaceship ship;
+    private final Planet planet;
 
     /**
      * Creates a new MarketPlacePopupViewModel

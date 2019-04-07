@@ -10,7 +10,7 @@ import java.util.Set;
  * The SolarSystem entity represents a physical solar system with its attributes
  * as well as a container for Planet objects contained within the system.
  */
-public class SolarSystem extends System implements Serializable {
+public class SolarSystem extends System {
 
     private static final String[] NAMES = new String[] {
             "Acamar",
@@ -135,12 +135,12 @@ public class SolarSystem extends System implements Serializable {
             "Zuul"
     };
 
-    private static Set<String> usedNames = new HashSet<>();
-    private static Set<Integer[]> usedCoordinates = new HashSet<>();
+    private static final Set<String> usedNames = new HashSet<>();
+    private static final Set<Integer[]> usedCoordinates = new HashSet<>();
 
-    private Set<Integer[]> usedPlanetCoordinates;
-    private Map<String, Planet> planets;
-    private String[][] planetLocations;
+    private final Set<Integer[]> usedPlanetCoordinates;
+    private final Map<String, Planet> planets;
+    private final String[][] planetLocations;
 
     /**
      * Creates a new SolarSystem instance based on inputed (random) values.
@@ -154,8 +154,8 @@ public class SolarSystem extends System implements Serializable {
         planetLocations = new String[10][10];
         Integer[] coordinate = new Integer[] { x, y };
         while (usedCoordinates.contains(coordinate)) {
-            x = (5*x + 1) % Universe.X_BOUNDS;
-            y = (2*y + 1) % Universe.Y_BOUNDS;
+            x = ((5 * x) + 1) % Universe.X_BOUNDS;
+            y = ((2 * y) + 1) % Universe.Y_BOUNDS;
             coordinate = new Integer[] { x, y };
         }
         this.x = x;
@@ -206,8 +206,8 @@ public class SolarSystem extends System implements Serializable {
     public void addNewPlanet(int x, int y, int resourceIndex) {
         Integer[] coordinate = new Integer[] { x, y };
         while (usedPlanetCoordinates.contains(coordinate)) {
-            x = (5*x + 1) % Universe.X_BOUNDS;
-            y = (2*y + 1) % Universe.Y_BOUNDS;
+            x = ((5 * x) + 1) % Universe.X_BOUNDS;
+            y = ((2 * y) + 1) % Universe.Y_BOUNDS;
             coordinate = new Integer[] { x, y };
         }
         usedPlanetCoordinates.add(coordinate);
@@ -222,7 +222,7 @@ public class SolarSystem extends System implements Serializable {
      * @return a String[][]  of the planet location
      */
     public String[][] getPlanetLocations() {
-        return planetLocations;
+        return planetLocations.clone();
     }
 
     /**

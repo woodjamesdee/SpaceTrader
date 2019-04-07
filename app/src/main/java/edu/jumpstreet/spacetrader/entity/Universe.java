@@ -16,7 +16,7 @@ public class Universe implements Serializable {
 
     public static String[][] solarSystemLocations = new String[10][10];
 
-    private Map<String, SolarSystem> solarSystems;
+    private final Map<String, SolarSystem> solarSystems;
 
     /**
      * updates the universe on every load

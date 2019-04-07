@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
  */
 public class ExampleUnitTest {
     /**
-     * Makes sure the addition is working correcty
+     * Makes sure the addition is working correctly
      */
     @Test
     public void addition_isCorrect() {

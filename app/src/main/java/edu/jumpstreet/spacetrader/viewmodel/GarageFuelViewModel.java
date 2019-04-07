@@ -9,7 +9,7 @@ import edu.jumpstreet.spacetrader.model.PlayerInteractor;
  * ViewModel for GarageFuel view
  */
 public class GarageFuelViewModel extends ViewModel {
-    private PlayerInteractor interactor;
+    private final PlayerInteractor interactor;
 
     /**
      * Creates a new GarageFuelViewModel.

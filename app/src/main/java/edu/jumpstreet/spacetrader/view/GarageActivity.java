@@ -14,11 +14,11 @@ import edu.jumpstreet.spacetrader.viewmodel.GarageViewModelFactory;
  * controls back end of the garage of each planet
  */
 public class GarageActivity extends AppCompatActivity implements View.OnClickListener{
-    Button buySpaceshipBtn;
-    Button buyFuelBtn;
-    Button repairSpaceshipBtn;
+    private Button buySpaceshipBtn;
+    private Button buyFuelBtn;
+    private Button repairSpaceshipBtn;
 
-    GarageViewModel viewModel;
+    private GarageViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +60,7 @@ public class GarageActivity extends AppCompatActivity implements View.OnClickLis
                 break;
         }
     }
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent){
         super.onActivityResult(requestCode, resultCode, intent);
     }

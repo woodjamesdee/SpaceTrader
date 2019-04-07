@@ -6,10 +6,10 @@ import java.util.Random;
 /**
  *
  */
-public class Planet extends System implements Serializable {
+public class Planet extends System {
 
     private Resource resource;
-    private Economy economy;
+    private final Economy economy;
 
     public enum Resource {
         NOSPECIALRESOURCES, MINERALRICH, MINERALPOOR,
@@ -18,7 +18,7 @@ public class Planet extends System implements Serializable {
         ARTISTIC, WARLIKE
     }
 
-    protected Planet(String name, int x, int y, int techLevelIndex, int resourceIndex) {
+    Planet(String name, int x, int y, int techLevelIndex, int resourceIndex) {
         super(x, y, techLevelIndex);
         this.name = name;
         for (Resource current : Resource.values()) {

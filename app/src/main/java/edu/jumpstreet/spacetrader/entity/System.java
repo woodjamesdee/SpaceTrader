@@ -7,8 +7,9 @@ import java.io.Serializable;
  */
 public abstract class System implements Serializable {
 
-    protected String name;
-    protected int x, y;
+    String name;
+    int x;
+    int y;
     TechLevel techLevel;
 
     /**
@@ -29,7 +30,7 @@ public abstract class System implements Serializable {
      * @param y                 the y coordinate of the System
      * @param techLevelIndex    the TechLevel to use (given through index)
      */
-    protected System(int x, int y, int techLevelIndex) {
+    System(int x, int y, int techLevelIndex) {
         this.x = x;
         this.y = y;
         for (TechLevel current : TechLevel.values()) {
@@ -62,7 +63,7 @@ public abstract class System implements Serializable {
     /**
      * System constructor
      */
-    public System(){
+    System(){
 
     }
 

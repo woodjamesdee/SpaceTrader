@@ -27,10 +27,11 @@ import edu.jumpstreet.spacetrader.viewmodel.UniverseViewModelFactory;
  */
 public class UniverseActivity extends AppCompatActivity {
 
-    TableLayout tableLayout;
-    Button saveButton;
-    UniverseViewModel viewModel;
+    private TableLayout tableLayout;
+    private Button saveButton;
+    private UniverseViewModel viewModel;
 
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_universe);
@@ -63,8 +64,8 @@ public class UniverseActivity extends AppCompatActivity {
             for (int j = 0; j < Universe.Y_BOUNDS; j++) {
                 if (Universe.solarSystemLocations[i][j] != null) {
                     Button button = new Button(this);
-                    if(viewModel.getActiveSolarSystemX() == i
-                            && viewModel.getActiveSolarSystemY() == j){
+                    if((viewModel.getActiveSolarSystemX() == i)
+                            && (viewModel.getActiveSolarSystemY() == j)){
                         button.setBackgroundColor(Color.GREEN);
                     }
                     final int i2 = i;

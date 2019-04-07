@@ -13,20 +13,20 @@ import edu.jumpstreet.spacetrader.model.Model;
  * class that represents the economy
  */
 public class Economy implements Parcelable, Serializable {
-    private Commodity Water;
-    private Commodity Furs;
-    private Commodity Food;
-    private Commodity Ore;
-    private Commodity Games;
-    private Commodity Firearms;
-    private Commodity Medicine;
-    private Commodity Machines;
-    private Commodity Narcotics;
-    private Commodity Robots;
+    private final Commodity Water;
+    private final Commodity Furs;
+    private final Commodity Food;
+    private final Commodity Ore;
+    private final Commodity Games;
+    private final Commodity Firearms;
+    private final Commodity Medicine;
+    private final Commodity Machines;
+    private final Commodity Narcotics;
+    private final Commodity Robots;
 
     private List<Commodity> commodities;
 
-    private System.TechLevel techLevel;
+    private final System.TechLevel techLevel;
 
     @Override
     public int describeContents(){return 0;}
@@ -71,7 +71,7 @@ public class Economy implements Parcelable, Serializable {
         final int waterBaseValue = 30;
         final int waterMTL = 30;
         final int waterMTH = 50;
-        Water = new Commodity(1, waterBaseValue, "Water", 0,
+        Water = new Commodity(1, waterBaseValue, "Water",
                 3, 4, waterMTL, waterMTH, System.TechLevel.PreAgriculture,
                 System.TechLevel.PreAgriculture, System.TechLevel.Medieval,
                 Planet.Resource.LOTSOFWATER, Planet.Resource.DESERT);
@@ -79,7 +79,7 @@ public class Economy implements Parcelable, Serializable {
         final int fursBaseValue = 250;
         final int fursMTL = 230;
         final int fursMTH = 280;
-        Furs = new Commodity(2, fursBaseValue, "Furs",0,
+        Furs = new Commodity(2, fursBaseValue, "Furs",
                 10, 10, fursMTL, fursMTH, System.TechLevel.PreAgriculture,
                 System.TechLevel.PreAgriculture, System.TechLevel.PreAgriculture,
                 Planet.Resource.RICHFAUNA, Planet.Resource.LIFELESS);
@@ -87,7 +87,7 @@ public class Economy implements Parcelable, Serializable {
         final int foodBaseValue = 100;
         final int foodMTL = 90;
         final int foodMTH = 160;
-        Food = new Commodity(4, foodBaseValue, "Food", 0,
+        Food = new Commodity(4, foodBaseValue, "Food",
                 5, 5, foodMTL, foodMTH, System.TechLevel.Agriculture,
                 System.TechLevel.PreAgriculture, System.TechLevel.Agriculture,
                 Planet.Resource.RICHSOIL, Planet.Resource.POORSOIL);
@@ -96,7 +96,7 @@ public class Economy implements Parcelable, Serializable {
         final int oreMTL = 350;
         final int oreMTH = 420;
         final int oreIPL = 20;
-        Ore = new Commodity(10, oreBaseValue, "Ore", 0, oreIPL,
+        Ore = new Commodity(10, oreBaseValue, "Ore", oreIPL,
                 10, oreMTL, oreMTH, System.TechLevel.Medieval,
                 System.TechLevel.Medieval, System.TechLevel.Renaissance,
                 Planet.Resource.MINERALRICH, Planet.Resource.MINERALPOOR);
@@ -104,7 +104,7 @@ public class Economy implements Parcelable, Serializable {
         final int gamesBaseValue = 250;
         final int gamesMTL = 160;
         final int gamesMTH = 270;
-        Games = new Commodity(5, gamesBaseValue, "Games",0,
+        Games = new Commodity(5, gamesBaseValue, "Games",
                 -10, 5, gamesMTL, gamesMTH, System.TechLevel.Renaissance,
                 System.TechLevel.Agriculture, System.TechLevel.PostIndustrial,
                 Planet.Resource.ARTISTIC, null);
@@ -114,7 +114,7 @@ public class Economy implements Parcelable, Serializable {
         final int firearmsIPL = -75;
         final int firearmsMTL = 600;
         final int firearmsMTH = 1100;
-        Firearms = new Commodity(firearmsWeight, firearmsBaseValue, "Firearms",0,
+        Firearms = new Commodity(firearmsWeight, firearmsBaseValue, "Firearms",
                 firearmsIPL, 100, firearmsMTL, firearmsMTH, System.TechLevel.Renaissance,
                 System.TechLevel.Agriculture, System.TechLevel.Industrial,
                 Planet.Resource.WARLIKE, null);
@@ -124,7 +124,7 @@ public class Economy implements Parcelable, Serializable {
         final int medicineIPL = -20;
         final int medicineMTL = 400;
         final int medicineMTH = 700;
-        Medicine = new Commodity(medicineWeight, medicineBaseValue, "Medicine",0,
+        Medicine = new Commodity(medicineWeight, medicineBaseValue, "Medicine",
                 medicineIPL, 10, medicineMTL, medicineMTH, System.TechLevel.EarlyIndustrial,
                 System.TechLevel.Agriculture, System.TechLevel.PostIndustrial,
                 Planet.Resource.LOTSOFHERBS, null);
@@ -134,7 +134,7 @@ public class Economy implements Parcelable, Serializable {
         final int machinesIPL = -30;
         final int machinesMTL = 600;
         final int machinesMTH = 800;
-        Machines = new Commodity(machinesWeight, machinesBaseValue, "Machines",0,
+        Machines = new Commodity(machinesWeight, machinesBaseValue, "Machines",
                 machinesIPL, 5, machinesMTL, machinesMTH, System.TechLevel.EarlyIndustrial,
                 System.TechLevel.Renaissance, System.TechLevel.Industrial, null, null);
 
@@ -145,7 +145,7 @@ public class Economy implements Parcelable, Serializable {
         final int narcoticsMTL = 2000;
         final int narcoticsMTH = 3000;
         Narcotics = new Commodity(narcoticsWeight, narcoticsBaseValue,
-                "Narcotics", 0, narcoticsIPL, narcoticsVAR,
+                "Narcotics", narcoticsIPL, narcoticsVAR,
                 narcoticsMTL, narcoticsMTH, System.TechLevel.Industrial,
                 System.TechLevel.PreAgriculture, System.TechLevel.Industrial,
                 Planet.Resource.WEIRDMUSHROOMS, null);
@@ -156,7 +156,7 @@ public class Economy implements Parcelable, Serializable {
         final int robotsVAR = 100;
         final int robotsMTL = 3500;
         final int robotsMTH = 5000;
-        Robots = new Commodity(robotsWeight, robotsBaseValue, "Robots", 0,
+        Robots = new Commodity(robotsWeight, robotsBaseValue, "Robots",
                 robotsIPL, robotsVAR, robotsMTL, robotsMTH, System.TechLevel.PostIndustrial,
                 System.TechLevel.EarlyIndustrial, System.TechLevel.HiTech, null, null);
 
@@ -234,7 +234,7 @@ public class Economy implements Parcelable, Serializable {
         int result;
         int randomVar = Model.getInstance().getRandom().nextInt(comm.getVAR());
         result = comm.getBaseValue() + ((techLevel.ordinal() - comm.getMTLP().ordinal())
-                * comm.getIPL()) + (comm.getBaseValue() * randomVar / 100);
+                * comm.getIPL()) + ((comm.getBaseValue() * randomVar) / 100);
         return result;
     }
 

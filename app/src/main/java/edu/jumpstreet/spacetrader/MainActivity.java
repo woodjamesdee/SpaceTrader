@@ -25,8 +25,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     public static final String MyPREFERENCES = "MyPrefs";
     public static final String key = "Key";
 
-    SharedPreferences sharedPreferences;
-    Button loadButton;
+    private SharedPreferences sharedPreferences;
+    private Button loadButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
            }
         });
     }
-
+    @Override
     public boolean onTouch(View v, MotionEvent event){
         Intent intent = new Intent(this, ConfigurationActivity.class);
         MainActivity.this.startActivity(intent);

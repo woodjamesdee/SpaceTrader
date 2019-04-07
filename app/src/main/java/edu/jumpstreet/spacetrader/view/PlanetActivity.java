@@ -15,13 +15,13 @@ import edu.jumpstreet.spacetrader.viewmodel.PlanetViewModelFactory;
  * class Planet Activity sets up the planet screen
  */
 public class PlanetActivity extends AppCompatActivity implements View.OnClickListener {
-    Button spaceshipStoreBtn;
-    Button solarSystemBtn;
-    Button garageBtn;
-    TextView planetName;
-    TextView techLevel;
-    TextView resourceType;
-    PlanetViewModel viewModel;
+    private Button spaceshipStoreBtn;
+    private Button solarSystemBtn;
+    private Button garageBtn;
+    private TextView planetName;
+    private TextView techLevel;
+    private TextView resourceType;
+    private PlanetViewModel viewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

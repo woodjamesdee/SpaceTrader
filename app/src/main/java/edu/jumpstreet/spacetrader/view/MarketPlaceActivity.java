@@ -19,42 +19,42 @@ import edu.jumpstreet.spacetrader.viewmodel.MarketPlaceViewModelFactory;
  */
 public class MarketPlaceActivity extends AppCompatActivity implements View.OnClickListener{
     //resource Layouts
-    LinearLayout fullLayout;
-    LinearLayout waterLayout;
-    LinearLayout furLayout;
-    LinearLayout foodLayout;
-    LinearLayout oreLayout;
-    LinearLayout gamesLayout;
-    LinearLayout firearmsLayout;
-    LinearLayout medicineLayout;
-    LinearLayout machineLayout;
-    LinearLayout narcoticsLayout;
-    LinearLayout robotsLayout;
+    private LinearLayout fullLayout;
+    private LinearLayout waterLayout;
+    private LinearLayout furLayout;
+    private LinearLayout foodLayout;
+    private LinearLayout oreLayout;
+    private LinearLayout gamesLayout;
+    private LinearLayout firearmsLayout;
+    private LinearLayout medicineLayout;
+    private LinearLayout machineLayout;
+    private LinearLayout narcoticsLayout;
+    private LinearLayout robotsLayout;
 
     //Buttons
-    Button waterTradeBtn;
-    Button furTradeBtn;
-    Button foodTradeBtn;
-    Button oreTradeBtn;
-    Button gamesTradeBtn;
-    Button firearmsTradeBtn;
-    Button medicineTradeBtn;
-    Button machinesTradeBtn;
-    Button narcoticsTradeBtn;
-    Button robotsTradeBtn;
+    private Button waterTradeBtn;
+    private Button furTradeBtn;
+    private Button foodTradeBtn;
+    private Button oreTradeBtn;
+    private Button gamesTradeBtn;
+    private Button firearmsTradeBtn;
+    private Button medicineTradeBtn;
+    private Button machinesTradeBtn;
+    private Button narcoticsTradeBtn;
+    private Button robotsTradeBtn;
 
     //Player determined Views
-    TextView remainingCreditsTV;
-    TextView remainingCargoSpaceTV;
+    private TextView remainingCreditsTV;
+    private TextView remainingCargoSpaceTV;
 
     //Model model;
     //Planet currentPlanet;
     //Spaceship ship;
-    int techLevel;
-    MarketPlaceViewModel viewModel;
+    private int techLevel;
+    private MarketPlaceViewModel viewModel;
 
     //TODO switch this to model var
-    final int NUM_OF_RESOURCES = 10;
+    private final int NUM_OF_RESOURCES = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

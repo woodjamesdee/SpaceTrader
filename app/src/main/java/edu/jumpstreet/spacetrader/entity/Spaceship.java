@@ -7,7 +7,7 @@ import java.io.Serializable;
  */
 public abstract class Spaceship implements Serializable {
 
-    protected String name;
+    String name;
     String description;
     int hitpoints;
     int maxCargoSpace;

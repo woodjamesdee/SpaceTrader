@@ -21,7 +21,7 @@ public class UniverseInteractor implements Serializable {
     //    return universe;
     //}
 
-    private Universe universe;
+    private final Universe universe;
 
     /**
      * Creates a new UniverseInteractor
@@ -81,8 +81,8 @@ public class UniverseInteractor implements Serializable {
      */
     private void generatePlanets(Random random) {
         for (SolarSystem currentSystem : universe.getSolarSystems().values()) {
-            for (int i = 0; i < random.nextInt(Universe.MAX_SYSTEMS -
-                    Universe.MIN_SYSTEMS) + Universe.MIN_SYSTEMS; i++) {
+            for (int i = 0; i < (random.nextInt(Universe.MAX_SYSTEMS -
+                    Universe.MIN_SYSTEMS) + Universe.MIN_SYSTEMS); i++) {
                 currentSystem.addNewPlanet(random.nextInt(Universe.X_BOUNDS),
                         random.nextInt(Universe.Y_BOUNDS),
                         random.nextInt(Planet.Resource.values().length));

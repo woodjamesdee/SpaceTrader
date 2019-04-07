@@ -11,13 +11,19 @@ import edu.jumpstreet.spacetrader.entity.Planet.Resource;
  * Commodity entity represents resources the player will buy/trade
  */
 public class Commodity implements Parcelable, Serializable {
-    private int weight;
-    private int baseValue;
+    private final int weight;
+    private final int baseValue;
     private String resource;
     private int quantity;
-    private int IPL, VAR, MTL, MTH;
-    private TechLevel MTLP, MTLU, TTP;
-    private Resource CR, ER;
+    private final int IPL;
+    private final int VAR;
+    private final int MTL;
+    private final int MTH;
+    private final TechLevel MTLP;
+    private final TechLevel MTLU;
+    private final TechLevel TTP;
+    private final Resource CR;
+    private final Resource ER;
 
     /**
      * Commodity categories
@@ -29,11 +35,9 @@ public class Commodity implements Parcelable, Serializable {
 
     /**
      * Commodity constructor
-     *
-     * @param weight int : the weight of the commodity
+     *  @param weight int : the weight of the commodity
      * @param baseValue int: Value of the commodity
      * @param resource String: category the commodity belongs to
-     * @param quantity int: the number of this type of commodity
      * @param IPL
      * @param VAR
      * @param MTL
@@ -45,13 +49,13 @@ public class Commodity implements Parcelable, Serializable {
      * @param ER
      */
     Commodity(int weight, int baseValue, String resource,
-              int quantity, int IPL, int VAR, int MTL, int MTH,
+              int IPL, int VAR, int MTL, int MTH,
               TechLevel MTLP, TechLevel MTLU, TechLevel TTP,
               Resource CR, Resource ER){
         this.weight = weight;
         this.baseValue = baseValue;
         this.resource = resource;
-        this.quantity = quantity;
+        this.quantity = 0;
         this.IPL = IPL;
         this.VAR = VAR;
         this.MTL = MTL;

@@ -12,7 +12,7 @@ import edu.jumpstreet.spacetrader.model.Model;
  */
 public class PlanetViewModel extends ViewModel {
 
-    private GameInteractor interactor;
+    private final GameInteractor interactor;
 
     /**
      * Creates a new PlanetViewModel.

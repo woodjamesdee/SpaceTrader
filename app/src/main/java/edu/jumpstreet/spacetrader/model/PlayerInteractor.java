@@ -13,7 +13,7 @@ import edu.jumpstreet.spacetrader.entity.Spaceship;
  */
 public class PlayerInteractor implements Serializable {
 
-    private Player player;
+    private final Player player;
 
     /**
      * Creates a new PlayerInteractor, which creates a new Player with default attributes

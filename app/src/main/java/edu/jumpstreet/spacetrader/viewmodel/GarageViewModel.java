@@ -6,11 +6,11 @@ import edu.jumpstreet.spacetrader.model.Model;
 import edu.jumpstreet.spacetrader.model.PlayerInteractor;
 
 /**
- * sets up garage viewmodel
+ * sets up garage ViewModel
  */
 public class GarageViewModel extends ViewModel {
 
-    private PlayerInteractor interactor;
+    private final PlayerInteractor interactor;
 
     /**
      * Creates a new GarageViewModel.
