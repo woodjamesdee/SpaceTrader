@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -29,7 +30,7 @@ public class Economy implements Parcelable, Serializable {
 
     private final System.TechLevel techLevel;
 
-    private Random random;
+    private final Random random;
 
     @Override
     public int describeContents(){return 0;}
@@ -219,18 +220,6 @@ public class Economy implements Parcelable, Serializable {
         }
     }
 
-    /*
-    public void setCommodityQuantity(int index, int quantity){
-        Commodity comm = getCommodity(index);
-        comm.setQuantity(quantity);
-    }
-
-    public int getCommodityCargoSpace(int index){
-        Commodity comm = getCommodity(index);
-        return comm.getWeight();
-    }
-    */
-
     /**
      * a getter for the commodity value based on index
      * @param index defines which commodity to get the value from
@@ -267,7 +256,7 @@ public class Economy implements Parcelable, Serializable {
      * @return the list of Commodities.
      */
     public List<Commodity> getCommodities() {
-        return commodities;
+        return Collections.unmodifiableList(commodities);
     }
 
 

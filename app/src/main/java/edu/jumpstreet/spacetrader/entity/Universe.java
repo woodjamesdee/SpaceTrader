@@ -1,6 +1,7 @@
 package edu.jumpstreet.spacetrader.entity;
 
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -67,7 +68,7 @@ public class Universe implements Serializable {
      *
      */
     public Map<String, SolarSystem> getSolarSystems() {
-        return solarSystems;
+        return Collections.unmodifiableMap(solarSystems);
     }
 
 }

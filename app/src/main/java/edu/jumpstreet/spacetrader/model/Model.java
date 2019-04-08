@@ -94,8 +94,6 @@ public final class Model implements Serializable {
         ObjectOutputStream oos = new ObjectOutputStream(byteStream);
         oos.writeObject(instance);
         oos.close();
-        String result = new String(Base64Coder.encode(byteStream.toByteArray()));
-        //System.out.println(result);
-        return result;
+        return new String(Base64Coder.encode(byteStream.toByteArray()));
     }
 }
