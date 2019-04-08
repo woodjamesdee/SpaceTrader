@@ -10,9 +10,11 @@ import android.widget.TextView;
 
 import edu.jumpstreet.spacetrader.R;
 import edu.jumpstreet.spacetrader.model.Model;
+import edu.jumpstreet.spacetrader.model.PlayerInteractor;
 
 public class RandomEncounterActivity extends Activity implements View.OnTouchListener {
 
+    private final PlayerInteractor PI = Model.getInstance().getPlayerInteractor();
     private TextView encounterTV;
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -22,7 +24,7 @@ public class RandomEncounterActivity extends Activity implements View.OnTouchLis
         layout.setOnTouchListener(this);
         InitalizeViews();
         encounterTV.setText("You find a 25 Credit Bill just in the middle of Space!!");
-        Model.getInstance().getPlayerInteractor().addCreditsToPlayerBalance(25);
+        PI.addCreditsToPlayerBalance(25);
     }
 
     private void InitalizeViews(){

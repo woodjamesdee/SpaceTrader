@@ -14,6 +14,8 @@ import edu.jumpstreet.spacetrader.model.Model;
 public class SolarSystemViewModel extends ViewModel {
 
     private final GameInteractor interactor;
+    private final SolarSystem activeSolarSystem;
+    private final Planet activePlanet;
 
     /**
      * Creates a new SolarSystemViewModel.
@@ -21,6 +23,8 @@ public class SolarSystemViewModel extends ViewModel {
     SolarSystemViewModel() {
         Model model = Model.getInstance();
         interactor = model.getGameInteractor();
+        activeSolarSystem = interactor.getActiveSolarSystem();
+        activePlanet = interactor.getActivePlanet();
     }
 
     /**
@@ -36,7 +40,7 @@ public class SolarSystemViewModel extends ViewModel {
      * @return the name
      */
     public String getActiveSolarSystemName() {
-        return interactor.getActiveSolarSystem().getName();
+        return activeSolarSystem.getName();
     }
 
     /**
@@ -44,7 +48,7 @@ public class SolarSystemViewModel extends ViewModel {
      * @return the TechLevel
      */
     public System.TechLevel getTechLevel() {
-        return interactor.getActiveSolarSystem().getTechLevel();
+        return activeSolarSystem.getTechLevel();
     }
 
     /**
@@ -52,7 +56,7 @@ public class SolarSystemViewModel extends ViewModel {
      * @return active Planet
      */
     public Planet getActivePlanet() {
-        return interactor.getActivePlanet();
+        return activePlanet;
     }
 
     /**
@@ -60,7 +64,7 @@ public class SolarSystemViewModel extends ViewModel {
      * @return the x-coordinate
      */
     public int getActivePlanetX() {
-        return interactor.getActivePlanet().getX();
+        return activePlanet.getX();
     }
 
     /**
@@ -68,7 +72,7 @@ public class SolarSystemViewModel extends ViewModel {
      * @return the y-coordinate
      */
     public int getActivePlanetY() {
-        return interactor.getActivePlanet().getY();
+        return activePlanet.getY();
     }
 
     /**
@@ -77,7 +81,7 @@ public class SolarSystemViewModel extends ViewModel {
      * @return the planet
      */
     public Planet getPlanet(String name) {
-        return interactor.getActiveSolarSystem().getPlanet(name);
+        return activeSolarSystem.getPlanet(name);
     }
 
     /**
