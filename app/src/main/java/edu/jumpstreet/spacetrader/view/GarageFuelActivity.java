@@ -32,6 +32,11 @@ public class GarageFuelActivity extends Activity implements View.OnClickListener
     private int fuelToBePurchased;
     private int costOfFuel;
 
+    protected static final float WIDTH_MODIFIER = 0.9f;
+    protected static final float HEIGHT_MODIFIER = 0.6f;
+
+    protected static final int Y_LOCATION = -20;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,11 +44,11 @@ public class GarageFuelActivity extends Activity implements View.OnClickListener
         viewModel = factory.create(GarageFuelViewModel.class);
         DisplayMetrics dM = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dM);
-        getWindow().setLayout((int) (dM.widthPixels *.9), (int) (dM.heightPixels *.6));
+        getWindow().setLayout((int) (dM.widthPixels * WIDTH_MODIFIER), (int) (dM.heightPixels * HEIGHT_MODIFIER));
         WindowManager.LayoutParams params = getWindow().getAttributes();
         params.gravity = Gravity.CENTER;
         params.x = 0;
-        params.y = -20;
+        params.y = Y_LOCATION;
         setContentView(R.layout.popup_window_garage_fuel);
         fuelToBePurchased = 0;
         costOfFuel = 0;

@@ -47,11 +47,11 @@ public class TravelPopupActivity extends Activity implements View.OnClickListene
         viewModel = factory.create(TravelPopupViewModel.class);
         DisplayMetrics dM = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dM);
-        getWindow().setLayout((int) (dM.widthPixels *.9), (int) (dM.heightPixels *.4));
+        getWindow().setLayout((int) (dM.widthPixels * GarageFuelActivity.WIDTH_MODIFIER), (int) (dM.heightPixels * GarageFuelActivity.HEIGHT_MODIFIER));
         WindowManager.LayoutParams params = getWindow().getAttributes();
         params.gravity = Gravity.CENTER;
         params.x = 0;
-        params.y = -20;
+        params.y = GarageFuelActivity.Y_LOCATION;
         setContentView(R.layout.popup_window_travel);
         this.setFinishOnTouchOutside(true);
         isSolarsystemTravel = viewModel.isSolarSystemTravel();
