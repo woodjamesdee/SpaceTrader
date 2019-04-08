@@ -58,7 +58,8 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
         Display defaultDisplay = windowManager.getDefaultDisplay();
         defaultDisplay.getMetrics(dM);
         Window window = getWindow();
-        window.setLayout((int) (dM.widthPixels * GarageFuelActivity.WIDTH_MODIFIER), (int) (dM.heightPixels * GarageFuelActivity.HEIGHT_MODIFIER));
+        window.setLayout((int) (dM.widthPixels * GarageFuelActivity.WIDTH_MODIFIER),
+                (int) (dM.heightPixels * GarageFuelActivity.HEIGHT_MODIFIER));
         WindowManager.LayoutParams params = window.getAttributes();
         params.gravity = Gravity.CENTER;
         params.x = 0;

@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -255,7 +256,7 @@ public class Economy implements Parcelable, Serializable {
      * @return the list of Commodities.
      */
     public List<Commodity> getCommodities() {
-        return commodities;
+        return Collections.unmodifiableList(commodities);
     }
 
 

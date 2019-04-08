@@ -58,15 +58,14 @@ public class SolarSystemActivity extends AppCompatActivity implements View.OnCli
                     }
                     final int i2 = i;
                     final int j2 = j;
-                    final SolarSystem activeSystem2 = activeSystem;
                     button.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             if(viewModel.getActivePlanet() != viewModel
-                                    .getPlanet(activeSystem2.getPlanetLocations()[i2][j2])) {
+                                    .getPlanet(activeSystem.getPlanetLocations()[i2][j2])) {
                                 Intent intent = new Intent(SolarSystemActivity.this,
                                         TravelPopupActivity.class);
-                                viewModel.setNextPlanet(activeSystem2.getPlanet(activeSystem2
+                                viewModel.setNextPlanet(activeSystem.getPlanet(activeSystem
                                         .getPlanetLocations()[i2][j2]));
                                 //intent.putExtra("Travel_Planet", activeSystem2
                                 // .getPlanet(activeSystem2.getPlanetLocations()[i2][j2]));

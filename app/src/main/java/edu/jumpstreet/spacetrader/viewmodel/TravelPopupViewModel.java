@@ -7,6 +7,7 @@ import edu.jumpstreet.spacetrader.entity.SolarSystem;
 import edu.jumpstreet.spacetrader.entity.Spaceship;
 import edu.jumpstreet.spacetrader.model.GameInteractor;
 import edu.jumpstreet.spacetrader.model.Model;
+import edu.jumpstreet.spacetrader.model.PlayerInteractor;
 
 /**
  * Provides functionality for the TravelPopup
@@ -14,12 +15,14 @@ import edu.jumpstreet.spacetrader.model.Model;
 public class TravelPopupViewModel extends ViewModel {
 
     private final GameInteractor interactor;
+    private final PlayerInteractor PI;
 
     /**
      * Creates a new TravelPopupViewModel.
      */
     TravelPopupViewModel() {
         interactor = Model.getInstance().getGameInteractor();
+        PI = Model.getInstance().getPlayerInteractor();
     }
 
     /**
@@ -27,7 +30,7 @@ public class TravelPopupViewModel extends ViewModel {
      * @return  the piloting skill
      */
     public int getPlayerPilotSkill() {
-        return Model.getInstance().getPlayerInteractor().getPlayerPilotSkill();
+        return PI.getPlayerPilotSkill();
     }
 
     /**
@@ -43,7 +46,7 @@ public class TravelPopupViewModel extends ViewModel {
      * @return  the ship
      */
     public Spaceship getPlayerShip() {
-        return Model.getInstance().getPlayerInteractor().getPlayerShip();
+        return PI.getPlayerShip();
     }
 
     /**
