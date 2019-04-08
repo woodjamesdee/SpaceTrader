@@ -53,7 +53,6 @@ public class MarketPlaceActivity extends AppCompatActivity implements View.OnCli
     private int techLevel;
     private MarketPlaceViewModel viewModel;
 
-    //TODO switch this to model var
     private final int NUM_OF_RESOURCES = 10;
 
     @Override
@@ -157,7 +156,6 @@ public class MarketPlaceActivity extends AppCompatActivity implements View.OnCli
         }
     }
 
-    //TODO switch from hardcoded resource Indexes
     //Note i do not have any idea what the request code is
     @Override
     public void onClick(View view) {

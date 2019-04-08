@@ -146,7 +146,6 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
                 + (cargoSpacePerUnitResource * quantityOfTransaction)) + "/"
                 + viewModel.getMaxCargoSpace());
         resourceQuantity -= change;
-        //TODO make method that gets weight per commodity
        // userResourceTV.setText("Users " + resourceType + " "
         // + Model.getInstance().getPlayerInteractor().getPlayerShip().);
         updateResourceViews(activeCommodity);
@@ -154,6 +153,7 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
     }
 
     private void disableButtonsAdaptive(){
+        int balance = Model.getInstance().getPlayerInteractor().getPlayerBalance();
         boolean minus1isActive = (viewModel.getShipResourceQuantityByName(activeCommodity
                 .getResource()) >= Math.abs(quantityOfTransaction - 1)) ||
                 (quantityOfTransaction >= 1);
@@ -161,13 +161,11 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
                 .getResource()) >= Math.abs(quantityOfTransaction - 10)) ||
                 (quantityOfTransaction >= 10);
         boolean plus1isActive = ((resourceQuantity >= 1)
-                && (((quantityOfTransaction + 1) * resourceValue) <= Model.getInstance()
-                .getPlayerInteractor().getPlayerBalance()))
+                && (((quantityOfTransaction + 1) * resourceValue) <= balance))
                 || ((((quantityOfTransaction + 1) * activeCommodity.getWeight())
                 + viewModel.getUsedCargoSpace()) <= viewModel.getMaxCargoSpace());
         boolean plus10isActive = ((resourceQuantity >= 10)
-                && (((quantityOfTransaction + 10) * resourceValue) <= Model.getInstance()
-                .getPlayerInteractor().getPlayerBalance()))
+                && (((quantityOfTransaction + 10) * resourceValue) <= balance))
                 || ((((quantityOfTransaction + 10) * activeCommodity.getWeight())
                 + viewModel.getUsedCargoSpace()) <= viewModel.getMaxCargoSpace());
         plus1Btn.setEnabled(plus1isActive);

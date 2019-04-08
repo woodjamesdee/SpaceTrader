@@ -15,7 +15,16 @@ public class Planet extends System {
         NOSPECIALRESOURCES, MINERALRICH, MINERALPOOR,
         DESERT, LOTSOFWATER, RICHSOIL, POORSOIL,
         RICHFAUNA, LIFELESS, WEIRDMUSHROOMS, LOTSOFHERBS,
-        ARTISTIC, WARLIKE
+        ARTISTIC, WARLIKE;
+
+        /**
+         * Gets the Resource by index
+         * @param index the index of the Resource to get
+         * @return the Resource
+         */
+        public static Resource getResourceByIndex(int index) {
+            return Resource.values()[index];
+        }
     }
 
     Planet(String name, int x, int y, int techLevelIndex, int resourceIndex) {
@@ -79,7 +88,6 @@ public class Planet extends System {
      * @param index index associated with appropriate int
      * @return int that determines resource quantity
      */
-    //TODO default is getWater
     public int getIndexedResourceQuantity(int index){
         return economy.getCommodity(index).getQuantity();
     }

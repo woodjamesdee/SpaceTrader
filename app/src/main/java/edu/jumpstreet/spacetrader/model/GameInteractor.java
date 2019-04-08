@@ -47,11 +47,11 @@ public class GameInteractor implements Serializable {
         if ((name == null) || "".equals(name)) {
             return;
         }
-        game.setActiveSolarSystem(Model.getInstance().getUniverseInteractor()
-                .getSolarSystemByName(name));
-        game.setActivePlanet(Model.getInstance().getGameInteractor().getActiveSolarSystem()
-                .getPlanet(Model.getInstance().getGameInteractor()
-                        .getActiveSolarSystem().getName() + " Prime"));
+        GameInteractor gameInteractor = Model.getInstance().getGameInteractor();
+        UniverseInteractor universeInteractor = Model.getInstance().getUniverseInteractor();
+        game.setActiveSolarSystem(universeInteractor.getSolarSystemByName(name));
+        game.setActivePlanet(gameInteractor.getActiveSolarSystem()
+                .getPlanet(gameInteractor.getActiveSolarSystem().getName() + " Prime"));
     }
 
     /**

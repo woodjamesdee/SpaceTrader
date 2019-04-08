@@ -20,7 +20,16 @@ public abstract class System implements Serializable {
         PreAgriculture, Agriculture,
         Medieval, Renaissance,
         EarlyIndustrial, Industrial,
-        PostIndustrial, HiTech
+        PostIndustrial, HiTech;
+
+        /**
+         * Gets the desired TechLevel by integer.
+         * @param index the index of TechLevel
+         * @return the TechLevel
+         */
+        public static TechLevel getTechLevelByIndex(int index) {
+            return TechLevel.values()[index];
+        }
     }
 
     /**

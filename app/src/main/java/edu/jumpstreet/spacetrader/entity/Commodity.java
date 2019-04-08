@@ -120,11 +120,11 @@ public class Commodity implements Parcelable, Serializable {
         this.VAR = in.readInt();
         this.MTL = in.readInt();
         this.MTH = in.readInt();
-        this.MTLP = TechLevel.values()[in.readInt()];
-        this.MTLU = TechLevel.values()[in.readInt()];
-        this.TTP = TechLevel.values()[in.readInt()];
-        this.CR = Resource.values()[in.readInt()];
-        this.ER = Resource.values()[in.readInt()];
+        this.MTLP = TechLevel.getTechLevelByIndex(in.readInt());
+        this.MTLU = TechLevel.getTechLevelByIndex(in.readInt());
+        this.TTP = TechLevel.getTechLevelByIndex(in.readInt());
+        this.CR = Resource.getResourceByIndex(in.readInt());
+        this.ER = Resource.getResourceByIndex(in.readInt());
     }
 
     /**

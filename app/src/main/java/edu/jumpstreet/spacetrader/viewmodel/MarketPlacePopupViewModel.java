@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModel;
 import edu.jumpstreet.spacetrader.entity.Commodity;
 import edu.jumpstreet.spacetrader.entity.Planet;
 import edu.jumpstreet.spacetrader.entity.Spaceship;
+import edu.jumpstreet.spacetrader.model.GameInteractor;
 import edu.jumpstreet.spacetrader.model.Model;
 import edu.jumpstreet.spacetrader.model.PlayerInteractor;
 
@@ -22,7 +23,7 @@ public class MarketPlacePopupViewModel extends ViewModel {
      */
     MarketPlacePopupViewModel() {
         interactor = Model.getInstance().getPlayerInteractor();
-        ship = Model.getInstance().getPlayerInteractor().getPlayerShip();
+        ship = interactor.getPlayerShip();
         planet = Model.getInstance().getGameInteractor().getActivePlanet();
     }
 

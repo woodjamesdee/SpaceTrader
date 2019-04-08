@@ -99,7 +99,6 @@ public class TravelPopupActivity extends Activity implements View.OnClickListene
 
     private void setTextViews(boolean isSolarSystemTravel, System system){
         //if(!isSolarSystemTravel) {
-            //TODO figure this out
            // resourceTV.setText("Planets Main Resource: " + system.getResource());
        // }
             planetTV.setText("Planets Name: " + system.getName());
@@ -139,7 +138,6 @@ public class TravelPopupActivity extends Activity implements View.OnClickListene
             Model.getInstance().getGameInteractor().changeActivePlanet(system.getName());
     }
 
-    //TODO switch to model
     private int calculateTravelCost(System system){
         int currentX;
         int currentY;

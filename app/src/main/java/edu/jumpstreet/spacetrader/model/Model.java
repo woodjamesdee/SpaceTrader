@@ -65,7 +65,6 @@ public final class Model implements Serializable {
      * @return a random item
      */
     public Random getRandom() { return random; }
-    // TODO: This is really bad, need to change this, only used to make the M7 demo work
 
     /**
      * Loads in the game from the given Base64 encoded String
