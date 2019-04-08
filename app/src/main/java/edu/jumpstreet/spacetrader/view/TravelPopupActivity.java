@@ -24,8 +24,8 @@ import edu.jumpstreet.spacetrader.viewmodel.TravelPopupViewModelFactory;
 public class TravelPopupActivity extends Activity implements View.OnClickListener{
     private TextView planetTV;
     private TextView techLevelTV;
-    private TextView resourceTV;
-    private TextView conditionTV;
+    TextView resourceTV;
+    TextView conditionTV;
     private TextView usersFuelTV;
     private TextView requiredFuelTV;
     private Button travelBtn;
@@ -34,9 +34,9 @@ public class TravelPopupActivity extends Activity implements View.OnClickListene
     private TravelPopupViewModel viewModel;
     private Spaceship ship;
     private Planet currentPlanet;
-    private Planet travelPlanet;
-    private SolarSystem travelSS;
-    private final int fuelCostPerUnit = 10;
+    Planet travelPlanet;
+    SolarSystem travelSS;
+    final int fuelCostPerUnit = 10;
     private boolean isSolarsystemTravel;
     private System currentEntity;
     @Override
