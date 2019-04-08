@@ -38,15 +38,15 @@ public class Commodity implements Parcelable, Serializable {
      *  @param weight int : the weight of the commodity
      * @param baseValue int: Value of the commodity
      * @param resource String: category the commodity belongs to
-     * @param IPL
-     * @param VAR
-     * @param MTL
-     * @param MTH
-     * @param MTLP
-     * @param MTLU
-     * @param TTP
-     * @param CR
-     * @param ER
+     * @param IPL Price increase Per Tech Level
+     * @param VAR max % that the price can vary above or below
+     * @param MTL Min price offered in space trade with random trader
+     * @param MTH Max price offered in space trade with random trader
+     * @param MTLP Min tech level to produce
+     * @param MTLU min tech level to use
+     * @param TTP Tech level which produces the most of this item
+     * @param CR When present price of resource is low
+     * @param ER When present price of resource is high
      */
     Commodity(int weight, int baseValue, String resource,
               int IPL, int VAR, int MTL, int MTH,
@@ -160,23 +160,6 @@ public class Commodity implements Parcelable, Serializable {
      */
     void setQuantity(int quantity){this.quantity = quantity;}
 
-    /*
-    public static CommodityResources getIndexCommodity(int index){
-        switch(index){
-            case 0: return CommodityResources.Water;
-            case 1: return CommodityResources.Furs;
-            case 2: return CommodityResources.Food;
-            case 3: return CommodityResources.Ore;
-            case 4: return CommodityResources.Games;
-            case 5: return CommodityResources.Firearms;
-            case 6: return CommodityResources.Medicine;
-            case 7: return CommodityResources.Machines;
-            case 8: return CommodityResources.Narcotics;
-            case 9: return CommodityResources.Robots;
-            default:return CommodityResources.Water;
-        }
-    }
-    */
 
     /**
      * resource getter
