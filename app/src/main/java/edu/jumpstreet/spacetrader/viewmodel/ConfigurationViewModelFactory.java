@@ -13,4 +13,5 @@ public class ConfigurationViewModelFactory implements ViewModelProvider.Factory 
     public ConfigurationViewModel create(@NonNull Class modelClass) {
         return new ConfigurationViewModel();
     }
+
 }

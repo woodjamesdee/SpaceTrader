@@ -1,6 +1,5 @@
 package edu.jumpstreet.spacetrader.entity;
 
-import java.io.Serializable;
 import java.util.List;
 import java.util.Random;
 

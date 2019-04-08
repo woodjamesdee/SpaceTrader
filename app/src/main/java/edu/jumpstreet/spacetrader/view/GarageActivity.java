@@ -60,8 +60,10 @@ public class GarageActivity extends AppCompatActivity implements View.OnClickLis
                 break;
         }
     }
+    /*
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent){
         super.onActivityResult(requestCode, resultCode, intent);
     }
+    */
 }

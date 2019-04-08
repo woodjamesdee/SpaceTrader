@@ -113,35 +113,35 @@ public class ConfigurationActivity extends AppCompatActivity implements View.OnC
         switch(view.getId()){
             case R.id.pilotMinusButton:
                 viewModel.updatePilotSkill(false);
-                updateButtons(0,false);
+                updateButtons(0);
                 break;
             case R.id.pilotPlusButton:
                 viewModel.updatePilotSkill(true);
-                updateButtons(0,true );
+                updateButtons(0);
                 break;
             case R.id.fighterMinusButton:
                 viewModel.updateFightingSkill(false);
-                updateButtons(1,false );
+                updateButtons(1);
                 break;
             case R.id.fighterPlusButton:
                 viewModel.updateFightingSkill(true);
-                updateButtons(1, true);
+                updateButtons(1);
                 break;
             case R.id.traderMinusButton:
                 viewModel.updateTradingSkill(false);
-                updateButtons(2, false);
+                updateButtons(2);
                 break;
             case R.id.traderPlusButton:
                 viewModel.updateTradingSkill(true);
-                updateButtons(2, true);
+                updateButtons(2);
                 break;
             case R.id.engineerMinusButton:
                 viewModel.updateEngineeringSkill(false);
-                updateButtons(3, false);
+                updateButtons(3);
                 break;
             case R.id.engineerPlusButton:
                 viewModel.updateEngineeringSkill(true);
-                updateButtons(3, true);
+                updateButtons(3);
                 break;
             case R.id.playerConfigConfirmationButton:
                 //model.getPlayerInteractor().addPlayerPilotSkill(pilotSP);
@@ -166,7 +166,7 @@ public class ConfigurationActivity extends AppCompatActivity implements View.OnC
         }
     }
 
-    private void updateButtons(int skill, boolean isAdded){
+    private void updateButtons(int skill){
         switch (skill){
             case 0:
                 pilotTV.setText("Pilot Skill: " + viewModel.getPlayerPilotSkill()+ "");

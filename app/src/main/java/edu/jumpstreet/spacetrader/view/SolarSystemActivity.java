@@ -93,12 +93,12 @@ public class SolarSystemActivity extends AppCompatActivity implements View.OnCli
             }
         }
     }
-
+    /*
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent){
         super.onActivityResult(requestCode, resultCode, intent);
     }
-
+    */
     @Override
     public void onClick(View view) {
         switch(view.getId()){

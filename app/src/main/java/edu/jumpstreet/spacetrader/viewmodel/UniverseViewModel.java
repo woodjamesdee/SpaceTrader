@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModel;
 import edu.jumpstreet.spacetrader.entity.SolarSystem;
 import edu.jumpstreet.spacetrader.model.GameInteractor;
 import edu.jumpstreet.spacetrader.model.Model;
+import edu.jumpstreet.spacetrader.model.UniverseInteractor;
 
 /**
  * Provides functionality for the UniverseActivity.
@@ -17,7 +18,8 @@ public class UniverseViewModel extends ViewModel {
      * Creates a new UniverseViewModel.
      */
     UniverseViewModel() {
-        interactor = Model.getInstance().getGameInteractor();
+        Model model = Model.getInstance();
+        interactor = model.getGameInteractor();
     }
 
     /**
@@ -41,7 +43,8 @@ public class UniverseViewModel extends ViewModel {
      * @return the x-coordinate
      */
     public int getActiveSolarSystemX() {
-        return interactor.getActiveSolarSystem().getX();
+        SolarSystem system = interactor.getActiveSolarSystem();
+        return system.getX();
     }
 
     /**
@@ -49,7 +52,8 @@ public class UniverseViewModel extends ViewModel {
      * @return the y-coordinate
      */
     public int getActiveSolarSystemY() {
-        return interactor.getActiveSolarSystem().getY();
+        SolarSystem system = interactor.getActiveSolarSystem();
+        return system.getY();
     }
 
     /**
@@ -58,7 +62,9 @@ public class UniverseViewModel extends ViewModel {
      * @return  the SolarSystem
      */
     public SolarSystem getSolarSystemByName(String name) {
-        return Model.getInstance().getUniverseInteractor().getSolarSystemByName(name);
+        Model model = Model.getInstance();
+        UniverseInteractor ui = model.getUniverseInteractor();
+        return ui.getSolarSystemByName(name);
     }
 
     /**

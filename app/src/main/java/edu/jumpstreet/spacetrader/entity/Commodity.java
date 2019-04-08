@@ -38,15 +38,15 @@ public class Commodity implements Parcelable, Serializable {
      *  @param weight int : the weight of the commodity
      * @param baseValue int: Value of the commodity
      * @param resource String: category the commodity belongs to
-     * @param IPL
-     * @param VAR
-     * @param MTL
-     * @param MTH
-     * @param MTLP
-     * @param MTLU
-     * @param TTP
-     * @param CR
-     * @param ER
+     * @param IPL   one one of the major attributes
+     * @param VAR   the variance in price
+     * @param MTL   one of the major attributes
+     * @param MTH   one of the major attributes
+     * @param MTLP  minimum tech level to purchase
+     * @param MTLU  minimum tech level to use
+     * @param TTP   optimum point of production
+     * @param CR    resource which boosts production
+     * @param ER    resource which strains production
      */
     Commodity(int weight, int baseValue, String resource,
               int IPL, int VAR, int MTL, int MTH,
@@ -152,7 +152,12 @@ public class Commodity implements Parcelable, Serializable {
      * @return int representing Value
      */
     int getBaseValue(){return baseValue;}
-    public int getQuantity(){return  quantity;}
+
+    /**
+     * Gets the quantity of this Commodity.
+     * @return the quantity.
+     */
+    public int getQuantity(){ return quantity;}
 
     /**
      * Sets the quantity

@@ -93,21 +93,21 @@ public class Game implements Serializable {
         this.nextPlanet = nextPlanet;
     }
 
-    /**
+    /*
      * difficulty getter
      * @return the desired game difficulty
      */
-    public GameDifficulty getDifficulty() {
-        return difficulty;
-    }
+    //public GameDifficulty getDifficulty() {
+    //    return difficulty;
+    //}
 
-    /**
+    /*
      * difficulty setter
      * @param difficulty sets the difficulty to the desired game difficulty
      */
-    public void setDifficulty(GameDifficulty difficulty) {
-        this.difficulty = difficulty;
-    }
+    //public void setDifficulty(GameDifficulty difficulty) {
+    //    this.difficulty = difficulty;
+    //}
 
     /**
      * set if the next solar system is available for travel

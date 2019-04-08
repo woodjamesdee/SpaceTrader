@@ -2,6 +2,7 @@ package edu.jumpstreet.spacetrader.model;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Map;
 import java.util.Random;
 
 import edu.jumpstreet.spacetrader.entity.Planet;
@@ -39,7 +40,8 @@ public class UniverseInteractor implements Serializable {
      * @return the SolarSystems
      */
     Collection<SolarSystem> getSolarSystems() {
-        return universe.getSolarSystems().values();
+        Map<String, SolarSystem> solarSystems = universe.getSolarSystems();
+        return solarSystems.values();
     }
 
     /**
@@ -80,7 +82,7 @@ public class UniverseInteractor implements Serializable {
      * @param random    introduces randomization
      */
     private void generatePlanets(Random random) {
-        for (SolarSystem currentSystem : universe.getSolarSystems().values()) {
+        for (SolarSystem currentSystem : getSolarSystems()) {
             for (int i = 0; i < (random.nextInt(Universe.MAX_SYSTEMS -
                     Universe.MIN_SYSTEMS) + Universe.MIN_SYSTEMS); i++) {
                 currentSystem.addNewPlanet(random.nextInt(Universe.X_BOUNDS),

@@ -15,8 +15,8 @@ import static org.junit.Assert.*;
  */
 public class AddTraderSkillUnitTest {
 
-    PlayerInteractor interactor = Model.getInstance().getPlayerInteractor();
-    Player player = interactor.getPlayer();
+    private PlayerInteractor interactor = Model.getInstance().getPlayerInteractor();
+    private Player player = interactor.getPlayer();
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();

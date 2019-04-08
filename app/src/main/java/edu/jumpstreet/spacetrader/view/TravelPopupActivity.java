@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
@@ -14,6 +16,7 @@ import edu.jumpstreet.spacetrader.R;
 import edu.jumpstreet.spacetrader.entity.Planet;
 import edu.jumpstreet.spacetrader.entity.SolarSystem;
 import edu.jumpstreet.spacetrader.entity.Spaceship;
+import edu.jumpstreet.spacetrader.model.GameInteractor;
 import edu.jumpstreet.spacetrader.model.Model;
 import edu.jumpstreet.spacetrader.entity.System;
 import edu.jumpstreet.spacetrader.viewmodel.TravelPopupViewModel;
@@ -46,9 +49,12 @@ public class TravelPopupActivity extends Activity implements View.OnClickListene
         TravelPopupViewModelFactory factory = new TravelPopupViewModelFactory();
         viewModel = factory.create(TravelPopupViewModel.class);
         DisplayMetrics dM = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dM);
-        getWindow().setLayout((int) (dM.widthPixels * GarageFuelActivity.WIDTH_MODIFIER), (int) (dM.heightPixels * GarageFuelActivity.HEIGHT_MODIFIER));
-        WindowManager.LayoutParams params = getWindow().getAttributes();
+        WindowManager windowManager = getWindowManager();
+        Display defaultDisplay = windowManager.getDefaultDisplay();
+        defaultDisplay.getMetrics(dM);
+        Window window = getWindow();
+        window.setLayout((int) (dM.widthPixels * GarageFuelActivity.WIDTH_MODIFIER), (int) (dM.heightPixels * GarageFuelActivity.HEIGHT_MODIFIER));
+        WindowManager.LayoutParams params = window.getAttributes();
         params.gravity = Gravity.CENTER;
         params.x = 0;
         params.y = GarageFuelActivity.Y_LOCATION;
@@ -101,10 +107,13 @@ public class TravelPopupActivity extends Activity implements View.OnClickListene
         //if(!isSolarSystemTravel) {
            // resourceTV.setText("Planets Main Resource: " + system.getResource());
        // }
-            planetTV.setText("Planets Name: " + system.getName());
-            techLevelTV.setText("Planets Tech Level: " + system.getTechLevel());
-            requiredFuelTV.setText("Required Fuel: " + calculateTravelCost(currentEntity));
-            usersFuelTV.setText("Users Fuel: " + ship.getRemainingFuel() + "/" + ship.getMaxFuel());
+        if (!isSolarSystemTravel) {
+
+        }
+        planetTV.setText("Planets Name: " + system.getName());
+        techLevelTV.setText("Planets Tech Level: " + system.getTechLevel());
+        requiredFuelTV.setText("Required Fuel: " + calculateTravelCost(currentEntity));
+        usersFuelTV.setText("Users Fuel: " + ship.getRemainingFuel() + "/" + ship.getMaxFuel());
     }
 
     @Override
@@ -134,8 +143,10 @@ public class TravelPopupActivity extends Activity implements View.OnClickListene
      * @param system the goal of the travel
      */
     private void travel(System system){
-            ship.setRemainingFuel(ship.getRemainingFuel() - calculateTravelCost(system));
-            Model.getInstance().getGameInteractor().changeActivePlanet(system.getName());
+        ship.setRemainingFuel(ship.getRemainingFuel() - calculateTravelCost(system));
+        Model model = Model.getInstance();
+        GameInteractor gi = model.getGameInteractor();
+        gi.changeActivePlanet(system.getName());
     }
 
     private int calculateTravelCost(System system){

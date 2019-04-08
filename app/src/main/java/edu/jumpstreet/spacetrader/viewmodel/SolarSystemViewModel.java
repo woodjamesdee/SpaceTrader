@@ -36,7 +36,8 @@ public class SolarSystemViewModel extends ViewModel {
      * @return the name
      */
     public String getActiveSolarSystemName() {
-        return interactor.getActiveSolarSystem().getName();
+        SolarSystem solarSystem = interactor.getActiveSolarSystem();
+        return solarSystem.getName();
     }
 
     /**
@@ -44,7 +45,8 @@ public class SolarSystemViewModel extends ViewModel {
      * @return the TechLevel
      */
     public System.TechLevel getTechLevel() {
-        return interactor.getActiveSolarSystem().getTechLevel();
+        SolarSystem solarSystem = interactor.getActiveSolarSystem();
+        return solarSystem.getTechLevel();
     }
 
     /**
@@ -60,7 +62,8 @@ public class SolarSystemViewModel extends ViewModel {
      * @return the x-coordinate
      */
     public int getActivePlanetX() {
-        return interactor.getActivePlanet().getX();
+        Planet planet = interactor.getActivePlanet();
+        return planet.getX();
     }
 
     /**
@@ -68,7 +71,8 @@ public class SolarSystemViewModel extends ViewModel {
      * @return the y-coordinate
      */
     public int getActivePlanetY() {
-        return interactor.getActivePlanet().getY();
+        Planet planet = interactor.getActivePlanet();
+        return planet.getY();
     }
 
     /**
@@ -77,7 +81,8 @@ public class SolarSystemViewModel extends ViewModel {
      * @return the planet
      */
     public Planet getPlanet(String name) {
-        return interactor.getActiveSolarSystem().getPlanet(name);
+        SolarSystem solarSystem = interactor.getActiveSolarSystem();
+        return solarSystem.getPlanet(name);
     }
 
     /**

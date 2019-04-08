@@ -7,6 +7,7 @@ import edu.jumpstreet.spacetrader.entity.SolarSystem;
 import edu.jumpstreet.spacetrader.entity.Spaceship;
 import edu.jumpstreet.spacetrader.model.GameInteractor;
 import edu.jumpstreet.spacetrader.model.Model;
+import edu.jumpstreet.spacetrader.model.PlayerInteractor;
 
 /**
  * Provides functionality for the TravelPopup
@@ -19,7 +20,8 @@ public class TravelPopupViewModel extends ViewModel {
      * Creates a new TravelPopupViewModel.
      */
     TravelPopupViewModel() {
-        interactor = Model.getInstance().getGameInteractor();
+        Model model = Model.getInstance();
+        interactor = model.getGameInteractor();
     }
 
     /**
@@ -27,7 +29,9 @@ public class TravelPopupViewModel extends ViewModel {
      * @return  the piloting skill
      */
     public int getPlayerPilotSkill() {
-        return Model.getInstance().getPlayerInteractor().getPlayerPilotSkill();
+        Model model = Model.getInstance();
+        PlayerInteractor pi = model.getPlayerInteractor();
+        return pi.getPlayerPilotSkill();
     }
 
     /**
@@ -43,7 +47,9 @@ public class TravelPopupViewModel extends ViewModel {
      * @return  the ship
      */
     public Spaceship getPlayerShip() {
-        return Model.getInstance().getPlayerInteractor().getPlayerShip();
+        Model model = Model.getInstance();
+        PlayerInteractor pi = model.getPlayerInteractor();
+        return pi.getPlayerShip();
     }
 
     /**
@@ -67,7 +73,8 @@ public class TravelPopupViewModel extends ViewModel {
      * @return the x-coordinate
      */
     public int getActiveSolarSystemX() {
-        return interactor.getActiveSolarSystem().getX();
+        SolarSystem system = interactor.getActiveSolarSystem();
+        return system.getX();
     }
 
     /**
@@ -75,7 +82,8 @@ public class TravelPopupViewModel extends ViewModel {
      * @return the y-coordinate
      */
     public int getActiveSolarSystemY() {
-        return interactor.getActiveSolarSystem().getY();
+        SolarSystem system = interactor.getActiveSolarSystem();
+        return system.getY();
     }
 
     /**

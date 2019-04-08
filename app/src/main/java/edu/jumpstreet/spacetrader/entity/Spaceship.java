@@ -79,7 +79,8 @@ public abstract class Spaceship implements Serializable {
      * @return int representing how much of that resource is there
      */
     public int getResourceQuantityByIndex(int index){
-            return economy.getCommodity(index).getQuantity();
+        Commodity comm = economy.getCommodity(index);
+        return comm.getQuantity();
     }
 
 //    public Commodity getCommodity(Commodity comm){
@@ -98,7 +99,8 @@ public abstract class Spaceship implements Serializable {
      * @param quantity the quantity of the resource
      */
     public void setResourceQuantityByName(String name, int quantity){
-        economy.getCommodityByName(name).setQuantity(quantity);
+        Commodity comm = economy.getCommodityByName(name);
+        comm.setQuantity(quantity);
     }
 
     /**
@@ -107,7 +109,8 @@ public abstract class Spaceship implements Serializable {
      * @return int of how much of the given commodity is there
      */
     public int getQuantityByName (String name){
-        return economy.getCommodityByName(name).getQuantity();
+        Commodity comm = economy.getCommodityByName(name);
+        return comm.getQuantity();
     }
 
     //public Economy getEconomy(){return  economy;}
