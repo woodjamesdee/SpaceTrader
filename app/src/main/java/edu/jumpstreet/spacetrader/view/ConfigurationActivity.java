@@ -3,6 +3,7 @@ package edu.jumpstreet.spacetrader.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
 import android.view.View;
 import android.view.Window;
 import android.widget.ArrayAdapter;
@@ -148,7 +149,9 @@ public class ConfigurationActivity extends AppCompatActivity implements View.OnC
                 //model.getPlayerInteractor().addPlayerTraderSkill(traderSP);
                 //model.getPlayerInteractor().addPlayerEngineerSkill(engineerSP);
                 //model.getPlayerInteractor().changePlayerName(nameET.getText().toString());
-                viewModel.setPlayerName(nameET.getText().toString());
+                Editable nameETText = nameET.getText();
+                String nameETString = nameETText.toString();
+                viewModel.setPlayerName(nameETString);
 
                 Toast.makeText(this, "Player Configured\nName: " + viewModel.getPlayerName()
                                 +"\nPilot Skill: " + viewModel.getPlayerPilotSkill()

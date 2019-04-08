@@ -1,16 +1,21 @@
 package edu.jumpstreet.spacetrader.view;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import edu.jumpstreet.spacetrader.R;
 import edu.jumpstreet.spacetrader.entity.Commodity;
+import edu.jumpstreet.spacetrader.entity.System;
 import edu.jumpstreet.spacetrader.model.Model;
+import edu.jumpstreet.spacetrader.model.PlayerInteractor;
 import edu.jumpstreet.spacetrader.viewmodel.MarketPlacePopupViewModel;
 import edu.jumpstreet.spacetrader.viewmodel.MarketPlacePopupViewModelFactory;
 
@@ -49,9 +54,12 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
         MarketPlacePopupViewModelFactory factory = new MarketPlacePopupViewModelFactory();
         viewModel = factory.create(MarketPlacePopupViewModel.class);
         DisplayMetrics dM = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dM);
-        getWindow().setLayout((int) (dM.widthPixels * GarageFuelActivity.WIDTH_MODIFIER), (int) (dM.heightPixels * GarageFuelActivity.HEIGHT_MODIFIER));
-        WindowManager.LayoutParams params = getWindow().getAttributes();
+        WindowManager windowManager = getWindowManager();
+        Display defaultDisplay = windowManager.getDefaultDisplay();
+        defaultDisplay.getMetrics(dM);
+        Window window = getWindow();
+        window.setLayout((int) (dM.widthPixels * GarageFuelActivity.WIDTH_MODIFIER), (int) (dM.heightPixels * GarageFuelActivity.HEIGHT_MODIFIER));
+        WindowManager.LayoutParams params = window.getAttributes();
         params.gravity = Gravity.CENTER;
         params.x = 0;
         params.y = GarageFuelActivity.Y_LOCATION;
@@ -92,7 +100,8 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
     }
 
     private void getResource(){
-        activeCommodity = getIntent().getParcelableExtra("Commodity");
+        Intent intent = getIntent();
+        activeCommodity = intent.getParcelableExtra("Commodity");
         resourceQuantity = activeCommodity.getQuantity();
         updateResourceViews(activeCommodity);
         userResourceTV.setText("Users " + activeCommodity.getResource() + " "
@@ -153,7 +162,9 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
     }
 
     private void disableButtonsAdaptive(){
-        int balance = Model.getInstance().getPlayerInteractor().getPlayerBalance();
+        Model model = Model.getInstance();
+        PlayerInteractor pi = model.getPlayerInteractor();
+        int balance = pi.getPlayerBalance();
         boolean minus1isActive = (viewModel.getShipResourceQuantityByName(activeCommodity
                 .getResource()) >= Math.abs(quantityOfTransaction - 1)) ||
                 (quantityOfTransaction >= 1);
@@ -175,7 +186,8 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
     }
 
     private void disableBuyButtonsByTechLevel(int techLevel, Commodity comm){
-        boolean isActive = techLevel < comm.getMTLP().ordinal();
+        System.TechLevel MTLP = comm.getMTLP();
+        boolean isActive = techLevel < MTLP.ordinal();
         plus1Btn.setEnabled(isActive);
         plus10Btn.setEnabled(isActive);
     }

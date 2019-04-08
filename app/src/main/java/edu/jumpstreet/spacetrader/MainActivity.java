@@ -43,17 +43,17 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
            public void onClick(View v) {
                String savedGame = sharedPreferences.getString(key, null);
                if (savedGame == null) {
-                   System.out.println("No saved game!");
+                   //System.out.println("No saved game!");
                    return;
                }
                try {
                    Model.loadGameFromString(savedGame);
                    startUniverse();
                } catch(IOException ioe) {
-                   System.err.println("IOException while loading game.");
+                   //System.err.println("IOException while loading game.");
                    ioe.printStackTrace();
                } catch (ClassNotFoundException cnfe) {
-                   System.err.println("ClassNotFoundException while loading game");
+                   //System.err.println("ClassNotFoundException while loading game");
                    cnfe.printStackTrace();
                }
            }

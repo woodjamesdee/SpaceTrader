@@ -50,7 +50,7 @@ public class UniverseActivity extends AppCompatActivity {
                     editor.putString(MainActivity.key, Model.saveGameToString());
                     editor.apply();
                 } catch (IOException ioe) {
-                    System.err.println("Error while saving game!");
+                    //System.err.println("Error while saving game!");
                     ioe.printStackTrace();
                 }
             }

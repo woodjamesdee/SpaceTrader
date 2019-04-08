@@ -18,7 +18,8 @@ public class PlanetViewModel extends ViewModel {
      * Creates a new PlanetViewModel.
      */
     PlanetViewModel() {
-        interactor = Model.getInstance().getGameInteractor();
+        Model model = Model.getInstance();
+        interactor = model.getGameInteractor();
     }
 
     /**
@@ -26,7 +27,8 @@ public class PlanetViewModel extends ViewModel {
      * @return  the name
      */
     public String getActivePlanetName() {
-        return interactor.getActivePlanet().getName();
+        Planet planet = interactor.getActivePlanet();
+        return planet.getName();
     }
 
     /**
@@ -34,7 +36,8 @@ public class PlanetViewModel extends ViewModel {
      * @return  the TechLevel
      */
     public System.TechLevel getActivePlanetTechLevel() {
-        return interactor.getActivePlanet().getTechLevel();
+        Planet planet = interactor.getActivePlanet();
+        return planet.getTechLevel();
     }
 
     /**
@@ -42,6 +45,7 @@ public class PlanetViewModel extends ViewModel {
      * @return the TechLevel
      */
     public Planet.Resource getActivePlanetResource() {
-        return interactor.getActivePlanet().getResource();
+        Planet planet = interactor.getActivePlanet();
+        return planet.getResource();
     }
 }

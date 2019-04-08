@@ -1,6 +1,8 @@
 package edu.jumpstreet.spacetrader.model;
 
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.Iterator;
 
 import edu.jumpstreet.spacetrader.entity.Game;
 import edu.jumpstreet.spacetrader.entity.Planet;
@@ -18,7 +20,9 @@ public class GameInteractor implements Serializable {
      * @param universeInteractor the universeInteractor to use for picking the starting planet.
      */
     GameInteractor(UniverseInteractor universeInteractor) {
-        SolarSystem system = universeInteractor.getSolarSystems().iterator().next();
+        Collection<SolarSystem> solarSystems = universeInteractor.getSolarSystems();
+        Iterator<SolarSystem> iterator = solarSystems.iterator();
+        SolarSystem system = iterator.next();
         game = new Game(system, system.getPlanet(system.getName() + " Prime"),
                 Game.GameDifficulty.NORMAL);
     }
@@ -47,11 +51,12 @@ public class GameInteractor implements Serializable {
         if ((name == null) || "".equals(name)) {
             return;
         }
-        GameInteractor gameInteractor = Model.getInstance().getGameInteractor();
-        UniverseInteractor universeInteractor = Model.getInstance().getUniverseInteractor();
+        Model model = Model.getInstance();
+        GameInteractor gameInteractor = model.getGameInteractor();
+        UniverseInteractor universeInteractor = model.getUniverseInteractor();
         game.setActiveSolarSystem(universeInteractor.getSolarSystemByName(name));
-        game.setActivePlanet(gameInteractor.getActiveSolarSystem()
-                .getPlanet(gameInteractor.getActiveSolarSystem().getName() + " Prime"));
+        SolarSystem activeSystem = gameInteractor.getActiveSolarSystem();
+        game.setActivePlanet(activeSystem.getPlanet(activeSystem.getName() + " Prime"));
     }
 
     /**
@@ -62,7 +67,8 @@ public class GameInteractor implements Serializable {
         if ((name == null) || "".equals(name)) {
             return;
         }
-        game.setActivePlanet(game.getActiveSolarSystem().getPlanet(name));
+        SolarSystem activeSystem = game.getActiveSolarSystem();
+        game.setActivePlanet(activeSystem.getPlanet(name));
     }
 
     /**

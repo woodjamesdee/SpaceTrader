@@ -1,6 +1,7 @@
 package edu.jumpstreet.spacetrader.entity;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -41,27 +42,39 @@ public class Planet extends System {
 
     private void createCommodities(int techLevel){
         Random rand = new Random();
-        economy.getCommodity(0).setQuantity(rand.nextInt(1000));
-        economy.getCommodity(1).setQuantity(rand.nextInt(1000));
+        List<Commodity> commodities = economy.getCommodities();
+        Commodity commodity0 = commodities.get(0);
+        Commodity commodity1 = commodities.get(1);
+        Commodity commodity2 = commodities.get(2);
+        Commodity commodity3 = commodities.get(3);
+        Commodity commodity4 = commodities.get(4);
+        Commodity commodity5 = commodities.get(5);
+        Commodity commodity6 = commodities.get(6);
+        Commodity commodity7 = commodities.get(7);
+        Commodity commodity8 = commodities.get(8);
+        Commodity commodity9 = commodities.get(9);
+
+        commodity0.setQuantity(rand.nextInt(1000));
+        commodity1.setQuantity(rand.nextInt(1000));
         if(techLevel >= 1){
-            economy.getCommodity(2).setQuantity(rand.nextInt(1000));
+            commodity2.setQuantity(rand.nextInt(1000));
         }
         if(techLevel >= 2){
-            economy.getCommodity(3).setQuantity(rand.nextInt(1000));
+            commodity3.setQuantity(rand.nextInt(1000));
         }
         if(techLevel >= 3){
-            economy.getCommodity(4).setQuantity(rand.nextInt(1000));
-            economy.getCommodity(5).setQuantity(rand.nextInt(1000));
+            commodity4.setQuantity(rand.nextInt(1000));
+            commodity5.setQuantity(rand.nextInt(1000));
         }
         if(techLevel >= 4){
-            economy.getCommodity(6).setQuantity(rand.nextInt(1000));
-            economy.getCommodity(7).setQuantity(rand.nextInt(1000));
+            commodity6.setQuantity(rand.nextInt(1000));
+            commodity7.setQuantity(rand.nextInt(1000));
         }
         if(techLevel >= 5){
-            economy.getCommodity(8).setQuantity(rand.nextInt(1000));
+            commodity8.setQuantity(rand.nextInt(1000));
         }
         if(techLevel >= 6){
-            economy.getCommodity(9).setQuantity(rand.nextInt(1000));
+            commodity9.setQuantity(rand.nextInt(1000));
         }
     }
 
@@ -89,7 +102,8 @@ public class Planet extends System {
      * @return int that determines resource quantity
      */
     public int getIndexedResourceQuantity(int index){
-        return economy.getCommodity(index).getQuantity();
+        Commodity comm = economy.getCommodity(index);
+        return comm.getQuantity();
     }
 
     /*
@@ -104,7 +118,8 @@ public class Planet extends System {
      * @param amount amount to set of given resource
      */
     public void setResourceQuantityByName(String name, int amount){
-        economy.getCommodityByName(name).setQuantity(amount);
+        Commodity comm = economy.getCommodityByName(name);
+        comm.setQuantity(amount);
     }
 
     /**

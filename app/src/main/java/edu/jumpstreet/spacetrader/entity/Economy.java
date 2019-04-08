@@ -6,6 +6,7 @@ import android.os.Parcelable;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import edu.jumpstreet.spacetrader.model.Model;
 
@@ -27,6 +28,8 @@ public class Economy implements Parcelable, Serializable {
     private List<Commodity> commodities;
 
     private final System.TechLevel techLevel;
+
+    private Random random;
 
     @Override
     public int describeContents(){return 0;}
@@ -55,6 +58,8 @@ public class Economy implements Parcelable, Serializable {
         Narcotics = commodities.get(8);
         Robots = commodities.get(9);
         this.techLevel = System.TechLevel.values()[in.readInt()];
+        Model model = Model.getInstance();
+        random = model.getRandom();
     }
 
     public static final Parcelable.Creator<Economy> CREATOR = new Parcelable.Creator<Economy>(){
@@ -68,6 +73,8 @@ public class Economy implements Parcelable, Serializable {
 
 
     Economy(System.TechLevel currentTechLevel){
+        Model model = Model.getInstance();
+        random = model.getRandom();
         final int waterBaseValue = 30;
         final int waterMTL = 30;
         final int waterMTH = 50;
@@ -232,8 +239,10 @@ public class Economy implements Parcelable, Serializable {
     public int getCommodityValue(int index){
         Commodity comm = getCommodity(index);
         int result;
-        int randomVar = Model.getInstance().getRandom().nextInt(comm.getVAR());
-        result = comm.getBaseValue() + ((techLevel.ordinal() - comm.getMTLP().ordinal())
+        int commVAR = comm.getVAR();
+        int randomVar =random.nextInt(commVAR);
+        System.TechLevel MTLP = comm.getMTLP();
+        result = comm.getBaseValue() + ((techLevel.ordinal() - MTLP.ordinal())
                 * comm.getIPL()) + ((comm.getBaseValue() * randomVar) / 100);
         return result;
     }
@@ -245,10 +254,20 @@ public class Economy implements Parcelable, Serializable {
      */
     public int getCommodityValue(Commodity comm){
         int result;
-        int randomVar = Model.getInstance().getRandom().nextInt(comm.getVAR());
-        result = comm.getBaseValue() + ((techLevel.ordinal() - comm.getMTLP().ordinal())
+        int commVAR = comm.getVAR();
+        System.TechLevel MTLP = comm.getMTLP();
+        int randomVar = random.nextInt(commVAR);
+        result = comm.getBaseValue() + ((techLevel.ordinal() - MTLP.ordinal())
                 * comm.getIPL()) + ((comm.getBaseValue() * randomVar) / 100);
         return result;
+    }
+
+    /**
+     * Gets the List of commodities in this Economy.
+     * @return the list of Commodities.
+     */
+    public List<Commodity> getCommodities() {
+        return commodities;
     }
 
 
