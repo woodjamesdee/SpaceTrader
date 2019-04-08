@@ -39,7 +39,7 @@ public class ConfigurationActivity extends AppCompatActivity implements View.OnC
     private TextView engineerTV;
     private ImageButton engineerPlusBtn;
 
-    private Spinner difficultySpinner;
+    //private Spinner difficultySpinner;
 
     private Button confirmationBtn;
     enum Difficulty{
@@ -59,7 +59,7 @@ public class ConfigurationActivity extends AppCompatActivity implements View.OnC
 
         linkConfigButtons();
         initializeButtons();
-        difficultySpinner = findViewById(R.id.difficultySpinner);
+        Spinner difficultySpinner = findViewById(R.id.difficultySpinner);
         skillPointsRemainingTV.setText("Remaining Skill Points: "
                 + viewModel.getUnallocatedPoints());
         ArrayAdapter<Difficulty> difficultyAdapter = new ArrayAdapter<>(this,

@@ -22,7 +22,7 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
     private Button plus10Btn;
     private Button minus1Btn;
     private Button minus10Btn;
-    private Button transactionConfirmationBtn;
+    //private Button transactionConfirmationBtn;
 
     private TextView quantityTV;
     private TextView cargoSpaceTV;
@@ -78,7 +78,7 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
         minus1Btn.setOnClickListener(this);
         minus10Btn = findViewById(R.id.tradePopupMinus10Btn);
         minus10Btn.setOnClickListener(this);
-        transactionConfirmationBtn = findViewById(R.id.tradePopupConfirmationBtn);
+        Button transactionConfirmationBtn = findViewById(R.id.tradePopupConfirmationBtn);
         transactionConfirmationBtn.setOnClickListener(this);
         quantityTV = findViewById(R.id.tradePopupQuantityTV);
         cargoSpaceTV = findViewById(R.id.tradePopUpCargoTV);

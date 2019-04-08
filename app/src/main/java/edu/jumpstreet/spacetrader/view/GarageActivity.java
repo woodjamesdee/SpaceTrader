@@ -14,9 +14,9 @@ import edu.jumpstreet.spacetrader.viewmodel.GarageViewModelFactory;
  * controls back end of the garage of each planet
  */
 public class GarageActivity extends AppCompatActivity implements View.OnClickListener{
-    private Button buySpaceshipBtn;
-    private Button buyFuelBtn;
-    private Button repairSpaceshipBtn;
+    //private Button buySpaceshipBtn;
+    //private Button buyFuelBtn;
+    //private Button repairSpaceshipBtn;
 
     private GarageViewModel viewModel;
 
@@ -32,17 +32,17 @@ public class GarageActivity extends AppCompatActivity implements View.OnClickLis
 
 
     private void initializeButtons(){
-        buyFuelBtn = findViewById(R.id.OnGarageBuyFuelBtn);
+        Button buyFuelBtn = findViewById(R.id.OnGarageBuyFuelBtn);
         buyFuelBtn.setOnClickListener(this);
         if(viewModel.getRemainingFuel() == viewModel.getMaxFuel()) {
             buyFuelBtn.setEnabled(false);
         }else{
             buyFuelBtn.setEnabled(true);
         }
-        buySpaceshipBtn = findViewById(R.id.OnGarageBuySpaceShipBtn);
+        Button buySpaceshipBtn = findViewById(R.id.OnGarageBuySpaceShipBtn);
         buySpaceshipBtn.setOnClickListener(this);
         buySpaceshipBtn.setEnabled(true);
-        repairSpaceshipBtn = findViewById(R.id.OnGarageRepairSpaceshipBtn);
+        Button repairSpaceshipBtn = findViewById(R.id.OnGarageRepairSpaceshipBtn);
         repairSpaceshipBtn.setOnClickListener(this);
         repairSpaceshipBtn.setEnabled(true);
     }

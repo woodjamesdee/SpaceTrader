@@ -25,8 +25,8 @@ import edu.jumpstreet.spacetrader.viewmodel.TravelPopupViewModelFactory;
 public class TravelPopupActivity extends Activity implements View.OnClickListener{
     private TextView planetTV;
     private TextView techLevelTV;
-    private TextView resourceTV;
-    private TextView conditionTV;
+    //private TextView resourceTV;
+    //private TextView conditionTV;
     private TextView usersFuelTV;
     private TextView requiredFuelTV;
     private Button travelBtn;
@@ -35,9 +35,9 @@ public class TravelPopupActivity extends Activity implements View.OnClickListene
     private TravelPopupViewModel viewModel;
     private Spaceship ship;
     private Planet currentPlanet;
-    private Planet travelPlanet;
-    private SolarSystem travelSS;
-    private int fuelCostPerUnit = 10;
+    //private Planet travelPlanet;
+    //private SolarSystem travelSS;
+    public static final int FUEL_COST_PER_UNIT = 10;
     private boolean isSolarsystemTravel;
     private System currentEntity;
     @Override
@@ -66,14 +66,14 @@ public class TravelPopupActivity extends Activity implements View.OnClickListene
         ship = viewModel.getPlayerShip();
         currentPlanet = viewModel.getActivePlanet();
         if(!isSolarsystemTravel) {
-            travelPlanet = viewModel.getNextPlanet();
+            Planet travelPlanet = viewModel.getNextPlanet();
             //travelPlanet = getIntent().getParcelableExtra("Travel_Planet");
             currentEntity = travelPlanet;
         }else {
             //travelSS = Model.getInstance().getUniverseInteractor()
             // .getUniverse().getSolarSystemWithName(getIntent()
             // .getStringExtra("Solarsystem_Name"));
-            travelSS = viewModel.getNextSolarSystem();
+            SolarSystem travelSS = viewModel.getNextSolarSystem();
             currentEntity = travelSS;
         }
     }
@@ -81,8 +81,8 @@ public class TravelPopupActivity extends Activity implements View.OnClickListene
     private void initializeViews(){
         planetTV = findViewById(R.id.travelPopupPlanetTV);
         techLevelTV = findViewById(R.id.travelPopupTechLevelTV);
-        resourceTV = findViewById(R.id.travelPopupResourceTV);
-        conditionTV = findViewById(R.id.travelPopupConditionTV);
+        //TextView resourceTV = findViewById(R.id.travelPopupResourceTV);
+        //TextView conditionTV = findViewById(R.id.travelPopupConditionTV);
         usersFuelTV = findViewById(R.id.travelPopupUsersFuelTV);
         requiredFuelTV = findViewById(R.id.travelPopupFuelRequiredTV);
         travelBtn = findViewById(R.id.travelPopupTravelButton);
@@ -156,7 +156,7 @@ public class TravelPopupActivity extends Activity implements View.OnClickListene
         xMag *= xMag;
         yMag *= yMag;
         int travelDistance = (int) Math.sqrt(xMag + yMag);
-        int fuelCost = travelDistance * fuelCostPerUnit;
+        int fuelCost = travelDistance * FUEL_COST_PER_UNIT;
         if(viewModel.getPlayerPilotSkill() != 0) {
             fuelCost /= viewModel.getPlayerPilotSkill();
         }

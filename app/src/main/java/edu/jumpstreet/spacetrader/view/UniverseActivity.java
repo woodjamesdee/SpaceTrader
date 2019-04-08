@@ -28,7 +28,7 @@ import edu.jumpstreet.spacetrader.viewmodel.UniverseViewModelFactory;
 public class UniverseActivity extends AppCompatActivity {
 
     private TableLayout tableLayout;
-    private Button saveButton;
+    //private Button saveButton;
     private UniverseViewModel viewModel;
 
     @Override
@@ -38,7 +38,7 @@ public class UniverseActivity extends AppCompatActivity {
         UniverseViewModelFactory factory = new UniverseViewModelFactory();
         viewModel = factory.create(UniverseViewModel.class);
         tableLayout = findViewById(R.id.UniverseTableLayout);
-        saveButton = findViewById(R.id.saveButton);
+        Button saveButton = findViewById(R.id.saveButton);
         createUniverse();
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     public static final String key = "Key";
 
     private SharedPreferences sharedPreferences;
-    private Button loadButton;
+    //private Button loadButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         layout.setOnTouchListener(this);
         MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.game_maintheme);
         mediaPlayer.start();
-        loadButton = findViewById(R.id.loadButton);
+        Button loadButton = findViewById(R.id.loadButton);
         sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         loadButton.setOnClickListener(new View.OnClickListener() {
            @Override

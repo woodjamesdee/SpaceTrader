@@ -22,7 +22,7 @@ public class GarageFuelActivity extends Activity implements View.OnClickListener
     private Button clearBtn;
     private Button plus10Btn;
     private Button buyMaxBtn;
-    private Button confirmationBtn;
+    //private Button confirmationBtn;
 
     private TextView usersFuel;
     private TextView quantityOfTransaction;
@@ -62,7 +62,7 @@ public class GarageFuelActivity extends Activity implements View.OnClickListener
         clearBtn = findViewById(R.id.OnGarageClearTransaction);
         plus10Btn = findViewById(R.id.OnGarageFuelPlus10Btn);
         buyMaxBtn = findViewById(R.id.OnGarageFuelBuyMaxBtn);
-        confirmationBtn = findViewById(R.id.OnGarageFuelConfirmationBtn);
+        Button confirmationBtn = findViewById(R.id.OnGarageFuelConfirmationBtn);
         usersFuel = findViewById(R.id.OnGarageFuelUsersFuelTV);
         quantityOfTransaction = findViewById(R.id.OnGarageFuelToBuyTV);
         costOfTransaction = findViewById(R.id.OnGarageFuelCostTV);

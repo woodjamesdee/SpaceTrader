@@ -23,9 +23,9 @@ import edu.jumpstreet.spacetrader.viewmodel.SolarSystemViewModelFactory;
  */
 public class SolarSystemActivity extends AppCompatActivity implements View.OnClickListener{
     private TableLayout tableLayout;
-    private Button backToUniverseButton;
-    private TextView solarSystemName;
-    private TextView solarSystemTechView;
+    //private Button backToUniverseButton;
+    //private TextView solarSystemName;
+    //private TextView solarSystemTechView;
     private SolarSystemViewModel viewModel;
     @Override
     protected void onCreate(Bundle sav) {
@@ -34,11 +34,11 @@ public class SolarSystemActivity extends AppCompatActivity implements View.OnCli
         SolarSystemViewModelFactory factory = new SolarSystemViewModelFactory();
         viewModel = factory.create(SolarSystemViewModel.class);
         tableLayout = findViewById(R.id.solarSystemLayout);
-        backToUniverseButton = findViewById(R.id.InSSBackToUniverseBtn);
+        Button backToUniverseButton = findViewById(R.id.InSSBackToUniverseBtn);
         backToUniverseButton.setOnClickListener(this);
-        solarSystemName = findViewById(R.id.textView3);
+        TextView solarSystemName = findViewById(R.id.textView3);
         solarSystemName.setText("Solar System: " + viewModel.getActiveSolarSystemName());
-        solarSystemTechView = findViewById(R.id.SolarSystemTechLevelTV);
+        TextView solarSystemTechView = findViewById(R.id.SolarSystemTechLevelTV);
         solarSystemTechView.setText(viewModel.getTechLevel() + "");
         createSolarSystem();
     }
