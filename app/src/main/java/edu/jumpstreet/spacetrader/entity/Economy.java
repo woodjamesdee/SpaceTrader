@@ -29,7 +29,7 @@ public class Economy implements Parcelable, Serializable {
 
     private final System.TechLevel techLevel;
 
-    private Random random;
+    private final Random random;
 
     @Override
     public int describeContents(){return 0;}
@@ -218,18 +218,6 @@ public class Economy implements Parcelable, Serializable {
             default: return Water;
         }
     }
-
-    /*
-    public void setCommodityQuantity(int index, int quantity){
-        Commodity comm = getCommodity(index);
-        comm.setQuantity(quantity);
-    }
-
-    public int getCommodityCargoSpace(int index){
-        Commodity comm = getCommodity(index);
-        return comm.getWeight();
-    }
-    */
 
     /**
      * a getter for the commodity value based on index

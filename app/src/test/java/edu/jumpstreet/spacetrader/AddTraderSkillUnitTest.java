@@ -15,11 +15,11 @@ import static org.junit.Assert.*;
  */
 public class AddTraderSkillUnitTest {
 
-    PlayerInteractor interactor = Model.getInstance().getPlayerInteractor();
-    Player player = interactor.getPlayer();
+    private final PlayerInteractor interactor = Model.getInstance().getPlayerInteractor();
+    private final Player player = interactor.getPlayer();
 
     @Rule
-    public ExpectedException thrown = ExpectedException.none();
+    public final ExpectedException thrown = ExpectedException.none();
 
     /**
      * Test for when 0 is passed in to the method, no change expected.

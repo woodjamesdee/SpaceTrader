@@ -22,23 +22,23 @@ import edu.jumpstreet.spacetrader.viewmodel.TravelPopupViewModel;
 import edu.jumpstreet.spacetrader.viewmodel.TravelPopupViewModelFactory;
 
 public class TravelPopupActivity extends Activity implements View.OnClickListener{
-    TextView planetTV;
-    TextView techLevelTV;
-    TextView resourceTV;
-    TextView conditionTV;
-    TextView usersFuelTV;
-    TextView requiredFuelTV;
-    Button travelBtn;
+    private TextView planetTV;
+    private TextView techLevelTV;
+    private TextView resourceTV;
+    private TextView conditionTV;
+    private TextView usersFuelTV;
+    private TextView requiredFuelTV;
+    private Button travelBtn;
 
     //Model model;
-    TravelPopupViewModel viewModel;
-    Spaceship ship;
-    Planet currentPlanet;
-    Planet travelPlanet;
-    SolarSystem travelSS;
-    int fuelCostPerUnit = 10;
-    boolean isSolarsystemTravel;
-    System currentEntity;
+    private TravelPopupViewModel viewModel;
+    private Spaceship ship;
+    private Planet currentPlanet;
+    private Planet travelPlanet;
+    private SolarSystem travelSS;
+    private final int fuelCostPerUnit = 10;
+    private boolean isSolarsystemTravel;
+    private System currentEntity;
     @Override
     protected void onCreate(Bundle savedInsanceState) {
         super.onCreate(savedInsanceState);
@@ -57,7 +57,7 @@ public class TravelPopupActivity extends Activity implements View.OnClickListene
         //isSolarsystemTravel = getIntent().getBooleanExtra("Is_Solarsystem_Travel", true);
         initializeViews();
         initializeReferences(isSolarsystemTravel);
-        setTextViews(isSolarsystemTravel, currentEntity);
+        setTextViews(currentEntity);
         enableTravelButton(currentEntity);
     }
 
@@ -94,11 +94,7 @@ public class TravelPopupActivity extends Activity implements View.OnClickListene
             }
     }
 
-    private void setTextViews(boolean isSolarSystemTravel, System system){
-        if(!isSolarSystemTravel) {
-            //TODO figure this out
-           // resourceTV.setText("Planets Main Resource: " + system.getResource());
-        }
+    private void setTextViews(System system){
             planetTV.setText("Planets Name: " + system.getName());
             techLevelTV.setText("Planets Tech Level: " + system.getTechLevel());
             requiredFuelTV.setText("Required Fuel: " + calculateTravelCost(currentEntity));
@@ -113,7 +109,7 @@ public class TravelPopupActivity extends Activity implements View.OnClickListene
             Random rand = new Random();
             if(isSolarsystemTravel){
                 viewModel.changeActiveSolarSystem(currentEntity.getName());
-                if(calculateTravelCost(currentEntity) * .005 > rand.nextDouble()){
+                if((calculateTravelCost(currentEntity) * .005 )> rand.nextDouble()){
                     Intent intent = new Intent(TravelPopupActivity.this, RandomEncounterActivity.class);
                     TravelPopupActivity.this.startActivity(intent);
                 } else {
@@ -123,7 +119,7 @@ public class TravelPopupActivity extends Activity implements View.OnClickListene
             }else{
                 viewModel.changeActivePlanet(currentEntity.getName());
 
-                if(calculateTravelCost(currentEntity) * .05 > rand.nextDouble()){
+                if((calculateTravelCost(currentEntity) * .05 )> rand.nextDouble()){
                     Intent intent = new Intent(TravelPopupActivity.this, RandomEncounterActivity.class);
                     TravelPopupActivity.this.startActivity(intent);
                 }else {
@@ -164,6 +160,6 @@ public class TravelPopupActivity extends Activity implements View.OnClickListene
         if(viewModel.getPlayerPilotSkill() != 0) {
             fuelCost /= viewModel.getPlayerPilotSkill();
         }
-        return isSolarsystemTravel?fuelCost * 10:fuelCost;
+        return isSolarsystemTravel?(fuelCost * 10):fuelCost;
     }
 }

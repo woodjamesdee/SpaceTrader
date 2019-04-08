@@ -8,13 +8,12 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
-import edu.jumpstreet.spacetrader.MainActivity;
 import edu.jumpstreet.spacetrader.R;
 import edu.jumpstreet.spacetrader.model.Model;
 
 public class RandomEncounterActivity extends Activity implements View.OnTouchListener {
 
-    TextView encounterTV;
+    private TextView encounterTV;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -30,6 +29,7 @@ public class RandomEncounterActivity extends Activity implements View.OnTouchLis
         encounterTV = findViewById(R.id.EncounterTV);
     }
 
+    @Override
     public boolean onTouch(View v, MotionEvent event){
         Intent intent = new Intent(this, PlanetActivity.class);
         RandomEncounterActivity.this.startActivity(intent);

@@ -1,7 +1,6 @@
 package edu.jumpstreet.spacetrader.viewmodel;
 
 import android.arch.lifecycle.ViewModel;
-import android.widget.Space;
 
 import edu.jumpstreet.spacetrader.entity.Player;
 import edu.jumpstreet.spacetrader.entity.Spaceship;

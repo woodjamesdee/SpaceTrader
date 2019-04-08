@@ -1,6 +1,5 @@
 package edu.jumpstreet.spacetrader.entity;
 
-import java.io.Serializable;
 
 /**
  * The Gnat is the starter Spaceship, and is the most simple.
