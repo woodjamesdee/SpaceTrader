@@ -11,7 +11,7 @@ import edu.jumpstreet.spacetrader.model.PlayerInteractor;
  */
 public class ConfigurationViewModel extends ViewModel {
 
-    private final PlayerInteractor interactor;
+    private PlayerInteractor interactor;
 
     /**
      * Creates a new ConfigurationViewModel.

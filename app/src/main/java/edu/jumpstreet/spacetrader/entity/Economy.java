@@ -74,8 +74,8 @@ public class Economy implements Parcelable, Serializable {
 
 
     Economy(System.TechLevel currentTechLevel){
-        Model model = Model.getInstance();
-        random = model.getRandom();
+        //Model model = Model.getInstance();
+        random = new Random();
         final int waterBaseValue = 30;
         final int waterMTL = 30;
         final int waterMTH = 50;
