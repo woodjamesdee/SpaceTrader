@@ -130,6 +130,10 @@ public class PlayerInteractor implements Serializable {
             throw new IllegalArgumentException("Cannot add more points " +
                     "to trader skill than are remaining.");
         }
+        if (player.getTrader() + points < 0) {
+            throw new IllegalArgumentException("Cannot subtract more points" +
+                    "from trader skill than are remaining.");
+        }
         player.setTrader(player.getTrader() + points);
         player.setSkillpoints(player.getSkillpoints() - points);
     }
