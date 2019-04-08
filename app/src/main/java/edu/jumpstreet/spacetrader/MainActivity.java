@@ -1,5 +1,6 @@
 package edu.jumpstreet.spacetrader;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -65,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         MainActivity.this.startActivity(intent);
         return true;
     }
+
 
     private void startUniverse() {
         Intent intent = new Intent(this, UniverseActivity.class);

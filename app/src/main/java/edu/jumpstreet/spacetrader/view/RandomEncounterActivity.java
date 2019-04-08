@@ -12,6 +12,10 @@ import edu.jumpstreet.spacetrader.R;
 import edu.jumpstreet.spacetrader.model.Model;
 import edu.jumpstreet.spacetrader.model.PlayerInteractor;
 
+
+/**
+ * class Random Encounter; Activity represents templete for random encounters
+ */
 public class RandomEncounterActivity extends Activity implements View.OnTouchListener {
 
     private final PlayerInteractor PI = Model.getInstance().getPlayerInteractor();

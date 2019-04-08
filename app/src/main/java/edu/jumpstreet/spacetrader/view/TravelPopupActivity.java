@@ -22,6 +22,10 @@ import edu.jumpstreet.spacetrader.entity.System;
 import edu.jumpstreet.spacetrader.viewmodel.TravelPopupViewModel;
 import edu.jumpstreet.spacetrader.viewmodel.TravelPopupViewModelFactory;
 
+
+/**
+ * class Travel Popup Activity; represents the popup window to confirm space travel
+ */
 public class TravelPopupActivity extends Activity implements View.OnClickListener{
     private TextView planetTV;
     private TextView techLevelTV;

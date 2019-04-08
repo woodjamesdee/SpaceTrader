@@ -14,7 +14,6 @@ import static org.junit.Assert.*;
  * Tests for the addPlayerTraderSkill method in PlayerInteractor.
  */
 public class AddTraderSkillUnitTest {
-
     private final PlayerInteractor interactor = Model.getInstance().getPlayerInteractor();
     private final Player player = interactor.getPlayer();
 

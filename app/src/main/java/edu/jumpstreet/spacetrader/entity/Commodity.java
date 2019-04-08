@@ -152,6 +152,11 @@ public class Commodity implements Parcelable, Serializable {
      * @return int representing Value
      */
     int getBaseValue(){return baseValue;}
+
+    /**
+     * Quantity getter
+     * @return int representing quantity of resource
+     */
     public int getQuantity(){return  quantity;}
 
     /**
