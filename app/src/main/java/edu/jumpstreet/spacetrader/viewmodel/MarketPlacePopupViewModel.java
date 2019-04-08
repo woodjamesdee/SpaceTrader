@@ -3,8 +3,11 @@ package edu.jumpstreet.spacetrader.viewmodel;
 import android.arch.lifecycle.ViewModel;
 
 import edu.jumpstreet.spacetrader.entity.Commodity;
+import edu.jumpstreet.spacetrader.entity.Economy;
 import edu.jumpstreet.spacetrader.entity.Planet;
 import edu.jumpstreet.spacetrader.entity.Spaceship;
+import edu.jumpstreet.spacetrader.entity.System;
+import edu.jumpstreet.spacetrader.model.GameInteractor;
 import edu.jumpstreet.spacetrader.model.Model;
 import edu.jumpstreet.spacetrader.model.PlayerInteractor;
 
@@ -13,17 +16,19 @@ import edu.jumpstreet.spacetrader.model.PlayerInteractor;
  */
 public class MarketPlacePopupViewModel extends ViewModel {
 
-    private PlayerInteractor interactor;
-    private Spaceship ship;
-    private Planet planet;
+    private final PlayerInteractor interactor;
+    private final Spaceship ship;
+    private final Planet planet;
 
     /**
      * Creates a new MarketPlacePopupViewModel
      */
     MarketPlacePopupViewModel() {
-        interactor = Model.getInstance().getPlayerInteractor();
-        ship = Model.getInstance().getPlayerInteractor().getPlayerShip();
-        planet = Model.getInstance().getGameInteractor().getActivePlanet();
+        Model model = Model.getInstance();
+        interactor = model.getPlayerInteractor();
+        ship = interactor.getPlayerShip();
+        GameInteractor pi = model.getGameInteractor();
+        planet = pi.getActivePlanet();
     }
 
     /**
@@ -79,13 +84,19 @@ public class MarketPlacePopupViewModel extends ViewModel {
      *
      * @return the value
      */
-    public int getCommodityValue(Commodity commodity) { return planet.getEconomy().getCommodityValue(commodity); }
+    public int getCommodityValue(Commodity commodity) {
+        Economy economy = planet.getEconomy();
+        return economy.getCommodityValue(commodity);
+    }
 
     /**
      * Gets the ordinal of the current Planet's TechLevel.
      * @return  the ordinal
      */
-    public int getTechLevelOrdinal() { return planet.getTechLevel().ordinal(); }
+    public int getTechLevelOrdinal() {
+        System.TechLevel techLevel = planet.getTechLevel();
+        return techLevel.ordinal();
+    }
 
     /**
      * Sets the amount of used cargo space in the Ship.

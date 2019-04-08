@@ -1,31 +1,44 @@
 package edu.jumpstreet.spacetrader.viewmodel;
 
 import android.arch.lifecycle.ViewModel;
+import android.widget.Space;
 
+import edu.jumpstreet.spacetrader.entity.Player;
+import edu.jumpstreet.spacetrader.entity.Spaceship;
 import edu.jumpstreet.spacetrader.model.Model;
 import edu.jumpstreet.spacetrader.model.PlayerInteractor;
 
+/**
+ * ViewModel for GarageFuel view
+ */
 public class GarageFuelViewModel extends ViewModel {
-    private PlayerInteractor interactor;
+    private final PlayerInteractor interactor;
 
     /**
      * Creates a new GarageFuelViewModel.
      */
     GarageFuelViewModel() {
-        interactor = Model.getInstance().getPlayerInteractor();
+        Model model = Model.getInstance();
+        interactor = model.getPlayerInteractor();
     }
 
     /**
      * Gets the max fuel value of the Player's ship.
      * @return   the max fuel
      */
-    public int getMaxFuel() { return interactor.getPlayerShip().getMaxFuel(); }
+    public int getMaxFuel() {
+        Spaceship ship = interactor.getPlayerShip();
+        return ship.getMaxFuel();
+    }
 
     /**
      * Gets the remaining fuel value of the Player's ship.
      * @return the remaining fuel
      */
-    public int getRemainingFuel() { return interactor.getPlayerShip().getRemainingFuel(); }
+    public int getRemainingFuel() {
+        Spaceship ship = interactor.getPlayerShip();
+        return ship.getRemainingFuel();
+    }
 
     /**
      * Gets the balance of the Player's account.
@@ -37,11 +50,17 @@ public class GarageFuelViewModel extends ViewModel {
      * Sets the Player's balance to the given amount.
      * @param value the new balance
      */
-    public void setPlayerCredits(int value) { interactor.getPlayer().setCredits(value); }
+    public void setPlayerCredits(int value) {
+        Player player = interactor.getPlayer();
+        player.setCredits(value);
+    }
 
     /**
      * Sets the Player Ship's remaining fuel to the given amount.
      * @param value the new remaining fuel
      */
-    public void setRemainingFuel(int value) { interactor.getPlayer().setCredits(value); }
+    public void setRemainingFuel(int value) {
+        Spaceship ship = interactor.getPlayerShip();
+        ship.setRemainingFuel(value);
+    }
 }

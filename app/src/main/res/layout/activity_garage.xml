@@ -15,7 +15,7 @@
 
             <TextView
                 android:id="@+id/textView6"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="The Garage" />
@@ -28,7 +28,7 @@
 
             <Button
                 android:id="@+id/OnGarageBuyFuelBtn"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Buy Fuel" />
@@ -41,7 +41,7 @@
 
             <Button
                 android:id="@+id/OnGarageBuySpaceShipBtn"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Buy SpaceShip" />
@@ -54,7 +54,7 @@
 
             <Button
                 android:id="@+id/OnGarageRepairSpaceshipBtn"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Repair SpaceShip" />

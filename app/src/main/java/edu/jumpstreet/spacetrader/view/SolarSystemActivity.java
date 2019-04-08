@@ -18,12 +18,15 @@ import edu.jumpstreet.spacetrader.entity.Universe;
 import edu.jumpstreet.spacetrader.viewmodel.SolarSystemViewModel;
 import edu.jumpstreet.spacetrader.viewmodel.SolarSystemViewModelFactory;
 
+/**
+ * sets up the solar system activity screen
+ */
 public class SolarSystemActivity extends AppCompatActivity implements View.OnClickListener{
-    TableLayout tableLayout;
-    Button backToUniverseButton;
-    TextView solarSystemName;
-    TextView solarSystemTechView;
-    SolarSystemViewModel viewModel;
+    private TableLayout tableLayout;
+    //private Button backToUniverseButton;
+    //private TextView solarSystemName;
+    //private TextView solarSystemTechView;
+    private SolarSystemViewModel viewModel;
     @Override
     protected void onCreate(Bundle sav) {
         super.onCreate(sav);
@@ -31,25 +34,26 @@ public class SolarSystemActivity extends AppCompatActivity implements View.OnCli
         SolarSystemViewModelFactory factory = new SolarSystemViewModelFactory();
         viewModel = factory.create(SolarSystemViewModel.class);
         tableLayout = findViewById(R.id.solarSystemLayout);
-        backToUniverseButton = findViewById(R.id.InSSBackToUniverseBtn);
+        Button backToUniverseButton = findViewById(R.id.InSSBackToUniverseBtn);
         backToUniverseButton.setOnClickListener(this);
-        solarSystemName = findViewById(R.id.textView3);
+        TextView solarSystemName = findViewById(R.id.textView3);
         solarSystemName.setText("Solar System: " + viewModel.getActiveSolarSystemName());
-        solarSystemTechView = findViewById(R.id.SolarSystemTechLevelTV);
+        TextView solarSystemTechView = findViewById(R.id.SolarSystemTechLevelTV);
         solarSystemTechView.setText(viewModel.getTechLevel() + "");
         createSolarSystem();
     }
 
     private void createSolarSystem() {
         final SolarSystem activeSystem = viewModel.getActiveSolarSystem();
-        TableRow.LayoutParams params = new TableRow.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f);
+        TableRow.LayoutParams params = new TableRow.LayoutParams(0,
+                ViewGroup.LayoutParams.WRAP_CONTENT, 1f);
         for (int i = 0; i < tableLayout.getChildCount(); i++) {
             for (int j = 0; j < Universe.Y_BOUNDS; j++) {
                 if (activeSystem.getPlanetLocations()[i][j] != null) {
                     Button button = new Button(this);
-                    if(viewModel.getActivePlanetX() == i &&
-                            viewModel.getActivePlanetY() == j
-                    && activeSystem.isInSolarSystem(viewModel.getActivePlanet())){
+                    if((viewModel.getActivePlanetX() == i) &&
+                            (viewModel.getActivePlanetY() == j)
+                            && activeSystem.isInSolarSystem(viewModel.getActivePlanet())){
                         button.setBackgroundColor(Color.GREEN);
                     }
                     final int i2 = i;
@@ -58,15 +62,21 @@ public class SolarSystemActivity extends AppCompatActivity implements View.OnCli
                     button.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            if(viewModel.getActivePlanet() != viewModel.getPlanet(activeSystem2.getPlanetLocations()[i2][j2])) {
-                                Intent intent = new Intent(SolarSystemActivity.this, TravelPopupActivity.class);
-                                viewModel.setNextPlanet(activeSystem2.getPlanet(activeSystem2.getPlanetLocations()[i2][j2]));
-                                //intent.putExtra("Travel_Planet", activeSystem2.getPlanet(activeSystem2.getPlanetLocations()[i2][j2]));
+                            if(viewModel.getActivePlanet() != viewModel
+                                    .getPlanet(activeSystem2.getPlanetLocations()[i2][j2])) {
+                                Intent intent = new Intent(SolarSystemActivity.this,
+                                        TravelPopupActivity.class);
+                                viewModel.setNextPlanet(activeSystem2.getPlanet(activeSystem2
+                                        .getPlanetLocations()[i2][j2]));
+                                //intent.putExtra("Travel_Planet", activeSystem2
+                                // .getPlanet(activeSystem2.getPlanetLocations()[i2][j2]));
                                 viewModel.setIsSolarSystemTravel(false);
                                 //intent.putExtra("Is_Solarsystem_Travel", false);
-                                SolarSystemActivity.this.startActivityForResult(intent, 1);
+                                SolarSystemActivity.this.startActivityForResult(
+                                        intent, 1);
                             }else{
-                                Intent intent = new Intent(SolarSystemActivity.this, PlanetActivity.class);
+                                Intent intent = new Intent(SolarSystemActivity.this,
+                                        PlanetActivity.class);
                                 SolarSystemActivity.this.startActivity(intent);
                             }
                         }

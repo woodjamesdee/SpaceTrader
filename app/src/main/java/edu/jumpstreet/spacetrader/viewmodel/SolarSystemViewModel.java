@@ -13,13 +13,14 @@ import edu.jumpstreet.spacetrader.model.Model;
  */
 public class SolarSystemViewModel extends ViewModel {
 
-    private GameInteractor interactor;
+    private final GameInteractor interactor;
 
     /**
      * Creates a new SolarSystemViewModel.
      */
     SolarSystemViewModel() {
-        interactor = Model.getInstance().getGameInteractor();
+        Model model = Model.getInstance();
+        interactor = model.getGameInteractor();
     }
 
     /**

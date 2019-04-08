@@ -3,49 +3,56 @@ package edu.jumpstreet.spacetrader.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
 import android.view.View;
+import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ImageButton;
 
 import edu.jumpstreet.spacetrader.R;
 import edu.jumpstreet.spacetrader.viewmodel.ConfigurationViewModel;
 import edu.jumpstreet.spacetrader.viewmodel.ConfigurationViewModelFactory;
 
+/**
+ * This class runs the back end of the character creation screen
+ */
 public class ConfigurationActivity extends AppCompatActivity implements View.OnClickListener {
-    EditText nameET;
-    TextView skillPointsRemainingTV;
-    Button pilotMinusBtn;
-    TextView pilotTV;
-    Button pilotPlusBtn;
+    private EditText nameET;
+    private TextView skillPointsRemainingTV;
+    private ImageButton pilotMinusBtn;
+    private TextView pilotTV;
+    private ImageButton pilotPlusBtn;
 
-    Button fighterMinusBtn;
-    TextView fighterTV;
-    Button fighterPlusBtn;
+    private ImageButton fighterMinusBtn;
+    private TextView fighterTV;
+    private ImageButton fighterPlusBtn;
 
-    Button traderMinusBtn;
-    TextView traderTV;
-    Button traderPlusBtn;
+    private ImageButton traderMinusBtn;
+    private TextView traderTV;
+    private ImageButton traderPlusBtn;
 
-    Button engineerMinusBtn;
-    TextView engineerTV;
-    Button engineerPlusBtn;
+    private ImageButton engineerMinusBtn;
+    private TextView engineerTV;
+    private ImageButton engineerPlusBtn;
 
-    Spinner difficultySpinner;
+    //private Spinner difficultySpinner;
 
-    Button confirmationBtn;
+    private Button confirmationBtn;
     enum Difficulty{
         Beginner, Easy, Normal, Hard, Impossible
     }
 
-    ConfigurationViewModel viewModel;
+    private ConfigurationViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_configuration);
 
         ConfigurationViewModelFactory factory = new ConfigurationViewModelFactory();
@@ -53,9 +60,11 @@ public class ConfigurationActivity extends AppCompatActivity implements View.OnC
 
         linkConfigButtons();
         initializeButtons();
-        difficultySpinner = findViewById(R.id.difficultySpinner);
-        skillPointsRemainingTV.setText("Remaining Skill Points: " + viewModel.getUnallocatedPoints());
-        ArrayAdapter<Difficulty> difficultyAdapter = new ArrayAdapter<Difficulty>(this, android.R.layout.simple_spinner_item, Difficulty.values());
+        Spinner difficultySpinner = findViewById(R.id.difficultySpinner);
+        skillPointsRemainingTV.setText("Remaining Skill Points: "
+                + viewModel.getUnallocatedPoints());
+        ArrayAdapter<Difficulty> difficultyAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, Difficulty.values());
         difficultyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         difficultySpinner.setAdapter(difficultyAdapter);
     }
@@ -140,7 +149,9 @@ public class ConfigurationActivity extends AppCompatActivity implements View.OnC
                 //model.getPlayerInteractor().addPlayerTraderSkill(traderSP);
                 //model.getPlayerInteractor().addPlayerEngineerSkill(engineerSP);
                 //model.getPlayerInteractor().changePlayerName(nameET.getText().toString());
-                viewModel.setPlayerName(nameET.getText().toString());
+                Editable nameETText = nameET.getText();
+                String nameETString = nameETText.toString();
+                viewModel.setPlayerName(nameETString);
 
                 Toast.makeText(this, "Player Configured\nName: " + viewModel.getPlayerName()
                                 +"\nPilot Skill: " + viewModel.getPlayerPilotSkill()
@@ -174,7 +185,8 @@ public class ConfigurationActivity extends AppCompatActivity implements View.OnC
                 engineerMinusBtn.setEnabled(viewModel.engineerMinusShouldBeEnabled());
                 break;
         }
-        skillPointsRemainingTV.setText("Skill Points Remaining: " + viewModel.getUnallocatedPoints());
+        skillPointsRemainingTV.setText("Skill Points Remaining: "
+                + viewModel.getUnallocatedPoints());
         enablePlusButtons(viewModel.plusShouldBeEnabled());
     }
 

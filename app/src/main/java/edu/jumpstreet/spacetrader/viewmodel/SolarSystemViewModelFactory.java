@@ -3,6 +3,9 @@ package edu.jumpstreet.spacetrader.viewmodel;
 import android.arch.lifecycle.ViewModelProvider;
 import android.support.annotation.NonNull;
 
+/**
+ * creates solar system ViewModel
+ */
 public class SolarSystemViewModelFactory implements ViewModelProvider.Factory {
     @NonNull
     @Override

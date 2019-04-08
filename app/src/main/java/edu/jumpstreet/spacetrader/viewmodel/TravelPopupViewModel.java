@@ -13,7 +13,7 @@ import edu.jumpstreet.spacetrader.model.Model;
  */
 public class TravelPopupViewModel extends ViewModel {
 
-    private GameInteractor interactor;
+    private final GameInteractor interactor;
 
     /**
      * Creates a new TravelPopupViewModel.

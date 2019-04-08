@@ -13,7 +13,7 @@ import edu.jumpstreet.spacetrader.entity.Spaceship;
  */
 public class PlayerInteractor implements Serializable {
 
-    private Player player;
+    private final Player player;
 
     /**
      * Creates a new PlayerInteractor, which creates a new Player with default attributes
@@ -43,6 +43,10 @@ public class PlayerInteractor implements Serializable {
     //    player.setName(name);
     //}
 
+    /**
+     * player getter
+     * @return Player object for this player interactor
+     */
     public Player getPlayer(){return player;}
 
     /**
@@ -79,7 +83,8 @@ public class PlayerInteractor implements Serializable {
     public void addPlayerPilotSkill(int points) {
         int remainingPoints = player.getSkillpoints();
         if (points > remainingPoints) {
-            throw new IllegalArgumentException("Cannot add more points to pilot skill than are remaining.");
+            throw new IllegalArgumentException("Cannot add more points " +
+                    "to pilot skill than are remaining.");
         }
         player.setPilot(player.getPilot() + points);
         player.setSkillpoints(player.getSkillpoints() - points);
@@ -100,7 +105,8 @@ public class PlayerInteractor implements Serializable {
     public void addPlayerFighterSkill(int points) {
         int remainingPoints = player.getSkillpoints();
         if (points > remainingPoints) {
-            throw new IllegalArgumentException("Cannot add more points to fighter skill than are remaining.");
+            throw new IllegalArgumentException("Cannot add more points " +
+                    "to fighter skill than are remaining.");
         }
         player.setFighter(player.getFighter() + points);
         player.setSkillpoints(player.getSkillpoints() - points);
@@ -121,7 +127,12 @@ public class PlayerInteractor implements Serializable {
     public void addPlayerTraderSkill(int points) {
         int remainingPoints = player.getSkillpoints();
         if (points > remainingPoints) {
-            throw new IllegalArgumentException("Cannot add more points to trader skill than are remaining.");
+            throw new IllegalArgumentException("Cannot add more points " +
+                    "to trader skill than are remaining.");
+        }
+        if (player.getTrader() + points < 0) {
+            throw new IllegalArgumentException("Cannot subtract more points" +
+                    "from trader skill than are remaining.");
         }
         player.setTrader(player.getTrader() + points);
         player.setSkillpoints(player.getSkillpoints() - points);
@@ -142,7 +153,8 @@ public class PlayerInteractor implements Serializable {
     public void addPlayerEngineerSkill(int points) {
         int remainingPoints = player.getSkillpoints();
         if (points > remainingPoints) {
-            throw new IllegalArgumentException("Cannot add more points to engineer skill than are remaining.");
+            throw new IllegalArgumentException("Cannot add more points " +
+                    "to engineer skill than are remaining.");
         }
         player.setEngineer(player.getEngineer() + points);
         player.setSkillpoints(player.getSkillpoints() - points);
@@ -187,7 +199,7 @@ public class PlayerInteractor implements Serializable {
     //}
 
     /**
-     * Returns true or false depending on the stored Player skillpoint value.
+     * Returns true or false depending on the stored Player skill point value.
      * @return  true if greater than 0, false if less
      */
     public boolean playerHasSkillpointsLeft() {

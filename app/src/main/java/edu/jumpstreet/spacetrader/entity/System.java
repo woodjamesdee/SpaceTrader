@@ -7,27 +7,39 @@ import java.io.Serializable;
  */
 public abstract class System implements Serializable {
 
-    protected String name;
-    protected int x, y;
+    String name;
+    int x;
+    int y;
     TechLevel techLevel;
 
     /**
-     * The TechLevel enum represents the technological advancement of the entire System. Affects modifiers.
+     * The TechLevel enum represents the technological advancement
+     * of the entire System. Affects modifiers.
      */
     public enum TechLevel {
         PreAgriculture, Agriculture,
         Medieval, Renaissance,
         EarlyIndustrial, Industrial,
-        PostIndustrial, HiTech
+        PostIndustrial, HiTech;
+
+        /**
+         * Gets the desired TechLevel by integer.
+         * @param index the index of TechLevel
+         * @return the TechLevel
+         */
+        public static TechLevel getTechLevelByIndex(int index) {
+            return TechLevel.values()[index];
+        }
     }
 
     /**
-     * Constructor to be overriden, creates a new System with a given x and y coordinate, as well as the index of the TechLevel index
+     * Constructor to be overriden, creates a new System with a given x
+     * and y coordinate, as well as the index of the TechLevel index
      * @param x                 the x coordinate of the System
      * @param y                 the y coordinate of the System
      * @param techLevelIndex    the TechLevel to use (given through index)
      */
-    protected System(int x, int y, int techLevelIndex) {
+    System(int x, int y, int techLevelIndex) {
         this.x = x;
         this.y = y;
         for (TechLevel current : TechLevel.values()) {
@@ -57,7 +69,10 @@ public abstract class System implements Serializable {
     }
     */
 
-    public System(){
+    /**
+     * System constructor
+     */
+    System(){
 
     }
 

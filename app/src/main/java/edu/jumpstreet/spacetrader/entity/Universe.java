@@ -16,8 +16,12 @@ public class Universe implements Serializable {
 
     public static String[][] solarSystemLocations = new String[10][10];
 
-    private Map<String, SolarSystem> solarSystems;
+    private final Map<String, SolarSystem> solarSystems;
 
+    /**
+     * updates the universe on every load
+     * @param toUpdate the universe to update to
+     */
     public static void updateOnLoad(Universe toUpdate) {
         solarSystemLocations = new String[10][10];
         for (SolarSystem current : toUpdate.solarSystems.values()) {
@@ -25,10 +29,17 @@ public class Universe implements Serializable {
         }
     }
 
+    /**
+     * universe constructor
+     */
     public Universe() {
         solarSystems = new HashMap<>();
     }
 
+    /**
+     * adds solar systems to the universe
+     * @param system solar system to be added
+     */
     public void addSolarSystem(SolarSystem system) {
         solarSystems.put(system.getName(), system);
         solarSystemLocations[system.getX()][system.getY()] = system.getName();
@@ -41,10 +52,20 @@ public class Universe implements Serializable {
     }
     */
 
+    /**
+     * solar system getter
+     * @param name of the desired SolarSystem
+     * @return SolarSystem of the associated name
+     */
     public SolarSystem getSolarSystemWithName(String name){
         return solarSystems.get(name);
     }
 
+    /**
+     * solar system getter
+     * @return Map<String, SolarSystem> </String,> that will represent a solarsystem
+     *
+     */
     public Map<String, SolarSystem> getSolarSystems() {
         return solarSystems;
     }

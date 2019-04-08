@@ -1,6 +1,8 @@
 package edu.jumpstreet.spacetrader.model;
 
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.Iterator;
 
 import edu.jumpstreet.spacetrader.entity.Game;
 import edu.jumpstreet.spacetrader.entity.Planet;
@@ -11,15 +13,18 @@ import edu.jumpstreet.spacetrader.entity.SolarSystem;
  */
 public class GameInteractor implements Serializable {
 
-    private Game game;
+    private final Game game;
 
     /**
      * Creates a new GameInteractor, given a UniverseInteractor
      * @param universeInteractor the universeInteractor to use for picking the starting planet.
      */
     GameInteractor(UniverseInteractor universeInteractor) {
-        SolarSystem system = universeInteractor.getSolarSystems().iterator().next();
-        game = new Game(system, system.getPlanet(system.getName() + " Prime"), Game.GameDifficulty.NORMAL);
+        Collection<SolarSystem> solarSystems = universeInteractor.getSolarSystems();
+        Iterator<SolarSystem> iterator = solarSystems.iterator();
+        SolarSystem system = iterator.next();
+        game = new Game(system, system.getPlanet(system.getName() + " Prime"),
+                Game.GameDifficulty.NORMAL);
     }
 
     /**
@@ -43,11 +48,15 @@ public class GameInteractor implements Serializable {
      * @param name  the name of the new SolarSystem
      */
     public void changeActiveSolarSystem(String name) {
-        if (name == null || name.equals("")) {
+        if ((name == null) || "".equals(name)) {
             return;
         }
-        game.setActiveSolarSystem(Model.getInstance().getUniverseInteractor().getSolarSystemByName(name));
-        game.setActivePlanet(Model.getInstance().getGameInteractor().getActiveSolarSystem().getPlanet(Model.getInstance().getGameInteractor().getActiveSolarSystem().getName() + " Prime"));
+        Model model = Model.getInstance();
+        GameInteractor gameInteractor = model.getGameInteractor();
+        UniverseInteractor universeInteractor = model.getUniverseInteractor();
+        game.setActiveSolarSystem(universeInteractor.getSolarSystemByName(name));
+        SolarSystem activeSystem = gameInteractor.getActiveSolarSystem();
+        game.setActivePlanet(activeSystem.getPlanet(activeSystem.getName() + " Prime"));
     }
 
     /**
@@ -55,10 +64,11 @@ public class GameInteractor implements Serializable {
      * @param name  the name of the Planet
      */
     public void changeActivePlanet(String name) {
-        if (name == null || name.equals("")) {
+        if ((name == null) || "".equals(name)) {
             return;
         }
-        game.setActivePlanet(game.getActiveSolarSystem().getPlanet(name));
+        SolarSystem activeSystem = game.getActiveSolarSystem();
+        game.setActivePlanet(activeSystem.getPlanet(name));
     }
 
     /**

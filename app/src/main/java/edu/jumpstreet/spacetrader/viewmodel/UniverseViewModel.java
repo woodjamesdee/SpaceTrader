@@ -11,7 +11,7 @@ import edu.jumpstreet.spacetrader.model.Model;
  */
 public class UniverseViewModel extends ViewModel {
 
-    private GameInteractor interactor;
+    private final GameInteractor interactor;
 
     /**
      * Creates a new UniverseViewModel.

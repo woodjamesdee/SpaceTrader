@@ -10,12 +10,15 @@ import edu.jumpstreet.spacetrader.R;
 import edu.jumpstreet.spacetrader.viewmodel.GarageViewModel;
 import edu.jumpstreet.spacetrader.viewmodel.GarageViewModelFactory;
 
+/**
+ * controls back end of the garage of each planet
+ */
 public class GarageActivity extends AppCompatActivity implements View.OnClickListener{
-    Button buySpaceshipBtn;
-    Button buyFuelBtn;
-    Button repairSpaceshipBtn;
+    //private Button buySpaceshipBtn;
+    //private Button buyFuelBtn;
+    //private Button repairSpaceshipBtn;
 
-    GarageViewModel viewModel;
+    private GarageViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,17 +32,17 @@ public class GarageActivity extends AppCompatActivity implements View.OnClickLis
 
 
     private void initializeButtons(){
-        buyFuelBtn = findViewById(R.id.OnGarageBuyFuelBtn);
+        Button buyFuelBtn = findViewById(R.id.OnGarageBuyFuelBtn);
         buyFuelBtn.setOnClickListener(this);
         if(viewModel.getRemainingFuel() == viewModel.getMaxFuel()) {
             buyFuelBtn.setEnabled(false);
         }else{
             buyFuelBtn.setEnabled(true);
         }
-        buySpaceshipBtn = findViewById(R.id.OnGarageBuySpaceShipBtn);
+        Button buySpaceshipBtn = findViewById(R.id.OnGarageBuySpaceShipBtn);
         buySpaceshipBtn.setOnClickListener(this);
         buySpaceshipBtn.setEnabled(true);
-        repairSpaceshipBtn = findViewById(R.id.OnGarageRepairSpaceshipBtn);
+        Button repairSpaceshipBtn = findViewById(R.id.OnGarageRepairSpaceshipBtn);
         repairSpaceshipBtn.setOnClickListener(this);
         repairSpaceshipBtn.setEnabled(true);
     }
@@ -57,6 +60,7 @@ public class GarageActivity extends AppCompatActivity implements View.OnClickLis
                 break;
         }
     }
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent){
         super.onActivityResult(requestCode, resultCode, intent);
     }

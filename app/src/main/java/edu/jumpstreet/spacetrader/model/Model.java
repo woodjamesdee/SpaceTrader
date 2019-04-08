@@ -15,12 +15,12 @@ import edu.jumpstreet.spacetrader.vendor.Base64Coder;
  *
  * Implemented in a Singleton style.
  */
-public class Model implements Serializable {
+public final class Model implements Serializable {
 
-    private PlayerInteractor playerInteractor;
-    private UniverseInteractor universeInteractor;
-    private GameInteractor gameInteractor;
-    private Random random;
+    private final PlayerInteractor playerInteractor;
+    private final UniverseInteractor universeInteractor;
+    private final GameInteractor gameInteractor;
+    private final Random random;
 
     private static Model instance = new Model();
 
@@ -60,7 +60,11 @@ public class Model implements Serializable {
      */
     public GameInteractor getGameInteractor() { return gameInteractor; }
 
-    public Random getRandom() { return random; } // TODO: This is really bad, need to change this, only used to make the M7 demo work
+    /**
+     * random getter
+     * @return a random item
+     */
+    public Random getRandom() { return random; }
 
     /**
      * Loads in the game from the given Base64 encoded String
@@ -69,13 +73,14 @@ public class Model implements Serializable {
      * @throws ClassNotFoundException   may occur due to differences in versions
      */
     public static void loadGameFromString(String input) throws IOException, ClassNotFoundException{
-        System.out.println(input);
+        //System.out.println(input);
         byte[] data = Base64Coder.decode(input);
         ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(data));
         Object object = ois.readObject();
         ois.close();
         Model model = (Model) object;
-        model.getUniverseInteractor().updateUniverseOnLoad();
+        UniverseInteractor ui = model.getUniverseInteractor();
+        ui.updateUniverseOnLoad();
         instance = model;
     }
 
@@ -85,12 +90,12 @@ public class Model implements Serializable {
      * @throws IOException  may occur while writing the String
      */
     public static String saveGameToString() throws IOException {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        ObjectOutputStream oos = new ObjectOutputStream(baos);
+        ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
+        ObjectOutputStream oos = new ObjectOutputStream(byteStream);
         oos.writeObject(instance);
         oos.close();
-        String result = new String(Base64Coder.encode(baos.toByteArray()));
-        System.out.println(result);
+        String result = new String(Base64Coder.encode(byteStream.toByteArray()));
+        //System.out.println(result);
         return result;
     }
 }

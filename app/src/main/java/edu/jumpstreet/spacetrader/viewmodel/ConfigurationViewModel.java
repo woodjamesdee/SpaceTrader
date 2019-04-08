@@ -2,6 +2,7 @@ package edu.jumpstreet.spacetrader.viewmodel;
 
 import android.arch.lifecycle.ViewModel;
 
+import edu.jumpstreet.spacetrader.entity.Player;
 import edu.jumpstreet.spacetrader.model.Model;
 import edu.jumpstreet.spacetrader.model.PlayerInteractor;
 
@@ -10,13 +11,14 @@ import edu.jumpstreet.spacetrader.model.PlayerInteractor;
  */
 public class ConfigurationViewModel extends ViewModel {
 
-    private PlayerInteractor interactor;
+    private final PlayerInteractor interactor;
 
     /**
      * Creates a new ConfigurationViewModel.
      */
     ConfigurationViewModel() {
-        interactor = Model.getInstance().getPlayerInteractor();
+        Model model = Model.getInstance();
+        interactor = model.getPlayerInteractor();
     }
 
     /**
@@ -31,7 +33,8 @@ public class ConfigurationViewModel extends ViewModel {
                 interactor.addPlayerPilotSkill(-1);
             }
         } catch (IllegalArgumentException e) {
-            System.err.println("Attempt to allocate pilot skill failed!");
+            //System.err.println("Attempt to allocate pilot skill failed!");
+            e.printStackTrace();
         }
 
     }
@@ -48,7 +51,8 @@ public class ConfigurationViewModel extends ViewModel {
                 interactor.addPlayerFighterSkill(-1);
             }
         } catch (IllegalArgumentException e) {
-            System.err.println("Attempt to allocate fighting skill failed!");
+            //System.err.println("Attempt to allocate fighting skill failed!");
+            e.printStackTrace();
         }
 
     }
@@ -65,7 +69,8 @@ public class ConfigurationViewModel extends ViewModel {
                 interactor.addPlayerTraderSkill(-1);
             }
         } catch(IllegalArgumentException e) {
-            System.err.println("Attempt to allocate trading skill failed!");
+            //System.err.println("Attempt to allocate trading skill failed!");
+            e.printStackTrace();
         }
 
     }
@@ -82,7 +87,8 @@ public class ConfigurationViewModel extends ViewModel {
                 interactor.addPlayerEngineerSkill(-1);
             }
         } catch (IllegalArgumentException e) {
-            System.err.println("Attempt to allocate engineering skill failed!");
+            //System.err.println("Attempt to allocate engineering skill failed!");
+            e.printStackTrace();
         }
 
     }
@@ -143,7 +149,10 @@ public class ConfigurationViewModel extends ViewModel {
      * Sets the name of the Player
      * @param name the new name of the player
      */
-    public void setPlayerName(String name) { interactor.getPlayer().setName(name); }
+    public void setPlayerName(String name) {
+        Player player = interactor.getPlayer();
+        player.setName(name);
+    }
 
     /**
      * Gets the piloting skill of the player

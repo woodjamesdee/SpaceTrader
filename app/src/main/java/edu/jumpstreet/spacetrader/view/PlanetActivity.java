@@ -11,35 +11,40 @@ import edu.jumpstreet.spacetrader.R;
 import edu.jumpstreet.spacetrader.viewmodel.PlanetViewModel;
 import edu.jumpstreet.spacetrader.viewmodel.PlanetViewModelFactory;
 
+/**
+ * class Planet Activity sets up the planet screen
+ */
 public class PlanetActivity extends AppCompatActivity implements View.OnClickListener {
-    Button spaceshipStoreBtn;
-    Button solarSystemBtn;
-    Button garageBtn;
-    TextView planetName;
-    TextView techLevel;
-    TextView resourceType;
-    PlanetViewModel viewModel;
+    /*
+    private Button spaceshipStoreBtn;
+    private Button solarSystemBtn;
+    private Button garageBtn;
+    private TextView planetName;
+    private TextView techLevel;
+    private TextView resourceType;
+    private PlanetViewModel viewModel;
+    */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_planet);
         PlanetViewModelFactory factory = new PlanetViewModelFactory();
-        viewModel = factory.create(PlanetViewModel.class);
-        planetName = findViewById(R.id.textView4);
+        PlanetViewModel viewModel = factory.create(PlanetViewModel.class);
+        TextView planetName = findViewById(R.id.textView4);
         planetName.setText("Planet: " + viewModel.getActivePlanetName());
-        techLevel = findViewById(R.id.OnPlanetTechLevelTV);
+        TextView techLevel = findViewById(R.id.OnPlanetTechLevelTV);
         techLevel.setText("Tech Level: " + viewModel.getActivePlanetTechLevel());
-        resourceType = findViewById(R.id.OnPlantResource);
+        TextView resourceType = findViewById(R.id.OnPlantResource);
         resourceType.setText("Resource Type: " + viewModel.getActivePlanetResource());
         initializeButtons();
     }
 
     private void initializeButtons(){
-        spaceshipStoreBtn = findViewById(R.id.OnPlanetSpaceshipStoreBtn);
+        Button spaceshipStoreBtn = findViewById(R.id.OnPlanetSpaceshipStoreBtn);
         spaceshipStoreBtn.setOnClickListener(this);
-        solarSystemBtn = findViewById(R.id.OnPlanetBackToSolarSystemBtn);
+        Button solarSystemBtn = findViewById(R.id.OnPlanetBackToSolarSystemBtn);
         solarSystemBtn.setOnClickListener(this);
-        garageBtn = findViewById(R.id.OnPlanetGarageBtn);
+        Button garageBtn = findViewById(R.id.OnPlanetGarageBtn);
         garageBtn.setOnClickListener(this);
     }
 
@@ -55,8 +60,8 @@ public class PlanetActivity extends AppCompatActivity implements View.OnClickLis
                 PlanetActivity.this.startActivity(SolarSystemIntent);
                 break;
             case R.id.OnPlanetGarageBtn:
-                Intent GargeIntent = new Intent(this, GarageActivity.class);
-                PlanetActivity.this.startActivity(GargeIntent);
+                Intent garageIntent = new Intent(this, GarageActivity.class);
+                PlanetActivity.this.startActivity(garageIntent);
         }
     }
 }
