@@ -153,21 +153,24 @@ public class SolarSystem extends System {
         super(x, y, techLevelIndex);
         planetLocations = new String[10][10];
         Integer[] coordinate = new Integer[] { x, y };
+        int tempX = x;
+        int tempY = y;
         while (usedCoordinates.contains(coordinate)) {
-            x = ((5 * x) + 1) % Universe.X_BOUNDS;
-            y = ((2 * y) + 1) % Universe.Y_BOUNDS;
-            coordinate = new Integer[] { x, y };
+            tempX = ((5 * tempX) + 1) % Universe.X_BOUNDS;
+            tempY = ((2 * tempY) + 1) % Universe.Y_BOUNDS;
+            coordinate = new Integer[] { tempX, tempY };
         }
-        this.x = x;
-        this.y = y;
+        this.x = tempX;
+        this.y = tempY;
         usedCoordinates.add(coordinate);
-        if (usedNames.contains(NAMES[nameIndex])) {
+        int tempNameIndex = nameIndex;
+        if (usedNames.contains(NAMES[tempNameIndex])) {
             do {
-                nameIndex++;
-            } while (usedNames.contains(NAMES[nameIndex]));
+                tempNameIndex++;
+            } while (usedNames.contains(NAMES[tempNameIndex]));
         }
-        name = NAMES[nameIndex];
-        usedNames.add(NAMES[nameIndex]);
+        name = NAMES[tempNameIndex];
+        usedNames.add(NAMES[tempNameIndex]);
         usedPlanetCoordinates = new HashSet<>();
         planets = new HashMap<>();
     }
@@ -205,14 +208,16 @@ public class SolarSystem extends System {
 
     public void addNewPlanet(int x, int y, int resourceIndex) {
         Integer[] coordinate = new Integer[] { x, y };
+        int tempX = x;
+        int tempY = y;
         while (usedPlanetCoordinates.contains(coordinate)) {
-            x = ((5 * x) + 1) % Universe.X_BOUNDS;
-            y = ((2 * y) + 1) % Universe.Y_BOUNDS;
-            coordinate = new Integer[] { x, y };
+            tempX = ((5 * tempX) + 1) % Universe.X_BOUNDS;
+            tempY = ((2 * tempY) + 1) % Universe.Y_BOUNDS;
+            coordinate = new Integer[] { tempX, tempY };
         }
         usedPlanetCoordinates.add(coordinate);
         String planetName = this.name + generateEnding();
-        Planet newPlanet = new Planet(planetName, x, y, techLevel.ordinal(), resourceIndex);
+        Planet newPlanet = new Planet(planetName, tempX, tempY, techLevel.ordinal(), resourceIndex);
         planets.put(newPlanet.getName(), newPlanet);
         planetLocations[newPlanet.x][newPlanet.y] = newPlanet.getName();
     }

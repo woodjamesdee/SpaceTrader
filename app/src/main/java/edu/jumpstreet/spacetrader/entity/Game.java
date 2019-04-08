@@ -26,9 +26,9 @@ public class Game implements Serializable {
      */
     public Game(SolarSystem startingSystem, Planet startingPlanet, GameDifficulty difficulty) {
         activeSolarSystem = startingSystem;
-        nextSolarSystem = null;
+        //nextSolarSystem = null;
         activePlanet = startingPlanet;
-        nextPlanet = null;
+        //nextPlanet = null;
         this.difficulty = difficulty;
         isSolarSystemTravel = true;
     }
