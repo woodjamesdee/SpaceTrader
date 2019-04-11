@@ -22,7 +22,7 @@ public final class Model implements Serializable {
     private final GameInteractor gameInteractor;
     private final Random random;
 
-    private static Model instance = new Model();
+    protected static Model instance = new Model();
 
     /**
      * Gets the Singleton instance of the Model.

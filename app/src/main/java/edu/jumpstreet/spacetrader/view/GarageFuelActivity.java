@@ -45,6 +45,7 @@ public class GarageFuelActivity extends Activity implements View.OnClickListener
         GarageFuelViewModelFactory factory = new GarageFuelViewModelFactory();
         viewModel = factory.create(GarageFuelViewModel.class);
         DisplayMetrics dM = new DisplayMetrics();
+
         WindowManager windowManager = getWindowManager();
         Display defaultDisplay = windowManager.getDefaultDisplay();
         defaultDisplay.getMetrics(dM);

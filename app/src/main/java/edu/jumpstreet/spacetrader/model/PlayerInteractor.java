@@ -173,9 +173,10 @@ public class PlayerInteractor implements Serializable {
      * @param credits   the credits to add (or take away)
      */
     public void addCreditsToPlayerBalance(int credits) {
-        if (credits == 0) {
+        if (credits == 0 || credits + player.getCredits() < 0) {
             throw new IllegalArgumentException("Cannot add 0 credits to player balance");
         }
+
         player.setCredits(player.getCredits() + credits);
     }
 
