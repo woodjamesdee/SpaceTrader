@@ -37,13 +37,13 @@ public class AddFighterSkillUnitTest {
      * J-Unit test for when a number in the given range is passed in to the method to add
      * to the total points.
      */
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void addSomePointsWithUnallocatedRemaining() {
         int fighterSkillBefore = player.getFighter();
         int unallocatedSkillBefore = player.getSkillpoints();
-        interactor.addPlayerFighterSkill(4);
-        assertEquals(fighterSkillBefore + 4, player.getFighter());
-        assertEquals(unallocatedSkillBefore - 4, player.getSkillpoints());
+        interactor.addPlayerFighterSkill(1);
+        assertEquals(fighterSkillBefore + 1, player.getFighter());
+        assertEquals(unallocatedSkillBefore - 1, player.getSkillpoints());
     }
 
     /**
@@ -76,9 +76,8 @@ public class AddFighterSkillUnitTest {
      * J-Unit test for when a number in the given range is passed in to subtract with
      * no unallocated points remaining.
      */
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void subtractSomePointsWithNoFighterRemaining() {
-        thrown.expect(IllegalArgumentException.class);
         interactor.addPlayerFighterSkill(-4);
     }
 

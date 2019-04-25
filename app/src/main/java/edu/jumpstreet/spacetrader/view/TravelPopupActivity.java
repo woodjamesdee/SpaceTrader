@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import edu.jumpstreet.spacetrader.R;
 import edu.jumpstreet.spacetrader.entity.Planet;
-import edu.jumpstreet.spacetrader.entity.SolarSystem;
 import edu.jumpstreet.spacetrader.entity.Spaceship;
 import edu.jumpstreet.spacetrader.model.GameInteractor;
 import edu.jumpstreet.spacetrader.model.Model;
@@ -40,7 +39,7 @@ public class TravelPopupActivity extends Activity implements View.OnClickListene
     private Planet currentPlanet;
     //private Planet travelPlanet;
     //private SolarSystem travelSS;
-    public static final int FUEL_COST_PER_UNIT = 10;
+    private static final int FUEL_COST_PER_UNIT = 10;
     private boolean isSolarsystemTravel;
     private System currentEntity;
     @Override
@@ -53,7 +52,8 @@ public class TravelPopupActivity extends Activity implements View.OnClickListene
         Display defaultDisplay = windowManager.getDefaultDisplay();
         defaultDisplay.getMetrics(dM);
         Window window = getWindow();
-        window.setLayout((int) (dM.widthPixels * GarageFuelActivity.WIDTH_MODIFIER), (int) (dM.heightPixels * GarageFuelActivity.HEIGHT_MODIFIER));
+        window.setLayout((int) (dM.widthPixels * GarageFuelActivity.WIDTH_MODIFIER),
+                (int) (dM.heightPixels * GarageFuelActivity.HEIGHT_MODIFIER));
         WindowManager.LayoutParams params = window.getAttributes();
         params.gravity = Gravity.CENTER;
         params.x = 0;
@@ -72,15 +72,9 @@ public class TravelPopupActivity extends Activity implements View.OnClickListene
         ship = viewModel.getPlayerShip();
         currentPlanet = viewModel.getActivePlanet();
         if(!isSolarsystemTravel) {
-            Planet travelPlanet = viewModel.getNextPlanet();
-            //travelPlanet = getIntent().getParcelableExtra("Travel_Planet");
-            currentEntity = travelPlanet;
+            currentEntity =  viewModel.getNextPlanet();
         }else {
-            //travelSS = Model.getInstance().getUniverseInteractor()
-            // .getUniverse().getSolarSystemWithName(getIntent()
-            // .getStringExtra("Solarsystem_Name"));
-            SolarSystem travelSS = viewModel.getNextSolarSystem();
-            currentEntity = travelSS;
+            currentEntity = viewModel.getNextSolarSystem();
         }
     }
 

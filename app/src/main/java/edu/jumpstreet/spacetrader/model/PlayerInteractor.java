@@ -86,6 +86,9 @@ public class PlayerInteractor implements Serializable {
             throw new IllegalArgumentException("Cannot add more points " +
                     "to pilot skill than are remaining.");
         }
+        if(points < 0 && player.getPilot() == 0){
+            throw new IllegalArgumentException("Cannot remove more points than player has");
+        }
         player.setPilot(player.getPilot() + points);
         player.setSkillpoints(player.getSkillpoints() - points);
     }
@@ -107,6 +110,9 @@ public class PlayerInteractor implements Serializable {
         if (points > remainingPoints) {
             throw new IllegalArgumentException("Cannot add more points " +
                     "to fighter skill than are remaining.");
+        }
+        if(points < 0 && player.getFighter() == 0){
+            throw new IllegalArgumentException("Cannot remove more points than player has");
         }
         player.setFighter(player.getFighter() + points);
         player.setSkillpoints(player.getSkillpoints() - points);
