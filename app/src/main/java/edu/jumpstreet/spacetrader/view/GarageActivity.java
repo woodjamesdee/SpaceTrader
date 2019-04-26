@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import edu.jumpstreet.spacetrader.R;
+import edu.jumpstreet.spacetrader.entity.SolarSystem;
 import edu.jumpstreet.spacetrader.viewmodel.GarageViewModel;
 import edu.jumpstreet.spacetrader.viewmodel.GarageViewModelFactory;
 
@@ -60,6 +61,8 @@ public class GarageActivity extends AppCompatActivity implements View.OnClickLis
                 GarageActivity.this.startActivity(intent);
                 break;
             case R.id.OnGarageRepairSpaceshipBtn:
+                intent = new Intent(GarageActivity.this, SolarSystemActivity.class);
+                GarageActivity.this.startActivity(intent);
                 break;
         }
     }

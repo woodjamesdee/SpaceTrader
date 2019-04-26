@@ -2,6 +2,7 @@ package edu.jumpstreet.spacetrader.model;
 
 import java.io.Serializable;
 
+import edu.jumpstreet.spacetrader.entity.Commodity;
 import edu.jumpstreet.spacetrader.entity.Gnat;
 import edu.jumpstreet.spacetrader.entity.Player;
 import edu.jumpstreet.spacetrader.entity.Spaceship;
@@ -19,7 +20,7 @@ public class PlayerInteractor implements Serializable {
      * Creates a new PlayerInteractor, which creates a new Player with default attributes
      */
     PlayerInteractor() {
-        this.player = new Player("Unknown", 16, 1000, new Gnat());
+        this.player = new Player("Unknown", 16, 2000, new Gnat());
     }
 
     /**
@@ -242,5 +243,22 @@ public class PlayerInteractor implements Serializable {
      */
     public boolean playerHasEngineerPointsLeft() {
         return player.getEngineer() > 0;
+    }
+
+    public void changeShip(Spaceship ship){
+        if(ship.getMaxCargoSpace() >= player.getShip().getUsedCargoSpace()) {
+            ship.setEconomy(player.getShip().getEconomy());
+        }else{
+            int i = 0;
+            while(ship.getMaxCargoSpace() > player.getShip().getUsedCargoSpace()){
+                if(player.getShip().getEconomy().getCommodity(i).getQuantity() > 0) {
+                    player.getShip().getEconomy().getCommodity(i).setQuantity(player.getShip().getEconomy().getCommodity(i).getQuantity() - 1);
+                }
+                i++;
+                i %= Commodity.CommodityResources.values().length;
+            }
+            ship.setEconomy(player.getShip().getEconomy());
+        }
+        player.setShip(ship);
     }
 }

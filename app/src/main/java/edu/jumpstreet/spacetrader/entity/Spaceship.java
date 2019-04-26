@@ -137,4 +137,11 @@ public abstract class Spaceship implements Serializable {
     public void setUsedCargoSpace(int amount){
         usedCargoSpace = amount;
     }
+
+    public void setEconomy(Economy economy){
+        this.economy = economy;
+    }
+    public Economy getEconomy(){
+        return economy;
+    }
 }

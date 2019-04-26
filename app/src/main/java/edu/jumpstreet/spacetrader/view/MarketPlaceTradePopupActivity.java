@@ -167,18 +167,18 @@ public class MarketPlaceTradePopupActivity extends Activity implements View.OnCl
         PlayerInteractor pi = model.getPlayerInteractor();
         int balance = pi.getPlayerBalance();
         boolean minus1isActive = (viewModel.getShipResourceQuantityByName(activeCommodity
-                .getResource()) >= Math.abs(quantityOfTransaction - 1)) ||
+                .getResource()) >= Math.abs(quantityOfTransaction - 1)) &&
                 (quantityOfTransaction >= 1);
         boolean minus10isActive = (viewModel.getShipResourceQuantityByName(activeCommodity
-                .getResource()) >= Math.abs(quantityOfTransaction - 10)) ||
+                .getResource()) >= Math.abs(quantityOfTransaction - 10)) &&
                 (quantityOfTransaction >= 10);
         boolean plus1isActive = ((resourceQuantity >= 1)
                 && (((quantityOfTransaction + 1) * resourceValue) <= balance))
-                || ((((quantityOfTransaction + 1) * activeCommodity.getWeight())
+                && ((((quantityOfTransaction + 1) * activeCommodity.getWeight())
                 + viewModel.getUsedCargoSpace()) <= viewModel.getMaxCargoSpace());
         boolean plus10isActive = ((resourceQuantity >= 10)
                 && (((quantityOfTransaction + 10) * resourceValue) <= balance))
-                || ((((quantityOfTransaction + 10) * activeCommodity.getWeight())
+                && ((((quantityOfTransaction + 10) * activeCommodity.getWeight())
                 + viewModel.getUsedCargoSpace()) <= viewModel.getMaxCargoSpace());
         plus1Btn.setEnabled(plus1isActive);
         plus10Btn.setEnabled(plus10isActive);

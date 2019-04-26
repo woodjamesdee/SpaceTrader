@@ -163,7 +163,7 @@ public class Commodity implements Parcelable, Serializable {
      * Sets the quantity
      * @param quantity to set to this commodity
      */
-    void setQuantity(int quantity){this.quantity = quantity;}
+    public void setQuantity(int quantity){this.quantity = quantity;}
 
     /*
     public static CommodityResources getIndexCommodity(int index){

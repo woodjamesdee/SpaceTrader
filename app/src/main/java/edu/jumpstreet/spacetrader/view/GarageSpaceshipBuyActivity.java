@@ -1,6 +1,7 @@
 package edu.jumpstreet.spacetrader.view;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Display;
@@ -21,6 +22,7 @@ import edu.jumpstreet.spacetrader.entity.HummingBird;
 import edu.jumpstreet.spacetrader.entity.MantisShrimp;
 import edu.jumpstreet.spacetrader.entity.Mosqueto;
 import edu.jumpstreet.spacetrader.entity.Spaceship;
+import edu.jumpstreet.spacetrader.model.Model;
 
 /**
  * manages garage purchasing activity
@@ -37,8 +39,10 @@ public class GarageSpaceshipBuyActivity extends Activity implements View.OnClick
     RadioButton CamelRB;
     RadioButton MantisShrimpRB;
     RadioButton HummingBirdRB;
- //   RadioGroup radioGroup;
+    RadioGroup radioGroup;
     Button confirmationBtn;
+
+    Model model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +59,7 @@ public class GarageSpaceshipBuyActivity extends Activity implements View.OnClick
         params.x = 0;
         params.y = GarageFuelActivity.Y_LOCATION;
         setContentView(R.layout.activity_garage_spaceship_buy);
+        model = Model.getInstance();
      //   radioGroup = new RadioGroup(this);
         InitalizeViews();
         setLayout(gnatLayout, new Gnat(), 10);
@@ -80,38 +85,21 @@ public class GarageSpaceshipBuyActivity extends Activity implements View.OnClick
         MantisShrimpRB = findViewById(R.id.MantisShrimpRB);
         CamelRB = findViewById(R.id.CamelRB);
         confirmationBtn = findViewById(R.id.BuySpaceShipConfirmBtn);
-
-       // radioGroup.addView(GnatRb);
-        //radioGroup.addView(MosquetoRB);
-        //radioGroup.addView(HummingBirdRB);
-       // radioGroup.addView(MantisShrimpRB);
-       // radioGroup.addView(CamelRB);
-    }
-
-    public void onRadioButtonClicked(View view) {
-        // Is the button now checked?
-        boolean checked = ((RadioButton) view).isChecked();
-
-        // Check which radio button was clicked
-        switch(view.getId()) {
-            case R.id.GnatRB:
-                if (checked)
-                    break;
-            case R.id.MosquetoRB:
-                if (checked)
-                    break;
-            case R.id.HummingBirdRB:
-                    if(checked)
-                        break;
-            case R.id.MantisShrimpRB:
-                if(checked){
-                    break;
-                }
-            case R.id.CamelRB:
-                if(checked){
-                    break;
-                }
-        }
+        confirmationBtn.setOnClickListener(this);
+        confirmationBtn.setEnabled(false);
+        int credits = Model.getInstance().getPlayerInteractor().getPlayerBalance();
+        if(credits < 10){ GnatRb.setEnabled(false); }
+        if(credits < 874) MosquetoRB.setEnabled(false);
+        if(credits < 1500) HummingBirdRB.setEnabled(false);
+        if(credits < 2500) CamelRB.setEnabled(false);
+        if(credits < 3000) MantisShrimpRB.setEnabled(false);
+        radioGroup = findViewById(R.id.BuySpaceShipRadioBtnGroup);
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                confirmationBtn.setEnabled(true);
+            }
+        });
     }
 
 
@@ -131,7 +119,31 @@ public class GarageSpaceshipBuyActivity extends Activity implements View.OnClick
     @Override
     public void onClick(View view) {
         if(view.getId() == R.id.BuySpaceShipConfirmBtn){
-
+            int index = radioGroup.getCheckedRadioButtonId();
+            RadioButton rb = findViewById(index);
+            switch(index){
+                case R.id.GnatRB:
+                    model.getPlayerInteractor().changeShip(new Gnat());
+                    model.getPlayerInteractor().getPlayer().setCredits(model.getPlayerInteractor().getPlayerBalance() - 10);
+                    break;
+                case R.id.MosquetoRB:
+                    model.getPlayerInteractor().changeShip(new Mosqueto());
+                    model.getPlayerInteractor().getPlayer().setCredits(model.getPlayerInteractor().getPlayerBalance() - 874);
+                    break;
+                case R.id.HummingBirdRB:
+                    model.getPlayerInteractor().changeShip(new HummingBird());
+                    model.getPlayerInteractor().getPlayer().setCredits(model.getPlayerInteractor().getPlayerBalance() - 1500);
+                    break;
+                case R.id.MantisShrimpRB:
+                    model.getPlayerInteractor().changeShip(new MantisShrimp());
+                    model.getPlayerInteractor().getPlayer().setCredits(model.getPlayerInteractor().getPlayerBalance() - 3000);
+                    break;
+                case R.id.CamelRB:
+                    model.getPlayerInteractor().changeShip(new Camel());
+                    model.getPlayerInteractor().getPlayer().setCredits(model.getPlayerInteractor().getPlayerBalance() - 2500);
+                    break;
+            }
+            finish();
         }
     }
 }

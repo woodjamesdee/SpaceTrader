@@ -35,6 +35,7 @@
         <activity android:name=".view.GarageSpaceshipBuyActivity"></activity>
         <activity android:name=".view.GarageSpaceshipRepairActivity"></activity>
         <activity android:name=".view.RandomEncounterActivity"></activity>
+        <activity android:name=".view.BuySpaceShipPopUpActivity"></activity>
     </application>
 
 </manifest>
