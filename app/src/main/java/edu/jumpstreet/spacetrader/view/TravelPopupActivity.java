@@ -125,7 +125,7 @@ public class TravelPopupActivity extends Activity implements View.OnClickListene
             if(isSolarsystemTravel){
                 viewModel.changeActiveSolarSystem(currentEntity.getName());
                 travelCost *= .1;
-                if(true){
+                if(odds<travelCost){
                     Intent intent = new Intent(TravelPopupActivity.this, RandomEncounterActivity.class);
                     TravelPopupActivity.this.startActivity(intent);
                 }else {
