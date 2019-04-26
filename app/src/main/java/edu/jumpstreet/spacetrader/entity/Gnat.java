@@ -9,8 +9,9 @@ public class Gnat extends Spaceship {
      */
     public Gnat() {
         super.name = "Gnat";
-        super.hitpoints = 100;
+        super.hitpointsMax = 100;
         super.maxCargoSpace = 1000;
+        super.hitpointsRemaining = hitpointsMax;
         super.usedCargoSpace = 0;
         super.economy = new Economy(System.TechLevel.HiTech);
         super.remainingFuel = 1000;

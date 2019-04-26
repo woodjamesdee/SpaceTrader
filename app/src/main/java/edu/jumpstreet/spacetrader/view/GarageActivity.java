@@ -49,12 +49,15 @@ public class GarageActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View view) {
+        Intent intent;
         switch(view.getId()){
             case R.id.OnGarageBuyFuelBtn:
-                Intent intent = new Intent(GarageActivity.this, GarageFuelActivity.class);
+                intent = new Intent(GarageActivity.this, GarageFuelActivity.class);
                 GarageActivity.this.startActivityForResult(intent, 1);
                 break;
             case R.id.OnGarageBuySpaceShipBtn:
+                intent = new Intent (GarageActivity.this, GarageSpaceshipBuyActivity.class);
+                GarageActivity.this.startActivity(intent);
                 break;
             case R.id.OnGarageRepairSpaceshipBtn:
                 break;

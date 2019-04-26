@@ -8,549 +8,536 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
+        android:id="@+id/marketFullLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="50dp"
-        tools:layout_editor_absoluteY="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
+        tools:layout_editor_absoluteY="83dp">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/OnMarketUserCredits"
+                android:layout_width="82dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:paddingTop="20dp"
+                android:text="Money"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_conversion_absoluteHeight="39dp"
+                tools:layout_conversion_absoluteWidth="149dp" />
+
+            <TextView
+                android:id="@+id/OnMarketCargoSpace"
+                android:layout_width="wrap_content"
+                android:layout_height="21dp"
+                android:layout_marginEnd="92dp"
+                android:layout_marginRight="92dp"
+                android:text="Cargo Space(used/total)"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.764"
+                tools:layout_conversion_absoluteHeight="19dp"
+                tools:layout_conversion_absoluteWidth="262dp" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="40dp"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="@+id/textView9">
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="21dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="Resource"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/textView5"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_conversion_absoluteHeight="19dp"
+                tools:layout_conversion_absoluteWidth="60dp" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="27dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="28dp"
+                android:layout_marginRight="28dp"
+                android:text="Available"
+                app:layout_constraintEnd_toStartOf="@+id/OnMarketPlayersResource"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_conversion_absoluteHeight="19dp"
+                tools:layout_conversion_absoluteWidth="57dp" />
+
+            <TextView
+                android:id="@+id/OnMarketPlayersResource"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginEnd="36dp"
+                android:layout_marginRight="36dp"
+                android:text="Owned"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/textView10"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0"
+                tools:layout_conversion_absoluteHeight="19dp"
+                tools:layout_conversion_absoluteWidth="44dp" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="76dp"
+                android:layout_marginRight="76dp"
+                android:text="Cost (Per Unit)"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_conversion_absoluteHeight="19dp"
+                tools:layout_conversion_absoluteWidth="93dp" />
+
+
+        </android.support.constraint.ConstraintLayout>
 
         <LinearLayout
-            android:id="@+id/marketFullLayout"
+            android:id="@+id/waterResourceLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
-            <android.support.constraint.ConstraintLayout
-                android:id="@+id/linearLayout3"
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="Water" />
 
-                <TextView
-                    android:id="@+id/OnMarketUserCredits"
-                    android:layout_width="82dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:paddingTop="20dp"
-                    android:text="Money"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:layout_conversion_absoluteHeight="39dp"
-                    tools:layout_conversion_absoluteWidth="149dp" />
-
-                <TextView
-                    android:id="@+id/OnMarketCargoSpace"
-                    android:layout_width="wrap_content"
-                    android:layout_height="21dp"
-                    android:layout_marginEnd="92dp"
-                    android:layout_marginRight="92dp"
-                    android:text="Cargo Space(used/total)"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.764"
-                    tools:layout_conversion_absoluteHeight="19dp"
-                    tools:layout_conversion_absoluteWidth="262dp" />
-            </android.support.constraint.ConstraintLayout>
-
-            <android.support.constraint.ConstraintLayout
-                android:id="@+id/linearLayout"
+            <TextView
+                android:id="@+id/marketPlaceWaterQuantity"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:minHeight="40dp"
-                android:orientation="horizontal"
-                app:layout_constraintTop_toTopOf="@+id/textView9">
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="Quantity" />
 
-                <TextView
-                    android:id="@+id/textView9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="21dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:text="Resource"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/textView5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    tools:layout_conversion_absoluteHeight="19dp"
-                    tools:layout_conversion_absoluteWidth="60dp" />
-
-                <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="27dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="28dp"
-                    android:layout_marginRight="28dp"
-                    android:text="Available"
-                    app:layout_constraintEnd_toStartOf="@+id/OnMarketPlayersResource"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:layout_conversion_absoluteHeight="19dp"
-                    tools:layout_conversion_absoluteWidth="57dp" />
-
-                <TextView
-                    android:id="@+id/OnMarketPlayersResource"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_marginEnd="36dp"
-                    android:layout_marginRight="36dp"
-                    android:text="Owned"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/textView10"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="1.0"
-                    tools:layout_conversion_absoluteHeight="19dp"
-                    tools:layout_conversion_absoluteWidth="44dp" />
-
-                <TextView
-                    android:id="@+id/textView10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="28dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="76dp"
-                    android:layout_marginRight="76dp"
-                    android:text="Cost (Per Unit)"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:layout_conversion_absoluteHeight="19dp"
-                    tools:layout_conversion_absoluteWidth="93dp" />
-
-
-            </android.support.constraint.ConstraintLayout>
-
-            <LinearLayout
-                android:id="@+id/waterResourceLayout"
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="Amount" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".2"
-                    android:text="Water" />
-
-                <TextView
-                    android:id="@+id/marketPlaceWaterQuantity"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".2"
-                    android:text="Quantity" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".2"
-                    android:text="Amount" />
-
-                <TextView
-                    android:id="@+id/waterCargoSpaceTV"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".2"
-                    android:text="Cargo Space" />
-
-                <Button
-                    android:id="@+id/waterTradeBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".2"
-                    android:text="Trade" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/furResourceLayout"
+            <TextView
+                android:id="@+id/waterCargoSpaceTV"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="Cargo Space" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".2"
-                    android:text="Fur" />
-
-                <TextView
-                    android:id="@+id/marketPlaceFurQuantity"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".2"
-                    android:text="FurQuantity" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".2"
-                    android:text="Cost"
-                    tools:text="Amount" />
-
-                <TextView
-                    android:id="@+id/furCargoSpaceTV"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".2"
-                    android:text="Cargo Space" />
-
-                <Button
-                    android:id="@+id/furTradeBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".2"
-                    android:text="Trade" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/foodResourceLayout"
+            <Button
+                android:id="@+id/waterTradeBtn"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="Trade" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".25"
-                    android:text="Food" />
+        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/marketFoodQuantity"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".25"
-                    android:text="Food Quantity" />
+        <LinearLayout
+            android:id="@+id/furResourceLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".25"
-                    android:text="Amount" />
-
-                <TextView
-                    android:id="@+id/foodCargoSpaceTV"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".25"
-                    android:text="Cargo Space" />
-
-                <Button
-                    android:id="@+id/foodTradeBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".25"
-                    android:text="Trade" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/oreResourceLayout"
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="Fur" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".2"
-                    android:text="Ore" />
-
-                <TextView
-                    android:id="@+id/marketOreQuantity"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".2"
-                    android:text="Ore Quantity" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".2"
-                    android:text="Amount" />
-
-                <TextView
-                    android:id="@+id/oreCargoSpaceTV"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".2"
-                    android:text="Cargo Space" />
-
-                <Button
-                    android:id="@+id/oreTradeBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".2"
-                    android:text="Trade" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/gamesResourceLayout"
+            <TextView
+                android:id="@+id/marketPlaceFurQuantity"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="FurQuantity" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".2"
-                    android:text="Games" />
-
-                <TextView
-                    android:id="@+id/marketGamesQuantity"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".2"
-                    android:text="Games Quantity" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".2"
-                    android:text="Amount" />
-
-                <TextView
-                    android:id="@+id/gamesCargoSpaceTV"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".2"
-                    android:text="Cargo Space" />
-
-                <Button
-                    android:id="@+id/gamesTradeBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".2"
-                    android:text="Trade" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/firearmsResourceLayout"
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="Cost"
+                tools:text="Amount" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".25"
-                    android:text="Firearms" />
-
-                <TextView
-                    android:id="@+id/marketFirearmsQuantity"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".25"
-                    android:text="Firearms Quantity" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".25"
-                    android:text="Amount" />
-
-                <TextView
-                    android:id="@+id/firearmsCargoSpaceTV"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".25"
-                    android:text="Cargo Space" />
-
-                <Button
-                    android:id="@+id/firearmsTradeBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".25"
-                    android:text="Trade" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/medicineResourceLayout"
+            <TextView
+                android:id="@+id/furCargoSpaceTV"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="Cargo Space" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".2"
-                    android:text="Medicine" />
-
-                <TextView
-                    android:id="@+id/marketMedicineQuantity"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".2"
-                    android:text="Medicine Quantity" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".2"
-                    android:text="Amount" />
-
-                <TextView
-                    android:id="@+id/medicineCargoSpaceTV"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".2"
-                    android:text="Cargo Space" />
-
-                <Button
-                    android:id="@+id/medicineTradeBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".2"
-                    android:text="Trade" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/machinesResourceLayout"
+            <Button
+                android:id="@+id/furTradeBtn"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="Trade" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".2"
-                    android:text="Machines" />
+        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/marketMachinesQuantity"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".2"
-                    android:text="Machines Quantity" />
+        <LinearLayout
+            android:id="@+id/foodResourceLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".2"
-                    android:text="Amount" />
-
-                <TextView
-                    android:id="@+id/machinesCargoSpaceTV"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".2"
-                    android:text="Cargo Space" />
-
-                <Button
-                    android:id="@+id/machinesTradeBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".2"
-                    android:text="Trade" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/narcoticsResourceLayout"
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:layout_weight=".25"
+                android:text="Food" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".2"
-                    android:text="Narcotics" />
-
-                <TextView
-                    android:id="@+id/marketNarcoticsQuantity"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".2"
-                    android:text="Narcotics Quantity" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".2"
-                    android:text="Cost"
-                    tools:text="Amount" />
-
-                <TextView
-                    android:id="@+id/narcoticsCargoSpaceTV"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".2"
-                    android:text="Cargo Space" />
-
-                <Button
-                    android:id="@+id/narcoticsTradeBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".2"
-                    android:text="Trade" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/robotsResourceLayout"
+            <TextView
+                android:id="@+id/marketFoodQuantity"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:layout_weight=".25"
+                android:text="Food Quantity" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".2"
-                    android:text="Robots" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".25"
+                android:text="Amount" />
 
-                <TextView
-                    android:id="@+id/marketRobotsQuantity"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".2"
-                    android:text="Robots Quantity" />
+            <TextView
+                android:id="@+id/foodCargoSpaceTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".25"
+                android:text="Cargo Space" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".2"
-                    android:text="Amount" />
+            <Button
+                android:id="@+id/foodTradeBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".25"
+                android:text="Trade" />
 
-                <TextView
-                    android:id="@+id/robotsCargoSpaceTV"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".2"
-                    android:text="Cargo Space" />
+        </LinearLayout>
 
-                <Button
-                    android:id="@+id/robotsTradeBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".2"
-                    android:text="Trade" />
+        <LinearLayout
+            android:id="@+id/oreResourceLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
-            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="Ore" />
+
+            <TextView
+                android:id="@+id/marketOreQuantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="Ore Quantity" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="Amount" />
+
+            <TextView
+                android:id="@+id/oreCargoSpaceTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="Cargo Space" />
+
+            <Button
+                android:id="@+id/oreTradeBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="Trade" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/gamesResourceLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="Games" />
+
+            <TextView
+                android:id="@+id/marketGamesQuantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="Games Quantity" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="Amount" />
+
+            <TextView
+                android:id="@+id/gamesCargoSpaceTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="Cargo Space" />
+
+            <Button
+                android:id="@+id/gamesTradeBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="Trade" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/firearmsResourceLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".25"
+                android:text="Firearms" />
+
+            <TextView
+                android:id="@+id/marketFirearmsQuantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".25"
+                android:text="Firearms Quantity" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".25"
+                android:text="Amount" />
+
+            <TextView
+                android:id="@+id/firearmsCargoSpaceTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".25"
+                android:text="Cargo Space" />
+
+            <Button
+                android:id="@+id/firearmsTradeBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".25"
+                android:text="Trade" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/medicineResourceLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="Medicine" />
+
+            <TextView
+                android:id="@+id/marketMedicineQuantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="Medicine Quantity" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="Amount" />
+
+            <TextView
+                android:id="@+id/medicineCargoSpaceTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="Cargo Space" />
+
+            <Button
+                android:id="@+id/medicineTradeBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="Trade" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/machinesResourceLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="Machines" />
+
+            <TextView
+                android:id="@+id/marketMachinesQuantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="Machines Quantity" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="Amount" />
+
+            <TextView
+                android:id="@+id/machinesCargoSpaceTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="Cargo Space" />
+
+            <Button
+                android:id="@+id/machinesTradeBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="Trade" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/narcoticsResourceLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="Narcotics" />
+
+            <TextView
+                android:id="@+id/marketNarcoticsQuantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="Narcotics Quantity" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="Cost"
+                tools:text="Amount" />
+
+            <TextView
+                android:id="@+id/narcoticsCargoSpaceTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="Cargo Space" />
+
+            <Button
+                android:id="@+id/narcoticsTradeBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="Trade" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/robotsResourceLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="Robots" />
+
+            <TextView
+                android:id="@+id/marketRobotsQuantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="Robots Quantity" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="Amount" />
+
+            <TextView
+                android:id="@+id/robotsCargoSpaceTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="Cargo Space" />
+
+            <Button
+                android:id="@+id/robotsTradeBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2"
+                android:text="Trade" />
 
         </LinearLayout>
 

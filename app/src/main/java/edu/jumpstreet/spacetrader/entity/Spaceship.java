@@ -9,7 +9,22 @@ public abstract class Spaceship implements Serializable {
 
     String name;
     String description;
-    int hitpoints;
+
+    public int getHitpointsMax() {
+        return hitpointsMax;
+    }
+
+    int hitpointsMax;
+
+    public int getHitpointsRemaining() {
+        return hitpointsRemaining;
+    }
+
+    public void setHitpointsRemaining(int hitpointsRemaining) {
+        this.hitpointsRemaining = hitpointsRemaining;
+    }
+
+    int hitpointsRemaining;
     int maxCargoSpace;
     int usedCargoSpace;
 
@@ -59,7 +74,7 @@ public abstract class Spaceship implements Serializable {
         return name;
     }
     //public String getDescription() { return description; }
-    //public int getHitpoints() { return hitpoints; }
+    //public int getHitpoints() { return hitpointsMax; }
 
     /**
      * max cargo space getter

@@ -21,19 +21,19 @@ import edu.jumpstreet.spacetrader.viewmodel.MarketPlaceViewModelFactory;
 public class MarketPlaceActivity extends AppCompatActivity implements View.OnClickListener{
     //resource Layouts
     private LinearLayout fullLayout;
-    //private LinearLayout waterLayout;
-    //private LinearLayout furLayout;
-    //private LinearLayout foodLayout;
+    private LinearLayout waterLayout;
+    private LinearLayout furLayout;
+    private LinearLayout foodLayout;
     private LinearLayout oreLayout;
     private LinearLayout gamesLayout;
     private LinearLayout firearmsLayout;
     private LinearLayout medicineLayout;
     private LinearLayout machineLayout;
-    //private LinearLayout narcoticsLayout;
+    private LinearLayout narcoticsLayout;
     private LinearLayout robotsLayout;
 
     //Buttons
-    /*
+
     private Button waterTradeBtn;
     private Button furTradeBtn;
     private Button foodTradeBtn;
@@ -44,7 +44,7 @@ public class MarketPlaceActivity extends AppCompatActivity implements View.OnCli
     private Button machinesTradeBtn;
     private Button narcoticsTradeBtn;
     private Button robotsTradeBtn;
-    */
+
 
     //Player determined Views
     //private TextView remainingCreditsTV;
@@ -80,38 +80,38 @@ public class MarketPlaceActivity extends AppCompatActivity implements View.OnCli
 
     private void initializeLayouts(){
         fullLayout = findViewById(R.id.marketFullLayout);
-        //LinearLayout waterLayout = findViewById(R.id.waterResourceLayout);
-        //LinearLayout furLayout = findViewById(R.id.furResourceLayout);
-        //LinearLayout foodLayout = findViewById(R.id.foodResourceLayout);
+        waterLayout = findViewById(R.id.waterResourceLayout);
+        furLayout = findViewById(R.id.furResourceLayout);
+        foodLayout = findViewById(R.id.foodResourceLayout);
         oreLayout = findViewById(R.id.oreResourceLayout);
         gamesLayout = findViewById(R.id.gamesResourceLayout);
         firearmsLayout = findViewById(R.id.firearmsResourceLayout);
         medicineLayout = findViewById(R.id.medicineResourceLayout);
         machineLayout = findViewById(R.id.machinesResourceLayout);
-        //LinearLayout narcoticsLayout = findViewById(R.id.narcoticsResourceLayout);
+        narcoticsLayout = findViewById(R.id.narcoticsResourceLayout);
         robotsLayout = findViewById(R.id.robotsResourceLayout);
     }
 
     private void initializeButtons(){
-        Button waterTradeBtn = findViewById(R.id.waterTradeBtn);
+        waterTradeBtn = findViewById(R.id.waterTradeBtn);
         waterTradeBtn.setOnClickListener(this);
-        Button furTradeBtn = findViewById(R.id.furTradeBtn);
+        furTradeBtn = findViewById(R.id.furTradeBtn);
         furTradeBtn.setOnClickListener(this);
-        Button foodTradeBtn = findViewById(R.id.foodTradeBtn);
+        foodTradeBtn = findViewById(R.id.foodTradeBtn);
         foodTradeBtn.setOnClickListener(this);
-        Button oreTradeBtn = findViewById(R.id.oreTradeBtn);
+        oreTradeBtn = findViewById(R.id.oreTradeBtn);
         oreTradeBtn.setOnClickListener(this);
-        Button gamesTradeBtn = findViewById(R.id.gamesTradeBtn);
+        gamesTradeBtn = findViewById(R.id.gamesTradeBtn);
         gamesTradeBtn.setOnClickListener(this);
-        Button firearmsTradeBtn = findViewById(R.id.firearmsTradeBtn);
+        firearmsTradeBtn = findViewById(R.id.firearmsTradeBtn);
         firearmsTradeBtn.setOnClickListener(this);
-        Button medicineTradeBtn = findViewById(R.id.medicineTradeBtn);
+        medicineTradeBtn = findViewById(R.id.medicineTradeBtn);
         medicineTradeBtn.setOnClickListener(this);
-        Button machinesTradeBtn = findViewById(R.id.machinesTradeBtn);
+        machinesTradeBtn = findViewById(R.id.machinesTradeBtn);
         machinesTradeBtn.setOnClickListener(this);
-        Button narcoticsTradeBtn = findViewById(R.id.narcoticsTradeBtn);
+        narcoticsTradeBtn = findViewById(R.id.narcoticsTradeBtn);
         narcoticsTradeBtn.setOnClickListener(this);
-        Button robotsTradeBtn = findViewById(R.id.robotsTradeBtn);
+        robotsTradeBtn = findViewById(R.id.robotsTradeBtn);
         robotsTradeBtn.setOnClickListener(this);
     }
 
@@ -126,17 +126,15 @@ public class MarketPlaceActivity extends AppCompatActivity implements View.OnCli
 
     //index has 1 for planets resources, 2 for users resource, and 3 for cost per unit of resources
     private void setTextViews(int index){
-        for(int i = 0; i< Planet.Resource.values().length; i++){
+        for(int i = 0; i< Commodity.CommodityResources.values().length; i++){
             //2 is to increment past header LinearLayouts
             LinearLayout ll = (LinearLayout) fullLayout.getChildAt(2+ i);
             TextView tv = (TextView) ll.getChildAt(index);
             if(index == 1) {
                 tv.setText(viewModel.getPlanetResourceQuantityByIndex(i)+ "");
-            }
-            if (index == 2){
+            } else if (index == 2){
                 tv.setText(viewModel.getShipResourceQuantityByIndex(i) + "");
-            }
-            if (index == 3){
+            }else if (index == 3){
                 tv.setText(viewModel.getCommodityValue(i) + "");
             }
         }
