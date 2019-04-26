@@ -13,6 +13,7 @@ import android.widget.Button;
 
 import java.io.IOException;
 
+import edu.jumpstreet.spacetrader.model.MediaPlayerLoop;
 import edu.jumpstreet.spacetrader.model.Model;
 import edu.jumpstreet.spacetrader.view.ConfigurationActivity;
 import edu.jumpstreet.spacetrader.view.UniverseActivity;
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     public static final String key = "Key";
 
     private SharedPreferences sharedPreferences;
-    //private Button loadButton;
+    private Button loadButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +35,10 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         setContentView(R.layout.activity_main);
         ConstraintLayout layout = findViewById(R.id.mainConstrainLayout);
         layout.setOnTouchListener(this);
-        MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.game_maintheme);
-        mediaPlayer.start();
-        Button loadButton = findViewById(R.id.loadButton);
+        Intent mediaIntent = new Intent(this, MediaPlayerLoop.class);
+        this.startService(mediaIntent);
+        loadButton = findViewById(R.id.loadButton);
+
         sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         loadButton.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -44,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                String savedGame = sharedPreferences.getString(key, null);
                if (savedGame == null) {
                    //System.out.println("No saved game!");
+                   loadButton.setEnabled(false);
                    return;
                }
                try {

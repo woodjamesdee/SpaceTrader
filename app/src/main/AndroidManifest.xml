@@ -36,6 +36,8 @@
         <activity android:name=".view.GarageSpaceshipRepairActivity"></activity>
         <activity android:name=".view.RandomEncounterActivity"></activity>
         <activity android:name=".view.BuySpaceShipPopUpActivity"></activity>
+        <service android:enabled="true" android:name=".model.MediaPlayerLoop" />
+
     </application>
 
 </manifest>
