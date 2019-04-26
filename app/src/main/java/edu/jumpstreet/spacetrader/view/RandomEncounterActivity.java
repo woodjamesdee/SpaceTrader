@@ -66,6 +66,7 @@ public class RandomEncounterActivity extends Activity implements View.OnTouchLis
     private void changeStats(Stats stat, int amount){
         switch(stat){
             case Pilot:
+                
                 PI.addPlayerPilotSkill(amount);
                 encounterTV.setText("You meet a friendly alien who teaches you how to fly, your pilot skill goes up by " + amount);
                 break;

@@ -12,6 +12,8 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.Random;
+
 import edu.jumpstreet.spacetrader.R;
 import edu.jumpstreet.spacetrader.entity.Planet;
 import edu.jumpstreet.spacetrader.entity.Spaceship;
@@ -112,19 +114,35 @@ public class TravelPopupActivity extends Activity implements View.OnClickListene
 
     @Override
     public void onClick(View view) {
+        int travelCost = calculateTravelCost(currentEntity);
+        Random rand = new Random();
+        double odds = rand.nextDouble();
+        odds *= 100;
+
         switch(view.getId()){
             case R.id.travelPopupTravelButton: travel(currentEntity);
             finish();
             if(isSolarsystemTravel){
                 viewModel.changeActiveSolarSystem(currentEntity.getName());
-                Intent intent = new Intent(TravelPopupActivity.this,
-                        SolarSystemActivity.class);
-                TravelPopupActivity.this.startActivity(intent);
+                travelCost *= .1;
+                if(true){
+                    Intent intent = new Intent(TravelPopupActivity.this, RandomEncounterActivity.class);
+                    TravelPopupActivity.this.startActivity(intent);
+                }else {
+                    Intent intent = new Intent(TravelPopupActivity.this,
+                            SolarSystemActivity.class);
+                    TravelPopupActivity.this.startActivity(intent);
+                }
             }else{
                 viewModel.changeActivePlanet(currentEntity.getName());
-                Intent intent = new Intent(TravelPopupActivity.this,
-                        PlanetActivity.class);
-                TravelPopupActivity.this.startActivity(intent);
+                if(odds < travelCost){
+                    Intent intent = new Intent(TravelPopupActivity.this, RandomEncounterActivity.class);
+                    TravelPopupActivity.this.startActivity(intent);
+                }else {
+                    Intent intent = new Intent(TravelPopupActivity.this,
+                            PlanetActivity.class);
+                    TravelPopupActivity.this.startActivity(intent);
+                }
             }
 
             break;
